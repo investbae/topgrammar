@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin.html
+Disallow: /teacher.html
+Disallow: /director.html
+Disallow: /evaluations.html
+Disallow: /login.html
+Disallow: /register.html
+Disallow: /mypage.html
+Disallow: /parent.html
+Disallow: /reset-password.html
+Sitemap: https://topgrammar.co.kr/sitemap.xml

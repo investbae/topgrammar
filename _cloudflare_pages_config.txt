@@ -1,0 +1,5 @@
+﻿# Cloudflare Pages settings
+# Build command: (none)
+# Build output directory: /
+# Root directory: /
+# Production branch: main

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ko" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>탑그래머잉글리쉬 - 고등내신·수능 특화 영어학원 | 화정·행신</title>
+  <meta name="description" content="화정·행신 중고등 영어 전문학원. 10단계 문법 암기공식 · 무한반복 시스템. 2011년부터 의대·SKY·포항공대·홍익대 미대 등 명문대 20명 이상 합격. 레벨테스트로 우리 아이 실력을 진단하세요.">
+  <meta property="og:title" content="탑그래머잉글리쉬 - 고등내신·수능 특화 영어학원">
+  <meta property="og:description" content="10단계 문법 암기공식 · 무한반복 시스템 · 소수정예 관리. 화정·행신 중고등 영어 전문학원.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://topgrammar.co.kr/">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="css/core.css?v=6">
+  <link rel="stylesheet" href="css/components.css?v=8">
+  <link rel="stylesheet" href="css/premium.css?v=1">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <link rel="canonical" href="https://topgrammar.co.kr/">
+  <meta property="og:image" content="https://topgrammar.co.kr/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="탑그래머잉글리쉬 - 고등내신·수능 특화 영어학원">
+  <meta name="twitter:description" content="10단계 문법 암기공식 · 무한반복 시스템 · 소수정예 관리. 화정·행신 중고등 영어 전문학원.">
+  <meta name="twitter:image" content="https://topgrammar.co.kr/images/og-image.png">
+  <meta name="theme-color" content="#1B3A5C">
+  <style>body{opacity:1!important}.slide-up{opacity:1!important;transform:none!important}</style>
+
+  <!-- ===== 메인 랜딩 전용 프리미엄 스타일 (이 페이지 한정) ===== -->
+  <style>
+    /* HERO — 실사진 배경 + 그라데이션 오버레이 */
+    .tg-hero{position:relative;min-height:92vh;display:flex;align-items:center;
+      background:linear-gradient(180deg,rgba(15,38,64,.78) 0%,rgba(15,38,64,.62) 45%,rgba(27,58,92,.85) 100%),
+        url('images/campus/hwajeong/KakaoTalk_20260307_104454101_05.jpg') center/cover no-repeat;
+      color:#fff;overflow:hidden;}
+    .tg-hero__inner{position:relative;z-index:2;max-width:var(--container-max);margin:0 auto;
+      padding:calc(var(--header-height) + 48px) var(--space-6) 64px;width:100%;}
+    .tg-hero__eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
+      background:rgba(232,122,58,.95);color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.02em;
+      box-shadow:0 8px 24px rgba(232,122,58,.35);margin-bottom:22px;}
+    .tg-hero__eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#fff;animation:tgpulse 1.6s infinite;}
+    @keyframes tgpulse{0%,100%{opacity:1}50%{opacity:.35}}
+    .tg-hero h1{font-size:clamp(2.2rem,5.4vw,4rem);line-height:1.14;letter-spacing:-.035em;color:#fff;
+      margin-bottom:20px;text-shadow:0 2px 24px rgba(0,0,0,.35);max-width:880px;}
+    .tg-hero h1 em{font-style:normal;color:#FFB877;
+      background:linear-gradient(120deg,#FFC894,#F59E5E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .tg-hero__lead{font-size:clamp(1.02rem,2vw,1.32rem);line-height:1.7;color:rgba(255,255,255,.92);
+      max-width:680px;margin-bottom:14px;text-shadow:0 1px 12px rgba(0,0,0,.35);}
+    .tg-hero__sign{font-size:.95rem;color:rgba(255,255,255,.78);margin-bottom:34px;}
+    .tg-hero__cta{display:flex;gap:14px;flex-wrap:wrap;}
+    .tg-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:16px 30px;border-radius:14px;
+      font-weight:800;font-size:1.02rem;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .2s;cursor:pointer;}
+    .tg-btn--primary{background:linear-gradient(135deg,#F59E5E,#E87A3A);color:#fff;box-shadow:0 12px 30px rgba(232,122,58,.45);}
+    .tg-btn--primary:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(232,122,58,.55);}
+    .tg-btn--ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(6px);}
+    .tg-btn--ghost:hover{background:rgba(255,255,255,.22);transform:translateY(-3px);}
+    .tg-hero__scroll{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);
+      font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px;animation:tgfloat 2.2s ease-in-out infinite;}
+    @keyframes tgfloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+    /* 신뢰 지표 바 */
+    .tg-trust{background:var(--color-primary-dark);color:#fff;}
+    .tg-trust__grid{max-width:var(--container-max);margin:0 auto;padding:34px var(--space-6);
+      display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+    .tg-trust__v{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:900;line-height:1;
+      background:linear-gradient(120deg,#FFC894,#F59E5E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .tg-trust__l{font-size:.86rem;color:rgba(255,255,255,.72);margin-top:8px;}
+    .tg-trust__div{position:relative;}
+    @media(max-width:680px){.tg-trust__grid{grid-template-columns:repeat(2,1fr);gap:24px 12px;}}
+
+    /* 섹션 공통 */
+    .tg-sec{padding:88px var(--space-6);max-width:var(--container-max);margin:0 auto;}
+    .tg-sec--wide{max-width:none;padding-left:0;padding-right:0;}
+    .tg-eyebrow{display:block;text-align:center;color:var(--color-accent);font-weight:800;font-size:.8rem;
+      letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px;}
+    .tg-h2{text-align:center;font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1.25;letter-spacing:-.03em;margin-bottom:14px;}
+    .tg-sub{text-align:center;color:var(--color-text-sub);max-width:640px;margin:0 auto 52px;font-size:1.05rem;line-height:1.7;}
+
+    /* WHY — 강점 3카드(아이콘+사진 혼합) */
+    .tg-why{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+    .tg-why__card{position:relative;background:#fff;border:1px solid var(--color-border);border-radius:20px;padding:38px 30px;
+      box-shadow:var(--shadow-md);transition:transform .3s,box-shadow .3s;overflow:hidden;}
+    .tg-why__card::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;
+      background:linear-gradient(90deg,var(--color-accent),var(--color-accent-light));}
+    .tg-why__card:hover{transform:translateY(-8px);box-shadow:var(--shadow-xl);}
+    .tg-why__ic{width:62px;height:62px;border-radius:18px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,rgba(27,58,92,.1),rgba(232,122,58,.14));color:var(--color-primary);margin-bottom:20px;}
+    .tg-why__card h3{font-size:1.32rem;margin-bottom:12px;letter-spacing:-.02em;}
+    .tg-why__card p{font-size:.98rem;line-height:1.72;color:var(--color-text-sub);}
+    @media(max-width:880px){.tg-why{grid-template-columns:1fr;}}
+
+    /* SYSTEM — 사진 + 텍스트 교차 행 */
+    .tg-row{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;margin-bottom:96px;}
+    .tg-row:last-child{margin-bottom:0;}
+    .tg-row--rev .tg-row__media{order:2;}
+    .tg-row__media{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-xl);aspect-ratio:4/3;}
+    .tg-row__media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1);}
+    .tg-row__media:hover img{transform:scale(1.06);}
+    .tg-row__tag{display:inline-block;padding:7px 15px;border-radius:999px;background:rgba(232,122,58,.12);
+      color:var(--color-accent-dark);font-weight:700;font-size:.82rem;margin-bottom:16px;}
+    .tg-row__media .tg-row__float{position:absolute;left:18px;bottom:18px;z-index:2;background:rgba(15,38,64,.82);
+      color:#fff;padding:10px 16px;border-radius:12px;font-weight:700;font-size:.9rem;backdrop-filter:blur(6px);}
+    .tg-row h3{font-size:clamp(1.5rem,2.6vw,2rem);letter-spacing:-.025em;margin-bottom:16px;}
+    .tg-row p{font-size:1.04rem;line-height:1.8;color:var(--color-text-sub);margin-bottom:14px;}
+    .tg-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+    .tg-chip{padding:7px 14px;border-radius:999px;background:var(--color-bg-alt);color:var(--color-primary);
+      font-weight:600;font-size:.84rem;border:1px solid var(--color-border);}
+    @media(max-width:880px){.tg-row{grid-template-columns:1fr;gap:26px;margin-bottom:60px;}.tg-row--rev .tg-row__media{order:0;}}
+
+    /* 캠퍼스 갤러리 — 실사진 모자이크 */
+    .tg-gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;grid-auto-flow:dense;gap:14px;max-width:var(--container-max);margin:0 auto;padding:0 var(--space-6);}
+    .tg-gal a{position:relative;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-md);display:block;}
+    .tg-gal img{width:100%;height:100%;object-fit:cover;transition:transform .7s;}
+    .tg-gal a:hover img{transform:scale(1.08);}
+    .tg-gal a::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(15,38,64,.45));opacity:0;transition:opacity .3s;}
+    .tg-gal a:hover::after{opacity:1;}
+    .tg-gal .span2{grid-column:span 2;}
+    .tg-gal .row2{grid-row:span 2;}
+    @media(max-width:880px){.tg-gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;}.tg-gal .span2{grid-column:span 2;}.tg-gal .row2{grid-row:span 1;}}
+
+    /* 원장 직강 */
+    .tg-tcard__role{display:inline-block;padding:5px 12px;border-radius:999px;background:var(--color-primary);color:#fff;font-size:.74rem;font-weight:700;margin-bottom:14px;}
+    .tg-director{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:center;
+      background:#fff;border:1px solid var(--color-border);border-radius:24px;padding:34px;box-shadow:var(--shadow-lg);}
+    .tg-director__ph{border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:var(--color-bg-alt);box-shadow:var(--shadow-md);}
+    .tg-director__ph img{width:100%;height:100%;object-fit:cover;object-position:center 15%;}
+    .tg-director__b h3{font-size:clamp(1.5rem,2.6vw,2rem);letter-spacing:-.025em;margin-bottom:8px;}
+    .tg-director__sub{color:var(--color-accent-dark);font-weight:600;font-size:.95rem;margin-bottom:18px;}
+    .tg-director__b p{font-size:1.02rem;line-height:1.8;color:var(--color-text-sub);margin-bottom:14px;}
+    @media(max-width:880px){.tg-director{grid-template-columns:1fr;gap:24px;padding:24px;}
+      .tg-director__ph{max-width:340px;margin:0 auto;}}
+
+    /* 성적 향상 카드 */
+    .tg-grades{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+    .tg-gcard{background:#fff;border:1px solid var(--color-border);border-radius:18px;padding:26px 22px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .3s;}
+    .tg-gcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+    .tg-gcard__badge{display:inline-block;padding:4px 12px;border-radius:999px;background:rgba(232,122,58,.12);color:var(--color-accent-dark);font-size:.74rem;font-weight:700;margin-bottom:14px;}
+    .tg-gcard__move{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px 0 14px;}
+    .tg-gcard__from{color:var(--color-text-light);font-weight:700;font-size:1.1rem;}
+    .tg-gcard__to{color:var(--color-accent);font-weight:900;font-size:1.7rem;}
+    .tg-gcard__arr{color:var(--color-accent);}
+    .tg-gcard p{font-size:.84rem;color:var(--color-text-sub);line-height:1.6;}
+    @media(max-width:880px){.tg-grades{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:480px){.tg-grades{grid-template-columns:1fr;}}
+
+    /* 후기 */
+    .tg-revs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .tg-rev{background:#fff;border-radius:20px;padding:30px 28px;box-shadow:var(--shadow-md);position:relative;border:1px solid var(--color-border);}
+    .tg-rev__q{font-size:3rem;line-height:.7;color:rgba(232,122,58,.25);font-weight:900;}
+    .tg-rev__stars{color:#F5A623;letter-spacing:2px;margin:4px 0 14px;}
+    .tg-rev p{font-size:.98rem;line-height:1.75;color:var(--color-text);font-style:italic;margin-bottom:18px;}
+    .tg-rev__who{display:flex;align-items:center;gap:12px;}
+    .tg-rev__av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;}
+    .tg-rev__n{font-weight:700;font-size:.92rem;}
+    .tg-rev__m{font-size:.78rem;color:var(--color-text-light);}
+    @media(max-width:880px){.tg-revs{grid-template-columns:1fr;}}
+
+    /* 캠퍼스 2관 카드 */
+    .tg-camps{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+    .tg-camp{position:relative;border-radius:24px;overflow:hidden;min-height:340px;display:flex;align-items:flex-end;box-shadow:var(--shadow-lg);}
+    .tg-camp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s;}
+    .tg-camp:hover img{transform:scale(1.07);}
+    .tg-camp__ov{position:relative;z-index:2;width:100%;padding:30px;
+      background:linear-gradient(180deg,transparent,rgba(15,38,64,.92));color:#fff;}
+    .tg-camp__ov h3{color:#fff;font-size:1.5rem;margin-bottom:8px;}
+    .tg-camp__ov p{color:rgba(255,255,255,.85);font-size:.92rem;margin-bottom:6px;}
+    .tg-camp__ph{font-weight:800;color:#FFB877;font-size:1.1rem;}
+    @media(max-width:880px){.tg-camps{grid-template-columns:1fr;}}
+
+    /* 최종 CTA */
+    .tg-final{position:relative;color:#fff;text-align:center;overflow:hidden;
+      background:linear-gradient(160deg,rgba(15,38,64,.92),rgba(27,58,92,.88)),
+        url('images/campus/haengsin/KakaoTalk_20260307_104458231_05.jpg') center/cover no-repeat;}
+    .tg-final__in{position:relative;z-index:2;max-width:720px;margin:0 auto;padding:96px var(--space-6);}
+    .tg-final h2{color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:18px;letter-spacing:-.03em;}
+    .tg-final p{color:rgba(255,255,255,.9);font-size:1.1rem;line-height:1.7;margin-bottom:14px;}
+    .tg-final__phones{font-size:1rem;color:rgba(255,255,255,.85);margin-bottom:30px;}
+    .tg-final__phones a{color:#FFB877;font-weight:700;}
+    .tg-final__cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+    .tg-band{background:var(--color-bg-alt);}
+
+    /* ===== v2 디자인 격상 (2026-06-07) — 히어로 패널·마이크로 인터랙션 (R1 토론 반영: 다크 글래스·플랫 배지·면책·모바일 칩) ===== */
+    .tg-hero__panel-foot{display:block;margin-top:10px;font-size:.66rem;color:rgba(255,255,255,.55);line-height:1.5;}
+    /* 모바일·태블릿(<1100px): 패널을 컴팩트 배지 스트립으로 — 핵심 설득 손실 방지 */
+    .tg-hero__panel{margin-top:26px;}
+    .tg-hero__panel-head,.tg-hero__panel-cta{display:none;}
+    .tg-hero__panel-list{list-style:none;margin:0;padding:0;display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;}
+    .tg-hero__panel-list::-webkit-scrollbar{display:none;}
+    .tg-hero__panel-list li{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;
+      background:rgba(10,25,44,.66);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);}
+    .tg-hero__panel-list .ic{font-size:1.05rem;}
+    .tg-hero__panel-list b{color:#fff;font-size:.82rem;font-weight:700;white-space:nowrap;}
+    .tg-hero__panel-list small{display:none;}
+    @media(min-width:1100px){
+      .tg-hero__inner{display:grid;grid-template-columns:minmax(0,1fr) 392px;column-gap:56px;align-items:center;}
+      .tg-hero__inner>*{grid-column:1;justify-self:start;}
+      .tg-hero__inner>h1,.tg-hero__inner>p{justify-self:stretch;}
+      .tg-hero__panel{grid-column:2;grid-row:1/span 5;align-self:center;display:block;margin-top:0;
+        background:rgba(10,23,42,.62);
+        border:1px solid rgba(255,255,255,.22);border-radius:22px;padding:26px 24px 18px;
+        backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);
+        box-shadow:0 24px 64px rgba(5,14,28,.55),inset 0 1px 0 rgba(255,255,255,.16);
+        animation:tgPanelIn .8s cubic-bezier(.2,.8,.2,1) both .25s;}
+      @keyframes tgPanelIn{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}
+      .tg-hero__panel-head{display:block;margin-bottom:14px;}
+      .tg-hero__panel-eyebrow{display:block;font-size:.68rem;font-weight:800;letter-spacing:.22em;color:#FFB877;margin-bottom:6px;}
+      .tg-hero__panel-head strong{font-size:1.18rem;font-weight:800;color:#fff;letter-spacing:-.02em;}
+      .tg-hero__panel-list{flex-direction:column;gap:4px;overflow:visible;margin:0 0 14px;}
+      .tg-hero__panel-list li{flex:initial;display:flex;align-items:flex-start;gap:12px;padding:11px 6px;border-radius:0;
+        background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.14);backdrop-filter:none;transition:padding-left .25s;}
+      .tg-hero__panel-list li:last-child{border-bottom:0;}
+      .tg-hero__panel-list li:hover{padding-left:12px;}
+      .tg-hero__panel-list .ic{font-size:1.3rem;line-height:1.35;filter:drop-shadow(0 2px 6px rgba(0,0,0,.3));}
+      .tg-hero__panel-list b{display:block;color:#fff;font-size:.97rem;letter-spacing:-.01em;white-space:normal;}
+      .tg-hero__panel-list small{display:block;color:rgba(255,255,255,.85);font-size:.79rem;margin-top:2px;line-height:1.45;}
+      .tg-hero__panel-cta{display:flex;align-items:center;justify-content:center;width:100%;padding:14px 18px;border-radius:13px;
+        background:linear-gradient(135deg,#F59E5E,#E87A3A);color:#fff;font-weight:800;font-size:.96rem;
+        box-shadow:0 12px 28px rgba(232,122,58,.45);transition:transform .25s,box-shadow .25s;}
+      .tg-hero__panel-cta:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(232,122,58,.58);color:#fff;}
+    }
+    /* 성적 카드 — before 취소·after 그라데이션 강조 */
+    .tg-gcard__from{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(232,122,58,.55);opacity:.62;}
+    .tg-gcard__to{font-size:2.05rem;background:linear-gradient(120deg,#F59E5E,#D9641F);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .tg-gcard__arr{font-weight:900;transition:transform .3s;}
+    .tg-gcard:hover .tg-gcard__arr{transform:translateX(5px);}
+    /* 왜 탑그래머 — 아이콘 마이크로 모션 */
+    .tg-why__ic{transition:transform .35s cubic-bezier(.2,.8,.2,1);}
+    .tg-why__card:hover .tg-why__ic{transform:scale(1.1) rotate(-5deg);}
+    @media(prefers-reduced-motion:reduce){
+      .tg-hero__panel{animation:none;}
+      .tg-hero__panel-list li,.tg-gcard__arr,.tg-why__ic,.tg-hero__panel-cta{transition:none;}
+    }
+
+    /* ===== v3 (2026-06-20) — '성적이 오르는 이유' 동기부여 섹션 · 자가진단 · 미니 증거바 · 모바일 sticky CTA (3-AI 토론 5R 합의) ===== */
+    /* 오르는 이유 섹션 */
+    .tg-works{padding-top:72px;padding-bottom:72px;}
+    .tg-works__decl{text-align:center;font-size:clamp(1.25rem,2.8vw,1.95rem);font-weight:800;line-height:1.4;
+      letter-spacing:-.025em;color:var(--color-primary);max-width:760px;margin:0 auto 8px;}
+    .tg-works__decl em{font-style:normal;background:linear-gradient(120deg,#F59E5E,#D9641F);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .tg-works__declsub{text-align:center;color:var(--color-text-sub);font-size:1.02rem;line-height:1.7;
+      max-width:620px;margin:0 auto 40px;}
+    /* 자가진단 4카드 */
+    .tg-diag-head{text-align:center;font-weight:800;font-size:1.12rem;color:var(--color-text);margin-bottom:18px;}
+    .tg-diag-head::before{content:"🙋 ";}
+    .tg-diag{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:56px;}
+    .tg-diag__card{display:flex;flex-direction:column;justify-content:space-between;gap:12px;
+      background:#fff;border:1.5px solid var(--color-border);border-radius:16px;padding:20px 18px;
+      box-shadow:var(--shadow-sm);transition:transform .28s,box-shadow .28s,border-color .28s;text-decoration:none;}
+    .tg-diag__card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--color-accent);}
+    .tg-diag__q{font-weight:700;font-size:1rem;line-height:1.5;color:var(--color-primary);}
+    .tg-diag__q::before{content:"\201C";color:rgba(232,122,58,.55);font-weight:900;}
+    .tg-diag__q::after{content:"\201D";color:rgba(232,122,58,.55);font-weight:900;}
+    .tg-diag__a{font-size:.86rem;line-height:1.5;color:var(--color-accent-dark);font-weight:700;
+      border-top:1px dashed var(--color-border);padding-top:10px;}
+    @media(max-width:880px){.tg-diag{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.tg-diag{grid-template-columns:1fr;}}
+    /* 메커니즘 + 증거 2열 */
+    .tg-works__grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:start;}
+    .tg-col-h{font-size:1.18rem;letter-spacing:-.02em;margin-bottom:20px;padding-bottom:12px;
+      border-bottom:2px solid var(--color-border);color:var(--color-primary);}
+    .tg-mech ol{list-style:none;margin:0;padding:0;counter-reset:mech;}
+    .tg-mech li{display:flex;gap:16px;align-items:flex-start;padding:14px 0;position:relative;}
+    .tg-mech li:not(:last-child)::after{content:"";position:absolute;left:18px;top:46px;bottom:-2px;width:2px;
+      background:linear-gradient(180deg,var(--color-accent),rgba(232,122,58,.15));}
+    .tg-mech__n{flex:0 0 auto;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-weight:900;color:#fff;background:linear-gradient(135deg,#F59E5E,#E87A3A);box-shadow:0 6px 16px rgba(232,122,58,.35);z-index:1;}
+    .tg-mech li b{display:block;font-size:1.05rem;color:var(--color-text);margin-bottom:3px;}
+    .tg-mech li small{display:block;font-size:.9rem;line-height:1.6;color:var(--color-text-sub);}
+    /* 증거 카드 */
+    .tg-proof__cap{font-size:.92rem;font-weight:700;color:var(--color-accent-dark);margin-bottom:14px;}
+    .tg-proof__cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .tg-pcard{background:#fff;border:1px solid var(--color-border);border-radius:16px;padding:18px 16px;box-shadow:var(--shadow-sm);
+      transition:transform .28s,box-shadow .28s;}
+    .tg-pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+    .tg-pcard__badge{display:inline-block;padding:3px 10px;border-radius:999px;background:rgba(27,58,92,.08);
+      color:var(--color-primary);font-size:.72rem;font-weight:700;margin-bottom:10px;}
+    .tg-pcard__move{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+    .tg-pcard__from{text-decoration:line-through;text-decoration-color:rgba(232,122,58,.5);text-decoration-thickness:2px;
+      color:var(--color-text-light);font-weight:700;font-size:1.02rem;opacity:.7;}
+    .tg-pcard__arr{color:var(--color-accent);font-weight:900;}
+    .tg-pcard__to{font-size:1.5rem;font-weight:900;background:linear-gradient(120deg,#F59E5E,#D9641F);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .tg-pcard p{font-size:.84rem;line-height:1.55;color:var(--color-text-sub);font-style:italic;}
+    .tg-proof__foot{display:block;margin-top:14px;font-size:.74rem;color:var(--color-text-light);line-height:1.5;}
+    .tg-works__badge{margin-top:40px;text-align:center;font-size:.9rem;color:var(--color-text-sub);
+      background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:999px;padding:12px 22px;display:inline-block;
+      position:relative;left:50%;transform:translateX(-50%);}
+    .tg-works__badge strong{color:var(--color-primary);}
+    @media(max-width:880px){.tg-works__grid{grid-template-columns:1fr;gap:40px;}.tg-proof{margin-top:0;}}
+    @media(max-width:420px){.tg-proof__cards{grid-template-columns:1fr;}}
+
+    /* 미니 증거바 (최종 CTA 위) */
+    .tg-evbar{background:var(--color-primary-dark);color:#fff;text-align:center;padding:24px var(--space-6);}
+    .tg-evbar__label{display:inline-block;font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+      color:#FFB877;margin-bottom:8px;}
+    .tg-evbar__items{display:block;font-size:clamp(1rem,2.2vw,1.32rem);font-weight:800;letter-spacing:-.01em;}
+    .tg-evbar__items b{background:linear-gradient(120deg,#FFC894,#F59E5E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .tg-evbar__foot{display:block;margin-top:8px;font-size:.72rem;color:rgba(255,255,255,.6);}
+
+    /* 모바일 하단 sticky CTA 바 (≤64px·데스크톱 숨김) */
+    .tg-sticky{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;gap:0;
+      background:rgba(15,38,64,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      box-shadow:0 -6px 24px rgba(5,14,28,.4);border-top:1px solid rgba(255,255,255,.12);
+      padding-bottom:env(safe-area-inset-bottom);}
+    .tg-sticky__btn{flex:1;height:58px;display:flex;align-items:center;justify-content:center;gap:7px;
+      font-weight:800;font-size:1rem;text-decoration:none;}
+    .tg-sticky__btn--call{color:#fff;background:transparent;}
+    .tg-sticky__btn--call:active{background:rgba(255,255,255,.08);}
+    .tg-sticky__btn--test{color:#fff;background:linear-gradient(135deg,#F59E5E,#E87A3A);}
+    @media(max-width:1023px){.tg-sticky{display:flex;}body{padding-bottom:calc(58px + env(safe-area-inset-bottom) + 10px);}}
+    /* 신뢰지표바 셀: 클릭 가능 어포던스(꺾쇠) — R4 Gemini/GPT */
+    .tg-trust__grid a .tg-trust__l::after{content:" ›";color:#FFB877;font-weight:900;}
+    @media(prefers-reduced-motion:reduce){.tg-diag__card,.tg-pcard{transition:none;}}
+
+    /* ===== v4 (2026-06-20) — 모든 아이콘/카드 클릭 → 정확한 정보 페이지 (3-AI 토론 10R: 카드 전체 <a>·:focus-visible·장식SVG aria-hidden·44px 터치) ===== */
+    .tg-card-link{display:flex;flex-direction:column;text-decoration:none;color:inherit;cursor:pointer;min-height:44px;}
+    .tg-card-link h3,.tg-card-link h4{color:var(--color-text);}
+    .tg-card-more{margin-top:auto;padding-top:14px;font-size:.86rem;font-weight:700;color:var(--color-accent-dark);
+      display:inline-flex;align-items:center;gap:5px;transition:gap .25s;}
+    .tg-card-link:hover .tg-card-more{gap:11px;}
+    .tg-card-link:focus{outline:3px solid var(--color-accent);outline-offset:3px;border-radius:20px;}
+    .tg-card-link:focus:not(:focus-visible){outline:3px solid var(--color-accent);}
+    .tg-card-link:focus-visible{outline:3px solid var(--color-accent);outline-offset:3px;border-radius:20px;}
+    .tg-why__card.tg-card-link{justify-content:flex-start;}
+    /* 신뢰지표바 셀 링크 (라벨 포함 셀 전체·터치타깃 확보) */
+    .tg-trust__grid a{display:block;text-decoration:none;color:inherit;border-radius:14px;padding:10px 6px;min-height:44px;transition:background .25s,transform .25s;}
+    .tg-trust__grid a:hover{background:rgba(255,255,255,.08);transform:translateY(-3px);}
+    .tg-trust__grid a:focus-visible{outline:2px solid #FFB877;outline-offset:2px;}
+    /* HERO 패널 항목 링크 */
+    .tg-hero__panel-list li a{display:flex;align-items:flex-start;gap:12px;text-decoration:none;color:inherit;width:100%;min-height:44px;}
+    .tg-hero__panel-list li a:focus-visible{outline:2px solid #FFB877;outline-offset:3px;border-radius:8px;}
+    /* 후기 더보기·미니바 링크 */
+    .tg-more-wrap{text-align:center;}
+    .tg-more-btn{display:inline-flex;align-items:center;gap:7px;margin:30px auto 0;padding:13px 26px;border-radius:12px;
+      background:var(--color-primary);color:#fff;font-weight:800;font-size:.96rem;text-decoration:none;box-shadow:var(--shadow-md);transition:transform .25s,box-shadow .25s;}
+    .tg-more-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);color:#fff;}
+    .tg-more-btn:focus-visible{outline:3px solid var(--color-accent);outline-offset:3px;}
+    .tg-evbar__link{color:#FFB877;font-weight:800;text-decoration:none;border-bottom:1px solid rgba(255,184,119,.5);white-space:nowrap;}
+    .tg-evbar__link:hover{color:#fff;}
+    .tg-evbar__link:focus-visible{outline:2px solid #FFB877;outline-offset:2px;}
+    /* 비링크 카드(증거·후기)는 클릭요소 아님 명시 — R5 Gemini */
+    .tg-pcard,.tg-rev{cursor:default;}
+    .tg-pcard:hover{transform:none;}
+    /* 모바일 탭 정리(300ms 지연·스크롤 오터치 완화) — R5 */
+    .tg-card-link,.tg-diag__card,.tg-trust__grid a,.tg-hero__panel-list li a{touch-action:manipulation;}
+    /* Our Difference 행 텍스트 네비게이션 — R5 */
+    .tg-row__cta{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-weight:700;font-size:.92rem;
+      color:var(--color-accent-dark);text-decoration:none;transition:gap .25s;}
+    .tg-row__cta:hover{gap:11px;color:var(--color-accent);}
+    .tg-row__cta:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px;border-radius:6px;}
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "탑그래머잉글리쉬학원",
+  "alternateName": "TopGrammar English",
+  "url": "https://topgrammar.co.kr",
+  "description": "화정·행신 중고등 영어 전문학원. 10단계 문법 암기공식과 무한반복 시스템으로 중1부터 고3 수능까지 지도합니다.",
+  "founder": {
+    "@type": "Person",
+    "name": "김정이"
+  },
+  "areaServed": [
+    "고양시 화정",
+    "고양시 행신",
+    "고양시 덕양구"
+  ],
+  "location": [
+    {
+      "@type": "Place",
+      "name": "탑그래머잉글리쉬학원 행신캠퍼스",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "중앙로 559, 2층 201호 (행신동, 그랑프리빌딩)",
+        "addressLocality": "고양시 덕양구",
+        "addressRegion": "경기도",
+        "addressCountry": "KR"
+      },
+      "telephone": "+82-31-938-8889"
+    },
+    {
+      "@type": "Place",
+      "name": "탑그래머잉글리쉬학원 화정캠퍼스",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "중앙로 628, 3층 307호 (화정동, 예일프라자)",
+        "addressLocality": "고양시 덕양구",
+        "addressRegion": "경기도",
+        "addressCountry": "KR"
+      },
+      "telephone": "+82-31-994-3090"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">본문 바로가기</a>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">
+        <img src="images/logo-icon.svg" alt="탑그래머잉글리쉬 로고" class="site-header__logo-mark" style="width:40px;height:40px;">
+        <div class="site-header__logo-text">
+          <span class="site-header__logo-title">탑그래머잉글리쉬</span>
+          <span class="site-header__logo-sub">TopGrammar English</span>
+        </div>
+      </a>
+      <nav class="site-nav" role="navigation" aria-label="메인 내비게이션">
+        <a href="about.html" class="site-nav__link">학원소개</a>
+        <a href="curriculum.html" class="site-nav__link">커리큘럼</a>
+        <a href="campus.html" class="site-nav__link">캠퍼스</a>
+        <a href="resources.html" class="site-nav__link">자료실</a>
+        <a href="payment.html" class="site-nav__link">상담신청</a>
+        <a href="leveltest.html" class="site-nav__link">레벨테스트</a>
+        <a href="parent.html" class="site-nav__link auth-link" data-auth="logged-in">학부모포털</a>
+        <a href="mypage.html" class="site-nav__link auth-link" data-auth="logged-in">마이페이지</a>
+        <a href="login.html" class="site-nav__cta auth-link" data-auth="logged-out">로그인</a>
+        <a href="#" class="site-nav__cta auth-link logout-btn" data-auth="logged-in">로그아웃</a>
+      </nav>
+      <button class="site-header__hamburger" aria-label="메뉴">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== HERO ===== -->
+    <section class="tg-hero">
+      <div class="tg-hero__inner">
+        <span class="tg-hero__eyebrow"><span class="dot"></span>2026 신규 모집 중 · 화정 / 행신</span>
+        <h1>지금 등급이, 끝이 아니니까.<br><em>약점부터 다시 잡는 영어, 탑그래머.</em></h1>
+        <p class="tg-hero__lead">독자 개발 <strong style="color:#fff;">10단계 문법 암기공식</strong>으로 <strong style="color:#fff;">'왜 틀리는지'</strong>부터 잡습니다.
+          중1부터 고3 수능까지, 화정·행신 소수정예가 끝까지 함께합니다.</p>
+        <p class="tg-hero__sign">편입 3년 · 고3 20년 경력 김정이 원장 직강 &nbsp;|&nbsp; 2011년부터 의대·SKY 등 명문대 20명+ 합격</p>
+        <div class="tg-hero__cta">
+          <a href="leveltest.html" class="tg-btn tg-btn--primary">내 약점 찾기 · 레벨테스트 →</a>
+          <a href="payment.html" class="tg-btn tg-btn--ghost">학부모 상담 · 전화</a>
+        </div>
+        <p class="tg-hero__sign" style="margin-top:16px;margin-bottom:0;">레벨테스트 후 <strong style="color:#fff;">현재 약점 · 내신 대비 방향 · 반 배정 가능 여부</strong>를 안내해 드립니다.</p>
+        <aside class="tg-hero__panel" aria-label="탑그래머 핵심 실적">
+          <div class="tg-hero__panel-head">
+            <span class="tg-hero__panel-eyebrow">WHY TOPGRAMMAR</span>
+            <strong>숫자로 보는 탑그래머</strong>
+          </div>
+          <ul class="tg-hero__panel-list">
+            <li><a href="about.html#stats" aria-label="명문대 합격 실적 자세히 보기"><span class="ic" aria-hidden="true">🎓</span><div><b>의대 · SKY · 포항공대</b><small>2011년부터 명문대 합격 20명+</small></div></a></li>
+            <li><a href="about.html#stats" aria-label="성적 향상·합격 실적 보기"><span class="ic" aria-hidden="true">📈</span><div><b>4등급 → 1등급</b><small>내신·모의고사 실제 상승 사례 다수</small></div></a></li>
+            <li><a href="about.html#director" aria-label="김정이 원장 소개 보기"><span class="ic" aria-hidden="true">🧑‍🏫</span><div><b>원장 직강 · 소수정예</b><small>고3 지도 20년 · 조교 밀착 테스트</small></div></a></li>
+          </ul>
+          <a href="leveltest.html" class="tg-hero__panel-cta">내가 자꾸 틀리는 진짜 이유 찾기 →</a>
+          <span class="tg-hero__panel-foot">* 2011~2026 본원 수강생 지도 사례 기준 · 합격/성적 향상 결과는 개인별로 다를 수 있습니다.</span>
+        </aside>
+      </div>
+      <div class="tg-hero__scroll">SCROLL
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </section>
+
+    <!-- ===== 성적이 오르는 이유 (동기부여 핵심·3-AI 토론 5R) ===== -->
+    <section class="tg-sec tg-works" id="why-works">
+      <span class="tg-eyebrow">Why It Works</span>
+      <h2 class="tg-h2">탑그래머에서 영어가 오르는 이유</h2>
+      <p class="tg-sub">성적은 우연이 아니라 <strong>순서</strong>입니다. 막힌 곳을 찾고 → 공식으로 반복하고 → 실전으로 검증하고 → 학교 시험으로 마무리합니다.</p>
+
+      <p class="tg-works__decl">틀리는 이유가 보이면, 공부는 막막함이 아니라 <em>훈련</em>이 됩니다.</p>
+      <p class="tg-works__declsub">탑그래머는 네가 <strong>어디서 막히는지</strong>부터 확인하고, 문법·독해·내신·모의고사를 각각 다른 방식으로 다시 훈련시킵니다.</p>
+
+      <div class="tg-diag-head">너는 지금 어디서 막혀 있니?</div>
+      <div class="tg-diag">
+        <a class="tg-diag__card" href="curriculum.html#core-systems">
+          <div class="tg-diag__q">문법은 외웠는데 문제에선 안 떠올라</div>
+          <div class="tg-diag__a">→ 10단계 문법공식 · 꺼내 쓸 때까지 반복</div>
+        </a>
+        <a class="tg-diag__card" href="curriculum.html#curriculum-roadmap">
+          <div class="tg-diag__q">지문 해석이 너무 느려</div>
+          <div class="tg-diag__a">→ 통찰독해 · 구문분석 훈련</div>
+        </a>
+        <a class="tg-diag__card" href="curriculum.html#materials">
+          <div class="tg-diag__q">내신 범위가 많으면 무너져</div>
+          <div class="tg-diag__a">→ 학교별 시크릿 제본교재 · 5~6주 대비</div>
+        </a>
+        <a class="tg-diag__card" href="curriculum.html#teaching-method">
+          <div class="tg-diag__q">모의고사에서 비슷한 유형을 계속 틀려</div>
+          <div class="tg-diag__a">→ 주 2~3회 모의고사 · 오답 루틴</div>
+        </a>
+      </div>
+
+      <div class="tg-works__grid">
+        <div class="tg-mech">
+          <h3 class="tg-col-h">오르는 4단계</h3>
+          <ol>
+            <li><span class="tg-mech__n">1</span><div><b>약점 진단</b><small>감으로 풀던 습관과 막힌 문법을 레벨테스트로 정확히 찾습니다.</small></div></li>
+            <li><span class="tg-mech__n">2</span><div><b>10단계 문법공식 반복</b><small>복잡한 문법을 10단계로 쪼개, 시험장에서 꺼내 쓸 때까지 반복해 체화합니다.</small></div></li>
+            <li><span class="tg-mech__n">3</span><div><b>백지테스트 · 모의고사</b><small>배운 걸 직접 설명하는 백지테스트와 주 2~3회 모의고사로 '아는 척'을 걸러냅니다.</small></div></li>
+            <li><span class="tg-mech__n">4</span><div><b>학교별 내신 마무리</b><small>시험 5~6주 전, 학교별 시크릿 제본교재로 내신을 마무리합니다.</small></div></li>
+          </ol>
+        </div>
+        <div class="tg-proof">
+          <h3 class="tg-col-h">나와 똑같은 고민을 극복한 선배들의 실제 변화</h3>
+          <div class="tg-proof__cards">
+            <div class="tg-pcard">
+              <span class="tg-pcard__badge">고2 내신 · 행신</span>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">4등급</span><span class="tg-pcard__arr">→</span><span class="tg-pcard__to">1등급</span></div>
+              <p>"구문분석을 배운 뒤로 긴 지문이 두렵지 않아졌어요."</p>
+            </div>
+            <div class="tg-pcard">
+              <span class="tg-pcard__badge">수능 모의 · 행신</span>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">3등급</span><span class="tg-pcard__arr">→</span><span class="tg-pcard__to">1등급</span></div>
+              <p>"3월 모의 3등급에서 9월 모의 1등급까지 올랐습니다."</p>
+            </div>
+            <div class="tg-pcard">
+              <span class="tg-pcard__badge">중2 내신 · 행신</span>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">68점</span><span class="tg-pcard__arr">→</span><span class="tg-pcard__to">94점</span></div>
+              <p>"기초가 없어 포기할 뻔했는데 자신감이 생겼어요."</p>
+            </div>
+            <div class="tg-pcard">
+              <span class="tg-pcard__badge">고3 수능 · 화정</span>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">3등급</span><span class="tg-pcard__arr">→</span><span class="tg-pcard__to">1등급</span></div>
+              <p>"매주 모의고사+오답 루틴으로 실전 감각이 잡혔어요."</p>
+            </div>
+          </div>
+          <span class="tg-proof__foot">* 2011~2026 본원 수강생 실제 지도 사례 · 성적 향상 결과는 개인별 학습 상황에 따라 다를 수 있습니다.</span>
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <span class="tg-works__badge">설계·직강: 영문학 석사 · 고3 지도 20년 · <strong>대치동 그룹과외팀 출신 김정이 원장</strong></span>
+      </div>
+    </section>
+
+    <!-- ===== 신뢰 지표 ===== -->
+    <section class="tg-trust">
+      <div class="tg-trust__grid">
+        <div><a href="about.html#director" aria-label="원장 직강 경력 자세히 보기"><div class="tg-trust__v">20<span style="font-size:.55em">년+</span></div><div class="tg-trust__l">원장 직강 경력</div></a></div>
+        <div><a href="curriculum.html#core-systems" aria-label="10단계 문법 암기공식 자세히 보기"><div class="tg-trust__v">10<span style="font-size:.55em">단계</span></div><div class="tg-trust__l">문법 암기공식</div></a></div>
+        <div><a href="campus.html" aria-label="화정·행신 캠퍼스 안내 보기"><div class="tg-trust__v">2<span style="font-size:.55em">개관</span></div><div class="tg-trust__l">화정 · 행신 캠퍼스</div></a></div>
+        <div><a href="about.html#stats" aria-label="명문대 합격 실적 자세히 보기"><div class="tg-trust__v">20<span style="font-size:.55em">명+</span></div><div class="tg-trust__l">명문대 합격 (2011~)</div></a></div>
+      </div>
+    </section>
+
+    <!-- ===== WHY ===== -->
+    <section class="tg-sec" id="why">
+      <span class="tg-eyebrow">Why TopGrammar</span>
+      <h2 class="tg-h2">왜 탑그래머인가</h2>
+      <p class="tg-sub">학원을 여러 곳 옮겨 다녀도 영어가 안 잡혔다면, 이유는 하나입니다. <strong>문법과 품사별 단어의 뼈대</strong>가 없기 때문입니다.</p>
+      <div class="tg-why">
+        <a class="tg-why__card tg-card-link" href="curriculum.html#core-systems" aria-label="10단계 문법 암기공식 — 커리큘럼 핵심 시스템 보기">
+          <div class="tg-why__ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/><path d="M12 2L2 7l10 5 10-5L12 2z"/></svg></div>
+          <h3>10단계 문법 암기공식</h3>
+          <p>20년 현장에서 다듬은 독자 개발 암기공식. 복잡한 영문법을 10단계로 세분화해, 연상암기법으로 체계적으로 체화하도록 지도합니다.</p>
+          <span class="tg-card-more" aria-hidden="true">커리큘럼에서 보기 →</span>
+        </a>
+        <a class="tg-why__card tg-card-link" href="curriculum.html#teaching-method" aria-label="조교 밀착 테스트 시스템 — 수업 진행 방식 보기">
+          <div class="tg-why__ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
+          <h3>조교 밀착 테스트 시스템</h3>
+          <p>학생 5~6명당 조교 1명, 각 캠퍼스에 하루 3~4명의 조교가 상주합니다. 탑그래머 출신 조교 20~30여 명이 수업 전후 단어·숙어·구문 테스트로 배운 내용을 맞출 때까지 점검해 장기기억으로 전환합니다.</p>
+          <span class="tg-card-more" aria-hidden="true">수업 방식 보기 →</span>
+        </a>
+        <a class="tg-why__card tg-card-link" href="curriculum.html#core-systems" aria-label="소수정예 · 고3 끝까지 책임 — 커리큘럼 핵심 시스템 보기">
+          <div class="tg-why__ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>소수정예 · 고3 끝까지 책임</h3>
+          <p>한 반 평균 6~8명(최대 10명), PT반은 1:1 과외식. 학생 한 명 한 명의 약점을 잡아, 중등부터 고3 수능 당일까지 끝까지 함께합니다.</p>
+          <span class="tg-card-more" aria-hidden="true">핵심 시스템 보기 →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== 학습 시스템 (How We Teach) ===== -->
+    <section class="tg-sec tg-band" id="how-we-teach">
+      <span class="tg-eyebrow">How We Teach</span>
+      <h2 class="tg-h2">탑그래머만의 학습 시스템</h2>
+      <p class="tg-sub">2011년부터 다듬어 온 화정·행신 소수정예 그룹과외식 영어. 중1부터 고3 수능까지, 한 명도 놓치지 않습니다.</p>
+      <div class="tg-why">
+        <a class="tg-why__card tg-card-link" href="about.html#mentoring" aria-label="SKY·인서울 출신 조교 밀착 멘토링 — 졸업생 멘토링 케어 보기">
+          <h3>SKY·인서울 출신 조교 밀착 멘토링</h3>
+          <p>탑그래머 출신 SKY·인서울 상위대 선배 조교 20~30여 명이 백지 테스트와 다의어·다품사 점검으로 밀착 관리하고, 진로까지 멘토링합니다.</p>
+          <span class="tg-card-more" aria-hidden="true">멘토링 케어 보기 →</span>
+        </a>
+        <a class="tg-why__card tg-card-link" href="curriculum.html#core-systems" aria-label="소수정예 평균 6~8명 — 핵심 시스템 보기">
+          <h3>소수정예 평균 6~8명</h3>
+          <p>한 반 평균 6~8명(최대 10명) 그룹과외식 수업. 학생 한 명 한 명의 약점을 직접 살피고, 필요하면 1:1 PT 수업까지 운영합니다.</p>
+          <span class="tg-card-more" aria-hidden="true">핵심 시스템 보기 →</span>
+        </a>
+        <a class="tg-why__card tg-card-link" href="curriculum.html#teaching-method" aria-label="주 2~3회 모의고사 훈련 — 수업 진행 방식 보기">
+          <h3>주 2~3회 모의고사 훈련</h3>
+          <p>중1부터 모의고사 유형별 풀이 스킬을 훈련합니다. 고등 내신 범위가 되는 3~5개년 모의고사를 미리 체계적으로 대비합니다.</p>
+          <span class="tg-card-more" aria-hidden="true">수업 방식 보기 →</span>
+        </a>
+        <a class="tg-why__card tg-card-link" href="curriculum.html#materials" aria-label="다의어·다품사 암기법 — 교재 및 수업 자료 보기">
+          <h3>다의어·다품사 암기법</h3>
+          <p>자체 제작한 다의어·다품사 암기법과 단어·숙어장 4~5회독으로, 단어의 여러 뜻과 쓰임까지 정확하게 잡아줍니다.</p>
+          <span class="tg-card-more" aria-hidden="true">교재·자료 보기 →</span>
+        </a>
+        <a class="tg-why__card tg-card-link" href="curriculum.html#materials" aria-label="학교별 기출·시크릿 자료 — 교재 및 수업 자료 보기">
+          <h3>학교별 기출·시크릿 자료</h3>
+          <p>학교별 출제 경향을 분석한 자체 제작 시크릿 제본 교재를 시험 기간에 무료로 배포합니다. 시중에 없는 자료가 내신을 바꿉니다.</p>
+          <span class="tg-card-more" aria-hidden="true">교재 자료 보기 →</span>
+        </a>
+        <a class="tg-why__card tg-card-link" href="curriculum.html#teaching-method" aria-label="하브루타식 질문·설명 수업 — 수업 진행 방식 보기">
+          <h3>하브루타식 질문·설명 수업</h3>
+          <p>배운 문법 공식을 학생이 직접 설명하는 1:1 백지 테스트와 질문식 쌍방향(OUTPUT) 수업. '아는 것'을 넘어 '설명할 수 있는 실력'으로 완성합니다. 가르치듯 설명하는 것이 가장 확실한 공부입니다.</p>
+          <span class="tg-card-more" aria-hidden="true">수업 방식 보기 →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== SYSTEM 사진+텍스트 교차 ===== -->
+    <section class="tg-sec tg-band tg-sec--wide">
+      <div style="max-width:var(--container-max);margin:0 auto;padding:0 var(--space-6);">
+        <span class="tg-eyebrow">Our Difference</span>
+        <h2 class="tg-h2">대치동 노하우를, 우리 동네에서</h2>
+        <p class="tg-sub">대치동 그룹과외팀·강남 서울대반 관리 출신 원장이 직접 설계한 교육 시스템을 화정·행신에서 그대로 경험하세요.</p>
+
+        <div class="tg-row">
+          <div class="tg-row__media">
+            <img src="images/campus/haengsin/KakaoTalk_20260307_104458231_09.jpg" alt="탑그래머잉글리쉬 행신캠퍼스 안내데스크 — Education 1st, Grit, Never Give Up" loading="lazy">
+            <span class="tg-row__float">행신캠퍼스 · "Never Give Up, Never Give In"</span>
+          </div>
+          <div>
+            <span class="tg-row__tag">교육 철학</span>
+            <h3>"안되면 될 때까지" — Grit</h3>
+            <p>탑그래머의 모든 공간에는 한 문장이 흐릅니다. <strong>Education first, and it has a time limit.</strong> 기적은 준비가 기회를 만날 때 생깁니다. 끈기(Grit)로 끝까지 밀어붙이는 학습 문화가 성적을 바꿉니다.</p>
+            <div class="tg-chips">
+              <span class="tg-chip">동기부여 전문</span><span class="tg-chip">인성·리더십</span><span class="tg-chip">매주 독서 나눔</span>
+            </div>
+            <a class="tg-row__cta" href="about.html#special">교육 철학·학원의 특별함 보기 →</a>
+          </div>
+        </div>
+
+        <div class="tg-row tg-row--rev">
+          <div class="tg-row__media">
+            <img src="images/campus/hwajeong/KakaoTalk_20260307_104454101_09.jpg" alt="화정캠퍼스 벽돌벽 자습 공간 — 신년의 기적을 이룹니다 네온사인" loading="lazy">
+            <span class="tg-row__float">화정캠퍼스 · 자습 라운지</span>
+          </div>
+          <div>
+            <span class="tg-row__tag">학습 환경</span>
+            <h3>집중되는 공간이 실력을 만듭니다</h3>
+            <p>카페처럼 편안하지만, 공부에는 누구보다 진지한 공간. 개인 좌석·자습 부스·휴게 라운지까지, 학생이 오래 머물고 싶은 환경을 만들었습니다. 좋은 환경이 좋은 습관을, 좋은 습관이 좋은 성적을 만듭니다.</p>
+            <div class="tg-chips">
+              <span class="tg-chip">개인 자습 부스</span><span class="tg-chip">소규모 교실</span><span class="tg-chip">쾌적한 라운지</span>
+            </div>
+            <a class="tg-row__cta" href="campus.html">캠퍼스 둘러보기 →</a>
+          </div>
+        </div>
+
+        <div class="tg-row">
+          <div class="tg-row__media">
+            <img src="images/campus/hwajeong/KakaoTalk_20260307_104454101_01.jpg" alt="한국외국어대학교 학위 — Every child has the seed of Greatness" loading="lazy">
+            <span class="tg-row__float">"Every child has the seed of Greatness"</span>
+          </div>
+          <div>
+            <span class="tg-row__tag">검증된 전문성</span>
+            <h3>내신 5~6주 대비 · 자체 제작 교재</h3>
+            <p>시중교재 2~3권에 더해, 학교별 출제 경향을 분석한 <strong>시크릿 제본 교재 1~3권을 무료 배포</strong>합니다. 내신 시험 5~6주 전부터 학교별 맞춤 자료로 집중 대비. 시중 어디에도 없는 자료가 점수를 끌어올립니다.</p>
+            <div class="tg-chips">
+              <span class="tg-chip">학교별 기출 분석</span><span class="tg-chip">서술형·영작 대비</span><span class="tg-chip">제본 교재 무료</span>
+            </div>
+            <a class="tg-row__cta" href="curriculum.html#materials">교재·자료 자세히 보기 →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 캠퍼스 갤러리 ===== -->
+    <section class="tg-sec tg-sec--wide" id="gallery">
+      <div style="padding:0 var(--space-6);">
+        <span class="tg-eyebrow">Campus Tour</span>
+        <h2 class="tg-h2">사진으로 보는 탑그래머</h2>
+        <p class="tg-sub">밝고 쾌적한 두 캠퍼스를 미리 둘러보세요. 사진을 클릭하면 캠퍼스 안내로 이동합니다.</p>
+      </div>
+      <div class="tg-gal">
+        <a href="campus.html#hwajeong" class="span2 row2"><img src="images/campus/hwajeong/KakaoTalk_20260307_104454101_05.jpg" alt="화정캠퍼스 자습실 — 벽돌벽과 번호 배정 개인 좌석" loading="lazy"></a>
+        <a href="campus.html#hwajeong"><img src="images/campus/hwajeong/KakaoTalk_20260307_104454101_01.jpg" alt="화정캠퍼스 원장실 서재 — 학위증과 장서" loading="lazy"></a>
+        <a href="campus.html#hwajeong"><img src="images/campus/hwajeong/KakaoTalk_20260307_104454101_02.jpg" alt="화정캠퍼스 독서 공간 — 그림과 도서" loading="lazy"></a>
+        <a href="campus.html#haengsin"><img src="images/campus/haengsin/KakaoTalk_20260307_104458231_02.jpg" alt="행신캠퍼스 교실 수업 풍경" loading="lazy"></a>
+        <a href="campus.html#hwajeong"><img src="images/campus/hwajeong/KakaoTalk_20260307_104454101_03.jpg" alt="화정캠퍼스 깔끔한 교실" loading="lazy"></a>
+        <a href="campus.html#hwajeong" class="span2"><img src="images/campus/hwajeong/KakaoTalk_20260307_104454101_20.jpg" alt="화정캠퍼스 복도와 대기 공간" loading="lazy"></a>
+        <a href="campus.html#haengsin"><img src="images/campus/haengsin/KakaoTalk_20260307_104458231_05.jpg" alt="행신캠퍼스 자습실" loading="lazy"></a>
+        <a href="campus.html#hwajeong" class="span2"><img src="images/campus/hwajeong/KakaoTalk_20260307_104454101_08.jpg" alt="화정캠퍼스 상담 공간" loading="lazy"></a>
+        <a href="campus.html#haengsin"><img src="images/campus/haengsin/KakaoTalk_20260307_104458231_04.jpg" alt="행신캠퍼스 브랜드 데스크" loading="lazy"></a>
+        <a href="campus.html#hwajeong"><img src="images/campus/hwajeong/KakaoTalk_20260307_104454101_16.jpg" alt="화정캠퍼스 교실" loading="lazy"></a>
+        <a href="campus.html#haengsin"><img src="images/campus/haengsin/KakaoTalk_20260307_104458231_06.jpg" alt="행신캠퍼스 자습 부스" loading="lazy"></a>
+        <a href="campus.html#hwajeong"><img src="images/campus/hwajeong/KakaoTalk_20260307_104454101_07.jpg" alt="화정캠퍼스 복도" loading="lazy"></a>
+      </div>
+    </section>
+
+    <!-- ===== 원장 직강 ===== -->
+    <section class="tg-sec tg-band tg-sec--wide" id="teachers">
+      <div style="max-width:var(--container-max);margin:0 auto;padding:0 var(--space-6);">
+        <span class="tg-eyebrow">Our Director</span>
+        <h2 class="tg-h2">원장이 직접 가르칩니다</h2>
+        <p class="tg-sub">편입 3년 · 고3 20년 경력의 김정이 원장이 중1부터 고3 수능까지 직강합니다.</p>
+        <div class="tg-director">
+          <div class="tg-director__ph">
+            <img src="images/김정이 원장님 사진.jpeg" alt="김정이 원장" loading="lazy">
+          </div>
+          <div class="tg-director__b">
+            <span class="tg-tcard__role">원장 · 대표강사</span>
+            <h3>김정이 원장</h3>
+            <div class="tg-director__sub">영문학 석사 · 편입 3년 · 고3 20년 · 대치동 그룹과외팀 출신</div>
+            <p>대학편입 문법·독해 교수 출신으로, 대치동 그룹과외팀과 강남 서울대반 관리 경력을 갖췄습니다. 자체 개발한 <strong>10단계 문법 암기공식</strong>·다의어 암기법·<strong>탑그래머 통찰독해</strong>로 학생 한 명 한 명을 직접 지도하며, 2011년부터 의대 2명을 비롯해 SKY·포항공대·홍익대 미대 등 명문대에 20명 이상을 합격시켜 왔습니다.</p>
+            <p style="font-weight:600;color:var(--color-primary);">"모든 아이에게 위대함의 씨앗이 있다는 믿음으로, 안되면 될 때까지 끝까지 함께합니다."</p>
+            <div class="tg-chips">
+              <span class="tg-chip">편입교수 출신</span>
+              <span class="tg-chip">대치동 그룹과외팀</span>
+              <span class="tg-chip">10단계 문법 암기공식 개발</span>
+              <span class="tg-chip">통찰독해</span>
+              <span class="tg-chip">고3 final 전략</span>
+              <span class="tg-chip">동기부여·리더십</span>
+            </div>
+            <div style="margin-top:24px;">
+              <a href="about.html#director" class="tg-btn tg-btn--primary" style="background:linear-gradient(135deg,var(--color-primary-light),var(--color-primary));box-shadow:0 12px 30px rgba(27,58,92,.3);">원장 소개 · 교육관 더 보기 →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 후기 ===== -->
+    <section class="tg-sec tg-band tg-sec--wide">
+      <div style="max-width:var(--container-max);margin:0 auto;padding:0 var(--space-6);">
+        <span class="tg-eyebrow">Testimonials</span>
+        <h2 class="tg-h2">학부모님이 먼저 추천합니다</h2>
+        <p class="tg-sub">네이버 영수증 인증을 거친 실제 수강 가정의 리뷰입니다.</p>
+        <div class="tg-revs">
+          <div class="tg-rev">
+            <div class="tg-rev__q">&ldquo;</div>
+            <div class="tg-rev__stars">★★★★★</div>
+            <p>선생님이 정말 열정적이세요.</p>
+            <div class="tg-rev__who"><div class="tg-rev__av" style="background:var(--color-primary)">★</div><div><div class="tg-rev__n">수강 학부모님</div><div class="tg-rev__m">네이버 영수증 인증 리뷰</div></div></div>
+          </div>
+          <div class="tg-rev">
+            <div class="tg-rev__q">&ldquo;</div>
+            <div class="tg-rev__stars">★★★★★</div>
+            <p>친절하고 좋아요. 선생님이 열정적이세요.</p>
+            <div class="tg-rev__who"><div class="tg-rev__av" style="background:#10B981">★</div><div><div class="tg-rev__n">수강 학부모님</div><div class="tg-rev__m">네이버 영수증 인증 리뷰</div></div></div>
+          </div>
+          <div class="tg-rev">
+            <div class="tg-rev__q">&ldquo;</div>
+            <div class="tg-rev__stars">★★★★★</div>
+            <p>굿! 선생님이 열정적이세요.</p>
+            <div class="tg-rev__who"><div class="tg-rev__av" style="background:#1B3A5C">★</div><div><div class="tg-rev__n">수강 학부모님</div><div class="tg-rev__m">네이버 영수증 인증 리뷰</div></div></div>
+          </div>
+          <div class="tg-rev">
+            <div class="tg-rev__q">&ldquo;</div>
+            <div class="tg-rev__stars">★★★★☆</div>
+            <p>꼼꼼히 잘 가르쳐 주십니다.</p>
+            <div class="tg-rev__who"><div class="tg-rev__av" style="background:var(--color-accent)">★</div><div><div class="tg-rev__n">수강 학부모님</div><div class="tg-rev__m">네이버 영수증 인증 리뷰</div></div></div>
+          </div>
+        </div>
+        <div class="tg-more-wrap">
+          <a href="about.html#reviews" class="tg-more-btn">학생 · 학부모 후기 전체 보기 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 캠퍼스 2관 ===== -->
+    <section class="tg-sec tg-sec--wide" id="campus">
+      <div style="padding:0 var(--space-6);">
+        <span class="tg-eyebrow">Two Campuses</span>
+        <h2 class="tg-h2">가까운 캠퍼스로 오세요</h2>
+        <p class="tg-sub">행신캠퍼스와 화정캠퍼스, 두 곳 모두 중등·고등 수능/내신을 운영합니다.</p>
+        <div class="tg-camps">
+          <a class="tg-camp" href="campus.html#haengsin" style="text-decoration:none;" aria-label="행신캠퍼스 자세히 보기">
+            <img src="images/campus/haengsin/KakaoTalk_20260307_104458231.jpg" alt="행신캠퍼스" loading="lazy">
+            <div class="tg-camp__ov">
+              <h3>행신캠퍼스</h3>
+              <p>경기 고양시 덕양구 중앙로 559, 2층 201호 (행신동, 그랑프리빌딩)</p>
+              <p class="tg-camp__ph">031-938-8889</p>
+            </div>
+          </a>
+          <a class="tg-camp" href="campus.html#hwajeong" style="text-decoration:none;" aria-label="화정캠퍼스 자세히 보기">
+            <img src="images/campus/hwajeong/KakaoTalk_20260307_104454101.jpg" alt="화정캠퍼스" loading="lazy">
+            <div class="tg-camp__ov">
+              <h3>화정캠퍼스</h3>
+              <p>경기 고양시 덕양구 중앙로 628, 3층 307호 (화정동, 예일프라자)</p>
+              <p class="tg-camp__ph">031-994-3090</p>
+            </div>
+          </a>
+        </div>
+        <div style="text-align:center;margin-top:34px;">
+          <a href="campus.html" class="tg-btn tg-btn--primary" style="background:linear-gradient(135deg,var(--color-primary-light),var(--color-primary));box-shadow:0 12px 30px rgba(27,58,92,.35);">오시는 길 자세히 보기 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 미니 증거바 ===== -->
+    <div class="tg-evbar">
+      <span class="tg-evbar__label">실제 성적 변화 사례</span>
+      <span class="tg-evbar__items"><b>고2 4→1등급</b> · <b>수능모의 3→1등급</b> · <b>중2 68→94점</b> · <b>고3 3→1등급</b></span>
+      <span class="tg-evbar__foot">* 2011~2026 본원 수강생 실제 지도 사례 · 개별 결과는 학생별 학습 상황에 따라 다를 수 있습니다. &nbsp;<a href="about.html#stats" class="tg-evbar__link">합격·실적 자세히 보기 →</a></span>
+    </div>
+
+    <!-- ===== 최종 CTA ===== -->
+    <section class="tg-final">
+      <div class="tg-final__in">
+        <h2>우리 아이의 영어, 지금 시작하세요</h2>
+        <p>레벨테스트로 현재 실력을 정확히 진단하고,<br>10단계 문법 암기공식으로 영어를 체계적으로 완성해 갑니다.</p>
+        <p class="tg-final__phones">행신캠퍼스 <a href="tel:031-938-8889">031-938-8889</a> &nbsp;|&nbsp; 화정캠퍼스 <a href="tel:031-994-3090">031-994-3090</a></p>
+        <div class="tg-final__cta">
+          <a href="leveltest.html" class="tg-btn tg-btn--primary">레벨테스트 신청</a>
+          <a href="tel:031-938-8889" class="tg-btn tg-btn--ghost">전화 상담하기</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 모바일 하단 sticky CTA 바 (3-AI 토론 5R·≤64px) -->
+  <div class="tg-sticky" role="navigation" aria-label="빠른 상담">
+    <a href="tel:031-938-8889" class="tg-sticky__btn tg-sticky__btn--call">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.74a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg>
+      전화 상담
+    </a>
+    <a href="leveltest.html" class="tg-sticky__btn tg-sticky__btn--test">내 약점 찾기 · 레벨테스트</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer texture-noise">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <div style="font-size:1.125rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">탑그래머잉글리쉬</div>
+          <p class="site-footer__brand-desc">10단계 문법 암기공식 · 무한반복 시스템<br>화정·행신 중고등 영어 전문학원</p>
+        </div>
+        <div>
+          <div class="site-footer__title">학원</div>
+          <a href="about.html" class="site-footer__link">학원소개</a>
+          <a href="curriculum.html" class="site-footer__link">커리큘럼</a>
+          <a href="campus.html" class="site-footer__link">캠퍼스</a>
+          <a href="careers.html" class="site-footer__link">선생님 채용</a>
+        </div>
+        <div>
+          <div class="site-footer__title">학습</div>
+          <a href="payment.html" class="site-footer__link">상담신청</a>
+          <a href="leveltest.html" class="site-footer__link">레벨테스트</a>
+          <a href="parent.html" class="site-footer__link">학부모 포털</a>
+        </div>
+        <div>
+          <div class="site-footer__title">고객센터</div>
+          <a href="tel:031-938-8889" class="site-footer__link">031-938-8889 (행신)</a>
+          <a href="tel:031-994-3090" class="site-footer__link">031-994-3090 (화정)</a>
+          <a href="https://blog.naver.com/edu4peace" class="site-footer__link" target="_blank" rel="noopener">블로그</a>
+          <a href="https://cafe.naver.com/lilac1004" class="site-footer__link" target="_blank" rel="noopener">카페</a>
+        </div>
+      </div>
+      <div class="site-footer__info">
+        <span>상호: 탑그래머잉글리쉬학원</span>
+        <span>대표: 김정이</span>
+        <span>사업자등록번호 행신캠퍼스 888-99-00613 &middot; 화정캠퍼스 173-98-01129</span>
+      </div>
+      <div class="site-footer__info">
+        <span>행신캠퍼스: 경기 고양시 덕양구 중앙로 559, 2층 201호 (행신동, 그랑프리빌딩)</span>
+        <span>화정캠퍼스: 경기 고양시 덕양구 중앙로 628, 3층 307호 (화정동, 예일프라자)</span>
+      </div>
+      <div class="site-footer__bottom">
+        <span>&copy; 2026 탑그래머잉글리쉬. All rights reserved.</span>
+        <div>
+          <a href="privacy.html">개인정보처리방침</a> &middot;
+          <a href="terms.html">이용약관</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/core.js?v=8"></script>
+  <script src="js/sw-register.js?v=4"></script>
+  <script>document.body.classList.add('is-loaded')</script>
+  <script>
+  (function(){
+    var bar = document.getElementById('scrollProgress');
+    if(!bar) return;
+    window.addEventListener('scroll', function(){
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? (window.scrollY / h * 100) : 0) + '%';
+    }, {passive:true});
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1B3A5C"/>
+      <stop offset="50%" stop-color="#224B73"/>
+      <stop offset="100%" stop-color="#2A5A8C"/>
+    </linearGradient>
+    <!-- Decorative circle gradient -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(232,122,58,0.15)"/>
+      <stop offset="100%" stop-color="rgba(232,122,58,0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Decorative elements: subtle dots -->
+  <circle cx="100" cy="80" r="4" fill="rgba(255,255,255,0.12)"/>
+  <circle cx="140" cy="60" r="3" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="180" cy="90" r="5" fill="rgba(255,255,255,0.10)"/>
+  <circle cx="1050" cy="120" r="4" fill="rgba(255,255,255,0.10)"/>
+  <circle cx="1100" cy="80" r="3" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="1080" cy="150" r="5" fill="rgba(255,255,255,0.06)"/>
+  <circle cx="150" cy="520" r="3" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="1060" cy="540" r="4" fill="rgba(255,255,255,0.10)"/>
+  <circle cx="1100" cy="500" r="3" fill="rgba(255,255,255,0.06)"/>
+
+  <!-- Decorative lines -->
+  <line x1="80" y1="180" x2="200" y2="180" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <line x1="1000" y1="450" x2="1120" y2="450" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- Warm glow behind logo -->
+  <ellipse cx="600" cy="280" rx="300" ry="200" fill="url(#glow)"/>
+
+  <!-- Logo icon (rounded square with TG) -->
+  <rect x="530" y="120" width="140" height="140" rx="28" ry="28" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  <text x="600" y="218" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="72" fill="#FFFFFF" letter-spacing="-2">TG</text>
+  <rect x="558" y="232" width="84" height="8" rx="4" fill="#E87A3A"/>
+
+  <!-- Main title -->
+  <text x="600" y="350" text-anchor="middle" font-family="'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-weight="700" font-size="60" fill="#FFFFFF">탑그래머잉글리쉬</text>
+
+  <!-- Orange accent line under title -->
+  <rect x="460" y="370" width="280" height="4" rx="2" fill="#E87A3A"/>
+
+  <!-- Subtitle -->
+  <text x="600" y="420" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="30" fill="rgba(255,255,255,0.75)" letter-spacing="4">TopGrammar English</text>
+
+  <!-- Tagline -->
+  <text x="600" y="470" text-anchor="middle" font-family="'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-weight="400" font-size="20" fill="rgba(255,255,255,0.45)">문법이 잡히면, 영어가 보인다</text>
+
+  <!-- Bottom decorative line -->
+  <line x1="300" y1="560" x2="900" y2="560" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <circle cx="300" cy="560" r="3" fill="rgba(232,122,58,0.4)"/>
+  <circle cx="900" cy="560" r="3" fill="rgba(232,122,58,0.4)"/>
+</svg>

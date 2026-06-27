@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>/* 비로그인 즉시 차단 — 가드 선실행으로 보호 페이지 깜빡임 방지(정밀 권한·만료 검증은 페이지 JS가 수행) */(function(){try{if(!localStorage.getItem('tg_token')){location.replace('login.html');}}catch(e){}})();</script>
+  <title>원장 관리 - 탑그래머잉글리쉬</title>
+  <meta name="description" content="탑그래머잉글리쉬 원장 관리 페이지. 회원, 선생님, 반, 매출 통합 관리.">
+  <meta property="og:title" content="원장 관리 - 탑그래머잉글리쉬">
+  <meta property="og:description" content="탑그래머잉글리쉬 원장 관리 페이지.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://topgrammar.co.kr/director.html">
+  <meta property="og:image" content="https://topgrammar.co.kr/images/og-image.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="css/core.css?v=6">
+  <link rel="stylesheet" href="css/components.css?v=8">
+  <link rel="stylesheet" href="css/premium.css?v=1">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <meta name="theme-color" content="#1B3A5C">
+  <style>body{opacity:1!important}.slide-up{opacity:1!important;transform:none!important}</style>
+  <style>
+    .admin-layout{display:grid;grid-template-columns:220px 1fr;min-height:100vh;}
+    .admin-sidebar{background:#2c1654;color:#fff;padding:var(--space-6) 0;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;}
+    .admin-sidebar__logo{display:flex;align-items:center;gap:var(--space-3);padding:0 var(--space-5);margin-bottom:var(--space-8);text-decoration:none;color:#fff;}
+    .admin-sidebar__logo img{width:32px;height:32px;}
+    .admin-sidebar__logo span{font-weight:700;font-size:var(--text-sm);}
+    .admin-nav__item{display:block;padding:var(--space-3) var(--space-5);color:rgba(255,255,255,.7);text-decoration:none;font-size:var(--text-sm);transition:all .2s;}
+    .admin-nav__item:hover,.admin-nav__item.is-active{color:#fff;background:rgba(255,255,255,.1);}
+    .admin-nav__item.is-active{border-right:3px solid var(--color-accent);}
+    .admin-nav__label{display:block;padding:var(--space-4) var(--space-5) var(--space-2);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4);}
+    .admin-nav__item--has-badge{display:flex;align-items:center;}
+    .admin-nav__badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--color-accent);color:#fff;font-size:11px;font-weight:700;margin-left:auto;}
+    .admin-main{padding:var(--space-6) var(--space-8);background:var(--color-bg);overflow-y:auto;}
+    .admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);}
+    .admin-header h1{font-size:var(--text-2xl);font-weight:800;}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-4);margin-bottom:var(--space-8);}
+    .stat-card{background:var(--color-card-bg);border-radius:var(--radius-lg);padding:var(--space-5);border:1px solid var(--color-border);}
+    .stat-card__label{font-size:var(--text-sm);color:var(--color-text-sub);margin-bottom:var(--space-1);}
+    .stat-card__value{font-size:var(--text-2xl);font-weight:900;}
+    .stat-card__value--accent{color:var(--color-accent);}
+    .stat-card__value--primary{color:var(--color-primary);}
+    .stat-card__value--success{color:var(--color-success);}
+    .admin-section{background:var(--color-card-bg);border-radius:var(--radius-lg);padding:var(--space-6);border:1px solid var(--color-border);margin-bottom:var(--space-6);}
+    .admin-section__header{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);}
+    .admin-section__title{font-size:var(--text-lg);font-weight:700;}
+    .admin-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);}
+    .admin-table th{text-align:left;padding:var(--space-3) var(--space-4);border-bottom:2px solid var(--color-border);color:var(--color-text-sub);font-weight:600;white-space:nowrap;}
+    .admin-table td{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-border);}
+    .admin-table tr:hover td{background:var(--color-bg);}
+    .admin-table__empty{text-align:center;padding:var(--space-8) !important;color:var(--color-text-light);}
+    .admin-toolbar{display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap;}
+    .admin-toolbar input,.admin-toolbar select{padding:var(--space-2) var(--space-3);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-sm);background:var(--color-card-bg);}
+    .admin-toolbar input{min-width:200px;}
+    .admin-breadcrumb{font-size:var(--text-sm);color:var(--color-text-sub);margin-bottom:var(--space-2);}
+    .admin-breadcrumb a{color:var(--color-text-sub);text-decoration:none;}
+    .admin-breadcrumb a:hover{color:var(--color-primary);}
+    .admin-breadcrumb__sep{margin:0 var(--space-2);}
+    .admin-sidebar nav{flex:1;}
+    .admin-sidebar__bottom{padding:var(--space-4) var(--space-5);}
+    .admin-logout-btn{padding:var(--space-2) var(--space-4);border:1px solid rgba(255,255,255,.3);border-radius:var(--radius-md);background:transparent;color:rgba(255,255,255,.7);font-size:var(--text-sm);cursor:pointer;transition:all .2s;margin-top:auto;}
+    .admin-logout-btn:hover{background:rgba(255,255,255,.15);color:#fff;}
+    .admin-hamburger{display:none;position:fixed;top:var(--space-3);left:var(--space-3);z-index:101;width:36px;height:36px;padding:6px;border:none;border-radius:var(--radius-md);background:#2c1654;cursor:pointer;flex-direction:column;justify-content:center;gap:4px;align-items:center;}
+    .admin-hamburger span{display:block;width:20px;height:2px;background:#fff;border-radius:1px;transition:all .3s;}
+    .admin-sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99;}
+    .admin-sidebar-overlay.is-open{display:block;}
+    .class-form{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);}
+    .class-form label{font-size:var(--text-sm);font-weight:600;display:block;margin-bottom:var(--space-1);}
+    .class-form input,.class-form select{width:100%;padding:var(--space-2) var(--space-3);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-sm);}
+    .class-form__full{grid-column:1/-1;}
+    .role-badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:var(--text-xs);font-weight:700;}
+    .role-badge--admin{background:#e53e3e;color:#fff;}
+    .role-badge--director{background:#805ad5;color:#fff;}
+    .role-badge--teacher{background:#2b6cb0;color:#fff;}
+    .role-badge--member{background:#38a169;color:#fff;}
+    .role-badge--general{background:#a0aec0;color:#fff;}
+    @media(max-width:768px){
+      .admin-layout{grid-template-columns:1fr;}
+      .admin-sidebar{position:fixed;left:-260px;z-index:100;width:260px;transition:left .3s;}
+      .admin-sidebar.is-open{left:0;}
+      .admin-hamburger{display:flex;}
+      .admin-main{padding:var(--space-4);padding-top:calc(var(--space-4) + 48px);}
+      .stat-grid{grid-template-columns:1fr 1fr;}
+      .class-form{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">본문 바로가기</a>
+  <div class="admin-layout">
+    <aside class="admin-sidebar" id="adminSidebar">
+      <a href="index.html" class="admin-sidebar__logo">
+        <img src="images/logo-icon.svg" alt="탑그래머잉글리쉬 로고">
+        <span>원장 관리</span>
+      </a>
+      <nav aria-label="원장 관리 메뉴">
+        <a href="#dashboard" class="admin-nav__item is-active" data-section="dashboard" aria-label="대시보드">대시보드</a>
+        <span class="admin-nav__label">학원 관리</span>
+        <a href="#members" class="admin-nav__item" data-section="members" aria-label="회원 관리">회원 관리</a>
+        <a href="#teachers" class="admin-nav__item" data-section="teachers" aria-label="선생님 관리">선생님 관리</a>
+        <a href="#classes" class="admin-nav__item" data-section="classes" aria-label="반 관리">반 관리</a>
+        <span class="admin-nav__label">학생</span>
+        <a href="#students" class="admin-nav__item" data-section="students" aria-label="학생 목록">학생 목록</a>
+        <span class="admin-nav__label">매출·상담</span>
+        <a href="#revenue" class="admin-nav__item" data-section="revenue" aria-label="매출 통계">매출 통계</a>
+        <a href="#consults" class="admin-nav__item admin-nav__item--has-badge" data-section="consults" aria-label="상담 관리">상담 관리<span class="admin-nav__badge" id="consultBadge">0</span></a>
+        <a href="index.html" class="admin-nav__item" style="margin-top:var(--space-8);opacity:.5;" aria-label="홈으로 이동">← 홈으로</a>
+      </nav>
+      <div class="admin-sidebar__bottom">
+        <button class="admin-logout-btn" id="adminLogoutBtn" aria-label="로그아웃">로그아웃</button>
+      </div>
+    </aside>
+    <div class="admin-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="admin-main section--mesh" id="main">
+      <button class="admin-hamburger" id="adminMenuBtn" aria-label="메뉴"><span></span><span></span><span></span></button>
+      <nav class="admin-breadcrumb">
+        <a href="#dashboard">원장</a><span class="admin-breadcrumb__sep">&gt;</span><span id="breadcrumbCurrent">대시보드</span>
+      </nav>
+
+      <!-- Dashboard -->
+      <section id="sec-dashboard" class="dashboard-hero">
+        <div class="admin-header">
+          <h1>원장 대시보드</h1>
+          <span style="font-size:var(--text-sm);color:var(--color-text-sub);" id="directorDate"></span>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-card dashboard-stat"><div class="stat-card__label">총 회원</div><div class="stat-card__value stat-card__value--primary" id="statTotalMembers">-</div></div>
+          <div class="stat-card dashboard-stat"><div class="stat-card__label">정회원</div><div class="stat-card__value stat-card__value--success" id="statFullMembers">-</div></div>
+          <div class="stat-card dashboard-stat"><div class="stat-card__label">선생님</div><div class="stat-card__value" id="statTeachers">-</div></div>
+          <div class="stat-card dashboard-stat"><div class="stat-card__label">총 학생</div><div class="stat-card__value stat-card__value--primary" id="statStudents">-</div></div>
+          <div class="stat-card dashboard-stat"><div class="stat-card__label">활성 반</div><div class="stat-card__value" id="statClasses">-</div></div>
+          <div class="stat-card dashboard-stat"><div class="stat-card__label">총 매출</div><div class="stat-card__value stat-card__value--accent" id="statRevenue">-</div></div>
+          <div class="stat-card dashboard-stat"><div class="stat-card__label">출석률</div><div class="stat-card__value stat-card__value--success" id="statAttendance">-</div></div>
+          <div class="stat-card dashboard-stat"><div class="stat-card__label">신규 상담</div><div class="stat-card__value stat-card__value--accent" id="statConsults">-</div></div>
+        </div>
+      </section>
+
+      <!-- Members -->
+      <section id="sec-members" style="display:none;">
+        <div class="admin-header"><h1>회원 관리</h1></div>
+        <div class="admin-section glass-card hover-lift">
+          <div class="admin-toolbar">
+            <input type="text" id="dMemberSearch" placeholder="이름, 이메일 검색…" aria-label="회원 검색">
+            <select id="dMemberRole" aria-label="회원유형 필터">
+              <option value="">전체 유형</option>
+              <option value="general">일반회원</option>
+              <option value="member">정회원</option>
+              <option value="teacher">선생님</option>
+              <option value="director">원장님</option>
+              <option value="admin">관리자</option>
+            </select>
+          </div>
+          <table class="admin-table">
+            <thead><tr><th scope="col">이름</th><th scope="col">이메일</th><th scope="col">연락처</th><th scope="col">회원유형</th><th scope="col">캠퍼스</th><th scope="col">가입일</th><th scope="col">상태</th><th scope="col"></th></tr></thead>
+            <tbody id="dMemberTableBody">
+              <tr><td colspan="8" class="admin-table__empty">로딩 중...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Teachers -->
+      <section id="sec-teachers" style="display:none;">
+        <div class="admin-header"><h1>선생님 관리</h1></div>
+        <div class="admin-section glass-card hover-lift">
+          <table class="admin-table">
+            <thead><tr><th scope="col">이름</th><th scope="col">이메일</th><th scope="col">연락처</th><th scope="col">캠퍼스</th><th scope="col">가입일</th><th scope="col">상태</th><th scope="col"></th></tr></thead>
+            <tbody id="dTeacherTableBody">
+              <tr><td colspan="7" class="admin-table__empty">로딩 중...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Classes -->
+      <section id="sec-classes" style="display:none;">
+        <div class="admin-header">
+          <h1>반 관리</h1>
+          <button class="btn btn--primary btn--sm" id="dAddClassBtn" aria-label="새 반 추가">+ 반 추가</button>
+        </div>
+        <div class="admin-section glass-card" id="dClassFormWrap" style="display:none;">
+          <h3 class="admin-section__title" style="margin-bottom:var(--space-4);">새 반 만들기</h3>
+          <form id="dClassForm" class="class-form">
+            <div><label>반 이름</label><input type="text" name="name" required placeholder="고등내신반 A"></div>
+            <div><label>캠퍼스</label><select name="campus" required><option value="">선택</option><option value="haengsin">행신</option><option value="hwajeong">화정</option></select></div>
+            <div><label>담당 선생님</label><input type="text" name="teacher" placeholder="홍길동"></div>
+            <div><label>시간표</label><input type="text" name="schedule" placeholder="월수금 17:00-19:30"></div>
+            <div><label>정원</label><input type="number" name="max_students" value="10" min="1" max="50"></div>
+            <div style="display:flex;align-items:flex-end;"><button type="submit" class="btn btn--primary btn--sm">저장</button></div>
+          </form>
+        </div>
+        <div class="admin-section glass-card hover-lift">
+          <div class="admin-toolbar">
+            <select id="dClassCampus" aria-label="캠퍼스 필터">
+              <option value="">전체 캠퍼스</option>
+              <option value="haengsin">행신</option>
+              <option value="hwajeong">화정</option>
+            </select>
+          </div>
+          <table class="admin-table">
+            <thead><tr><th scope="col">반 이름</th><th scope="col">캠퍼스</th><th scope="col">담당</th><th scope="col">시간표</th><th scope="col">인원</th><th scope="col">상태</th></tr></thead>
+            <tbody id="dClassTableBody">
+              <tr><td colspan="6" class="admin-table__empty">로딩 중...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Students -->
+      <section id="sec-students" style="display:none;">
+        <div class="admin-header"><h1>학생 목록</h1></div>
+        <div class="admin-section glass-card hover-lift">
+          <div class="admin-toolbar">
+            <input type="text" id="dStudentSearch" placeholder="이름, 이메일 검색…" aria-label="학생 검색">
+            <select id="dStudentCampus" aria-label="캠퍼스 필터">
+              <option value="">전체 캠퍼스</option>
+              <option value="haengsin">행신</option>
+              <option value="hwajeong">화정</option>
+            </select>
+          </div>
+          <table class="admin-table">
+            <thead><tr><th scope="col">학부모</th><th scope="col">학생</th><th scope="col">학년</th><th scope="col">캠퍼스</th><th scope="col">이메일</th><th scope="col">연락처</th><th scope="col">가입일</th></tr></thead>
+            <tbody id="dStudentTableBody">
+              <tr><td colspan="7" class="admin-table__empty">로딩 중...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Revenue -->
+      <section id="sec-revenue" style="display:none;">
+        <div class="admin-header"><h1>매출 통계</h1></div>
+        <div class="admin-section glass-card hover-lift" style="margin-bottom:var(--space-6);">
+          <h3 class="admin-section__title" style="margin-bottom:var(--space-4);">월별 매출 추이</h3>
+          <canvas id="dRevenueChart" width="700" height="280" style="width:100%;max-height:280px;"></canvas>
+        </div>
+        <div class="admin-section glass-card hover-lift">
+          <table class="admin-table">
+            <thead><tr><th scope="col">월</th><th scope="col">온라인</th><th scope="col">오프라인</th><th scope="col">합계</th></tr></thead>
+            <tbody id="dRevenueTableBody">
+              <tr><td colspan="4" class="admin-table__empty">로딩 중...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Consults -->
+      <section id="sec-consults" style="display:none;">
+        <div class="admin-header"><h1>상담 관리</h1></div>
+        <div class="admin-section glass-card hover-lift">
+          <table class="admin-table">
+            <thead><tr><th scope="col">이름</th><th scope="col">연락처</th><th scope="col">학년</th><th scope="col">캠퍼스</th><th scope="col">메시지</th><th scope="col">상태</th><th scope="col">신청일</th></tr></thead>
+            <tbody id="dConsultTableBody">
+              <tr><td colspan="7" class="admin-table__empty">로딩 중...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/core.js?v=8"></script>
+  <script src="js/director.js?v=2"></script>
+  <script>
+  (function(){
+    var sectionLabels = {
+      dashboard:'대시보드',members:'회원 관리',teachers:'선생님 관리',
+      classes:'반 관리',students:'학생 목록',revenue:'매출 통계',consults:'상담 관리'
+    };
+    var navItems = document.querySelectorAll('.admin-nav__item[data-section]');
+    var bc = document.getElementById('breadcrumbCurrent');
+    navItems.forEach(function(item){
+      item.addEventListener('click',function(){
+        navItems.forEach(function(n){n.classList.remove('is-active');});
+        item.classList.add('is-active');
+        var sec=item.getAttribute('data-section');
+        if(bc && sectionLabels[sec]) bc.textContent=sectionLabels[sec];
+        var sb=document.getElementById('adminSidebar');
+        if(sb) sb.classList.remove('is-open');
+        var ov=document.getElementById('sidebarOverlay');
+        if(ov) ov.classList.remove('is-open');
+      });
+    });
+    var menuBtn=document.getElementById('adminMenuBtn');
+    var sidebar=document.getElementById('adminSidebar');
+    var overlay=document.getElementById('sidebarOverlay');
+    if(menuBtn) menuBtn.addEventListener('click',function(){
+      var open=sidebar.classList.toggle('is-open');
+      overlay.classList.toggle('is-open',open);
+    });
+    if(overlay) overlay.addEventListener('click',function(){
+      sidebar.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+    });
+    var logoutBtn=document.getElementById('adminLogoutBtn');
+    if(logoutBtn) logoutBtn.addEventListener('click',function(){
+      if(confirm('로그아웃 하시겠습니까?')){
+        TG.clearAuth();
+        window.location.href='index.html';
+      }
+    });
+    function syncHash(){
+      var h=window.location.hash.replace('#','');
+      if(h && sectionLabels[h] && bc){
+        bc.textContent=sectionLabels[h];
+        navItems.forEach(function(n){n.classList.toggle('is-active',n.getAttribute('data-section')===h);});
+      }
+    }
+    window.addEventListener('hashchange',syncHash);
+    syncHash();
+  })();
+  </script>
+  <footer class="site-footer texture-noise">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <div style="font-size:1.125rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">탑그래머잉글리쉬</div>
+          <p class="site-footer__brand-desc">문법 → 구문분석 → 수능트레이닝<br>20년 전통의 영어 전문 학원</p>
+        </div>
+        <div>
+          <div class="site-footer__title">학원</div>
+          <a href="about.html" class="site-footer__link">학원소개</a>
+          <a href="curriculum.html" class="site-footer__link">커리큘럼</a>
+          <a href="campus.html" class="site-footer__link">캠퍼스</a>
+        </div>
+        <div>
+          <div class="site-footer__title">학습</div>
+          <a href="payment.html" class="site-footer__link">상담신청</a>
+          <a href="leveltest.html" class="site-footer__link">레벨테스트</a>
+          <a href="parent.html" class="site-footer__link">학부모 포털</a>
+        </div>
+        <div>
+          <div class="site-footer__title">고객센터</div>
+          <a href="tel:031-938-8889" class="site-footer__link">031-938-8889 (행신)</a>
+          <a href="tel:031-994-3090" class="site-footer__link">031-994-3090 (화정)</a>
+          <a href="payment.html" class="site-footer__link">상담 신청</a>
+          <a href="https://blog.naver.com/edu4peace" class="site-footer__link" target="_blank" rel="noopener">블로그</a>
+          <a href="https://cafe.naver.com/lilac1004" class="site-footer__link" target="_blank" rel="noopener">카페</a>
+        </div>
+      </div>
+      <div class="site-footer__info">
+        <span>상호: 탑그래머잉글리쉬학원</span>
+        <span>대표: 김정이</span>
+        <span>사업자등록번호 행신캠퍼스 888-99-00613 &middot; 화정캠퍼스 173-98-01129</span>
+      </div>
+      <div class="site-footer__info">
+        <span>행신캠퍼스: 경기 고양시 덕양구 중앙로 559, 2층 201호 (행신동, 그랑프리빌딩)</span>
+        <span>화정캠퍼스: 경기 고양시 덕양구 중앙로 628, 3층 307호 (화정동, 예일프라자)</span>
+      </div>
+      <div class="site-footer__bottom">
+        <span>&copy; 2026 탑그래머잉글리쉬. All rights reserved.</span>
+        <div>
+          <a href="privacy.html">개인정보처리방침</a> &middot;
+          <a href="terms.html">이용약관</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>document.body.classList.add('is-loaded')</script>
+</body>
+</html>

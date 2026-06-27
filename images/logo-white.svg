@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" fill="none">
+  <!-- TG monogram circle -->
+  <circle cx="32" cy="32" r="30" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  <text x="32" y="42" text-anchor="middle" font-family="'Pretendard Variable', -apple-system, sans-serif" font-weight="900" font-size="28" fill="#FFFFFF" letter-spacing="-1">TG</text>
+  <!-- Accent underline -->
+  <rect x="14" y="49" width="36" height="3" rx="1.5" fill="#E87A3A"/>
+  <!-- Text -->
+  <text x="74" y="28" font-family="'Pretendard Variable', -apple-system, sans-serif" font-weight="800" font-size="22" fill="#FFFFFF">탑그래머잉글리쉬</text>
+  <text x="74" y="48" font-family="'Pretendard Variable', -apple-system, sans-serif" font-weight="600" font-size="13" fill="rgba(255,255,255,0.7)" letter-spacing="1.5">TopGrammar English</text>
+</svg>
