@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 - 탑그래머잉글리쉬</title>
+  <meta name="description" content="탑그래머잉글리쉬 회원가입.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="css/core.css?v=6">
+  <link rel="stylesheet" href="css/components.css?v=8">
+  <link rel="stylesheet" href="css/premium.css?v=1">
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+  <link rel="canonical" href="https://topgrammar.co.kr/signup.html">
+  <meta name="theme-color" content="#1B3A5C">
+  <style>
+    body{opacity:1!important;margin:0;background:#f6f8fc}
+    .auth-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.2rem;font-family:'Pretendard',sans-serif}
+    .auth-card{width:100%;max-width:440px;background:#fff;border:1px solid #e5e9f2;border-radius:16px;padding:2rem 1.8rem;box-shadow:0 8px 30px rgba(26,61,143,.08)}
+    .auth-logo{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:1.3rem}
+    .auth-logo img{width:38px;height:38px}.auth-logo b{font-size:1.15rem;color:#1a3d8f}
+    .auth-card h1{font-size:1.4rem;font-weight:800;text-align:center;margin:0 0 1.2rem;color:#16233a}
+    .auth-card label{display:block;font-size:.86rem;color:#374151;font-weight:600;margin:.8rem 0 .3rem}
+    .auth-card label .req{color:#e11}
+    .auth-card input{width:100%;box-sizing:border-box;padding:.74rem .85rem;border:1px solid #d6dbe7;border-radius:9px;font-size:1rem;font-family:inherit}
+    .auth-card input:focus{outline:none;border-color:#1a3d8f;box-shadow:0 0 0 3px rgba(26,61,143,.12)}
+    .row{display:flex;gap:.8rem}.row>div{flex:1}
+    .consent{margin-top:1rem;font-size:.78rem;color:#667085;background:#f6f8fc;border:1px solid #e5e9f2;border-radius:8px;padding:.75rem .9rem;line-height:1.6}
+    .consent strong{color:#1a3d8f}
+    .agree{display:flex;align-items:flex-start;gap:.5rem;margin-top:.7rem;font-size:.9rem;color:#333;cursor:pointer}
+    .agree input{width:17px;height:17px;margin-top:1px;flex:0 0 auto}
+    .auth-btn{width:100%;margin-top:1.2rem;padding:.85rem 0;background:#1a3d8f;color:#fff;border:none;border-radius:10px;font-size:1.05rem;font-weight:700;cursor:pointer}
+    .auth-btn:disabled{background:#9aa6c4;cursor:not-allowed}
+    .auth-links{text-align:center;margin-top:1rem;font-size:.88rem}.auth-links a{color:#1a3d8f;text-decoration:none}
+    .auth-msg{margin-top:.9rem;font-size:.88rem;text-align:center;min-height:1.2em}
+    .auth-msg.err{color:#dc2626}.auth-msg.ok{color:#059669}
+    .auth-notice{margin-top:1rem;font-size:.82rem;color:#92600a;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:.7rem .85rem;line-height:1.5;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <a class="auth-logo" href="index.html"><img src="images/logo-icon.svg" alt="로고"><b>탑그래머잉글리쉬</b></a>
+      <h1>회원가입</h1>
+      <form id="signupForm">
+        <label>이메일 (로그인 아이디) <span class="req">*</span></label>
+        <input id="email" type="email" required placeholder="example@email.com">
+        <div class="row">
+          <div><label>비밀번호 <span class="req">*</span></label><input id="pw" type="password" required minlength="6" placeholder="6자 이상"></div>
+          <div><label>비밀번호 확인 <span class="req">*</span></label><input id="pw2" type="password" required placeholder="다시 입력"></div>
+        </div>
+        <label>학생 이름 <span class="req">*</span></label>
+        <input id="name" required>
+        <label>학부모 연락처 <span class="req">*</span></label>
+        <input id="phone" type="tel" required placeholder="010-0000-0000">
+        <div class="consent">
+          <strong>개인정보 수집·이용 안내</strong><br>
+          · 수집항목: 이메일, 학생 이름, 학부모 연락처<br>
+          · 목적: 회원 식별·로그인·학습 안내 연락 · 보유: 회원 탈퇴 시까지(탈퇴 시 즉시 파기)<br>
+          · 동의 거부 시 회원가입이 제한됩니다. 만 14세 미만은 법정대리인(학부모) 동의가 필요합니다.
+        </div>
+        <label class="agree"><input id="agree" type="checkbox" required><span>[필수] 개인정보 수집·이용 및 <a href="terms.html">이용약관</a>에 동의합니다.</span></label>
+        <button id="signupBtn" class="auth-btn" type="submit">회원가입</button>
+      </form>
+      <div id="msg" class="auth-msg" role="alert"></div>
+      <div class="auth-links">이미 회원이신가요? <a href="login.html">로그인</a></div>
+      <div id="setupNotice" class="auth-notice" style="display:none">회원 시스템 연결 준비 중입니다. 가입·상담은 <a href="register.html" style="color:#1a3d8f">수강 등록 신청</a> 또는 전화(031-938-8889)로 가능합니다.</div>
+    </div>
+  </div>
+
+  <script type="module">
+    const firebaseConfig = {
+      apiKey: "__FIREBASE_API_KEY__",
+      authDomain: "__FIREBASE_AUTH_DOMAIN__",
+      projectId: "__FIREBASE_PROJECT_ID__",
+      appId: "__FIREBASE_APP_ID__"
+    };
+    const READY = !firebaseConfig.apiKey.startsWith("__");
+    const msg = document.getElementById('msg'), form = document.getElementById('signupForm'), btn = document.getElementById('signupBtn');
+    if (!READY) {
+      document.getElementById('setupNotice').style.display='block'; btn.disabled=true;
+      form.querySelectorAll('input').forEach(i=>i.disabled=true);
+    } else {
+      const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+      const { getAuth, createUserWithEmailAndPassword, updateProfile } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
+      const auth = getAuth(initializeApp(firebaseConfig));
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault(); msg.className='auth-msg';
+        if (document.getElementById('pw').value !== document.getElementById('pw2').value){ msg.className='auth-msg err'; msg.textContent='비밀번호가 일치하지 않습니다.'; return; }
+        msg.textContent='가입 처리 중...'; btn.disabled=true;
+        try {
+          const cred = await createUserWithEmailAndPassword(auth, document.getElementById('email').value, document.getElementById('pw').value);
+          await updateProfile(cred.user, { displayName: document.getElementById('name').value });
+          msg.className='auth-msg ok'; msg.textContent='회원가입 완료! 로그인 페이지로 이동합니다...';
+          setTimeout(()=>location.href='login.html', 1500);
+        } catch(err){
+          msg.className='auth-msg err';
+          msg.textContent = (err.code||'').includes('already') ? '이미 가입된 이메일입니다.' : ((err.code||'').includes('weak') ? '비밀번호는 6자 이상이어야 합니다.' : '가입 실패: '+(err.message||err.code));
+          btn.disabled=false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
