@@ -45,7 +45,7 @@ body{font-family:'Pretendard',sans-serif;margin:0;color:#222;background:#f6f8fc}
 <input type="hidden" name="_subject" value="[탑그래머 홈페이지] 온라인 상담·레벨테스트 신청">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="https://topgrammar.co.kr/?sent=1">
+<input type="hidden" name="_cc" value="bsu@kvmi.co.kr">
 <input type="text" name="_honey" style="display:none">
 <label style="display:block;font-size:.88rem;color:#444;margin:.7rem 0 .25rem">학생 이름 <span style="color:#e11">*</span></label>
 <input name="학생이름" required style="width:100%;box-sizing:border-box;padding:.7rem;border:1px solid #d6dbe7;border-radius:8px;font-size:1rem">
@@ -58,7 +58,19 @@ body{font-family:'Pretendard',sans-serif;margin:0;color:#222;background:#f6f8fc}
 <option>상담 후 결정</option><option>행신 캠퍼스</option><option>화정 캠퍼스</option></select>
 <label style="display:block;font-size:.88rem;color:#444;margin:.7rem 0 .25rem">문의 내용</label>
 <textarea name="문의내용" rows="3" placeholder="궁금하신 점·희망 시간 등을 자유롭게 적어주세요." style="width:100%;box-sizing:border-box;padding:.7rem;border:1px solid #d6dbe7;border-radius:8px;font-size:1rem;resize:vertical"></textarea>
-<button type="submit" style="width:100%;margin-top:1.2rem;padding:.9rem 0;background:#1a3d8f;color:#fff;border:none;border-radius:8px;font-size:1.05rem;font-weight:700;cursor:pointer">신청 보내기</button>
+<div style="margin-top:1.1rem;font-size:.8rem;color:#667085;background:#f6f8fc;border:1px solid #e5e9f2;border-radius:8px;padding:.85rem 1rem;line-height:1.65">
+<strong style="color:#1a3d8f">개인정보 수집·이용 안내</strong><br>
+· 수집항목: 학생 이름, 학부모 연락처, 학년, 문의내용<br>
+· 수집·이용 목적: 상담 및 레벨테스트 안내·연락<br>
+· 보유·이용 기간: 상담 완료 후 6개월(동의 철회 또는 목적 달성 시 즉시 파기)<br>
+· 신청자는 동의를 거부할 권리가 있으며, 거부 시 온라인 상담 신청이 제한됩니다.<br>
+· 만 14세 미만 학생은 법정대리인(학부모)이 신청해 주세요. 자세한 내용은 <a href="privacy.html" style="color:#1a3d8f">개인정보처리방침</a> 참조.
+</div>
+<label style="display:flex;align-items:flex-start;gap:.5rem;margin-top:.8rem;font-size:.92rem;color:#333;cursor:pointer">
+<input type="checkbox" name="개인정보수집이용동의" value="동의함" required style="width:18px;height:18px;margin-top:1px;flex:0 0 auto">
+<span>[필수] 위 개인정보 수집·이용에 동의합니다.</span>
+</label>
+<button type="submit" style="width:100%;margin-top:1rem;padding:.9rem 0;background:#1a3d8f;color:#fff;border:none;border-radius:8px;font-size:1.05rem;font-weight:700;cursor:pointer">신청 보내기</button>
 <p style="font-size:.78rem;color:#999;margin:.7rem 0 0;text-align:center">신청 내용은 원장님 이메일로 즉시 전달됩니다.</p>
 </form>
 <div class="extra">
