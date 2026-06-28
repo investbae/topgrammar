@@ -2430,3 +2430,6 @@ details.premium-faq[open] { border-left-color: var(--color-accent); }
   background: linear-gradient(135deg, rgba(27,58,92,0.14), rgba(27,58,92,0.06));
   transform: scale(1.05);
 }
+
+/* 회원 시스템 준비 중 — 헤더 로그인/회원가입/마이페이지/로그아웃 숨김 (2026-06-28, 복구: 아래 한 줄 삭제) */
+.auth-link{display:none!important}
