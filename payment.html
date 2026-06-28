@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="탑그래머잉글리쉬학원 상담 신청. 화정·행신 캠퍼스 전화 상담 및 무료 레벨테스트 안내.">
 <link rel="stylesheet" href="css/core.css?v=6">
-<link rel="stylesheet" href="css/components.css?v=9">
+<link rel="stylesheet" href="css/components.css?v=7">
 <style>
 body{font-family:'Pretendard',sans-serif;margin:0;color:#222;background:#f6f8fc}
 .wrap{max-width:680px;margin:0 auto;padding:3rem 1.2rem 4rem;text-align:center}
@@ -39,40 +39,26 @@ body{font-family:'Pretendard',sans-serif;margin:0;color:#222;background:#f6f8fc}
 <a class="call" href="tel:031-994-3090">화정 캠퍼스 전화하기</a>
 </div>
 </div>
-<form action="https://formsubmit.co/voirleciel@naver.com" method="POST" style="max-width:560px;margin:2.4rem auto 0;text-align:left;background:#fff;border:1px solid #e5e9f2;border-radius:14px;padding:1.6rem 1.4rem;box-shadow:0 4px 16px rgba(26,61,143,.06)">
-<div style="font-size:1.2rem;font-weight:700;color:#1a3d8f;margin-bottom:.3rem;text-align:center">온라인 상담·레벨테스트 신청</div>
-<p style="font-size:.85rem;color:#888;text-align:center;margin:0 0 1.2rem">남겨주시면 원장님이 직접 확인 후 연락드립니다.</p>
-<input type="hidden" name="_subject" value="[탑그래머 홈페이지] 온라인 상담·레벨테스트 신청">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_cc" value="bsu@kvmi.co.kr">
-<input type="text" name="_honey" style="display:none">
-<label style="display:block;font-size:.88rem;color:#444;margin:.7rem 0 .25rem">학생 이름 <span style="color:#e11">*</span></label>
-<input name="학생이름" required style="width:100%;box-sizing:border-box;padding:.7rem;border:1px solid #d6dbe7;border-radius:8px;font-size:1rem">
-<label style="display:block;font-size:.88rem;color:#444;margin:.7rem 0 .25rem">학부모 연락처 <span style="color:#e11">*</span></label>
-<input name="연락처" type="tel" required placeholder="010-0000-0000" style="width:100%;box-sizing:border-box;padding:.7rem;border:1px solid #d6dbe7;border-radius:8px;font-size:1rem">
-<label style="display:block;font-size:.88rem;color:#444;margin:.7rem 0 .25rem">학년</label>
-<input name="학년" placeholder="예: 중2, 고1" style="width:100%;box-sizing:border-box;padding:.7rem;border:1px solid #d6dbe7;border-radius:8px;font-size:1rem">
-<label style="display:block;font-size:.88rem;color:#444;margin:.7rem 0 .25rem">희망 캠퍼스</label>
-<select name="희망캠퍼스" style="width:100%;box-sizing:border-box;padding:.7rem;border:1px solid #d6dbe7;border-radius:8px;font-size:1rem;background:#fff">
-<option>상담 후 결정</option><option>행신 캠퍼스</option><option>화정 캠퍼스</option></select>
-<label style="display:block;font-size:.88rem;color:#444;margin:.7rem 0 .25rem">문의 내용</label>
-<textarea name="문의내용" rows="3" placeholder="궁금하신 점·희망 시간 등을 자유롭게 적어주세요." style="width:100%;box-sizing:border-box;padding:.7rem;border:1px solid #d6dbe7;border-radius:8px;font-size:1rem;resize:vertical"></textarea>
-<div style="margin-top:1.1rem;font-size:.8rem;color:#667085;background:#f6f8fc;border:1px solid #e5e9f2;border-radius:8px;padding:.85rem 1rem;line-height:1.65">
+<div style="max-width:560px;margin:2.4rem auto 0;text-align:center;background:#fff;border:1px solid #e5e9f2;border-radius:14px;padding:1.8rem 1.4rem;box-shadow:0 4px 16px rgba(26,61,143,.06)">
+<div style="font-size:1.2rem;font-weight:700;color:#1a3d8f;margin-bottom:.4rem">온라인 상담·레벨테스트 신청</div>
+<p style="font-size:.9rem;color:#555;text-align:center;line-height:1.8;margin:0 0 1.2rem">상담자 개인정보를 국외(해외 서버) 경유 없이 보호하기 위해 온라인 신청 폼을 국내 방식으로 개편 중입니다.<br>그 전까지 전화 또는 아래 이메일로 신청해 주세요.</p>
+<a id="consultMail" href="mailto:voirleciel@naver.com,bsu@kvmi.co.kr" style="display:inline-block;width:100%;box-sizing:border-box;padding:.9rem 0;background:#1a3d8f;color:#fff;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.05rem">✉️ 이메일로 상담 신청 보내기</a>
+<div style="margin-top:1.1rem;font-size:.8rem;color:#667085;background:#f6f8fc;border:1px solid #e5e9f2;border-radius:8px;padding:.85rem 1rem;line-height:1.65;text-align:left">
+받는 곳: <strong>voirleciel@naver.com</strong> · <strong>bsu@kvmi.co.kr</strong> (두 원장님께 전달)<br>
+아래를 적어 보내주세요 — 학생 이름 · 학부모 연락처 · 학년 · 희망 캠퍼스 · 문의 내용<br><br>
 <strong style="color:#1a3d8f">개인정보 수집·이용 안내</strong><br>
 · 수집항목: 학생 이름, 학부모 연락처, 학년, 문의내용<br>
 · 수집·이용 목적: 상담 및 레벨테스트 안내·연락<br>
-· 보유·이용 기간: 상담 완료 후 6개월(동의 철회 또는 목적 달성 시 즉시 파기)<br>
-· 신청자는 동의를 거부할 권리가 있으며, 거부 시 온라인 상담 신청이 제한됩니다.<br>
+· 보유·이용 기간: 상담 완료 후 6개월(목적 달성 시 즉시 파기)<br>
 · 만 14세 미만 학생은 법정대리인(학부모)이 신청해 주세요. 자세한 내용은 <a href="privacy.html" style="color:#1a3d8f">개인정보처리방침</a> 참조.
 </div>
-<label style="display:flex;align-items:flex-start;gap:.5rem;margin-top:.8rem;font-size:.92rem;color:#333;cursor:pointer">
-<input type="checkbox" name="개인정보수집이용동의" value="동의함" required style="width:18px;height:18px;margin-top:1px;flex:0 0 auto">
-<span>[필수] 위 개인정보 수집·이용에 동의합니다.</span>
-</label>
-<button type="submit" style="width:100%;margin-top:1rem;padding:.9rem 0;background:#1a3d8f;color:#fff;border:none;border-radius:8px;font-size:1.05rem;font-weight:700;cursor:pointer">신청 보내기</button>
-<p style="font-size:.78rem;color:#999;margin:.7rem 0 0;text-align:center">신청 내용은 원장님 이메일로 즉시 전달됩니다.</p>
-</form>
+<p style="font-size:.78rem;color:#999;margin:.7rem 0 0;text-align:center">신청 내용은 국내(네이버·하이웍스) 경유로만 원장님께 전달되며, 해외 서버를 경유하지 않습니다.</p>
+</div>
+<script>
+(function(){var a=document.getElementById('consultMail');if(!a)return;
+var b=encodeURIComponent('· 학생 이름:\n· 학부모 연락처:\n· 학년:\n· 희망 캠퍼스(행신/화정):\n· 문의 내용:');
+a.setAttribute('href','mailto:voirleciel@naver.com,bsu@kvmi.co.kr?subject='+encodeURIComponent('[탑그래머 상담·레벨테스트 신청]')+'&body='+b);})();
+</script>
 <div class="extra">
 <a class="btn primary" href="leveltest.html">레벨테스트 안내 보기 →</a>
 <a class="btn ghost" href="index.html">메인으로</a>

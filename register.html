@@ -74,80 +74,32 @@
 
     <section class="section" style="padding:3rem 0 4rem;">
       <div class="container">
-        <form class="reg-form" action="https://formsubmit.co/voirleciel@naver.com" method="POST">
-          <input type="hidden" name="_subject" value="[탑그래머 홈페이지] 수강 등록 신청">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_cc" value="bsu@kvmi.co.kr">
-          <input type="text" name="_honey" style="display:none">
-
-          <div class="reg-row">
-            <div>
-              <label>학생 이름 <span class="req">*</span></label>
-              <input name="학생이름" required>
-            </div>
-            <div>
-              <label>학년 <span class="req">*</span></label>
-              <input name="학년" placeholder="예: 중2, 고1" required>
-            </div>
+        <!-- 수강 등록 안내 (국내 처리 · 미국 경유 0) — 온라인 폼은 국내(네이버폼)로 개편 중. 그 전까지 전화·이메일 직접 접수. -->
+        <div class="reg-form" style="text-align:center;">
+          <p style="font-size:1rem;color:#374151;line-height:1.9;margin:0 0 1.4rem;">
+            학생·학부모님의 <strong>개인정보를 국외(해외 서버) 경유 없이 보호</strong>하기 위해<br>온라인 등록 신청을 국내 처리 방식으로 개편하고 있습니다.<br>
+            정식 신청 폼 공개 전까지 <strong>아래 전화 또는 이메일</strong>로 신청해 주시면, 원장님이 확인 후 직접 연락드립니다.</p>
+          <div style="display:flex;flex-direction:column;gap:.7rem;max-width:420px;margin:0 auto;">
+            <a href="tel:031-938-8889" style="display:block;padding:.95rem 0;background:#1a3d8f;color:#fff;border-radius:10px;text-decoration:none;font-size:1.06rem;font-weight:700;">📞 행신캠퍼스 · 031-938-8889</a>
+            <a href="tel:031-994-3090" style="display:block;padding:.95rem 0;background:#1a3d8f;color:#fff;border-radius:10px;text-decoration:none;font-size:1.06rem;font-weight:700;">📞 화정캠퍼스 · 031-994-3090</a>
+            <a id="regMail" href="mailto:voirleciel@naver.com,bsu@kvmi.co.kr" style="display:block;padding:.95rem 0;background:#fff;color:#1a3d8f;border:1.5px solid #1a3d8f;border-radius:10px;text-decoration:none;font-size:1.06rem;font-weight:700;">✉️ 이메일로 등록 신청</a>
           </div>
-
-          <label>학교명</label>
-          <input name="학교명" placeholder="예: ○○중학교">
-
-          <div class="reg-row">
-            <div>
-              <label>학부모 이름 <span class="req">*</span></label>
-              <input name="학부모이름" required>
-            </div>
-            <div>
-              <label>학부모 연락처 <span class="req">*</span></label>
-              <input name="학부모연락처" type="tel" placeholder="010-0000-0000" required>
-            </div>
-          </div>
-
-          <div class="reg-row">
-            <div>
-              <label>희망 캠퍼스</label>
-              <select name="희망캠퍼스">
-                <option>상담 후 결정</option>
-                <option>행신 캠퍼스</option>
-                <option>화정 캠퍼스</option>
-              </select>
-            </div>
-            <div>
-              <label>현재 영어 수준</label>
-              <select name="현재영어수준">
-                <option>잘 모름 (진단 희망)</option>
-                <option>기초</option>
-                <option>중급</option>
-                <option>상위권</option>
-              </select>
-            </div>
-          </div>
-
-          <label>희망 과목·반 / 상담 희망 시간</label>
-          <input name="희망과목_시간" placeholder="예: 고등 내신반 / 평일 오후 상담 희망">
-
-          <label>추가 문의</label>
-          <textarea name="추가문의" rows="3" placeholder="궁금하신 점이나 학생 상황을 자유롭게 적어주세요."></textarea>
-
-          <div class="reg-consent">
+          <div class="reg-consent" style="text-align:left;margin-top:1.6rem;">
+            <strong>이메일 신청 안내</strong> — 받는 곳: <strong>voirleciel@naver.com</strong> · <strong>bsu@kvmi.co.kr</strong><br>
+            아래를 적어 보내주세요. · 학생 이름·학년·학교 · 학부모 이름·연락처 · 희망 캠퍼스 · 현재 영어 수준 · 희망 과목/상담 시간 · 추가 문의<br><br>
             <strong>개인정보 수집·이용 안내</strong><br>
             · 수집항목: 학생 이름·학년·학교, 학부모 이름·연락처, 희망 캠퍼스·과목·수준, 추가 문의<br>
             · 수집·이용 목적: 수강 등록 상담, 레벨테스트·반 배정 안내 및 연락<br>
-            · 보유·이용 기간: 등록 상담 완료 후 6개월(동의 철회 또는 목적 달성 시 즉시 파기)<br>
-            · 신청자는 동의를 거부할 권리가 있으며, 거부 시 등록 신청이 제한됩니다.<br>
+            · 보유·이용 기간: 등록 상담 완료 후 6개월(목적 달성 시 즉시 파기)<br>
             · 만 14세 미만 학생은 법정대리인(학부모)이 신청해 주세요. 자세한 내용은 <a href="privacy.html" style="color:#1a3d8f">개인정보처리방침</a> 참조.
           </div>
-          <label class="reg-agree">
-            <input type="checkbox" name="개인정보수집이용동의" value="동의함" required>
-            <span>[필수] 위 개인정보 수집·이용에 동의합니다.</span>
-          </label>
-
-          <button type="submit" class="reg-submit">등록 신청 보내기</button>
-          <p class="reg-note">신청 내용은 원장님(및 운영자) 이메일로 즉시 전달됩니다. 빠른 상담은 전화로도 가능합니다 — 행신 031-938-8889 · 화정 031-994-3090</p>
-        </form>
+          <p class="reg-note">보내주신 정보는 국내(네이버·하이웍스) 경유로만 원장님께 전달되며, 해외 서버를 경유하지 않습니다.</p>
+        </div>
+        <script>
+        (function(){var a=document.getElementById('regMail');if(!a)return;
+          var b=encodeURIComponent('· 학생 이름:\n· 학년:\n· 학교:\n· 학부모 이름:\n· 학부모 연락처:\n· 희망 캠퍼스(행신/화정):\n· 현재 영어 수준:\n· 희망 과목/상담 시간:\n· 추가 문의:');
+          a.setAttribute('href','mailto:voirleciel@naver.com,bsu@kvmi.co.kr?subject='+encodeURIComponent('[탑그래머 수강 등록 신청]')+'&body='+b);})();
+        </script>
       </div>
     </section>
   </main>
