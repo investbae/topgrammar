@@ -324,50 +324,19 @@
         </div>
         <div class="section-divider mb-8"><div class="section-divider__dot"></div></div>
 
-        <form class="consult-form consult-form--premium slide-up" id="consultForm">
-          <div class="form-group">
-            <label class="form-label" for="consult-name">학부모 성함 *</label>
-            <input type="text" id="consult-name" class="form-input" placeholder="성함을 입력해 주세요" required autocomplete="name">
+        <!-- 상담 신청 안내 (국내 처리 · 미국 경유 0) — 온라인 폼은 국내(네이버폼)로 개편 중. 그 전까지 전화·이메일 직접 접수. -->
+        <div class="card slide-up" id="consultForm" style="max-width:560px;margin:0 auto;padding:var(--space-8);text-align:center;scroll-margin-top:96px;">
+          <p style="font-size:var(--text-base);color:var(--color-text);line-height:1.9;margin-bottom:var(--space-6);">
+            상담자분의 <strong>개인정보를 국외(해외 서버) 경유 없이 보호</strong>하기 위해<br>온라인 상담 신청을 국내 처리 방식으로 개편하고 있습니다.<br>
+            정식 폼 공개 전까지 <strong>아래 전화 또는 이메일</strong>로 신청해 주세요.</p>
+          <div style="display:flex;flex-direction:column;gap:var(--space-3);max-width:420px;margin:0 auto;">
+            <a href="tel:031-938-8889" class="btn btn--primary btn--lg btn--full">📞 행신캠퍼스 · 031-938-8889</a>
+            <a href="tel:031-994-3090" class="btn btn--primary btn--lg btn--full">📞 화정캠퍼스 · 031-994-3090</a>
+            <a id="campusConsultMail" href="mailto:voirleciel@naver.com,bsu@kvmi.co.kr" class="btn btn--outline btn--lg btn--full">✉️ 이메일로 상담 신청</a>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="consult-phone">연락처 *</label>
-            <input type="tel" id="consult-phone" class="form-input" placeholder="010-0000-0000" required autocomplete="tel" inputmode="tel">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="consult-grade">학생 학년 *</label>
-            <select id="consult-grade" class="form-select" required>
-              <option value="">선택해 주세요</option>
-              <option value="초5">초등 5학년</option>
-              <option value="초6">초등 6학년</option>
-              <option value="중1">중학교 1학년</option>
-              <option value="중2">중학교 2학년</option>
-              <option value="중3">중학교 3학년</option>
-              <option value="고1">고등학교 1학년</option>
-              <option value="고2">고등학교 2학년</option>
-              <option value="고3">고등학교 3학년</option>
-              <option value="N수">N수생</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="consult-campus">희망 캠퍼스 *</label>
-            <select id="consult-campus" class="form-select" required>
-              <option value="">선택해 주세요</option>
-              <option value="haengsin">행신캠퍼스</option>
-              <option value="hwajeong">화정캠퍼스</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="consult-message">상담 내용</label>
-            <textarea id="consult-message" class="form-textarea" placeholder="궁금한 점이나 희망 사항을 적어 주세요" maxlength="1000"></textarea>
-          </div>
-          <div class="form-group">
-            <label style="display:flex;align-items:flex-start;gap:8px;font-size:var(--text-sm);color:var(--color-text-sub);cursor:pointer;">
-              <input type="checkbox" id="consult-consent" required style="margin-top:3px;flex-shrink:0;">
-              <span>(필수) 상담 진행을 위한 <strong>개인정보(성함·연락처·학생 학년·상담 내용 등) 수집·이용</strong>에 동의합니다. 동의를 거부할 수 있으며, 거부 시 상담 신청 진행이 제한됩니다. <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--color-accent);text-decoration:underline;">개인정보처리방침</a></span>
-            </label>
-          </div>
-          <button type="submit" class="btn btn--primary btn--lg btn--full">상담 신청하기</button>
-        </form>
+          <p style="font-size:var(--text-sm);color:var(--color-text-sub);margin-top:var(--space-5);line-height:1.75;">받는 곳: <strong>voirleciel@naver.com</strong> · <strong>bsu@kvmi.co.kr</strong> (두 원장님께 전달)<br>학부모 성함 · 연락처 · 학생 학년 · 희망 캠퍼스 · 상담 내용을 적어 보내주세요.</p>
+          <p style="font-size:var(--text-xs);color:var(--color-text-light);margin-top:var(--space-3);line-height:1.6;">신청 내용은 국내(네이버·하이웍스) 경유로만 전달되며 해외 서버를 경유하지 않습니다. · <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--color-accent);">개인정보처리방침</a></p>
+        </div>
       </div>
     </section>
   </main>
@@ -430,57 +399,13 @@
 
   <script src="js/core.js?v=8"></script>
   <script>
+  /* 이메일 상담 버튼 — 제목·본문 템플릿 안전 인코딩(미국 경유 없음·국내 메일로 두 원장께) */
   (function() {
     'use strict';
-    var form = document.getElementById('consultForm');
-    if (!form) return;
-
-    /* 캠퍼스별 상담 CTA 클릭 시 희망 캠퍼스 자동 선택 */
-    document.querySelectorAll('a[data-campus]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var sel = document.getElementById('consult-campus');
-        if (sel) sel.value = btn.dataset.campus;
-      });
-    });
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      var name = document.getElementById('consult-name').value.trim();
-      var phone = document.getElementById('consult-phone').value.trim();
-      var grade = document.getElementById('consult-grade').value;
-      var campus = document.getElementById('consult-campus').value;
-      var message = document.getElementById('consult-message').value.trim();
-      if (!name || !phone || !grade || !campus) {
-        TG.showToast('필수 항목을 모두 입력해 주세요.', 'error');
-        return;
-      }
-      var consentEl = document.getElementById('consult-consent');
-      if (consentEl && !consentEl.checked) {
-        TG.showToast('개인정보 수집·이용에 동의해 주세요.', 'error');
-        return;
-      }
-      var submitBtn = form.querySelector('button[type="submit"]');
-      var _origText = submitBtn ? submitBtn.textContent : '';
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = '신청 중...'; }
-      try {
-        /* 공개 엔드포인트 — 토큰 만료 시 로그인으로 튕기지 않도록 plain fetch 사용 */
-        var res = await fetch('/api/consult', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: name, phone: phone, student_grade: grade, campus: campus, message: message, consent: consentEl ? consentEl.checked : false })
-        });
-        if (res && res.ok) {
-          TG.showToast('상담 신청이 완료되었습니다. 곧 연락드리겠습니다.');
-          form.reset();
-        } else {
-          var data = res ? await res.json().catch(function() { return {}; }) : {};
-          TG.showToast(data.message || '상담 신청에 실패했습니다.', 'error');
-        }
-      } catch (err) {
-        TG.showToast('네트워크 오류가 발생했습니다.', 'error');
-      } finally {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = _origText; }
-      }
-    });
+    var a = document.getElementById('campusConsultMail');
+    if (!a) return;
+    var b = encodeURIComponent('· 학부모 성함:\n· 연락처:\n· 학생 학년:\n· 희망 캠퍼스(행신/화정):\n· 상담 내용:');
+    a.setAttribute('href', 'mailto:voirleciel@naver.com,bsu@kvmi.co.kr?subject=' + encodeURIComponent('[탑그래머 상담 신청]') + '&body=' + b);
   })();
   </script>
   <script>
