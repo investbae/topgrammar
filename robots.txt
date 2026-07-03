@@ -10,4 +10,7 @@ Disallow: /register.html
 Disallow: /mypage.html
 Disallow: /parent.html
 Disallow: /reset-password.html
+Disallow: /signup.html
+Disallow: /course-detail.html
+Disallow: /player.html
 Sitemap: https://topgrammar.co.kr/sitemap.xml
