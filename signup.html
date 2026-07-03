@@ -70,38 +70,5 @@
     </div>
   </div>
 
-  <script type="module">
-    const firebaseConfig = {
-      apiKey: "AIzaSyAgqHg640e-Bw85O00xYZT67lbgWyl2q3A",
-      authDomain: "topgrammar-e11bc.firebaseapp.com",
-      projectId: "topgrammar-e11bc",
-      appId: "1:1026276211992:web:55a026a6e52a1dba00726d"
-    };
-    const READY = false; // 회원 시스템 준비 중(2026-06-28) — 복구: const READY = !firebaseConfig.apiKey.startsWith("__");
-    const msg = document.getElementById('msg'), form = document.getElementById('signupForm'), btn = document.getElementById('signupBtn');
-    if (!READY) {
-      document.getElementById('setupNotice').style.display='block'; btn.disabled=true;
-      form.querySelectorAll('input').forEach(i=>i.disabled=true);
-    } else {
-      const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
-      const { getAuth, createUserWithEmailAndPassword, updateProfile } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
-      const auth = getAuth(initializeApp(firebaseConfig));
-      form.addEventListener('submit', async (e)=>{
-        e.preventDefault(); msg.className='auth-msg';
-        if (document.getElementById('pw').value !== document.getElementById('pw2').value){ msg.className='auth-msg err'; msg.textContent='비밀번호가 일치하지 않습니다.'; return; }
-        msg.textContent='가입 처리 중...'; btn.disabled=true;
-        try {
-          const cred = await createUserWithEmailAndPassword(auth, document.getElementById('email').value, document.getElementById('pw').value);
-          await updateProfile(cred.user, { displayName: document.getElementById('name').value });
-          msg.className='auth-msg ok'; msg.textContent='회원가입 완료! 로그인 페이지로 이동합니다...';
-          setTimeout(()=>location.href='login.html', 1500);
-        } catch(err){
-          msg.className='auth-msg err';
-          msg.textContent = (err.code||'').includes('already') ? '이미 가입된 이메일입니다.' : ((err.code||'').includes('weak') ? '비밀번호는 6자 이상이어야 합니다.' : '가입 실패: '+(err.message||err.code));
-          btn.disabled=false;
-        }
-      });
-    }
-  </script>
 </body>
 </html>

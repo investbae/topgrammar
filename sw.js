@@ -1,5 +1,5 @@
 /* Service Worker - TopGrammar PWA */
-var CACHE_NAME = 'tg-v22';
+var CACHE_NAME = 'tg-v23';
 
 var STATIC_ASSETS = [
   '/',
@@ -7,32 +7,20 @@ var STATIC_ASSETS = [
   '/about.html',
   '/curriculum.html',
   '/leveltest.html',
-  '/login.html',
-  '/register.html',
-  '/mypage.html',
-  '/parent.html',
   '/resources.html',
   '/payment.html',
   '/campus.html',
   '/careers.html',
-  '/reset-password.html',
   '/privacy.html',
   '/terms.html',
-  '/evaluations.html',
   '/404.html',
   '/css/core.css',
   '/css/components.css',
   '/css/premium.css',
   '/js/core.js',
-  '/js/auth.js',
   '/js/leveltest.js',
-  '/js/mypage.js',
-  '/js/parent.js',
   '/js/payment.js',
   '/js/resources.js',
-  '/js/admin.js',
-  '/js/director.js',
-  '/js/teacher.js',
   '/js/sw-register.js',
   '/manifest.json',
   '/images/logo-icon.svg'

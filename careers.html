@@ -170,18 +170,7 @@
 
   <script src="js/core.js?v=8"></script>
   <script>
-  /* 이메일 지원 버튼 — 제목·본문 템플릿을 안전하게 인코딩(미국 경유 없음·지원자 본인 메일로 두 원장께 발송) */
-  (function () {
-    'use strict';
-    var a = document.getElementById('applyMail');
-    if (!a) return;
-    var to = 'voirleciel@naver.com,bsu@kvmi.co.kr';
-    var subj = encodeURIComponent('[탑그래머 선생님 지원]');
-    var body = encodeURIComponent(
-      '· 이름:\n· 연락처:\n· 이메일:\n· 희망 캠퍼스(행신/화정/무관):\n· 경력 사항:\n· 지원 동기·자기소개:\n\n(이력서·자기소개서 파일을 첨부해 주세요)');
-    a.setAttribute('href', 'mailto:' + to + '?subject=' + subj + '&body=' + body);
-  })();
-  </script>
+</script>
   <script>document.body.classList.add('is-loaded')</script>
 </body>
 </html>

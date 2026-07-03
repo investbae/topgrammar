@@ -58,39 +58,5 @@
     </div>
   </div>
 
-  <script type="module">
-    // ===== Firebase 설정 (관리자: 아래 값을 본인 Firebase 프로젝트 config로 교체) =====
-    const firebaseConfig = {
-      apiKey: "AIzaSyAgqHg640e-Bw85O00xYZT67lbgWyl2q3A",
-      authDomain: "topgrammar-e11bc.firebaseapp.com",
-      projectId: "topgrammar-e11bc",
-      appId: "1:1026276211992:web:55a026a6e52a1dba00726d"
-    };
-    const READY = false; // 회원 시스템 준비 중(2026-06-28) — 복구: const READY = !firebaseConfig.apiKey.startsWith("__");
-    const msg = document.getElementById('msg');
-    const form = document.getElementById('loginForm');
-    const btn = document.getElementById('loginBtn');
-    if (!READY) {
-      document.getElementById('setupNotice').style.display = 'block';
-      btn.disabled = true;
-      form.querySelectorAll('input').forEach(i => i.disabled = true);
-    } else {
-      const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
-      const { getAuth, signInWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
-      const auth = getAuth(initializeApp(firebaseConfig));
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault(); msg.className = 'auth-msg'; msg.textContent = '로그인 중...'; btn.disabled = true;
-        try {
-          await signInWithEmailAndPassword(auth, document.getElementById('email').value, document.getElementById('pw').value);
-          msg.className = 'auth-msg ok'; msg.textContent = '로그인 성공! 이동합니다...';
-          location.href = 'index.html';
-        } catch (err) {
-          msg.className = 'auth-msg err';
-          msg.textContent = (err.code||'').includes('invalid') ? '이메일 또는 비밀번호가 올바르지 않습니다.' : '로그인 실패: ' + (err.message||err.code);
-          btn.disabled = false;
-        }
-      });
-    }
-  </script>
 </body>
 </html>
