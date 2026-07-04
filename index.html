@@ -289,6 +289,11 @@
       background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:999px;padding:12px 22px;display:inline-block;
       position:relative;left:50%;transform:translateX(-50%);}
     .tg-works__badge strong{color:var(--color-primary);}
+    /* v5 (2026-07-04): 원장 약력 배지 → about#director 링크화 (접근성 4종 세트) */
+    a.tg-works__badge{text-decoration:none;cursor:pointer;min-height:44px;touch-action:manipulation;
+      transition:border-color .2s,box-shadow .2s;}
+    a.tg-works__badge:hover{border-color:var(--color-accent);box-shadow:var(--shadow-sm);}
+    a.tg-works__badge:focus-visible{outline:3px solid var(--color-accent);outline-offset:3px;}
     @media(max-width:880px){.tg-works__grid{grid-template-columns:1fr;gap:40px;}.tg-proof{margin-top:0;}}
     @media(max-width:420px){.tg-proof__cards{grid-template-columns:1fr;}}
 
@@ -527,7 +532,7 @@
         </div>
       </div>
       <div style="text-align:center;">
-        <span class="tg-works__badge">설계·직강: 한국외대 영어영문학 석사 · 고3 지도 20년 · <strong>대치동 그룹과외팀 출신 김정이 원장</strong></span>
+        <a class="tg-works__badge" href="about.html#director" aria-label="김정이 원장 소개 보기">설계·직강: 한국외대 영어영문학 석사 · 고3 지도 20년 · <strong>대치동 그룹과외팀 출신 김정이 원장</strong> →</a>
       </div>
     </section>
 
@@ -821,31 +826,115 @@
   <!-- Footer -->
   <footer class="site-footer texture-noise">
     <div class="container">
+      <!-- [BLOCK-0] 푸터 아이콘 허브 전용 스타일 (self-contained · 2026-07-04 공통 표준) -->
+      <style>
+        /* 탑그래머 푸터 아이콘 허브 — 다크네이비(#0F2640) 푸터 위 흰 글자 톤 정합 */
+        .tgf-hub{list-style:none;margin:0;padding:0;}
+        .tgf-hub li{margin:0;}
+        .tgf-hub a{
+          display:flex;align-items:center;gap:10px;
+          min-height:44px;padding:6px 8px 6px 0;              /* 44px 터치타깃 */
+          color:rgba(255,255,255,.72);text-decoration:none;
+          font-size:var(--text-sm,.875rem);line-height:1.45;
+          border-radius:8px;transition:color .2s,background .2s;
+          touch-action:manipulation;
+        }
+        .tgf-hub a:hover{color:#FFB877;background:rgba(255,255,255,.06);}
+        .tgf-hub a:focus-visible{outline:2px solid #FFB877;outline-offset:2px;color:#fff;}
+        .tgf-hub .tgf-ic{
+          flex:0 0 auto;width:30px;height:30px;border-radius:9px;
+          display:flex;align-items:center;justify-content:center;
+          background:rgba(255,255,255,.09);font-size:.95rem;
+        }
+        .tgf-hub b{color:rgba(255,255,255,.92);font-weight:700;}
+        .tgf-hub small{display:block;font-size:.74rem;color:rgba(255,255,255,.5);margin-top:1px;}
+        .tgf-hub a:hover small{color:rgba(255,255,255,.7);}
+        .tgf-note{margin-top:10px;font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6;}
+      </style>
+      <!-- [BLOCK-1] 공통 푸터 허브 그리드 -->
       <div class="site-footer__grid">
+        <!-- 열 1: 브랜드 (전 페이지 문구 통일) -->
         <div>
           <div style="font-size:1.125rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">탑그래머잉글리쉬</div>
           <p class="site-footer__brand-desc">10단계 문법 암기공식 · 무한반복 시스템<br>화정·행신 중고등 영어 전문학원</p>
         </div>
+
+        <!-- 열 2: 학원 -->
         <div>
           <div class="site-footer__title">학원</div>
           <a href="about.html" class="site-footer__link">학원소개</a>
+          <a href="about.html#director" class="site-footer__link">원장 소개</a>
           <a href="curriculum.html" class="site-footer__link">커리큘럼</a>
           <a href="campus.html" class="site-footer__link">캠퍼스</a>
           <a href="careers.html" class="site-footer__link">선생님 채용</a>
         </div>
+
+        <!-- 열 3: 학습 -->
         <div>
           <div class="site-footer__title">학습</div>
-          <a href="payment.html" class="site-footer__link">상담신청</a>
           <a href="leveltest.html" class="site-footer__link">레벨테스트</a>
+          <a href="curriculum.html#pricing" class="site-footer__link">수강료 안내</a>
+          <a href="resources.html" class="site-footer__link">자료실</a>
+          <a href="payment.html" class="site-footer__link">상담신청</a>
         </div>
+
+        <!-- 열 4: 고객센터 → 아이콘 허브 (전화·오시는길·온라인상담·블로그·카페) -->
         <div>
           <div class="site-footer__title">고객센터</div>
-          <a href="tel:031-938-8889" class="site-footer__link">031-938-8889 (행신)</a>
-          <a href="tel:031-994-3090" class="site-footer__link">031-994-3090 (화정)</a>
-          <a href="https://blog.naver.com/edu4peace" class="site-footer__link" target="_blank" rel="noopener">블로그</a>
-          <a href="https://cafe.naver.com/lilac1004" class="site-footer__link" target="_blank" rel="noopener">카페</a>
+          <ul class="tgf-hub">
+            <li>
+              <a href="tel:031-938-8889" aria-label="행신캠퍼스 전화 상담 031-938-8889">
+                <span class="tgf-ic" aria-hidden="true">☎</span>
+                <span><b>031-938-8889</b><small>행신캠퍼스 전화</small></span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:031-994-3090" aria-label="화정캠퍼스 전화 상담 031-994-3090">
+                <span class="tgf-ic" aria-hidden="true">☎</span>
+                <span><b>031-994-3090</b><small>화정캠퍼스 전화</small></span>
+              </a>
+            </li>
+            <li>
+              <a href="https://map.naver.com/p/search/%ED%83%91%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%9E%89%EA%B8%80%EB%A6%AC%EC%89%AC%20%ED%96%89%EC%8B%A0"
+                 target="_blank" rel="noopener" aria-label="행신캠퍼스 오시는 길 — 네이버지도 새 창">
+                <span class="tgf-ic" aria-hidden="true">📍</span>
+                <span><b>오시는 길 · 행신</b><small>중앙로 559 그랑프리빌딩 2층</small></span>
+              </a>
+            </li>
+            <li>
+              <a href="https://map.naver.com/p/search/%ED%83%91%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%9E%89%EA%B8%80%EB%A6%AC%EC%89%AC%20%ED%99%94%EC%A0%95"
+                 target="_blank" rel="noopener" aria-label="화정캠퍼스 오시는 길 — 네이버지도 새 창">
+                <span class="tgf-ic" aria-hidden="true">📍</span>
+                <span><b>오시는 길 · 화정</b><small>중앙로 628 예일프라자 3층</small></span>
+              </a>
+            </li>
+            <li>
+              <a href="https://naver.me/5suF2KvL" target="_blank" rel="noopener"
+                 aria-label="온라인 상담·레벨테스트 신청 네이버폼 새 창">
+                <span class="tgf-ic" aria-hidden="true">📝</span>
+                <span><b>온라인 상담 신청</b><small>네이버폼 · 24시간 접수</small></span>
+              </a>
+            </li>
+            <li>
+              <a href="https://blog.naver.com/edu4peace" target="_blank" rel="noopener"
+                 aria-label="탑그래머 네이버 블로그 새 창">
+                <span class="tgf-ic" aria-hidden="true">📰</span>
+                <span><b>네이버 블로그</b><small>학원 소식 · 입시 정보</small></span>
+              </a>
+            </li>
+            <li>
+              <a href="https://cafe.naver.com/lilac1004" target="_blank" rel="noopener"
+                 aria-label="탑그래머 네이버 카페 새 창">
+                <span class="tgf-ic" aria-hidden="true">☕</span>
+                <span><b>네이버 카페</b><small>학부모 커뮤니티</small></span>
+              </a>
+            </li>
+          </ul>
+          <p class="tgf-note">평일: 행신 14:00~22:00 · 화정 16:00~22:00 / 토요일: 행신 10:00~18:00 / 일·공휴일 휴무</p>
         </div>
       </div>
+      <!-- [BLOCK-1 끝] -->
+
       <div class="site-footer__info">
         <span>상호: 탑그래머잉글리쉬학원</span>
         <span>대표: 김정이</span>
