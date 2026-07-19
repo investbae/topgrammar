@@ -46,6 +46,20 @@
   .tg-classnote__mark{color:var(--color-accent-dark);font-weight:var(--weight-bold);flex:0 0 auto;}
   .tg-classnote__pill b{color:var(--color-text);font-weight:var(--weight-bold);}
   </style>
+  <style>
+  /* 실증·성과 고지 v2 — 전문 정보고지 컴포넌트 (표시광고법 §5①·§3① 방어 · 2026-07-20) */
+  .tg-claim-note{position:relative;display:block;margin-top:14px;padding:10px 14px 10px 36px;
+    font-size:.8rem;line-height:1.65;letter-spacing:-.005em;color:#5B6B7C;text-align:left;
+    background:rgba(27,58,92,.035);border:1px solid rgba(27,58,92,.10);border-left:3px solid rgba(27,58,92,.32);
+    border-radius:10px;}
+  .tg-claim-note::before{content:"i";position:absolute;left:12px;top:11px;width:16px;height:16px;
+    display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;font-style:italic;
+    line-height:1;font-family:Georgia,"Times New Roman",serif;color:#fff;background:rgba(27,58,92,.55);border-radius:50%;}
+  .tg-claim-note--dark{color:rgba(255,255,255,.88);background:rgba(255,255,255,.07);
+    border-color:rgba(255,255,255,.16);border-left-color:rgba(255,255,255,.34);}
+  .tg-claim-note--dark::before{background:#FFB877;color:#14273f;}
+  @media(max-width:640px){.tg-claim-note{padding:9px 12px 9px 32px;font-size:.78rem;}}
+  </style>
 </head>
 <body>
   <a href="#main" class="skip-link">본문 바로가기</a>
@@ -79,7 +93,7 @@
       <div class="container">
         <div class="hero__content slide-up">
           <h1 class="hero__title">학원소개</h1>
-          <p class="hero__desc">15년 전통, 문법의 힘으로 영어를 완성합니다</p>
+          <p class="hero__desc">15년 전통, 문법의 힘으로 영어를 완성해 갑니다</p>
         </div>
       </div>
     </section>
@@ -100,7 +114,7 @@
 
             <p style="margin-bottom:var(--space-4);line-height:1.8;">안녕하세요. 탑그래머잉글리쉬 Grace 그래쌤 원장입니다.</p>
             <p style="margin-bottom:var(--space-4);line-height:1.8;">대학편입 문법·독해 교수 출신으로 편입영어 전문 강의 3년, 고3 전문 20년 이상의 현장 경험을 바탕으로 학생들이 진정한 영어 실력을 갖출 수 있도록 지도하고 있습니다. 대치동에서 서울대반 그룹과외팀을 이끌고 반포에서 의대 준비생들의 영어를 지도한 경험을 통해 축적한 <strong>대치동·반포에서 쌓은 교육 정보와 노하우</strong>를 화정·행신 등 인근 지역에서 직접 전합니다.</p>
-            <p style="margin-bottom:var(--space-4);line-height:1.8;">자체 개발한 <strong>10단계 문법책 1권 암기공식</strong>과 <strong>연상암기법</strong>으로 복잡한 문법도 완벽하게 암기할 수 있도록 이끌며, <strong>다의어 자체제작 암기법</strong>과 고난이도 수능 구문독해 <strong>탑그래머 통찰독해</strong>(요약독해·뼈대가 보이는 독해·이해가 되는 독해)로 무한 반복 훈련합니다.</p>
+            <p style="margin-bottom:var(--space-4);line-height:1.8;">자체 개발한 <strong>10단계 문법책 1권 암기공식</strong>과 <strong>연상암기법</strong>으로 복잡한 문법도 확실하게 암기할 수 있도록 이끌며, <strong>다의어 자체제작 암기법</strong>과 고난이도 수능 구문독해 <strong>탑그래머 통찰독해</strong>(요약독해·뼈대가 보이는 독해·이해가 되는 독해)로 무한 반복 훈련합니다.</p>
             <p style="margin-bottom:var(--space-4);line-height:1.8;font-weight:600;color:var(--color-primary);">"모든 아이들에게 위대함의 씨앗이 있다는 믿음으로 기적을 만들어 갑니다."</p>
             <p style="margin-bottom:var(--space-6);line-height:1.8;font-weight:600;color:var(--color-accent);">"안되면 될 때까지! 문법이 잡히면, 영어가 보입니다."</p>
 
@@ -135,6 +149,7 @@
               <span class="badge badge--primary">10단계 문법 암기공식 개발</span>
               <span class="badge badge--primary">의대·SKY 등 명문대 20명+ 합격</span>
             </div>
+            <p class="tg-claim-note">위 합격·성적 실적은 2011~2026 본원 수강생 지도 사례의 자체 집계이며, 증빙 자료는 학원에 보관하고 있습니다. 성적 향상과 대학 합격은 학생 개인의 노력·학습 상황에 따른 결과로, 모든 학생에게 동일한 결과를 보장하지 않습니다.</p>
           </div>
         </div>
       </div>
@@ -177,7 +192,7 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
               </div>
               <h4 class="card__title" style="color:var(--color-accent);">10단계 문법책 1권 암기공식</h4>
-              <p class="card__desc">자체 개발한 10단계 문법책 1권 암기공식! 복잡한 문법도 연상암기법으로 완벽 암기합니다. 항상 문법 암기방식과 다의어 암기법 등 티칭 방식을 연구하고, 선생님들과 계속 공유하며 발전합니다.</p>
+              <p class="card__desc">자체 개발한 10단계 문법책 1권 암기공식! 복잡한 문법도 연상암기법으로 확실히 암기하도록 훈련합니다. 항상 문법 암기방식과 다의어 암기법 등 티칭 방식을 연구하고, 선생님들과 계속 공유하며 발전합니다.</p>
             </div>
           </div>
           <div class="value-card feature-card hover-lift slide-up stagger-4">
@@ -197,7 +212,7 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </div>
               <h4 class="card__title" style="color:var(--color-accent);">소수정예 고품격 학원</h4>
-              <p class="card__desc">대학편입 문법·독해 교수 출신 20년 수능강사가 만든 고품격 소수정예 학원. 한 반 평균 6~8명(최대 10명), 1:1 과외식 PT수업으로 한 명 한 명을 책임집니다.</p>
+              <p class="card__desc">대학편입 문법·독해 교수 출신 20년 수능강사가 만든 고품격 소수정예 학원. 한 반 평균 6명(일반반 최대 6~8명·상위반 최대 8~10명), 1:1 과외식 PT수업으로 한 명 한 명을 책임집니다.</p>
               <div class="tg-classnote"><span class="tg-classnote__pill"><span class="tg-classnote__mark" aria-hidden="true">※</span><span><b>고3반</b>은 정원이 다를 수 있습니다</span></span></div>
             </div>
           </div>
@@ -249,6 +264,7 @@
                 <span class="badge badge--primary">고3 final 전략</span>
                 <span class="badge badge--primary">동기부여·리더십</span>
               </div>
+              <p class="tg-claim-note">위 합격·성적 실적은 2011~2026 본원 수강생 지도 사례의 자체 집계이며, 증빙 자료는 학원에 보관하고 있습니다. 성적 향상과 대학 합격은 학생 개인의 노력·학습 상황에 따른 결과로, 모든 학생에게 동일한 결과를 보장하지 않습니다.</p>
             </div>
           </div>
         </div>
@@ -311,7 +327,7 @@
             <div style="background:linear-gradient(135deg,var(--color-primary),var(--color-accent));border-radius:var(--radius-lg);padding:var(--space-8);color:#fff;text-align:center;">
               <div style="font-size:var(--text-2xl);font-weight:900;margin-bottom:var(--space-2);">의대 2명 · SKY · 카이스트 · 홍익대 미대</div>
               <div style="font-size:var(--text-lg);font-weight:600;margin-bottom:var(--space-3);">2011년부터 20명 이상 합격 배출</div>
-              <div style="font-size:var(--text-xs);font-weight:400;opacity:0.8;margin-bottom:var(--space-4);">* 2011~2026 본원 수강생 지도 사례 기준 · 합격/성적 향상 결과는 개인별로 다를 수 있습니다.</div>
+              <div style="font-size:.8rem;font-weight:500;margin:0 auto var(--space-4);max-width:440px;padding:8px 14px;border-radius:9px;background:rgba(15,38,64,.55);color:#fff;line-height:1.6;">2011~2026 본원 수강생 지도 사례 기준 · 합격/성적 향상 결과는 개인별로 다를 수 있습니다.</div>
               <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);justify-content:center;">
                 <span style="background:rgba(255,255,255,0.2);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-size:var(--text-xs);">의대</span>
                 <span style="background:rgba(255,255,255,0.2);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-size:var(--text-xs);">서울대</span>
@@ -333,7 +349,7 @@
             <div class="card hover-lift" style="border-left:4px solid var(--color-primary);">
               <div class="card__body">
                 <h4 class="card__title" style="color:var(--color-primary);">선배에서 후배로 이어지는 전통</h4>
-                <p class="card__desc">큰아이가 탑그래머에서 명문대 합격 후 둘째도 보내는 가정이 많습니다. 졸업생들이 조교로 돌아와 후배들을 케어하는 선순환 시스템입니다. 탑그래머에서 조교로 영어 감각을 유지하다 연세대를 비롯한 인서울 상위대에 편입한 제자도 많습니다.</p>
+                <p class="card__desc">큰아이에 이어 둘째도 함께 보내 주시는 가정이 이어지고 있습니다. 졸업생들이 조교로 돌아와 후배들을 케어하는 선순환 시스템입니다. 탑그래머에서 조교로 영어 감각을 유지하다 연세대를 비롯한 인서울 상위대에 편입한 제자들도 있습니다.</p>
               </div>
             </div>
           </div>
@@ -391,7 +407,7 @@
           <div class="grid grid--4" style="text-align:center;">
             <div>
               <div style="font-size:var(--text-3xl);font-weight:900;color:var(--color-accent);" data-count="20" data-suffix="+">20+</div>
-              <div style="font-size:var(--text-sm);color:var(--color-text-sub);margin-top:var(--space-1);">년 전통</div>
+              <div style="font-size:var(--text-sm);color:var(--color-text-sub);margin-top:var(--space-1);">원장 고3 지도 경력(년)</div>
             </div>
             <div>
               <div style="font-size:var(--text-3xl);font-weight:900;color:var(--color-accent);" data-count="6">6</div>
@@ -427,7 +443,7 @@
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </div>
               <h4 class="card__title" style="font-size:var(--text-base);">소수정예 수업</h4>
-              <p class="card__desc">한 반 평균 6~8명(최대 10명) 이내의 소규모 클래스로 학생 한 명 한 명에게 집중합니다.</p>
+              <p class="card__desc">한 반 평균 6명(일반반 최대 6~8명·상위반 최대 8~10명)의 소규모 클래스로 학생 한 명 한 명에게 집중합니다.</p>
               <div class="tg-classnote"><span class="tg-classnote__pill"><span class="tg-classnote__mark" aria-hidden="true">※</span><span><b>고3반</b>은 정원이 다를 수 있습니다</span></span></div>
               <span class="tg-card-more" aria-hidden="true">핵심 시스템 보기 →</span>
             </div>
@@ -543,6 +559,7 @@
             </div>
           </div>
         </div>
+        <p class="tg-claim-note tg-claim-note--dark" style="max-width:920px;margin:18px auto 0;">네이버 플레이스에 공개된 영수증 인증 리뷰 중 일부를 원문 그대로 인용한 것으로, 개인 식별 정보는 포함하지 않습니다. 개인의 경험이며 학습 결과를 보장하지 않습니다.</p>
       </div>
     </section>
 
