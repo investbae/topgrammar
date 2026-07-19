@@ -56,6 +56,26 @@
       background:linear-gradient(120deg,#FFC894,#F59E5E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
     .tg-hero__lead{font-size:clamp(1.02rem,2vw,1.32rem);line-height:1.7;color:rgba(255,255,255,.92);
       max-width:680px;margin-bottom:14px;text-shadow:0 1px 12px rgba(0,0,0,.35);}
+    .tg-hero__lead--sub{font-size:clamp(.95rem,1.7vw,1.1rem);line-height:1.65;margin-bottom:18px;
+      padding-left:14px;border-left:3px solid rgba(245,158,94,.9);color:rgba(255,255,255,.88);}
+    /* 대문 슬로건 */
+    .tg-hero__slogan{margin:0 0 20px;max-width:680px;font-size:clamp(1.04rem,2.05vw,1.4rem);font-weight:800;
+      line-height:1.55;letter-spacing:-.02em;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.35);}
+    .tg-hero__slogan em{font-style:normal;color:#FFC894;} /* WCAG: 그라데이션 폐기·밝은 단일톤 (R1 Gemini B급) */
+    /* 대문 특징 칩 */
+    .tg-hero__chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 22px;max-width:680px;}
+    .tg-hero__chip{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:999px;
+      background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.26);backdrop-filter:blur(6px);
+      font-size:.85rem;color:rgba(255,255,255,.92);line-height:1.35;}
+    .tg-hero__chip b{color:#FFC894;font-weight:800;}
+    /* 대기 안내 */
+    .tg-hero__notice{display:flex;gap:11px;align-items:flex-start;max-width:680px;margin-top:30px;
+      padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.2);border-left:3px solid #F59E5E;backdrop-filter:blur(6px);}
+    .tg-hero__notice-ic{flex:0 0 auto;font-size:.95rem;color:#FFC894;font-weight:900;line-height:1.6;}
+    .tg-hero__notice p{margin:0;font-size:.87rem;line-height:1.62;color:rgba(255,255,255,.9);}
+    .tg-hero__notice b{color:#fff;font-weight:800;}
+    @media(max-width:640px){.tg-hero__chip{font-size:.8rem;padding:6px 11px;}.tg-hero__notice{padding:13px 14px;}}
     .tg-hero__sign{font-size:.95rem;color:rgba(255,255,255,.78);margin-bottom:34px;}
     .tg-hero__cta{display:flex;gap:14px;flex-wrap:wrap;}
     .tg-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:16px 30px;border-radius:14px;
@@ -293,7 +313,13 @@
     .tg-mech li small{display:block;font-size:.9rem;line-height:1.6;color:var(--color-text-sub);}
     /* 증거 카드 */
     .tg-proof__cap{font-size:.92rem;font-weight:700;color:var(--color-accent-dark);margin-bottom:14px;}
-    .tg-proof__cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .tg-proof__cards{display:grid;grid-template-columns:1fr;gap:12px;}
+    .tg-pcard__who{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:9px;}
+    .tg-pcard__name{font-size:.9rem;font-weight:800;color:var(--color-text);letter-spacing:-.01em;}
+    .tg-pcard__to--sm{font-size:1.12rem !important;line-height:1.3;}
+    .tg-pcard__q{position:relative;padding-left:17px;}
+    .tg-pcard__q::before{content:"\201C";position:absolute;left:0;top:-2px;font-size:1.5rem;line-height:1;
+      font-weight:900;color:rgba(232,122,58,.42);font-style:normal;}
     .tg-pcard{background:#fff;border:1px solid var(--color-border);border-radius:16px;padding:18px 16px;box-shadow:var(--shadow-sm);
       transition:transform .28s,box-shadow .28s;display:flex;flex-direction:column;}
     .tg-pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
@@ -487,28 +513,44 @@
     <!-- ===== HERO ===== -->
     <section class="tg-hero">
       <div class="tg-hero__inner">
-        <span class="tg-hero__eyebrow"><span class="dot"></span>2026 신규 모집 중 · 화정 / 행신</span>
+        <span class="tg-hero__eyebrow"><span class="dot"></span>2026 신규 모집 · 대기 접수 중 · 화정 / 행신</span>
         <h1>지금 등급이, 끝이 아니니까.<br><em>약점부터 다시 잡는 영어, 탑그래머.</em></h1>
+        <p class="tg-hero__slogan">그래머<em>만</em> 잘하는 학원이 아니라,<br>그래머 <em>공식</em>이 있는 학원입니다.</p>
         <p class="tg-hero__lead">독자 개발 <strong style="color:#fff;">10단계 문법 암기공식</strong>으로 <strong style="color:#fff;">'왜 틀리는지'</strong>부터 잡습니다.
-          중1부터 고3 수능까지, 화정·행신 소수정예가 끝까지 함께합니다.</p>
-        <p class="tg-hero__sign">편입 3년 · 고3 20년+ 경력 Grace 그래쌤 원장 직강 &nbsp;|&nbsp; 2011년부터 의대·SKY 등 명문대 20명+ 합격</p>
+          중1부터 고3 수능까지, 화정·행신에서 <strong style="color:#fff;">1명을 200명처럼 생각하는 탑그래머</strong>가 끝까지 함께합니다.</p>
+        <p class="tg-hero__lead tg-hero__lead--sub"><strong style="color:#fff;">편입교수 출신 원장 포함, 인서울 상위대 10년 이상 베테랑 강사진</strong>이
+          각각 다른 방식으로 학생의 실력과 성향에 맞게 <strong style="color:#fff;">핵심만 콕콕</strong> 훈련시킵니다.</p>
+        <div class="tg-hero__chips">
+          <span class="tg-hero__chip">PT 수업 <b>50% 영어 진행</b></span>
+          <span class="tg-hero__chip">고3 수능 <b>유형별 스킬 · 배경지식 강의</b></span>
+          <span class="tg-hero__chip">고3 수능 <b>영어 1등급 3명+</b> 배출</span>
+        </div>
+        <p class="tg-hero__sign">Grace 그래쌤 원장 직강 · 고3 지도 20년+ &nbsp;|&nbsp; 2011~2026 누적 SKY 20명+(서울대 5명 포함) · 의학계열 2명 합격</p>
         <div class="tg-hero__cta">
           <a href="leveltest.html" class="tg-btn tg-btn--primary">내 약점 찾기 · 레벨테스트 →</a>
           <a href="payment.html" class="tg-btn tg-btn--ghost">학부모 상담 신청</a>
         </div>
         <p class="tg-hero__sign" style="margin-top:16px;margin-bottom:0;">레벨테스트 후 <strong style="color:#fff;">현재 약점 · 내신 대비 방향 · 반 배정 가능 여부</strong>를 안내해 드립니다.</p>
+        <aside class="tg-hero__notice">
+          <span class="tg-hero__notice-ic" aria-hidden="true">※</span>
+          <p><b>대기 안내 —</b> 탑그래머는 1명을 200명처럼, <b>고3 한 명을 수능 이틀 전까지</b> 끝까지 책임집니다.
+            그래서 자리가 있어도 대기를 부탁드릴 수 있습니다. 시험 기간에는 소수의 학교만 받을 수 있어,
+            <b>현재 재원생이 있는 학교 위주</b>로 모집합니다.</p>
+        </aside>
         <aside class="tg-hero__panel" aria-label="탑그래머 핵심 실적">
           <div class="tg-hero__panel-head">
             <span class="tg-hero__panel-eyebrow">WHY TOPGRAMMAR</span>
             <strong>숫자로 보는 탑그래머</strong>
           </div>
           <ul class="tg-hero__panel-list">
-            <li><a href="about.html#stats" aria-label="명문대 합격 실적 자세히 보기"><span class="ic" aria-hidden="true">🎓</span><div><b>의대 · SKY · 카이스트</b><small>2011년부터 명문대 합격 20명+</small></div></a></li>
-            <li><a href="about.html#stats" aria-label="성적 향상·합격 실적 보기"><span class="ic" aria-hidden="true">📈</span><div><b>4등급 → 1등급</b><small>내신·모의고사 실제 상승 사례 다수</small></div></a></li>
+            <li><a href="about.html#stats" aria-label="명문대 합격 실적 자세히 보기"><span class="ic" aria-hidden="true">🎓</span><div><b>SKY 20명+ <span style="font-weight:600;opacity:.85;">(서울대 5명 포함)</span></b><small>2011~2026 누적 · 의학계열 2명</small></div></a></li>
+            <li><a href="about.html#stats" aria-label="전교 1등 배출 학교 보기"><span class="ic" aria-hidden="true">🏆</span><div><b>지역 6개교 전교 1등 재원</b><small>무원 · 백양 · 행신 · 화정 · 능곡 · 서정고</small></div></a></li>
+            <li><a href="about.html#stats" aria-label="성적 향상·합격 실적 보기"><span class="ic" aria-hidden="true">📈</span><div><b>고3 수능 영어 1등급 3명+</b><small>유형별 스킬 · 배경지식 강의</small></div></a></li>
             <li><a href="about.html#director" aria-label="Grace 그래쌤 원장 소개 보기"><span class="ic" aria-hidden="true">🧑‍🏫</span><div><b>원장 직강 · 소수정예</b><small>고3 지도 20년+ · 조교 밀착 테스트</small></div></a></li>
           </ul>
           <a href="leveltest.html" class="tg-hero__panel-cta">내가 자꾸 틀리는 진짜 이유 찾기 →</a>
-          <span class="tg-hero__panel-foot">* 2011~2026 본원 수강생 지도 사례 기준 · 합격/성적 향상 결과는 개인별로 다를 수 있습니다.</span>
+          <span class="tg-hero__panel-foot">* 2011~2026 본원 수강생 지도 사례 기준(중복 합격 제외) · 합격/성적 향상 결과는 개인별로 다를 수 있습니다.<br>
+            * 학교명은 재원생의 재학 학교를 구분하기 위한 표기이며, 해당 학교의 추천·제휴를 의미하지 않습니다.</span>
         </aside>
       </div>
       <div class="tg-hero__scroll">SCROLL
@@ -534,7 +576,7 @@
       <div class="tg-diag">
         <a class="tg-diag__card" href="curriculum.html#core-systems">
           <div class="tg-diag__q">문법은 외웠는데 문제에선 안 떠올라</div>
-          <div class="tg-diag__a">→ 10단계 문법공식으로 · 시험장에서 꺼내 쓸 때까지 반복 훈련</div>
+          <div class="tg-diag__a">→ 10단계 문법 공식 백지테스트로 · 시험장에서 꺼내 쓸 때까지 반복 훈련</div>
         </a>
         <a class="tg-diag__card" href="curriculum.html#curriculum-roadmap">
           <div class="tg-diag__q">지문 해석이 너무 느려</div>
@@ -564,27 +606,32 @@
           <h3 class="tg-col-h">나와 똑같은 고민을 극복한 선배들의 실제 변화</h3>
           <div class="tg-proof__cards">
             <div class="tg-pcard">
-              <span class="tg-pcard__badge">고2 내신 · 행신</span>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">4등급</span><span class="tg-pcard__arr">→</span><span class="tg-pcard__to">1등급</span></div>
-              <p>"문장의 뼈대를 보는 구문분석과, 어려운 지문을 배경지식과 함께 쉽게 이해하는 통찰독해, 그리고 유형별 스킬까지 배운 뒤로 긴 지문이 두렵지 않아졌어요."</p>
+              <div class="tg-pcard__who">
+                <span class="tg-pcard__badge">고3 내신 · 서정고</span>
+                <span class="tg-pcard__name">윤*후</span>
+              </div>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">중1 입학</span><span class="tg-pcard__arr">→</span><span class="tg-pcard__to tg-pcard__to--sm">고등 3년 내내 All 1등급</span></div>
+              <p class="tg-pcard__q">중1부터 6년 내내 탑그래머에 다녔는데, 사실 중간에 슬럼프가 있었어요. 선생님이 수업 후 2시간 동안 저를 설득해 주시고 동기부여 해 주셔서 마음 잡고 끝까지 잘해낼 수 있었어요. 2026년 3학년 기말 1등급 받고 선생님을 뵈러 갔는데, 저보다 더 기뻐해 주셔서 감사했어요.</p>
             </div>
             <div class="tg-pcard">
-              <span class="tg-pcard__badge">수능 모의 · 행신</span>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">3등급</span><span class="tg-pcard__arr">→</span><span class="tg-pcard__to">1등급</span></div>
-              <p>"3월 모의 3등급에서 9월 모의 1등급까지 올랐습니다."</p>
+              <div class="tg-pcard__who">
+                <span class="tg-pcard__badge">수능 · 한민고</span>
+                <span class="tg-pcard__name">노*영</span>
+              </div>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">3등급</span><span class="tg-pcard__arr">→</span><span class="tg-pcard__to tg-pcard__to--sm">수능 1등급</span></div>
+              <p class="tg-pcard__q">방학밖에 시간이 없어 방학 때 쌤한테 모의고사 유형별 스킬을 배웠어요. 처음엔 올릴 수 있을까 반신반의했는데, 쌤의 통찰력 독해 방식 덕분에 점점 자신감이 생겼고 그 어려웠다는 2024학년도 불수능에서 1등급을 받을 수 있었어요. 1등급 받던 친구들이 2등급 받을 때 3등급이던 제가 1등급을 받아 기적이었어요. 할 수 없다고 생각할 때 할 수 있다고 용기를 불어넣어 주셔서 자신감을 가질 수 있었고, 좋은 결과로 이어진 것 같아요.</p>
             </div>
             <div class="tg-pcard">
-              <span class="tg-pcard__badge">중2 내신 · 행신</span>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">68점</span><span class="tg-pcard__arr">→</span><span class="tg-pcard__to">94점</span></div>
-              <p>"기초가 없어 포기할 뻔했는데 자신감이 생겼어요."</p>
-            </div>
-            <div class="tg-pcard">
-              <span class="tg-pcard__badge">고3 수능 · 화정</span>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">3등급</span><span class="tg-pcard__arr">→</span><span class="tg-pcard__to">1등급</span></div>
-              <p>"매주 모의고사+오답 루틴으로 실전 감각이 잡혔어요."</p>
+              <div class="tg-pcard__who">
+                <span class="tg-pcard__badge">중2 내신 · 지도중</span>
+                <span class="tg-pcard__name">이*균</span>
+              </div>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">76점</span><span class="tg-pcard__arr">→</span><span class="tg-pcard__to">100점</span></div>
+              <p class="tg-pcard__q">저는 영어 학원을 다닌 적도 없고 완전 이과 성향이라 영어를 제일 싫어하는 학생이에요. 과연 나 같은 학생이 영어가 단기간에 오를 수 있을까 했는데, 문법 공식 외우고 문제 푸니까 갑자기 정답률이 올라서 저도 깜짝 놀랐어요. 쌤이 하라는 대로 하고 기말고사를 쳤는데, 난이도가 어려워서 아이들이 다 떨어졌는데 저만 24점 올라 100점 받았어요. 정말 감격해서 100점 시험지를 한동안 제 방 잘 보이는 곳에 붙여놨어요. 우리 반 나만 영어 100점이라니… 믿기지 않았어요. 쌤들 정말 감사해요!</p>
             </div>
           </div>
-          <span class="tg-proof__foot">* 2011~2026 본원 수강생 실제 지도 사례 · 성적 향상 결과는 개인별 학습 상황에 따라 다를 수 있습니다.</span>
+          <span class="tg-proof__foot">* 본인 동의를 받아 게재한 실제 수강생 후기 중 일부 사례이며, 모든 학생이 동일한 결과를 얻는 것은 아닙니다.<br>
+            * 2011~2026 본원 지도 사례 기준 · 성적 향상 결과는 개인별 학습 상황에 따라 다를 수 있습니다. 학교명은 재학 학교 표기일 뿐 해당 학교와의 제휴를 의미하지 않습니다.</span>
         </div>
       </div>
       <div style="text-align:center;">
@@ -617,7 +664,7 @@
         <a class="tg-why__card tg-card-link" href="curriculum.html#teaching-method" aria-label="조교 밀착 테스트 시스템 — 수업 진행 방식 보기">
           <div class="tg-why__ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
           <h3>조교 밀착 테스트 시스템</h3>
-          <p>학생 4~5명당 조교 1명, 각 캠퍼스에 하루 3~4명의 조교가 상주합니다. 탑그래머 출신 조교진이 수업 전후 단어·숙어·문법공식 테스트로 배운 내용을 맞출 때까지 점검해 장기기억으로 전환합니다.</p>
+          <p>학생 4~5명당 조교 1명, 각 캠퍼스에 하루 3~4명의 조교가 상주합니다. 탑그래머 출신 조교진이 수업 후 그날 배운 단어·숙어·문법공식 쪽지테스트로 맞출 때까지 점검해 장기기억으로 전환합니다.</p>
           <span class="tg-card-more" aria-hidden="true">수업 방식 보기 →</span>
         </a>
         <a class="tg-why__card tg-card-link" href="curriculum.html#core-systems" aria-label="소수정예 · 고3 끝까지 책임 — 커리큘럼 핵심 시스템 보기">
@@ -649,7 +696,7 @@
         </a>
         <a class="tg-why__card tg-card-link" href="curriculum.html#teaching-method" aria-label="주 2~3회 모의고사 훈련 — 수업 진행 방식 보기">
           <h3>주 2~3회 모의고사 훈련</h3>
-          <p>중1부터 모의고사 유형별 풀이 스킬과 오답 루틴을 훈련합니다. 고등 내신 범위가 되는 3~5개년 모의고사를 미리 체계적으로 대비합니다.</p>
+          <p>중1부터 모의고사 유형별 풀이 스킬과 오답 루틴을 훈련합니다. 고등 내신 범위인 <strong>기출 모의고사 5~10개년을 5~10회독</strong>하며 반복해 풀어, 내신 범위를 미리 체계적으로 대비합니다.</p>
           <span class="tg-card-more" aria-hidden="true">수업 방식 보기 →</span>
         </a>
         <a class="tg-why__card tg-card-link" href="curriculum.html#materials" aria-label="다의어·다품사 암기법 — 교재 및 수업 자료 보기">
@@ -856,7 +903,7 @@
     <!-- ===== 미니 증거바 ===== -->
     <div class="tg-evbar">
       <span class="tg-evbar__label">실제 성적 변화 사례</span>
-      <span class="tg-evbar__items"><b>고2 4→1등급</b> · <b>수능모의 3→1등급</b> · <b>중2 68→94점</b> · <b>고3 3→1등급</b></span>
+      <span class="tg-evbar__items"><b>고3 3년 내내 1등급</b> · <b>수능 3→1등급</b> · <b>중2 76→100점</b></span>
       <span class="tg-evbar__foot">* 2011~2026 본원 수강생 실제 지도 사례 · 개별 결과는 학생별 학습 상황에 따라 다를 수 있습니다. &nbsp;<a href="about.html#stats" class="tg-evbar__link">합격·실적 자세히 보기 →</a></span>
     </div>
 
