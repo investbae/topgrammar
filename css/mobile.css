@@ -1,0 +1,87 @@
+/* ============================================================
+   TopGrammar mobile.css — 모바일 전용 레이어 (2026-07-20)
+   전 규칙 max-width 미디어 내부. 데스크톱(>=1024px) 무영향(GPT 회귀검수 확인).
+   로드 위치: 각 페이지 </head> 직전(인라인 <style>보다 뒤 = 캐스케이드 승리·!important 0).
+   설계: Fable mobile-first Architect · 구현: Opus · GPT 적대검수 R1 반영(M1 min-height화·M2 drop).
+   ============================================================ */
+
+/* ---------- M0 · P0: 모바일 내비 붕괴 수정 + 앱형 메뉴 ----------
+   원인: backdrop-filter(.site-header)가 fixed .site-nav의 containing block을 생성 →
+   bottom:0이 헤더(68px) 기준으로 붕괴(패널 48px). 명시적 height로 복구.
+   GPT R1: 변수 폴백·box-sizing·overscroll 보강. */
+@media (max-width: 768px) {
+  .site-nav {
+    box-sizing: border-box;
+    bottom: auto;
+    height: calc(100vh - var(--header-height, 68px));
+    height: calc(100dvh - var(--header-height, 68px));
+    padding-bottom: calc(var(--space-8) + env(safe-area-inset-bottom));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* 앱형 메뉴: 행 단위 풀-폭 터치(52px)·구분선·활성 인디케이터 */
+  .site-nav__link {
+    display: flex; align-items: center;
+    min-height: 52px;
+    padding: var(--space-2) var(--space-4);
+    font-size: 1.0625rem;
+    border-bottom: 1px solid var(--color-border-light);
+    border-radius: 0;
+  }
+  .site-nav__link--active {
+    background: var(--color-bg-alt);
+    box-shadow: inset 3px 0 0 var(--color-accent);
+  }
+  .site-nav__cta {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 52px; font-size: 1rem;
+  }
+}
+
+/* ---------- M1 · 터치 타깃 44px+ (실 레이아웃 공간으로 확보·GPT R1 반영)
+   네거티브마진/pseudo 확장 폐기 → min-height + inline-flex로 실제 44px 보장. ---------- */
+@media (max-width: 768px) {
+  .site-header__hamburger { width: 44px; height: 44px; }
+
+  .site-footer__link { display: flex; align-items: center; min-height: 44px; padding: var(--space-2) 0; }
+  .site-footer__bottom a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; }
+
+  p a[href^="tel:"], li a[href^="tel:"], td a[href^="tel:"] {
+    display: inline-flex; align-items: center; min-height: 44px;
+  }
+  a.tel { display: flex; align-items: center; min-height: 44px; }
+
+  .btn--sm { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .tg-row__cta { min-height: 44px; }
+  .tg-evbar__link { display: inline-flex; align-items: center; min-height: 44px; }
+
+  .legal-toc__list li { margin-bottom: 0; }
+  .legal-toc__list a { display: flex; align-items: center; min-height: 44px; padding: 2px var(--space-2); }
+  .back-to-top { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* ---------- M3 · index 섹션 리듬 압축 (세로 패딩만·가로 무변경으로 가장자리 밀착 방지) ---------- */
+@media (max-width: 640px) {
+  .tg-sec { padding-top: 56px; padding-bottom: 56px; }
+  .tg-works { padding-top: 44px; padding-bottom: 48px; }
+  .tg-row { margin-bottom: 44px; }
+  .tg-sub { font-size: 1rem; margin-bottom: 36px; }
+  .tg-h2 { margin-bottom: 10px; }
+  .tg-final__in { padding-top: 64px; padding-bottom: 64px; }
+  .tg-director { padding: 20px; }
+  .tg-gal { gap: 10px; }
+}
+
+/* ---------- M4 · 히어로 타이포 미세 조정 (초소형 폰) ---------- */
+@media (max-width: 420px) {
+  .tg-hero h1 { font-size: clamp(2rem, 8.7vw, 2.2rem); }
+}
+
+/* ---------- M5 · sticky CTA 터치 피드백 ---------- */
+@media (max-width: 1023px) {
+  .tg-sticky__btn--test:active { filter: brightness(0.92); }
+}
+
+/* M2(실적 상단화 CSS order)는 GPT R1 지적(main flex 부작용·시각/DOM 순서 불일치 a11y)으로 제외.
+   실적 노출은 M3 리듬 압축으로 자연 단축(대체). DOM 레벨 재배치는 별도 focused 작업. */
