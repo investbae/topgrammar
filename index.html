@@ -75,7 +75,11 @@
     .tg-hero__notice-ic{flex:0 0 auto;font-size:.95rem;color:#FFC894;font-weight:900;line-height:1.6;}
     .tg-hero__notice p{margin:0;font-size:.87rem;line-height:1.62;color:rgba(255,255,255,.9);}
     .tg-hero__notice b{color:#fff;font-weight:800;}
-    @media(max-width:640px){.tg-hero__chip{font-size:.8rem;padding:6px 11px;}.tg-hero__notice{padding:13px 14px;}}
+    @media(max-width:640px){.tg-hero__chip{font-size:.8rem;padding:6px 11px;}.tg-hero__notice{padding:13px 14px;}
+      /* 모바일 히어로 밀도 최적화 — CTA·실적을 위로 (2026-07-20·콘텐츠 무변경) */
+      .tg-hero{min-height:auto;align-items:flex-start;}
+      .tg-hero__inner{padding:calc(var(--header-height) + 18px) var(--space-4) 28px;}
+      .tg-hero h1{margin-bottom:13px;}.tg-hero__lead{margin-bottom:11px;}.tg-hero__lead--sub{margin-bottom:14px;}}
     .tg-hero__sign{font-size:.95rem;color:rgba(255,255,255,.78);margin-bottom:34px;}
     .tg-hero__cta{display:flex;gap:14px;flex-wrap:wrap;}
     .tg-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:16px 30px;border-radius:14px;
