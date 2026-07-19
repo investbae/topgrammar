@@ -419,6 +419,11 @@ strong { font-weight: var(--weight-semibold); }
 .theme-toggle:hover {
   box-shadow: var(--shadow-lg);
 }
+/* 모바일: sticky CTA 페이지에서 테마토글·스크롤탑을 하단 고정 바 위로 올림 (2026-07-20 클릭검수 B4·B5) */
+@media (max-width: 1023px) {
+  body:has(.tg-sticky) .theme-toggle,
+  body:has(.tg-sticky) .scroll-top { bottom: calc(58px + env(safe-area-inset-bottom) + 16px); }
+}
 
 @media (max-width: 768px) {
   .dark .site-nav {
