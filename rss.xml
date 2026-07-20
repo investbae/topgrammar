@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>탑그래머잉글리쉬학원</title>
+    <link>https://topgrammar.co.kr/</link>
+    <description>화정·행신 중·고등 영어 전문학원. 10단계 문법 암기공식·무한반복 시스템·소수정예 관리.</description>
+    <language>ko</language>
+    <lastBuildDate>Mon, 20 Jul 2026 09:00:00 +0900</lastBuildDate>
+    <item>
+      <title>여름방학 집중 특강 — 중·고등 정규반 및 단과반 모집</title>
+      <link>https://topgrammar.co.kr/payment.html</link>
+      <description>여름방학 집중 특강 중·고등 정규반 및 단과반 모집. 화정·행신 캠퍼스 전화 상담 및 레벨테스트 안내.</description>
+      <pubDate>Wed, 01 Jul 2026 09:00:00 +0900</pubDate>
+      <guid>https://topgrammar.co.kr/payment.html</guid>
+    </item>
+    <item>
+      <title>레벨테스트 안내 — 60~90분 정밀 진단</title>
+      <link>https://topgrammar.co.kr/leveltest.html</link>
+      <description>60~90분 레벨테스트로 영역별 강약점을 진단하고, 결과를 바탕으로 학습 방향을 안내해 드립니다.</description>
+      <pubDate>Fri, 05 Jun 2026 09:00:00 +0900</pubDate>
+      <guid>https://topgrammar.co.kr/leveltest.html</guid>
+    </item>
+    <item>
+      <title>화정·행신 캠퍼스 안내</title>
+      <link>https://topgrammar.co.kr/campus.html</link>
+      <description>행신캠퍼스(중앙로 559 그랑프리빌딩 2층)·화정캠퍼스(중앙로 628 예일프라자 3층) 위치·전화·오시는 길 안내.</description>
+      <pubDate>Fri, 05 Jun 2026 09:00:00 +0900</pubDate>
+      <guid>https://topgrammar.co.kr/campus.html</guid>
+    </item>
+  </channel>
+</rss>
