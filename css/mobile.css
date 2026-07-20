@@ -47,7 +47,7 @@
   .site-footer__link { display: flex; align-items: center; min-height: 44px; padding: var(--space-2) 0; }
   .site-footer__bottom a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; }
 
-  p a[href^="tel:"], li a[href^="tel:"], td a[href^="tel:"] {
+  p a[href^="tel:"], li a[href^="tel:"], td a[href^="tel:"], div > a[href^="tel:"] {
     display: inline-flex; align-items: center; min-height: 44px;
   }
   a.tel { display: flex; align-items: center; min-height: 44px; }
@@ -59,6 +59,8 @@
   .legal-toc__list li { margin-bottom: 0; }
   .legal-toc__list a { display: flex; align-items: center; min-height: 44px; padding: 2px var(--space-2); }
   .back-to-top { display: inline-flex; align-items: center; min-height: 44px; }
+  .theme-toggle { width: 44px; height: 44px; }
+  .skip-link { min-height: 44px; display: inline-flex; align-items: center; }
 }
 
 /* ---------- M3 · index 섹션 리듬 압축 (세로 패딩만·가로 무변경으로 가장자리 밀착 방지) ---------- */
@@ -71,6 +73,7 @@
   .tg-final__in { padding-top: 64px; padding-bottom: 64px; }
   .tg-director { padding: 20px; }
   .tg-gal { gap: 10px; }
+  .tg-proof__cards { gap: 16px; }
 }
 
 /* ---------- M4 · 히어로 타이포 미세 조정 (초소형 폰) ---------- */

@@ -570,3 +570,20 @@ body.is-loaded {
 .dark .section--wave::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 48h1200V24C1050 0 900 48 750 24S450 0 300 24 0 0 0 24z' fill='%231a1a2e'/%3E%3C/svg%3E");
 }
+
+
+/* ===== 다크모드 보정 (2026-07-20 모바일 전수검수 A1·B1) =====
+   index/curriculum 인라인 하드코딩 #fff 카드가 다크 변수 스왑 시 텍스트와 함께
+   바뀌지 않아 대비 1.2:1로 소실되던 문제 수정. 라이트 렌더 픽셀 변경 0. */
+html.dark .tg-why__card, html.dark .tg-diag__card, html.dark .tg-director,
+html.dark .tg-gcard, html.dark .tg-rev, html.dark .tg-pcard,
+html.dark .tg-havruta, html.dark #miracle-story,
+html.dark .tg-sch__campbox { background: var(--color-card-bg) !important; }
+html.dark .site-header__logo-title { color: var(--color-text); }
+@media (prefers-color-scheme: dark) {
+  html:not(.light) .tg-why__card, html:not(.light) .tg-diag__card, html:not(.light) .tg-director,
+  html:not(.light) .tg-gcard, html:not(.light) .tg-rev, html:not(.light) .tg-pcard,
+  html:not(.light) .tg-havruta, html:not(.light) #miracle-story,
+  html:not(.light) .tg-sch__campbox { background: var(--color-card-bg) !important; }
+  html:not(.light) .site-header__logo-title { color: var(--color-text); }
+}
