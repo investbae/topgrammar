@@ -74,6 +74,40 @@
 }
   </script>
   <link rel="stylesheet" href="css/mobile.css">
+<style>
+/* 개인정보 수집·이용 고지 컴포넌트 (self-contained·라이트/다크 대응) */
+.tg-pn{margin-top:1.2rem;text-align:left;border:1px solid rgba(27,58,92,.16);border-radius:12px;
+  background:rgba(246,248,252,.92);padding:1rem 1.1rem;font-size:.83rem;line-height:1.72;color:#2b3648}
+.tg-pn__h{font-weight:800;color:#1B3A5C;margin-bottom:.55rem;font-size:.92rem}
+.tg-pn__h span{font-weight:600;color:#5b6472;font-size:.75rem;margin-left:.35rem}
+.tg-pn__list{margin:0}
+.tg-pn__list>div{display:flex;gap:.7rem;padding:.34rem 0;border-top:1px solid rgba(27,58,92,.09)}
+.tg-pn__list>div:first-child{border-top:0}
+.tg-pn dt{flex:0 0 7.4em;font-weight:700;color:#1B3A5C}
+.tg-pn dd{margin:0;flex:1 1 auto}
+.tg-pn__child{margin-top:.9rem;padding:.8rem .9rem;border-radius:10px;
+  background:rgba(232,122,58,.09);border:1px solid rgba(232,122,58,.3)}
+.tg-pn__child>b{color:#8a3d10}
+.tg-pn__child ul{margin:.45rem 0 0;padding-left:1.3rem;list-style:disc outside}
+.tg-pn__child li::marker{color:#8a3d10}
+.tg-pn__child li{margin:.22rem 0}
+.tg-pn__law{display:block;margin-top:.55rem;font-size:.75rem;color:#5b6472}
+.tg-pn a{color:#1a3d8f;text-decoration:underline}
+@media (max-width:560px){.tg-pn__list>div{flex-direction:column;gap:.05rem}.tg-pn dt{flex:none}}
+html.dark .tg-pn{background:#1B2333;border-color:rgba(255,255,255,.2);color:#E3E8F0}
+html.dark .tg-pn__list>div{border-top-color:rgba(255,255,255,.12)}
+html.dark .tg-pn__h,html.dark .tg-pn dt{color:#9EC5FF}
+html.dark .tg-pn a{color:#9EC5FF}
+html.dark .tg-pn__law,html.dark .tg-pn__h span{color:#B9C2CF}
+html.dark .tg-pn__child{background:#3A2418;border-color:rgba(232,122,58,.55);color:#F3E7DC}
+html.dark .tg-pn__child>b{color:#FFC08A}
+html.dark .tg-pn__child li::marker{color:#FFC08A}
+</style>
+<style>
+.tg-guard{flex:0 0 100%;width:100%;box-sizing:border-box;margin:.7rem 0 0;font-size:.83rem;line-height:1.6;text-align:center;color:#8a3d10;
+  background:rgba(232,122,58,.1);border:1px solid rgba(232,122,58,.32);border-radius:8px;padding:.55rem .7rem}
+html.dark .tg-guard{color:#FFC08A;background:#3A2418;border-color:rgba(232,122,58,.55)}
+</style>
 </head>
 <body>
   <a href="#main" class="skip-link">본문 바로가기</a>
@@ -283,9 +317,33 @@
           <div style="display:flex;justify-content:center;margin-bottom:var(--space-3);">
             <a href="https://naver.me/5suF2KvL" target="_blank" rel="noopener" class="btn btn--accent btn--lg btn--rounded" aria-label="온라인 레벨테스트·상담 신청 네이버폼 새 창">📝 온라인 신청하기 (네이버폼)</a>
           </div>
+            <p class="tg-guard">📌 <b>보호자(부모님)가 작성</b>하는 신청서입니다. 만 14세 미만 학생은 직접 작성하지 마시고 보호자께 부탁해 주세요.</p>
+
           <div style="display:flex;justify-content:center;gap:var(--space-3);flex-wrap:wrap;">
             <a href="tel:031-938-8889" class="btn btn--primary btn--lg btn--rounded">행신 031-938-8889</a>
             <a href="tel:031-994-3090" class="btn btn--outline btn--lg btn--rounded">화정 031-994-3090</a>
+          </div>
+          <div class="tg-pn">
+            <div class="tg-pn__h">개인정보 수집·이용 안내<span>「개인정보 보호법」 제15조제2항</span></div>
+            <dl class="tg-pn__list">
+              <div><dt>수집·이용 목적</dt><dd>입학·수강·레벨테스트 상담 신청 접수 및 안내 연락</dd></div>
+              <div><dt>수집 항목 (필수)</dt><dd>희망 캠퍼스 · 신청자 성함 · 연락처(보호자 연락 가능한 번호) · 학생 학년</dd></div>
+              <div><dt>수집 항목 (선택)</dt><dd>상담 내용 &mdash; 적지 않으셔도 접수·연락에 아무런 제한이 없습니다. 필요한 최소한의 정보 외의 수집에는 동의하지 않으실 수 있습니다.</dd></div>
+              <div><dt>수집하지 않는 항목</dt><dd>학생 이름 · 생년월일 · 주소 · 학생 본인 연락처는 온라인으로 수집하지 않습니다.</dd></div>
+              <div><dt>보유·이용 기간</dt><dd>상담 종료일(등록 확정 · 미등록 확정 · 최종 연락 후 30일 경과 중 먼저 오는 날)부터 <b>6개월 이내 파기</b>합니다. 접수 원본 · 내려받은 사본 · 연락 메모를 모두 포함합니다.</dd></div>
+              <div><dt>동의 거부권</dt><dd>동의를 <b>거부하실 수 있습니다.</b> 거부하시면 온라인 신청 접수와 그에 따른 연락은 어렵지만, <b>전화 상담은 그대로</b> 이용하실 수 있습니다.</dd></div>
+              <div><dt>처리자 · 접수 경로</dt><dd>탑그래머잉글리쉬학원 · 온라인 신청은 국내(네이버폼)에서 접수됩니다. 웹사이트 정적 호스팅 · 접속기록 처리에 관한 사항은 <a href="privacy.html">개인정보처리방침</a>을 따릅니다.</dd></div>
+            </dl>
+            <div class="tg-pn__child">
+              <b>만 14세 미만 학생에게 드리는 안내</b>
+              <ul>
+                <li>이 신청서는 <b>보호자(부모님)</b>가 작성하는 것입니다.</li>
+                <li>학생이 만 14세보다 어리면 직접 쓰지 말고 부모님께 부탁해 주세요.</li>
+                <li>학생이 남길 수 있는 것은 <b>보호자 성함과 연락처까지</b>입니다. 다른 내용은 적지 마세요.</li>
+                <li>학원은 접수한 뒤 <b>보호자께 전화를 드려</b> 무엇을 왜 모으는지 알려드리고, <b>보호자가 동의하신 뒤에만</b> 상담을 진행합니다. 동의하지 않으시면 받은 내용을 바로 지웁니다.</li>
+              </ul>
+              <span class="tg-pn__law">「개인정보 보호법」 제22조의2 및 같은 법 시행령 제17조의2제1항제6호에 따른 법정대리인 동의·동의 확인 절차입니다.</span>
+            </div>
           </div>
         </div>
       </div>
