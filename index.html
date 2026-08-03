@@ -307,7 +307,7 @@
     @media(max-width:560px){.tg-assist{flex-direction:column;text-align:center;gap:13px;padding:18px 18px 20px;}}
     @media(max-width:480px){.tg-diag{grid-template-columns:1fr;}}
     /* 메커니즘 + 증거 2열 */
-    .tg-works__grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.5fr);gap:44px;align-items:start;}
+    .tg-works__grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:start;}
     .tg-col-h{font-size:1.18rem;letter-spacing:-.02em;margin-bottom:20px;padding-bottom:12px;
       border-bottom:2px solid var(--color-border);color:var(--color-primary);}
     .tg-mech ol{list-style:none;margin:0;padding:0;counter-reset:mech;}
@@ -320,7 +320,13 @@
     .tg-mech li small{display:block;font-size:.9rem;line-height:1.6;color:var(--color-text-sub);}
     /* 증거 카드 */
     .tg-proof__cap{font-size:.92rem;font-weight:700;color:var(--color-accent-dark);margin-bottom:14px;}
-    .tg-proof__cards{display:grid;grid-template-columns:1fr;gap:12px;}
+    /* 카드 8장은 다단(multi-column)으로 흘린다. `columns:330px 2` = 폭이 330px×2 확보될 때만 2단,
+       좁으면 자동 1단. 그리드 2열과 달리 행 높이가 최장 카드에 끌려가지 않고 두 단 높이를 브라우저가 맞춘다.
+       미디어쿼리가 아니라 컨테이너 폭에 반응하므로 임의의 뷰포트 경계가 아니라 "두 단이 실제로 들어가는 폭"
+       에서만 전환된다(실측 전환점 730px: 1단 681px → 2단 330px). 전환 자체의 불연속은 남는다. */
+    .tg-proof__cards{display:block;columns:330px 2;column-gap:22px;}
+    .tg-pcard{-webkit-column-break-inside:avoid;page-break-inside:avoid;break-inside:avoid;margin-bottom:14px;}
+    .tg-pcard:last-child{margin-bottom:0;}
     .tg-pcard__who{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:9px;}
     .tg-pcard__name{font-size:.9rem;font-weight:800;color:var(--color-text);letter-spacing:-.01em;}
     .tg-pcard__q{position:relative;padding-left:17px;}
@@ -352,31 +358,26 @@
     .tg-pcard .tg-pcard__q{font-size:.84rem;line-height:1.55;color:var(--color-text-sub);font-style:normal;margin-top:auto;padding-top:8px;}
     .tg-proof__lead{font-size:.82rem;line-height:1.6;color:#5B6B7C;margin:-8px 0 14px;}
     .tg-proof__foot{display:block;margin-top:14px;padding-top:12px;border-top:1px dashed var(--color-border);font-size:.8rem;color:#5B6B7C;line-height:1.6;}
-    /* v10 (2026-08-03): 증거 카드 8건 → 1열 유지 시 좌(오르는 4단계) 538px vs 우 2,100px 로 3배 이상 격차.
-       ① 우측 카드를 2열로 재배치해 세로 길이를 절반으로 줄이고
-       ② 좌측 '오르는 4단계'를 그리드 영역 안에서 sticky 로 두어 카드를 읽는 동안 메커니즘이 함께 보이게 한다.
-       sticky 그리드 아이템의 컨테이닝 블록 = 그리드 영역(행 전체 높이)이므로 이동 여백이 확보된다.
-       ※ 이 블록은 반드시 위 기본 규칙들보다 뒤에 온다(미디어쿼리는 특이도 가산 없음). */
-    /* 경계는 max-width:880px(아래 2열 해제 규칙)과 연속이어야 한다.
-       881px 로 두면 880.5px 같은 소수점 뷰포트(브라우저 확대)에서 어느 쪽도 적용되지 않는다. */
-    @media (width > 880px){
-      /* 카드 8장 2단 배치. 그리드 2열은 행 높이가 최장 카드에 맞춰 늘어나 짧은 카드 아래 빈 칸이 남는다.
-         다단(multi-column)은 카드마다 자기 높이를 쓰고 두 단 높이를 브라우저가 스스로 맞춘다.
-         `columns:330px 2` = 폭이 330px×2 확보될 때만 2단, 좁으면 자동 1단(결과배지 줄바꿈 방지).
-         읽기 순서 = DOM 순서(1단 위→아래 → 2단 위→아래)로 일치한다. */
-      .tg-proof__cards{display:block;columns:330px 2;column-gap:22px;}
-      .tg-pcard{-webkit-column-break-inside:avoid;page-break-inside:avoid;break-inside:avoid;margin-bottom:14px;}
-      .tg-pcard:last-child{margin-bottom:0;}
+    /* v10 (2026-08-03): 증거 카드 6 → 8장. 종전 1열 배치는 좌(오르는 4단계) 473px vs 우 1,626px 로
+       3배 이상 벌어졌다. 위 다단 규칙으로 우측 길이를 줄이고, 아래에서 열 분할·sticky 를 정의한다.
+       ※ 아래 블록들은 반드시 위 기본 규칙보다 뒤에 온다(미디어쿼리는 특이도를 가산하지 않는다).
+       1180px 이상에서만 '오르는 4단계'(좌) + '선배들의 실제 변화'(우) 2열로 나눈다.
+       그 아래에서는 세로 스택 — 좌우로 나누면 우측 카드가 좁아져 증거열만 길어진다. */
+    @media(min-width:1180px){
+      /* 열 비율 실측 비교(1280px): .86/1.5 → 카드 341·섹션 1,817 / .78/1.6 → 카드 361·섹션 1,711 /
+         .72/1.68 → 카드 377·섹션 1,625(단 좌측 332px로 4단계 설명이 3~4줄로 늘어남).
+         1179→1180 전환 시 섹션 증가폭도 +192px(+11.4%) → +85px(+5.0%)로 줄어 .78/1.6 을 택한다. */
+      .tg-works__grid{grid-template-columns:minmax(0,.78fr) minmax(0,1.6fr);gap:44px;}
     }
     /* 좌측 '오르는 4단계'는 그리드 영역 안에서 sticky — 카드를 읽는 동안 메커니즘이 함께 보인다.
        sticky 그리드 아이템의 컨테이닝 블록 = 그리드 영역(행 전체 높이)이라 이동 여백이 확보된다.
        패널 높이 473px + 헤더 오프셋 92px 이므로 세로 여유가 없는 창에서는 켜지 않는다. */
-    @media (width > 880px) and (min-height:640px){
+    @media (min-width:1180px) and (min-height:640px){
       .tg-mech{position:sticky;top:calc(var(--header-height,68px) + 24px);}
     }
     /* ===== 다크모드 보정 (2026-08-03 · 메인 실측) =====
        라이트 픽셀 변경 0. index 전용 인라인 규칙이라 타 페이지 영향 없음.
-       col-h: 1.47:1 → 8.64:1 / lead·foot: 3.12:1 → 8.73:1 (실측값은 배포 전 재측정) */
+       실측(1280px·Chromium): col-h 1.47:1 → 7.9:1 / lead·foot 3.12:1 → 8.73:1 (둘 다 종전 AA 미달) */
     html.dark .tg-col-h{color:#8FB4DC;}
     html.dark .tg-proof__lead,html.dark .tg-proof__foot{color:#AEBBC8;}
     html.dark .tg-pcard__q::before{color:rgba(255,184,119,.58);}
@@ -400,8 +401,7 @@
       transition:border-color .2s,box-shadow .2s;}
     a.tg-works__badge:hover{border-color:var(--color-accent);box-shadow:var(--shadow-sm);}
     a.tg-works__badge:focus-visible{outline:3px solid var(--color-accent);outline-offset:3px;}
-    @media(max-width:880px){.tg-works__grid{grid-template-columns:1fr;gap:40px;}.tg-proof{margin-top:0;}}
-    @media(max-width:420px){.tg-proof__cards{grid-template-columns:1fr;}}
+    @media(max-width:880px){.tg-proof{margin-top:0;}}
 
     /* 미니 증거바 (최종 CTA 위) */
     .tg-evbar{background:var(--color-primary-dark);color:#fff;text-align:center;padding:24px var(--space-6);}
@@ -777,46 +777,50 @@
         </div>
         <div class="tg-proof">
           <h3 class="tg-col-h">나와 똑같은 고민을 극복한 선배들의 실제 변화</h3>
-          <p class="tg-proof__lead">본인 동의를 받아 게재한 개인 사례이며, 가독성을 위해 일부 표현을 정리했습니다. 동일한 결과를 보장하지 않습니다.</p>
+          <p class="tg-proof__lead">본인 동의를 받아 게재한 개인 사례이며, 동일한 결과를 보장하지 않습니다.</p>
+          <!-- 카드 순서: 신규 2건(이*우·문*명)을 1·2번에 두어 읽기 순서를 의미 순으로 고정하고,
+               나머지 6장은 다단 두 단의 높이가 최대한 같아지도록 배열했다(실측 높이 341px 폭 기준
+               윤*후287·강*원285·이*균331·조*경329·노*영306·장*정370 → 단 편차 185px = 이 제약 하 최소값).
+               6장의 배지·이전점수·결과·본문은 라이브(0b46403)와 동일하며 순서만 바뀌었다. -->
           <div class="tg-proof__cards">
             <article class="tg-pcard">
               <div class="tg-pcard__who">
                 <span class="tg-pcard__badge">고3 모의 · 화정고</span>
                 <span class="tg-pcard__name">이*우</span>
               </div>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">모의 3~4등급</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only">에서</span><span class="tg-pcard__to tg-pcard__to--sm">최근 고3 모의고사 1등급</span></div>
-              <blockquote class="tg-pcard__q">탑그래머를 3년 이상 다녔는데, 처음 학원에 왔을 때는 영어가 계속 떨어지는 중이었어요. 화정고가 워낙 내신이 어렵다 보니 쌤이 모의고사부터 1등급을 목표로 끌어올려 보자, 대신 내신은 너의 성실도에 달려 있다고 하셨어요. 모의고사도 3~4등급이 나오던 터라 과연 1등급이 가능할까 반신반의했는데, 요새는 그 어렵다는 고3 모의고사에서 1등급도 나오고 있어요. 매일 단어·숙어를 확실히 외울 때까지 4~5회독, 다의어·다품사까지 조교쌤이 학원에서 1:1로 테스트해 주시고, 부족했던 배경지식도 매일 수업시간에 채워 주셨어요. 핵심만 보는 통찰독해, 그리고 문장 구조의 뼈대를 먼저 보고 수식 부분은 나중에 핵심만 파악하는 대화체 독해를 연습하다 보니 고난도 문제가 완전히 이해되지 않을 때조차 답을 찾아내는 능력이 생겨서 신기해요. 고3들은 영어학원을 잘 안 다녀서 화정고 3학년은 저 혼자 남았지만, 중등 신규 수강생 5명이 대기 중인 상황에서도 저 한 명을 위해 내신 대비를 1:1로 해 주셔서 고3 모의고사뿐 아니라 고3 내신시험도 다 90점을 넘었어요. 정말 감사합니다. 수능도 1등급 받아 올게요.</blockquote>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">모의 3~4등급</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only"> 에서 </span><span class="tg-pcard__to tg-pcard__to--sm">최근 고3 모의고사 1등급</span></div>
+              <blockquote class="tg-pcard__q">탑그래머를 3년 이상 다녔는데, 처음 학원에 왔을 때는 영어가 계속 떨어지는 중이었어요. 화정고 내신이 워낙 어렵다 보니 쌤이 모의고사부터 1등급을 목표로 끌어올려 보자, 대신 내신은 너의 성실도에 달려 있다고 하셨어요. 모의고사도 3~4등급이 나오던 터라 과연 1등급이 가능할까 반신반의했는데, 요새는 그 어렵다는 고3 모의고사에서 1등급도 나오고 있어요. 매일 단어·숙어를 확실히 외울 때까지 4~5회독, 다의어·다품사까지 조교쌤이 학원에서 1:1로 테스트해 주시고, 부족했던 배경지식도 매일 수업시간에 채워 주셨어요. 핵심만 보는 통찰독해, 그리고 문장 구조의 뼈대를 먼저 보고 수식 부분은 나중에 핵심만 파악하는 대화체 독해를 연습하다 보니 고난도 문제가 완전히 이해되지 않을 때조차 답을 찾아내는 능력이 생겨서 신기해요. 고3은 영어학원을 잘 안 다니는데도, 중등 신규 수강생 5명이 대기 중인 상황에서 저를 위해 내신 대비를 1:1로 해 주셔서 고3 모의고사뿐 아니라 고3 내신시험도 다 90점을 넘었어요. 정말 감사합니다. 수능도 1등급 받아 올게요.</blockquote>
             </article>
             <article class="tg-pcard">
               <div class="tg-pcard__who">
                 <span class="tg-pcard__badge">고3 내신 · 백양고</span>
                 <span class="tg-pcard__name">문*명</span>
               </div>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">중등 입학</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only">에서</span><span class="tg-pcard__to tg-pcard__to--sm">고3 마지막 기말 100점</span></div>
-              <blockquote class="tg-pcard__q">중학교 때부터 탑그래머에 다녔는데, 고등학교에 와서 고1부터 백양고 내신 10번의 시험 중 4~5번은 100점을 맞은 것 같아요. 사실 제가 주관식이 약한데, 쌤이 백양고는 객관식이니까 중학교 때부터 고3 모의고사를 엄청 풀게 하셨고, 기본 단어장부터 그 아래 플러스 단어까지 4~5회독 반복하도록 하셨어요. 고난도 객관식은 어휘의 품사별 뜻과 배경지식, 고3 모의고사 이해력이 되면 1등급도 가능하다고 하셔서 그대로 했는데, 3학년 마지막 기말고사에서 전교에서 저 혼자 100점으로 잘 마무리할 수 있었어요. 쌤 감사합니다.</blockquote>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">중등 입학</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only"> 에서 </span><span class="tg-pcard__to tg-pcard__to--sm">고3 마지막 기말 100점</span></div>
+              <blockquote class="tg-pcard__q">중학교 때부터 탑그래머에 다녔는데, 고등학교에 와서 고1부터 백양고 내신 10번의 시험 중 4~5번은 100점을 맞은 것 같아요. 사실 제가 주관식이 약한데, 쌤이 백양고는 객관식이니까 중학교 때부터 고3 모의고사를 엄청 풀게 하셨고, 기본 단어장부터 그 아래 플러스 단어까지 4~5회독 반복하도록 하셨어요. 고난도 객관식은 어휘의 품사별 뜻과 배경지식, 고3 모의고사 이해력이 되면 1등급도 가능하다고 하셔서 그대로 했는데, 3학년 마지막 기말고사도 100점으로 잘 마무리할 수 있었어요. 쌤 감사합니다.</blockquote>
             </article>
             <article class="tg-pcard">
               <div class="tg-pcard__who">
                 <span class="tg-pcard__badge">고3 내신 · 서정고</span>
                 <span class="tg-pcard__name">윤*후</span>
               </div>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">중1 입학</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only">에서</span><span class="tg-pcard__to tg-pcard__to--sm">고등 3년 내내 All 1등급</span></div>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">중1 입학</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only"> 에서 </span><span class="tg-pcard__to tg-pcard__to--sm">고등 3년 내내 All 1등급</span></div>
               <blockquote class="tg-pcard__q">중1부터 6년 내내 탑그래머에 다녔는데, 사실 중간에 슬럼프가 있었어요. 선생님이 수업 후 2시간 동안 저를 설득해 주시고 동기부여 해 주셔서 마음 잡고 끝까지 잘해낼 수 있었어요. 2026년 3학년 기말 1등급 받고 선생님을 뵈러 갔는데, 저보다 더 기뻐해 주셔서 감사했어요.</blockquote>
             </article>
             <article class="tg-pcard">
               <div class="tg-pcard__who">
-                <span class="tg-pcard__badge">수능 · 한민고</span>
-                <span class="tg-pcard__name">노*영</span>
+                <span class="tg-pcard__badge">수능 · 행신고</span>
+                <span class="tg-pcard__name">강*원</span>
               </div>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">3등급</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only">에서</span><span class="tg-pcard__to tg-pcard__to--sm">불수능 1등급</span></div>
-              <blockquote class="tg-pcard__q">방학밖에 시간이 없어 방학 때 쌤한테 모의고사 유형별 스킬을 배웠어요. 처음엔 올릴 수 있을까 반신반의했는데, 쌤의 통찰력 독해 방식 덕분에 점점 자신감이 생겼고 그 어려웠다는 2024학년도 불수능에서 1등급을 받을 수 있었어요. 1등급 받던 친구들이 2등급 받을 때 3등급이던 제가 1등급을 받아 기적이었어요. 할 수 없다고 생각할 때 할 수 있다고 용기를 불어넣어 주셔서 자신감을 가질 수 있었고, 좋은 결과로 이어진 것 같아요.</blockquote>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">중등 기본기</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only"> 에서 </span><span class="tg-pcard__to tg-pcard__to--sm">서울대 재료공학과</span></div>
+              <blockquote class="tg-pcard__q">중학교 때 10단계 문법 공식으로 영어 기본을 철저하게 다져 놓은 것이 고등학교 때 많이 도움이 되어 영어는 항상 1등급을 받았어요. 수능 후에도 쌤이 연락 주셔서 탑그래머 학원에서 조교 아르바이트를 꾸준히 하면서 사회생활과 자립 능력도 배우고 군대에 가게 되었네요. 공부뿐 아니라 성공하는 사람의 태도와 가치관, 긍정적인 마음가짐을 많이 배우게 되어 정말 감사드립니다.</blockquote>
             </article>
             <article class="tg-pcard">
               <div class="tg-pcard__who">
                 <span class="tg-pcard__badge">중2 내신 · 지도중</span>
                 <span class="tg-pcard__name">이*균</span>
               </div>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">76점</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only">에서</span><span class="tg-pcard__to">100점</span></div>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">76점</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only"> 에서 </span><span class="tg-pcard__to">100점</span></div>
               <blockquote class="tg-pcard__q">저는 영어 학원을 다닌 적도 없고 완전 이과 성향이라 영어를 제일 싫어하는 학생이에요. 과연 나 같은 학생이 영어가 단기간에 오를 수 있을까 했는데, 문법 공식 외우고 문제 푸니까 갑자기 정답률이 올라서 저도 깜짝 놀랐어요. 쌤이 하라는 대로 하고 기말고사를 쳤는데, 난이도가 어려워서 아이들이 다 떨어졌는데 저만 24점 올라 100점 받았어요. 정말 감격해서 100점 시험지를 한동안 제 방 잘 보이는 곳에 붙여놨어요. 우리 반 나만 영어 100점이라니… 믿기지 않았어요. 쌤들 정말 감사해요!</blockquote>
             </article>
             <article class="tg-pcard">
@@ -824,27 +828,27 @@
                 <span class="tg-pcard__badge">수능 · 서정고</span>
                 <span class="tg-pcard__name">조*경</span>
               </div>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">고2 시작</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only">에서</span><span class="tg-pcard__to tg-pcard__to--sm">카이스트 총장 장학생</span></div>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">고2 시작</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only"> 에서 </span><span class="tg-pcard__to tg-pcard__to--sm">카이스트 총장 장학생</span></div>
               <blockquote class="tg-pcard__q">쌤을 만난 건 고2였어요. 제가 고3까지 영어 1등급이 안정적으로 나오도록 도와주셨고, 고3 때 정말 많이 힘들었는데 항상 무한 격려와 힘을 주셨어요. 그 암흑 같은 힘든 기간 동안 쌤의 무한 긍정 에너지 덕분에 2026학년도 카이스트에 총장 장학생으로 당당히 붙을 수 있었어요. 연말에 친구들과 쌤 집에서 손수 만드신 음식으로 연말 파티도 해 주시고, 쌤 정말 감사합니다.</blockquote>
             </article>
             <article class="tg-pcard">
               <div class="tg-pcard__who">
-                <span class="tg-pcard__badge">수능 · 행신고</span>
-                <span class="tg-pcard__name">강*원</span>
+                <span class="tg-pcard__badge">수능 · 한민고</span>
+                <span class="tg-pcard__name">노*영</span>
               </div>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">중등 기본기</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only">에서</span><span class="tg-pcard__to tg-pcard__to--sm">서울대 재료공학과</span></div>
-              <blockquote class="tg-pcard__q">중학교 때 10단계 문법 공식으로 영어 기본을 철저하게 다져 놓은 것이 고등학교 때 많이 도움이 되어 영어는 항상 1등급을 받았어요. 수능 후에도 쌤이 연락 주셔서 탑그래머 학원에서 조교 아르바이트를 꾸준히 하면서 사회생활과 자립 능력도 배우고 군대에 가게 되었네요. 공부뿐 아니라 성공하는 사람의 태도와 가치관, 긍정적인 마음가짐을 많이 배우게 되어 정말 감사드립니다.</blockquote>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">3등급</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only"> 에서 </span><span class="tg-pcard__to tg-pcard__to--sm">불수능 1등급</span></div>
+              <blockquote class="tg-pcard__q">방학밖에 시간이 없어 방학 때 쌤한테 모의고사 유형별 스킬을 배웠어요. 처음엔 올릴 수 있을까 반신반의했는데, 쌤의 통찰력 독해 방식 덕분에 점점 자신감이 생겼고 그 어려웠다는 2024학년도 불수능에서 1등급을 받을 수 있었어요. 1등급 받던 친구들이 2등급 받을 때 3등급이던 제가 1등급을 받아 기적이었어요. 할 수 없다고 생각할 때 할 수 있다고 용기를 불어넣어 주셔서 자신감을 가질 수 있었고, 좋은 결과로 이어진 것 같아요.</blockquote>
             </article>
             <article class="tg-pcard">
               <div class="tg-pcard__who">
                 <span class="tg-pcard__badge">수능 · 능곡고</span>
                 <span class="tg-pcard__name">장*정</span>
               </div>
-              <div class="tg-pcard__move"><span class="tg-pcard__from">중등 시작</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only">에서</span><span class="tg-pcard__to tg-pcard__to--sm">대구가톨릭대 의대 합격</span></div>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">중등 시작</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only"> 에서 </span><span class="tg-pcard__to tg-pcard__to--sm">대구가톨릭대 의대 합격</span></div>
               <blockquote class="tg-pcard__q">중학교 때부터 쌤이랑 수업해서 문법 10단계 공식을 반복하다 보니 문법책에 나오지 않는 심화 문법까지 체화되어 고등 내신에서 계속 1등급을 받았어요. 의대가 목표였지만 능곡고에서 의대 간 학생을 못 봐서 모두 반신반의할 때, 쌤은 대치동에서 중동고 전교 1등도 가르쳐 봤지만 충분히 너 정도면 의대 가능하다고 확신을 주셔서 가능했어요. 확실히 쌤이 대학 편입 강의 경력도 있으시고 휘문·중동·상산고 경력도 있으셔서 시야가 넓으신 것 같아요. 자신감을 갖게 해 주셔서 정말 감사드립니다.</blockquote>
             </article>
           </div>
-          <span class="tg-proof__foot">* 본인 동의를 받아 게재한 실제 수강생 후기 중 일부 사례이며, 모든 학생이 동일한 결과를 얻는 것은 아닙니다.<br>
+          <span class="tg-proof__foot">* 본인 동의를 받아 게재한 실제 수강생 후기 중 일부 사례이며, 모든 학생이 동일한 결과를 얻는 것은 아닙니다. 학생 보호를 위해 이름은 일부만 표기했고, 가독성을 위해 일부 표현을 정리했으며, 확인이 어려운 비교 표현은 덜어냈습니다. 이*우·문*명 후기는 2026년 8월 접수분이며, 후기에 적힌 등급·점수·대기 인원은 접수 시점 기준입니다.<br>
             * 2011~2026 본원 지도 사례 기준 · 성적 향상 결과는 개인별 학습 상황에 따라 다를 수 있습니다. 학교명은 재학 학교 표기일 뿐 해당 학교와의 제휴를 의미하지 않습니다.<br>
             * 대학 진학·장학생 선발·성적 등은 학생 개인에게 귀속되는 결과이며, 본 후기는 동일한 결과를 보장하지 않습니다. 본원은 영어 과목 지도를 담당했습니다.</span>
         </div>
