@@ -73,7 +73,10 @@
   .tg-final__in { padding-top: 64px; padding-bottom: 64px; }
   .tg-director { padding: 20px; }
   .tg-gal { gap: 10px; }
-  .tg-proof__cards { gap: 16px; }
+  /* 2026-08-04 제거: `.tg-proof__cards{gap:16px}`.
+     선언 자체는 적용되어 column-gap 이 16px 로 계산되지만, 1→2단 전환점이 730px 이라
+     이 블록(≤640px)은 항상 1단이다 = 간격을 그릴 두 번째 열이 없다. 세로 간격은
+     `.tg-pcard{margin-bottom:14px}` 가 담당한다. 죽은 규칙이 아니라 휴면 규칙이었다. */
 }
 
 /* ---------- M4 · 히어로 타이포 미세 조정 (초소형 폰) ---------- */
