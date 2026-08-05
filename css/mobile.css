@@ -89,3 +89,38 @@
 
 /* M2(실적 상단화 CSS order)는 GPT R1 지적(main flex 부작용·시각/DOM 순서 불일치 a11y)으로 제외.
    실적 노출은 M3 리듬 압축으로 자연 단축(대체). DOM 레벨 재배치는 별도 focused 작업. */
+
+/* ---------- M6 · 후기 섹션 스마트폰 가독성 (2026-08-05 · GPT·Gemini 토론 R1 수렴)
+   두 검수자 모두 A급으로 지적: 본문 13.44px 는 40~50대 학부모에게 작고,
+   9장을 1열로 3,850px 나열하면 2~3장 뒤부터는 비교가 아니라 반복 스크롤이 된다.
+   가로 스와이프(캐러셀)는 기각 — 장문 카드와 가로 제스처가 맞지 않고,
+   실측 결과 오프캔버스 나브와 겹쳐 페이지 가로 오버플로 1,991~8,870px 을 만든다.
+   채택 = 글자 확대 + 3장 우선 노출 + 더보기. 실측(390px):
+     현행 후기 3,850px·문서 25,193px → 적용 후 2,243px·23,587px (본문 13.44→16px) ---------- */
+@media (max-width: 729px) {
+  .tg-pcard .tg-pcard__q { font-size: 1rem; line-height: 1.62; }
+  .tg-proof__lead, .tg-proof__foot { font-size: .875rem; line-height: 1.65; }
+  .tg-pcard__rel { font-size: .82rem; line-height: 1.55; }
+  .tg-pcard__badge { font-size: .78rem; }
+  .tg-pcard__name { font-size: .95rem; }
+  .tg-pcard__from { font-size: 1rem; }
+  .tg-pcard { padding: 16px 15px; }
+
+  /* 접기는 JS가 .tg-proof__cards 에 is-foldable 을 붙였을 때만 동작한다.
+     JS가 없거나 실패하면 9장이 그대로 보인다(점진적 향상·GPT R1 지적). */
+  .tg-proof__cards.is-foldable:not(.is-open) .tg-pcard:nth-child(n+4) { display: none; }
+  .tg-proof__more { display: none; }
+  .tg-proof__cards.is-foldable + .tg-proof__more {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; min-height: 48px; margin-top: 4px; padding: 12px 18px;
+    background: #fff; color: var(--color-primary);
+    border: 1.5px solid var(--color-primary); border-radius: 12px;
+    font-size: .95rem; font-weight: 800; cursor: pointer;
+  }
+  .tg-proof__more::after { content: "▾"; font-size: .85em; }
+  .tg-proof__cards.is-open + .tg-proof__more::after { content: "▴"; }
+  html.dark .tg-proof__cards.is-foldable + .tg-proof__more,
+  html:not(.light) .tg-proof__cards.is-foldable + .tg-proof__more {
+    background: #1E1E3A; color: #8FB4DC; border-color: #3A5C82;
+  }
+}

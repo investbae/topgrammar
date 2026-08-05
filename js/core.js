@@ -508,3 +508,59 @@
     });
   })();
 })();
+
+/* 후기 접기/더보기 (2026-08-05)
+   스마트폰에서만 동작한다. HTML 에는 9장이 모두 있고, JS 가 실행될 때만 접는다
+   — 스크립트가 막히면 후기가 사라지는 대신 전부 보이는 쪽으로 실패한다. */
+(function () {
+  var cards = document.getElementById('tg-proof-cards');
+  var btn = document.querySelector('.tg-proof__more');
+  if (!cards || !btn) return;
+
+  var mq = window.matchMedia('(max-width: 729px)');
+  var HIDDEN_FROM = 3;
+  var total = cards.querySelectorAll('.tg-pcard').length;
+  var rest = Math.max(0, total - HIDDEN_FROM);
+  var labelMore = '후기 ' + rest + '개 더 보기';
+  var labelLess = '후기 접기';
+
+  function apply() {
+    if (mq.matches) {
+      cards.classList.add('is-foldable');
+      if (!cards.classList.contains('is-open')) btn.textContent = labelMore;
+    } else {
+      cards.classList.remove('is-foldable', 'is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  btn.addEventListener('click', function () {
+    var open = cards.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = open ? labelLess : labelMore;
+    if (open) {
+      /* 새로 나온 카드는 DOM 상 버튼보다 앞이다. 초점을 옮겨주지 않으면
+         버튼에서 다음으로 이동했을 때 새 후기가 아니라 하단 고지문을 만난다. */
+      var first = cards.querySelectorAll('.tg-pcard')[HIDDEN_FROM];
+      if (first) {
+        first.setAttribute('tabindex', '-1');
+        first.focus({ preventScroll: true });
+        first.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      }
+    }
+    if (!open) {
+      /* 접을 때는 시각 스크롤만 되돌리면 스크린리더 초점이 사라진 카드 자리에 남는다.
+         목록 앞으로 초점을 명시적으로 옮겨 맥락을 잃지 않게 한다. */
+      cards.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      var head = document.querySelector('.tg-proof .tg-col-h');
+      if (head) {
+        head.setAttribute('tabindex', '-1');
+        head.focus({ preventScroll: true });
+      }
+    }
+  });
+
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply);
+  else if (mq.addListener) mq.addListener(apply);
+})();
