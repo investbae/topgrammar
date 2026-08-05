@@ -358,6 +358,10 @@
     .tg-pcard__to::before{content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;
       background:linear-gradient(135deg,#FFD3A6,#E87A3A);box-shadow:0 0 0 3px rgba(232,122,58,.26);}
     .tg-pcard .tg-pcard__q{font-size:.84rem;line-height:1.55;color:var(--color-text-sub);font-style:normal;margin-top:auto;padding-top:8px;}
+    /* 경제적 이해관계 고지(공정위 「추천·보증 등에 관한 표시·광고 심사지침」).
+       하단 각주로 몰면 "찾기 쉬운 위치" 요건을 못 맞추므로 해당 후기 카드 안, 본문 바로 앞에 둔다. */
+    .tg-pcard__rel{display:block;font-size:.73rem;line-height:1.5;font-weight:700;color:#5B4A2E;
+      background:#FDF6E9;border:1px solid #E8D9BC;border-radius:8px;padding:6px 10px;margin-bottom:8px;}
     .tg-proof__lead{font-size:.82rem;line-height:1.6;color:#5B6B7C;margin:-8px 0 14px;}
     .tg-proof__foot{display:block;margin-top:14px;padding-top:12px;border-top:1px dashed var(--color-border);font-size:.8rem;color:#5B6B7C;line-height:1.6;}
     /* v10 (2026-08-03): 증거 카드 6 → 8장. 종전 1열 배치는 좌(오르는 4단계) 473px vs 우 1,626px 로
@@ -382,10 +386,12 @@
        실측(1280px·Chromium): col-h 1.47:1 → 7.9:1 / lead·foot 3.12:1 → 8.73:1 (둘 다 종전 AA 미달) */
     html.dark .tg-col-h{color:#8FB4DC;}
     html.dark .tg-proof__lead,html.dark .tg-proof__foot,html.dark .tg-more-cap{color:#AEBBC8;}
+    html.dark .tg-pcard__rel{background:#3A3320;border-color:#5C5238;color:#F0DFBF;}
     html.dark .tg-pcard__q::before{color:rgba(255,184,119,.58);}
     @media(prefers-color-scheme:dark){
       html:not(.light) .tg-col-h{color:#8FB4DC;}
       html:not(.light) .tg-proof__lead,html:not(.light) .tg-proof__foot,html:not(.light) .tg-more-cap{color:#AEBBC8;}
+      html:not(.light) .tg-pcard__rel{background:#3A3320;border-color:#5C5238;color:#F0DFBF;}
       html:not(.light) .tg-pcard__q::before{color:rgba(255,184,119,.58);}
     }
     /* 인쇄: 다단·sticky 는 페이지 조각화를 만든다 → 단일 단·정적 배치로 되돌린다. */
@@ -783,10 +789,9 @@
         <div class="tg-proof">
           <h3 class="tg-col-h">나와 똑같은 고민을 극복한 선배들의 실제 변화</h3>
           <p class="tg-proof__lead">본인 동의를 받아 게재한 개인 사례이며, 동일한 결과를 보장하지 않습니다.</p>
-          <!-- 카드 순서: 신규 2건(이*우·문*명)을 1·2번에 두어 읽기 순서를 의미 순으로 고정하고,
-               나머지 6장은 다단 두 단의 높이가 최대한 같아지도록 배열했다(실측 높이 341px 폭 기준
-               윤*후287·강*원285·이*균331·조*경329·노*영306·장*정370 → 단 편차 185px = 이 제약 하 최소값).
-               6장의 배지·이전점수·결과·본문은 라이브(0b46403)와 동일하며 순서만 바뀌었다. -->
+          <!-- 카드 순서: 신규 후기 3건(이*우·문*명·조*원)을 앞에 두어 모바일 1단에서도 먼저 읽히게 한다.
+               나머지 6장은 순서 변경 없음. 9장 기준 실측(1280px) 단 편차 5px — 8장일 때의 187px 이
+               9번째 카드가 들어오며 해소되었다(다단은 DOM 순서로만 균형이 잡히고 CSS order 는 무효). -->
           <div class="tg-proof__cards">
             <article class="tg-pcard">
               <div class="tg-pcard__who">
@@ -806,6 +811,15 @@
             </article>
             <article class="tg-pcard">
               <div class="tg-pcard__who">
+                <span class="tg-pcard__badge">수능 · 무원고</span>
+                <span class="tg-pcard__name">조*원</span>
+              </div>
+              <div class="tg-pcard__move"><span class="tg-pcard__from">내신 1~2등급</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only"> 에서 </span><span class="tg-pcard__to tg-pcard__to--sm">수능 영어 97점 · 한국외대 합격</span></div>
+              <span class="tg-pcard__rel">※ 이 후기를 쓴 학생은 졸업 후 본원에서 <b>유급 조교(아르바이트)</b>로 근무한 이력이 있습니다.</span>
+              <blockquote class="tg-pcard__q">어려서부터 영어를 좋아해서 영어 소설도 읽었기에 고등 영어도 어렵지 않을 줄 알았어요. 그런데 막상 고등 내신은 문법과 서술형이 쉽지 않아서 안정적인 1등급을 받기가 어렵더라고요. 탑그래머에 다니면서 부족했던 문법과 서술형을 보완했고, 불안정하던 내신 1~2등급에서 고3 내내 안정적으로 1등급을 받을 수 있었어요. 2025학년도 수능에서 영어 97점을 받고 한국외대에 합격했습니다. 쌤이 항상 자신감을 주시고 격려해 주셔서 감사해요! 조교 아르바이트를 하면서도 좋은 조언을 많이 해 주셔서 영어뿐 아니라 자립심과 성공 마인드도 많이 배웠습니다.</blockquote>
+            </article>
+            <article class="tg-pcard">
+              <div class="tg-pcard__who">
                 <span class="tg-pcard__badge">고3 내신 · 서정고</span>
                 <span class="tg-pcard__name">윤*후</span>
               </div>
@@ -818,6 +832,7 @@
                 <span class="tg-pcard__name">강*원</span>
               </div>
               <div class="tg-pcard__move"><span class="tg-pcard__from">중등 기본기</span><span class="tg-pcard__arr" aria-hidden="true">→</span><span class="sr-only"> 에서 </span><span class="tg-pcard__to tg-pcard__to--sm">서울대 재료공학과</span></div>
+              <span class="tg-pcard__rel">※ 이 후기를 쓴 학생은 졸업 후 본원에서 <b>유급 조교(아르바이트)</b>로 근무한 이력이 있습니다.</span>
               <blockquote class="tg-pcard__q">중학교 때 10단계 문법 공식으로 영어 기본을 철저하게 다져 놓은 것이 고등학교 때 많이 도움이 되어 영어는 항상 1등급을 받았어요. 수능 후에도 쌤이 연락 주셔서 탑그래머 학원에서 조교 아르바이트를 꾸준히 하면서 사회생활과 자립 능력도 배우고 군대에 가게 되었네요. 공부뿐 아니라 성공하는 사람의 태도와 가치관, 긍정적인 마음가짐을 많이 배우게 되어 정말 감사드립니다.</blockquote>
             </article>
             <article class="tg-pcard">
@@ -853,7 +868,7 @@
               <blockquote class="tg-pcard__q">중학교 때부터 쌤이랑 수업해서 문법 10단계 공식을 반복하다 보니 문법책에 나오지 않는 심화 문법까지 체화되어 고등 내신에서 계속 1등급을 받았어요. 의대가 목표였지만 능곡고에서 의대 간 학생을 못 봐서 모두 반신반의할 때, 쌤은 대치동에서 중동고 전교 1등도 가르쳐 봤지만 충분히 너 정도면 의대 가능하다고 확신을 주셔서 가능했어요. 확실히 쌤이 대학 편입 강의 경력도 있으시고 휘문·중동·상산고 경력도 있으셔서 시야가 넓으신 것 같아요. 자신감을 갖게 해 주셔서 정말 감사드립니다.</blockquote>
             </article>
           </div>
-          <span class="tg-proof__foot">* 본인 동의를 받아 게재한 실제 수강생 후기 중 일부 사례이며, 모든 학생이 동일한 결과를 얻는 것은 아닙니다. 학생 보호를 위해 이름은 일부만 표기했고, 가독성을 위해 일부 표현을 정리했으며, 확인이 어려운 비교 표현은 덜어냈습니다. 이*우·문*명 후기는 2026년 8월 접수분이며, 후기에 적힌 등급·점수·대기 인원은 접수 시점 기준입니다.<br>
+          <span class="tg-proof__foot">* 본인 동의를 받아 게재한 실제 수강생 후기 중 일부 사례이며, 모든 학생이 동일한 결과를 얻는 것은 아닙니다. 학생 보호를 위해 이름은 일부만 표기했고, 가독성을 위해 일부 표현을 정리했으며, 확인이 어려운 비교 표현과 수치는 덜어냈습니다. 이*우·문*명·조*원 후기는 2026년 8월 접수분이며, 후기에 적힌 등급·점수·대기 인원은 접수 시점 기준입니다.<br>
             * 2011~2026 본원 지도 사례 기준 · 성적 향상 결과는 개인별 학습 상황에 따라 다를 수 있습니다. 학교명은 재학 학교 표기일 뿐 해당 학교와의 제휴를 의미하지 않습니다.<br>
             * 대학 진학·장학생 선발·성적 등은 학생 개인에게 귀속되는 결과이며, 본 후기는 동일한 결과를 보장하지 않습니다. 본원은 영어 과목 지도를 담당했습니다.</span>
         </div>
