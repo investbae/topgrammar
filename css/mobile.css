@@ -119,9 +119,18 @@
   }
   .tg-proof__more::after { content: "▾"; font-size: .85em; }
   .tg-proof__cards.is-open + .tg-proof__more::after { content: "▴"; }
-  html.dark .tg-proof__cards.is-foldable + .tg-proof__more,
-  html:not(.light) .tg-proof__cards.is-foldable + .tg-proof__more {
+  html.dark .tg-proof__cards.is-foldable + .tg-proof__more {
     background: #1E1E3A; color: #8FB4DC; border-color: #3A5C82;
+  }
+}
+/* `html:not(.light)` 는 반드시 prefers-color-scheme 안에 둔다. 밖에 두면
+   index 가 `<html class="light">` 를 놓는 지금은 불발이지만, 그 한 줄이 빠지는
+   순간 라이트 모드 전원에게 다크 버튼이 나간다(잠복 결함). */
+@media (prefers-color-scheme: dark) {
+  @media (max-width: 729px) {
+    html:not(.light) .tg-proof__cards.is-foldable + .tg-proof__more {
+      background: #1E1E3A; color: #8FB4DC; border-color: #3A5C82;
+    }
   }
 }
 

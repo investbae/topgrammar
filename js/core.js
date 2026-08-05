@@ -545,13 +545,20 @@
       if (first) {
         first.setAttribute('tabindex', '-1');
         first.focus({ preventScroll: true });
-        first.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        first.scrollIntoView({
+          block: 'start',
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        });
       }
     }
     if (!open) {
-      /* 접을 때는 시각 스크롤만 되돌리면 스크린리더 초점이 사라진 카드 자리에 남는다.
-         목록 앞으로 초점을 명시적으로 옮겨 맥락을 잃지 않게 한다. */
-      cards.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      /* 접을 때 초점은 버튼에 있고 버튼은 화면에 남으므로 초점 이동이 필수는 아니다.
+         다만 목록 상단으로 되돌아가면 버튼이 3장 아래로 밀리므로, 제목으로 옮겨
+         "어디로 돌아왔는지"를 다시 알려 준다. */
+      cards.scrollIntoView({
+        block: 'start',
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      });
       var head = document.querySelector('.tg-proof .tg-col-h');
       if (head) {
         head.setAttribute('tabindex', '-1');
