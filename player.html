@@ -2,7 +2,7 @@
 <html lang="ko"><head>
 <meta charset="UTF-8"><meta name="robots" content="noindex, nofollow"><title>준비 중 — 탑그래머잉글리쉬학원</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="css/core.css?v=16">
+<link rel="stylesheet" href="css/core.css?v=17">
 <link rel="stylesheet" href="css/components.css?v=9">
 <style>
 body{{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;font-family:'Pretendard',sans-serif;text-align:center;padding:2rem;margin:0}}
@@ -12,14 +12,47 @@ body{{display:flex;flex-direction:column;align-items:center;justify-content:cent
 .btns{{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}}
 .btn{{display:inline-block;padding:.8rem 1.4rem;background:#1a3d8f;color:#fff;border-radius:8px;text-decoration:none;font-weight:600}}
 .btn.ghost{{background:#fff;color:#1a3d8f;border:1.5px solid #1a3d8f}}
-</style></head><body>
+
+    /* ===== 아이콘 시스템 (2026-08-06) =====
+       이모지 77개를 인라인 SVG 로 교체했다. 이모지는 OS 마다 다른 글리프로 렌더되어
+       색·크기·baseline 을 통제할 수 없고, 다색이라 브랜드 팔레트를 깨뜨린다.
+       SVG 는 currentColor 를 상속하므로 라이트/다크가 자동으로 따라온다. */
+    .ico{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;flex:0 0 auto;
+      color:inherit;stroke:currentColor;}
+    /* 맥락별 광학 크기 — 1em 상속만으로는 푸터 15px·히어로 21px 로 작게 잡힌다(실측). */
+    .tgf-ic .ico{width:20px;height:20px;}
+    .ic .ico,.tg-assist__ic .ico{width:24px;height:24px;}
+    .tg-rev__stars .ico,.tg-rev__av .ico{width:18px;height:18px;}
+    /* 별점은 비텍스트 그래픽이라 3:1 필요(WCAG 1.4.11). #E8A33A 는 흰 카드 2.16:1 미달. */
+    .ico--star{color:#D97706;}
+    html.dark .ico--star{color:#FFC06B;}
+    @media(prefers-color-scheme:dark){html:not(.light) .ico--star{color:#FFC06B;}}
+  </style></head><svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" focusable="false"><defs>
+<symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z"/></symbol>
+<symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+<symbol id="ic-form" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 3.5H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-4.5-4.5Z"/><path d="M15 3.5V8h5"/><path d="M8.5 13h7M8.5 16.5h4.5"/></symbol>
+<symbol id="ic-news" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.5h13v13H5a1.5 1.5 0 0 1-1.5-1.5v-11Z"/><path d="M16.5 9h2.5a1.5 1.5 0 0 1 1.5 1.5V17a1.5 1.5 0 0 1-3 0V5.5"/><path d="M6.5 9h7M6.5 12.5h7M6.5 15.5h4"/></symbol>
+<symbol id="ic-cafe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 8h11v5.5a4.5 4.5 0 0 1-9 0V8Z"/><path d="M15.5 9.5h1.8a2.6 2.6 0 0 1 0 5.2h-1.8"/><path d="M4 20h13"/></symbol>
+<symbol id="ic-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 8.5 12 13l9.5-4.5L12 4Z"/><path d="M6.5 10.8V15c0 1.8 2.5 3.2 5.5 3.2s5.5-1.4 5.5-3.2v-4.2"/><path d="M21 8.5V14"/></symbol>
+<symbol id="ic-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4h9v5.5a4.5 4.5 0 0 1-9 0V4Z"/><path d="M7.5 5.5H5A2 2 0 0 0 5 9.5h1"/><path d="M16.5 5.5H19a2 2 0 0 1 0 4h-1"/><path d="M12 14v3.5M8.5 20.5h7"/></symbol>
+<symbol id="ic-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V4.5M4 19.5h16"/><path d="M7.5 15.5l3.5-4 3 2.5 4.5-6"/><path d="M18.5 8v3.5h-3.5"/></symbol>
+<symbol id="ic-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.4"/><path d="M12 4V2M12 22v-2M4 12H2M22 12h-2"/></symbol>
+<symbol id="ic-teacher" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3.2"/><path d="M5.5 20.5a6.5 6.5 0 0 1 13 0"/><path d="M3 12.5h3M18 12.5h3"/></symbol>
+<symbol id="ic-people" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 19.5a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15 15.5a4.6 4.6 0 0 1 5.5 4"/></symbol>
+<symbol id="ic-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-4.5"/><circle cx="12" cy="17" r="1.4"/></symbol>
+<symbol id="ic-puzzle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4h4v2.2a1.8 1.8 0 1 0 3.6 0V4H20v4h-2.2a1.8 1.8 0 1 0 0 3.6H20V16h-4v-2.2a1.8 1.8 0 1 0-3.6 0V16H8v-4H5.8a1.8 1.8 0 1 0 0-3.6H8V4h2Z"/></symbol>
+<symbol id="ic-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><path d="M12 7.8v.4"/></symbol>
+<symbol id="ic-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2 2 0 0 1 6 3.5h13v14H6a2 2 0 0 0-2 2v-14Z"/><path d="M4 19.5a2 2 0 0 1 2-2h13v3H6a2 2 0 0 1-2-1Z"/></symbol>
+<symbol id="ic-star" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 3.6l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.8l5.9-.9L12 3.6Z"/></symbol>
+</defs></svg>
+<body>
 <div class="box">
 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#1a3d8f" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
 <div class="title">곧 만나요</div>
 <p class="sub">이 페이지는 <strong>2단계 오픈</strong>에서 공개됩니다.<br>상담·레벨테스트는 아래에서 바로 가능합니다.</p>
 <div class="btns">
 <a class="btn" href="leveltest.html">레벨테스트 신청</a>
-<a class="btn ghost" href="tel:031-938-8889">전화 상담 ☎ 031-938-8889</a>
+<a class="btn ghost" href="tel:031-938-8889">전화 상담 <svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-phone"/></svg> 031-938-8889</a>
 <a class="btn ghost" href="index.html">메인으로</a>
 </div>
 </div></body></html>

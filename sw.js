@@ -1,5 +1,5 @@
 /* Service Worker - TopGrammar PWA */
-var CACHE_NAME = 'tg-v39';
+var CACHE_NAME = 'tg-v40';
 
 var STATIC_ASSETS = [
   '/',
