@@ -178,3 +178,64 @@
   .tg-evbar__label,
   .site-header__logo-sub { font-size: 12px; }
 }
+
+/* ---------- M8 · 히어로 시각 순서 재배열 (2026-08-06 · 페이블 설계)
+   ★실측: CTA 는 없는 게 아니라 y=850 에 있어 폴드(844)보다 6px 잘려 있었다.
+   문제는 존재가 아니라 위치다. 콘텐츠는 하나도 지우지 않고 순서만 바꿔
+   CTA 를 첫 화면 안으로 끌어올린다(예상 y≈605).
+   인터랙티브 요소의 탭 순서는 DOM·시각이 동일하게 유지된다. ---------- */
+@media (max-width: 729px) {
+  .tg-hero__inner { display: flex; flex-direction: column; align-items: stretch; }
+  .tg-hero__eyebrow { order: 0; align-self: flex-start; }
+  .tg-hero h1 { order: 1; }
+  .tg-hero__slogan { order: 2; }
+  .tg-hero__lead { order: 3; }
+  .tg-hero__inner > .tg-hero__sign { order: 4; margin-bottom: 18px; }
+  .tg-hero__cta { order: 5; }
+  .tg-hero__cta ~ .tg-hero__sign { order: 6; margin-top: 14px; }
+  .tg-hero__lead--sub { order: 7; }
+  .tg-hero__chips { order: 8; margin-top: 6px; }
+  .tg-hero__panel { order: 9; }
+  .tg-claim-note { order: 10; }
+  .tg-hero__notice { order: 11; }
+}
+
+/* ---------- M9 · 법무 고지 플랫화 (내용·글자 크기·위치 불변, 시각 무게만 하향)
+   ★실측: 두 번째 화면의 법무·안내 텍스트가 110+141+190 = 441px, 화면의 52%였다.
+   반면 최강 전환 자산인 실적 5건은 64px 가로 스크롤에 1.5개만 노출 —
+   각주가 증거보다 3배 컸다. 위계가 정확히 거꾸로였다.
+   박스는 "여기를 봐라"라는 신호다. 면책에 박스를 3개 주면 학부모의 두 번째 화면이
+   경고문 게시판이 된다. 박스만 걷어내면 내용은 그대로인데 위계만 실적 아래로 내려간다.
+   ※ 문구·글자 크기(14px)·주장과의 근접 위치는 건드리지 않는다(표시광고법 §5①·심사지침).
+      접기(<details>)는 "쉽게 인식" 요건과 충돌하므로 쓰지 않는다. ---------- */
+@media (max-width: 729px) {
+  .tg-hero .tg-claim-note {
+    background: transparent; border: 0; box-shadow: none;
+    padding: 0 0 0 24px; margin-top: 10px;
+    color: rgba(255,255,255,.85);
+  }
+  .tg-hero .tg-claim-note::before { left: 0; top: 3px; }
+  .tg-hero__panel-foot { border-top: 0; padding-top: 0; margin-top: 10px; }
+}
+
+/* ---------- M11 · 실적 패널: 가로 스크롤 스트립 → 세로 증거 리스트
+   5건 중 1.5건만 보이던 것을 전부 노출한다. 스크롤해야 보이는 증거는 없는 증거다. ---------- */
+@media (max-width: 729px) {
+  .tg-hero__panel {
+    margin-top: 10px; padding: 16px 16px 12px; border-radius: 16px;
+    background: rgba(15,38,64,.5); border: 1px solid rgba(255,255,255,.16);
+  }
+  .tg-hero__panel-head { display: block; margin-bottom: 6px; }
+  .tg-hero__panel-list { flex-direction: column; gap: 0; overflow: visible; }
+  .tg-hero__panel-list li {
+    flex: initial; display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 2px; border-radius: 0; background: transparent; border: 0;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+  }
+  .tg-hero__panel-list li:last-child { border-bottom: 0; }
+  .tg-hero__panel-list b { white-space: normal; font-size: .95rem; color: #fff; }
+  .tg-hero__panel-list small {
+    display: block; color: rgba(255,255,255,.82); font-size: 13px; margin-top: 2px; line-height: 1.5;
+  }
+  .tg-hero__panel-list .ic { color: #FFB877; }
+}
