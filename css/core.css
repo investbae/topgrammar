@@ -47,7 +47,10 @@ table { border-collapse: collapse; border-spacing: 0; }
   --color-warning: #F59E0B;
   --color-info: #3B82F6;
 
-  --font-primary: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* ★2026-08-06: CDN 이 선언하는 이름은 'Pretendard Variable' 인데 여기서는 'Pretendard' 를
+     찾고 있어 웹폰트가 한 번도 로드되지 않았다(실측: 폰트 요청 0건·전 페이지 시스템 폰트 렌더).
+     Variable 을 1순위로 두고, 로컬에 정적 Pretendard 가 설치된 사용자를 위해 2순위로 남긴다. */
+  --font-primary: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-en: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   --text-xs: 0.75rem;
