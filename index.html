@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" as="image" href="images/campus/hwajeong/KakaoTalk_20260307_104454101_05.jpg" fetchpriority="high">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/core.css?v=11">
+  <link rel="stylesheet" href="css/core.css?v=12">
   <link rel="stylesheet" href="css/components.css?v=9">
   <link rel="stylesheet" href="css/premium.css?v=1">
   <link rel="manifest" href="manifest.json">
@@ -49,7 +49,7 @@
     .tg-hero__inner{position:relative;z-index:2;max-width:var(--container-max);margin:0 auto;
       padding:calc(var(--header-height) + 48px) var(--space-6) 64px;width:100%;}
     .tg-hero__eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
-      background:rgba(232,122,58,.95);color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.02em;
+      background:#B85A20;color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.02em;
       box-shadow:0 8px 24px rgba(232,122,58,.35);margin-bottom:22px;}
     .tg-hero__eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#fff;animation:tgpulse 1.6s infinite;}
     @keyframes tgpulse{0%,100%{opacity:1}50%{opacity:.35}}
@@ -290,7 +290,7 @@
     .tg-diag__q{font-weight:700;font-size:1rem;line-height:1.5;color:var(--color-primary);}
     .tg-diag__q::before{content:"\201C";color:rgba(232,122,58,.55);font-weight:900;}
     .tg-diag__q::after{content:"\201D";color:rgba(232,122,58,.55);font-weight:900;}
-    .tg-diag__a{font-size:.88rem;line-height:1.55;color:var(--color-accent-dark);font-weight:700;
+    .tg-diag__a{font-size:.88rem;line-height:1.55;color:#B85A20;font-weight:700;
       border-top:1px dashed var(--color-border);padding-top:10px;min-height:3.4em;}
     @media(max-width:880px){.tg-diag{grid-template-columns:1fr 1fr;}.tg-diag__a{min-height:0;}}
     /* 조교 밀착 1:1 시스템 하이라이트 (2026-07-12) */
@@ -301,7 +301,7 @@
     .tg-assist__ic{flex:0 0 auto;width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;
       font-size:1.7rem;background:linear-gradient(135deg,#F59E5E,#E87A3A);box-shadow:0 8px 20px rgba(232,122,58,.34);}
     .tg-assist__badge{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.01em;
-      color:#fff;background:var(--color-accent);border-radius:999px;padding:4px 13px;margin:0 10px 8px 0;}
+      color:#fff;background:#B85A20;border-radius:999px;padding:4px 13px;margin:0 10px 8px 0;}
     .tg-assist__t{font-size:1.02rem;line-height:1.62;color:var(--color-text);font-weight:600;margin:0;}
     .tg-assist__t strong{color:var(--color-accent-dark);font-weight:800;}
     @media(max-width:560px){.tg-assist{flex-direction:column;text-align:center;gap:13px;padding:18px 18px 20px;}}
@@ -357,13 +357,13 @@
     .tg-pcard__to--sm{font-size:1.16rem !important;line-height:1.32;}
     .tg-pcard__to::before{content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;
       background:linear-gradient(135deg,#FFD3A6,#E87A3A);box-shadow:0 0 0 3px rgba(232,122,58,.26);}
-    .tg-pcard .tg-pcard__q{font-size:.84rem;line-height:1.55;color:var(--color-text-sub);font-style:normal;margin-top:auto;padding-top:8px;}
+    .tg-pcard .tg-pcard__q{font-size:.9375rem;line-height:1.62;color:var(--color-text-sub);font-style:normal;margin-top:auto;padding-top:8px;}
     /* 경제적 이해관계 고지(공정위 「추천·보증 등에 관한 표시·광고 심사지침」).
        하단 각주로 몰면 "찾기 쉬운 위치" 요건을 못 맞추므로 해당 후기 카드 안, 본문 바로 앞에 둔다. */
     .tg-pcard__rel{display:block;font-size:.73rem;line-height:1.5;font-weight:700;color:#5B4A2E;
       background:#FDF6E9;border:1px solid #E8D9BC;border-radius:8px;padding:6px 10px;margin-bottom:8px;}
     .tg-proof__lead{font-size:.82rem;line-height:1.6;color:#5B6B7C;margin:-8px 0 14px;}
-    .tg-proof__foot{display:block;margin-top:14px;padding-top:12px;border-top:1px dashed var(--color-border);font-size:.8rem;color:#5B6B7C;line-height:1.6;}
+    .tg-proof__foot{display:block;margin-top:14px;padding-top:12px;border-top:1px dashed var(--color-border);font-size:.85rem;color:#5B6B7C;line-height:1.6;}
     /* '더 보기' 버튼은 스마트폰 전용이다. 기본은 숨기고 css/mobile.css 가 켠다
        (mobile.css 는 전 규칙이 @media 안이라 데스크톱 기본값을 여기서 정한다). */
     .tg-proof__more{display:none;}
@@ -376,7 +376,7 @@
       /* 열 비율 실측 비교(1280px): .86/1.5 → 카드 341·섹션 1,817 / .78/1.6 → 카드 361·섹션 1,711 /
          .72/1.68 → 카드 377·섹션 1,625(단 좌측 332px로 4단계 설명이 3~4줄로 늘어남).
          1179→1180 전환 시 섹션 증가폭도 +192px(+11.4%) → +85px(+5.0%)로 줄어 .78/1.6 을 택한다. */
-      .tg-works__grid{grid-template-columns:minmax(0,.78fr) minmax(0,1.6fr);gap:44px;}
+      .tg-works__grid{grid-template-columns:minmax(0,.62fr) minmax(0,1.78fr);gap:44px;}
     }
     /* 좌측 '오르는 4단계'는 그리드 영역 안에서 sticky — 카드를 읽는 동안 메커니즘이 함께 보인다.
        sticky 그리드 아이템의 컨테이닝 블록 = 그리드 영역(행 전체 높이)이라 이동 여백이 확보된다.
@@ -387,12 +387,17 @@
     /* ===== 다크모드 보정 (2026-08-03 · 메인 실측) =====
        라이트 픽셀 변경 0. index 전용 인라인 규칙이라 타 페이지 영향 없음.
        실측(1280px·Chromium): col-h 1.47:1 → 7.9:1 / lead·foot 3.12:1 → 8.73:1 (둘 다 종전 AA 미달) */
-    html.dark .tg-col-h{color:#8FB4DC;}
+    /* 다크 보정: --color-primary(#1B3A5C)를 쓰는 요소는 다크에서 재정의되지 않아
+       어두운 카드 위 어두운 글자가 된다. 실측 .tg-diag__q 1.39:1 → 7.47:1.
+       .tg-diag__a 는 딥 오렌지(#B85A20)라 다크에서 3.47:1 이므로 밝은 쪽으로 되돌린다. */
+    html.dark .tg-col-h,html.dark .tg-diag__q{color:#8FB4DC;}
+    html.dark .tg-diag__a{color:#FFB877;}
     html.dark .tg-proof__lead,html.dark .tg-proof__foot,html.dark .tg-more-cap{color:#AEBBC8;}
     html.dark .tg-pcard__rel{background:#3A3320;border-color:#5C5238;color:#F0DFBF;}
     html.dark .tg-pcard__q::before{color:rgba(255,184,119,.58);}
     @media(prefers-color-scheme:dark){
-      html:not(.light) .tg-col-h{color:#8FB4DC;}
+      html:not(.light) .tg-col-h,html:not(.light) .tg-diag__q{color:#8FB4DC;}
+      html:not(.light) .tg-diag__a{color:#FFB877;}
       html:not(.light) .tg-proof__lead,html:not(.light) .tg-proof__foot,html:not(.light) .tg-more-cap{color:#AEBBC8;}
       html:not(.light) .tg-pcard__rel{background:#3A3320;border-color:#5C5238;color:#F0DFBF;}
       html:not(.light) .tg-pcard__q::before{color:rgba(255,184,119,.58);}

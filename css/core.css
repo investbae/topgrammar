@@ -321,7 +321,8 @@ strong { font-weight: var(--weight-semibold); }
    ======================== */
 .skip-link {
   position: absolute; top: -100%; left: var(--space-4);
-  background: var(--color-accent); color: #fff;
+  /* 흰 글자를 얹으므로 --color-accent(#E87A3A·2.89:1)가 아니라 딥 오렌지를 쓴다(4.64:1). */
+  background: #B85A20; color: #fff;
   padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm);
   font-size: var(--text-sm); font-weight: var(--weight-semibold); z-index: 100000;
 }
@@ -631,4 +632,28 @@ p, .tg-pcard__q, .tg-mech li small { text-wrap: pretty; }
       지속시간·이동거리는 건드리지 않는다. */
 .tg-pcard, .card, .tg-more-btn, a.tg-works__badge, .tg-rev {
   transition-timing-function: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* ===== 다크모드 카드 입체감 (2026-08-05 · 실측 기반) =====
+   실측: 다크에서 카드(#1E1E3A)와 배경(#1A1A2E)의 명도 대비가 1.06,
+   테두리까지 합쳐도 1.17이었다. 그림자가 `rgba(0,0,0,…)`이라 어두운 배경에서
+   보이지 않기 때문이다 — 어둠 위의 검정은 아무것도 그리지 못한다.
+   해결은 그림자를 키우는 것이 아니라 '빛'을 쓰는 것이다:
+     ① 위쪽 1px 하이라이트(inset) — 광원이 위에 있다는 신호를 준다
+     ② 테두리를 한 단계 밝게 — 면 경계를 명시한다
+   두 장치 모두 카드 배경·글자색을 건드리지 않으므로 본문 대비(6.17:1)는 그대로다.
+   라이트 모드 렌더 변경 0. */
+html.dark .tg-why__card, html.dark .tg-diag__card, html.dark .tg-director,
+html.dark .tg-gcard, html.dark .tg-rev, html.dark .tg-pcard,
+html.dark .tg-havruta, html.dark .tg-sch__campbox {
+  border-color: #3A3A63;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 4px 14px rgba(0,0,0,.38);
+}
+@media (prefers-color-scheme: dark) {
+  html:not(.light) .tg-why__card, html:not(.light) .tg-diag__card, html:not(.light) .tg-director,
+  html:not(.light) .tg-gcard, html:not(.light) .tg-rev, html:not(.light) .tg-pcard,
+  html:not(.light) .tg-havruta, html:not(.light) .tg-sch__campbox {
+    border-color: #3A3A63;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 4px 14px rgba(0,0,0,.38);
+  }
 }
