@@ -1,3 +1,6 @@
+/* 테마 토글 아이콘 — 이모지는 OS 마다 다른 글리프로 렌더돼 브랜드 톤을 깬다(2026-08-06) */
+var SUN_SVG = '<svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-sun"/></svg>';
+var MOON_SVG = '<svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-moon"/></svg>';
 /* ===================================
    TopGrammar Core JS
    Header, Nav, escapeHTML, GA4, Scroll Reveal, Auth State
@@ -433,7 +436,7 @@
   function applyTheme(theme) {
     document.documentElement.classList.toggle('dark', theme === 'dark');
     var btn = document.querySelector('.theme-toggle');
-    if (btn) btn.textContent = theme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+    if (btn) btn.innerHTML = theme === 'dark' ? SUN_SVG : MOON_SVG;
   }
 
   function toggleTheme() {
@@ -447,7 +450,7 @@
     var btn = document.createElement('button');
     btn.className = 'theme-toggle';
     btn.setAttribute('aria-label', '다크모드 전환');
-    btn.textContent = getThemePref() === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+    btn.innerHTML = getThemePref() === 'dark' ? SUN_SVG : MOON_SVG;
     btn.addEventListener('click', toggleTheme);
     document.body.appendChild(btn);
 
