@@ -124,3 +124,48 @@
     background: #1E1E3A; color: #8FB4DC; border-color: #3A5C82;
   }
 }
+
+/* ---------- M7 · 작은 글자 하한선 (2026-08-06 · 실측 12건 교정)
+   390px 실측에서 14px 미만 텍스트가 12건이었다. 주 방문자가 40~50대 학부모라
+   이 크기는 읽으라는 뜻이 아니다. 특히 법무 고지(.tg-claim-note 12.5px,
+   .tg-pcard__rel 13.1px)는 공정위 심사지침상 "쉽게 찾을 수 있어야" 하는 문구이므로
+   작게 두는 것 자체가 위험이다.
+   스마트폰 하한: 법무 고지·본문성 14px / 배지·라벨 13px.
+   데스크톱은 무영향(전 규칙 미디어쿼리 안). ---------- */
+@media (max-width: 729px) {
+  .tg-claim-note,
+  .tg-hero__panel-foot,
+  .tg-pcard__rel { font-size: 14px; line-height: 1.6; }
+
+  .tg-hero__eyebrow,
+  .tg-hero__chip,
+  .tg-eyebrow,
+  .tg-pcard__badge,
+  .tg-assist__badge { font-size: 13px; }
+
+  /* 헤더 로고는 링크다 — 40px 이라 터치 규격 44px 에 미달했다. */
+  .site-header__logo { min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* 정보성 작은 글자 — 학부모가 실제로 읽어야 하는 내용이라 하한을 13px 로 올린다.
+     운영시간·법정표기·면책 고지·출처 표기가 여기 해당한다. */
+  /* .tgf-note / .tgf-hub small 은 푸터 안 <style> 블록에 정의돼 있어 문서 순서상
+     이 파일보다 뒤에 온다. !important 없이 특이도로 이긴다(클래스 2개). */
+  .site-footer .tgf-note,
+  .site-footer .tgf-hub small,
+  .tgf-note,
+  .site-footer__info,
+  .site-footer__info span,
+  .site-footer__bottom,
+  .site-footer__bottom a,
+  .tg-evbar__foot,
+  .tg-evbar__link,
+  .tg-rev__m,
+  .tg-tcard__role,
+  .small { font-size: 13px; line-height: 1.6; }
+
+  /* 순수 장식 라벨(아이브로우·스크롤 안내)은 정보가 아니므로 12px 까지만 올린다. */
+  .tg-hero__scroll,
+  .tg-mira__eyebrow,
+  .tg-evbar__label,
+  .site-header__logo-sub { font-size: 12px; }
+}

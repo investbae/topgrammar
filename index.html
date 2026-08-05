@@ -364,8 +364,8 @@
       background:#FDF6E9;border:1px solid #E8D9BC;border-radius:8px;padding:6px 10px;margin-bottom:8px;}
     .tg-proof__lead{font-size:.82rem;line-height:1.6;color:#5B6B7C;margin:-8px 0 14px;}
     .tg-proof__foot{display:block;margin-top:14px;padding-top:12px;border-top:1px dashed var(--color-border);font-size:.85rem;color:#5B6B7C;line-height:1.6;}
-    /* '더 보기' 버튼은 스마트폰 전용이다. 기본은 숨기고 css/mobile.css 가 켠다
-       (mobile.css 는 전 규칙이 @media 안이라 데스크톱 기본값을 여기서 정한다). */
+    /* '더 보기' 버튼은 스마트폰 전용이다. 기본은 숨기고 css/mobile.css?v=2 가 켠다
+       (mobile.css?v=2 는 전 규칙이 @media 안이라 데스크톱 기본값을 여기서 정한다). */
     .tg-proof__more{display:none;}
     /* v10 (2026-08-03): 증거 카드 6 → 8장. 종전 1열 배치는 좌(오르는 4단계) 473px vs 우 1,626px 로
        3배 이상 벌어졌다. 위 다단 규칙으로 우측 길이를 줄이고, 아래에서 열 분할·sticky 를 정의한다.
@@ -667,7 +667,7 @@
   .tg-claim-note--dark::before{background:#FFB877;color:#14273f;}
   @media(max-width:640px){.tg-claim-note{padding:9px 12px 9px 32px;font-size:.78rem;}}
   </style>
-  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/mobile.css?v=2">
 </head>
 <body>
   <a href="#main" class="skip-link">본문 바로가기</a>
