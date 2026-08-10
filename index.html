@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://topgrammar.co.kr/">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/core.css?v=20">
+  <link rel="stylesheet" href="css/core.css?v=21">
   <link rel="stylesheet" href="css/components.css?v=10">
   <link rel="stylesheet" href="css/premium.css?v=1">
   <link rel="manifest" href="manifest.json">
@@ -132,7 +132,7 @@
     /* 섹션 공통 */
     .tg-sec{padding:88px var(--space-6);max-width:var(--container-max);margin:0 auto;}
     .tg-sec--wide{max-width:none;padding-left:0;padding-right:0;}
-    .tg-eyebrow{display:block;text-align:center;color:#A85118;font-weight:800;font-size:0.8125rem;
+    .tg-eyebrow{display:block;text-align:center;color:var(--color-accent-ink);font-weight:800;font-size:0.8125rem;
       letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px;}
     .tg-h2{text-align:center;font-size:clamp(1.875rem,3.6vw,2.375rem);line-height:1.25;letter-spacing:-.02em;margin-bottom:14px;}
     .tg-sub{text-align:center;color:var(--color-text-sub);max-width:640px;margin:0 auto 52px;font-size:1rem;line-height:1.7;}
@@ -158,7 +158,7 @@
     .tg-row__media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1);}
     .tg-row__media:hover img{transform:scale(1.06);}
     .tg-row__tag{display:inline-block;padding:7px 15px;border-radius:9999px;background:rgba(232,122,58,.12);
-      color:#A85118;font-weight:700;font-size:0.8125rem;margin-bottom:16px;}
+      color:var(--color-accent-ink);font-weight:700;font-size:0.8125rem;margin-bottom:16px;}
     .tg-row__media .tg-row__float{position:absolute;left:18px;bottom:18px;z-index:2;background:rgba(15,38,64,.82);
       color:#fff;padding:10px 16px;border-radius:12px;font-weight:700;font-size:0.875rem;backdrop-filter:blur(6px);}
     .tg-row h3{font-size:clamp(1.5rem,2.6vw,1.875rem);letter-spacing:-.025em;margin-bottom:16px;}
@@ -186,7 +186,7 @@
     .tg-director__ph{border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:var(--color-bg-alt);box-shadow:var(--shadow-md);}
     .tg-director__ph img{width:100%;height:100%;object-fit:cover;object-position:center 15%;}
     .tg-director__b h3{font-size:clamp(1.5rem,2.6vw,1.875rem);letter-spacing:-.025em;margin-bottom:8px;}
-    .tg-director__sub{color:#B85A20;font-weight:600;font-size:1rem;margin-bottom:18px;}
+    .tg-director__sub{color:var(--color-accent-ink);font-weight:600;font-size:1rem;margin-bottom:18px;}
     .tg-director__b p{font-size:1rem;line-height:1.8;color:var(--color-text-sub);margin-bottom:14px;}
     @media(max-width:880px){.tg-director{grid-template-columns:1fr;gap:24px;padding:24px;}
       .tg-director__ph{max-width:340px;margin:0 auto;}}
@@ -209,7 +209,7 @@
     .tg-rev{background:#fff;border-radius:20px;padding:30px 28px;box-shadow:var(--shadow-md);position:relative;border:1px solid var(--color-border);}
     .tg-rev__q{font-size:3rem;line-height:.7;color:rgba(232,122,58,.25);font-weight:800;}
     .tg-rev__stars{color:#F5A623;letter-spacing:2px;margin:4px 0 14px;}
-    .tg-rev p{font-size:1rem;line-height:1.75;color:var(--color-text);font-style:italic;margin-bottom:18px;}
+    .tg-rev p{font-size:1rem;line-height:1.75;color:var(--color-text);font-style:normal;margin-bottom:18px;}
     .tg-rev__who{display:flex;align-items:center;gap:12px;}
     .tg-rev__av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;}
     .tg-rev__n{font-weight:700;font-size:0.875rem;}
@@ -260,7 +260,10 @@
       .tg-hero__inner{display:grid;grid-template-columns:minmax(0,1fr) 392px;column-gap:56px;align-items:center;}
       .tg-hero__inner>*{grid-column:1;justify-self:start;}
       .tg-hero__inner>h1,.tg-hero__inner>p{justify-self:stretch;}
-      .tg-hero__panel{grid-column:2;grid-row:1/span 5;align-self:center;display:block;margin-top:0;
+      /* 2026-08-11 P-01: 패널이 행 1~5만 스팬해 그 5행에만 잉여 높이가 분배되어 선언 마진
+         14~20px 가 렌더 62~79px 로 벌어졌다. 좌열 직계 자식 수만큼 스팬하면 행이 min-content 로
+         떨어져 선언값이 그대로 렌더된다. ★불변식: span = .tg-hero__inner 직계 자식 수 − 1(패널 제외). */
+      .tg-hero__panel{grid-column:2;grid-row:1/span 11;align-self:center;display:block;margin-top:0;
         background:rgba(10,23,42,.62);
         border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:26px 24px 18px;
         backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);
@@ -317,7 +320,7 @@
     .tg-diag__q{font-weight:700;font-size:1rem;line-height:1.5;color:var(--color-primary);}
     .tg-diag__q::before{content:"\201C";color:rgba(232,122,58,.55);font-weight:800;}
     .tg-diag__q::after{content:"\201D";color:rgba(232,122,58,.55);font-weight:800;}
-    .tg-diag__a{font-size:0.875rem;line-height:1.55;color:#B85A20;font-weight:700;
+    .tg-diag__a{font-size:0.875rem;line-height:1.55;color:var(--color-accent-ink);font-weight:700;
       border-top:1px dashed var(--color-border);padding-top:10px;min-height:3.4em;}
     @media(max-width:880px){.tg-diag{grid-template-columns:1fr 1fr;}.tg-diag__a{min-height:0;}}
     /* 조교 밀착 1:1 시스템 하이라이트 (2026-07-12) */
@@ -372,7 +375,7 @@
       background:#EDF0F4;border:1px solid #DCE1E8;border-radius:8px;padding:4px 11px;white-space:nowrap;}
     /* 화살표 대비 4.64:1 — 텍스트(4.5:1)로 보든 아이콘(3:1)으로 보든 통과하도록 잡은 값.
        종전 --color-accent-dark(#C96228)는 흰 카드에서 3.99:1 이었다. */
-    .tg-pcard__arr{color:#B85A20;font-weight:800;font-size:1.125rem;}
+    .tg-pcard__arr{color:var(--color-accent-ink);font-weight:800;font-size:1.125rem;}
     .tg-pcard__to{display:inline-flex;align-items:center;gap:8px;font-size:1.5rem;font-weight:800;
       line-height:1.3;letter-spacing:-.022em;color:#fff;-webkit-text-fill-color:#fff;
       -webkit-background-clip:border-box;background-clip:border-box;
@@ -551,7 +554,7 @@
     .tg-mira__decl p b{color:#AA4E18;}
     .tg-mira__decl-sub{margin-top:14px !important;font-size:1rem !important;font-weight:600 !important;
       line-height:1.78 !important;color:#4A5464 !important;letter-spacing:normal !important;}
-    @media(max-width:760px){.tg-mira{padding:70px var(--space-6);}
+    @media(max-width:760px){.tg-mira{padding:56px var(--space-6);}
       .tg-mira__facts{grid-template-columns:1fr;}
       .tg-mira__decl{padding:24px 20px;}}
 
@@ -573,7 +576,7 @@
     /* ===== v4 (2026-06-20) — 모든 아이콘/카드 클릭 → 정확한 정보 페이지 (3-AI 토론 10R: 카드 전체 <a>·:focus-visible·장식SVG aria-hidden·44px 터치) ===== */
     .tg-card-link{display:flex;flex-direction:column;text-decoration:none;color:inherit;cursor:pointer;min-height:44px;}
     .tg-card-link h3,.tg-card-link h4{color:var(--color-text);}
-    .tg-card-more{margin-top:auto;padding-top:14px;font-size:0.875rem;font-weight:700;color:#B85A20;
+    .tg-card-more{margin-top:auto;padding-top:14px;font-size:0.875rem;font-weight:700;color:var(--color-accent-ink);
       display:inline-flex;align-items:center;gap:5px;transition:gap .25s;}
     .tg-card-link:hover .tg-card-more{gap:11px;}
     .tg-card-link:focus{outline:3px solid var(--color-accent);outline-offset:3px;border-radius:20px;}
@@ -607,7 +610,7 @@
     .tg-card-link,.tg-diag__card,.tg-trust__grid a,.tg-hero__panel-list li a{touch-action:manipulation;}
     /* Our Difference 행 텍스트 네비게이션 — R5 */
     .tg-row__cta{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-weight:700;font-size:0.875rem;
-      color:#A85118;text-decoration:none;transition:gap .25s;}
+      color:var(--color-accent-ink);text-decoration:none;transition:gap .25s;}
     .tg-row__cta:hover{gap:11px;color:var(--color-accent-ink);}
     .tg-row__cta:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px;border-radius:8px;}
 
@@ -615,9 +618,9 @@
        고정 헤더 실측 68px(320~1440 전 뷰포트 동일·스크롤 축소 없음) + 여유 16px.
        index 내 모든 앵커 착지 잘림을 함께 해소한다. */
     html{scroll-padding-top:84px;}
-    .tg-story{--st-ink:#A85118;--st-rail:#E3DAD2;--st-node:#FFF3E9;--st-qbg:#FEF4EE;
+    .tg-story{--st-ink:var(--color-accent-ink);--st-rail:#E3DAD2;--st-node:#FFF3E9;--st-qbg:#FEF4EE;
       --st-qbr:rgba(232,122,58,.42);--st-note:#5D6673;--st-line:#E9EDF2;}
-    .tg-story__wrap{max-width:760px;margin:32px auto 0;text-align:left;}
+    .tg-story__wrap{max-width:680px;margin:32px auto 0;text-align:left;}
     .tg-story__act{position:relative;padding:0 0 0 76px;margin:0 0 32px;}
     .tg-story__act::before{content:"";position:absolute;left:21px;top:38px;bottom:-32px;width:2px;
       background:var(--st-rail);}
@@ -625,22 +628,24 @@
     .tg-story__label{position:relative;font-size:1.04rem;font-weight:800;letter-spacing:-.01em;
       color:var(--color-text);margin:0 0 12px;line-height:1.45;}
     .tg-story__no{position:absolute;left:-76px;top:-7px;width:44px;height:44px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:900;
+      display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800;
       letter-spacing:-.02em;color:var(--st-ink);background:var(--st-node);border:2px solid var(--st-rail);}
-    .tg-story p{font-size:1.06rem;line-height:1.78;color:var(--color-text-sub);margin:0 0 16px;}
+    .tg-story p{font-size:1.125rem;line-height:1.78;color:var(--color-text-sub);margin:0 0 16px;}
     .tg-story__act p:last-child{margin-bottom:0;}
     .tg-story strong{color:var(--color-text);}
-    .tg-story__quote{margin:4px 0 0;padding:26px 30px 22px;border-radius:18px;
+    .tg-story__quote{margin:4px 0 0;padding:26px 30px 22px;border-radius:16px;
       background:var(--st-qbg);border:1px solid var(--st-qbr);}
-    .tg-story__case{display:inline-block;font-size:.78rem;font-weight:800;letter-spacing:.01em;
-      color:var(--st-ink);background:rgba(232,122,58,.14);border-radius:999px;padding:5px 12px;margin:0 0 14px;}
+    .tg-story__case{display:inline-block;font-size:0.8125rem;font-weight:800;letter-spacing:.01em;
+      color:var(--st-ink);background:rgba(232,122,58,.10);border-radius:999px;padding:5px 12px;margin:0 0 14px;}
+    /* 틴트 알파 .14 → .10 (2026-08-11): 13px 굵은 글자에서 4.47:1 이라 AA 4.5 에 간발로 미달했다.
+       글자색(--st-ink)·문안은 그대로 두고 배경만 밝혀 4.92:1. 다크 짝규칙(.16)은 9:1 대이므로 무변경. */
     .tg-story__quote blockquote{margin:0;padding:0;border:0;}
-    .tg-story__quote blockquote p{font-size:1.22rem;font-weight:800;line-height:1.62;
+    .tg-story__quote blockquote p{font-size:1.3125rem;font-weight:800;line-height:1.62;
       color:var(--color-text);margin:0;}
     .tg-story__quote blockquote strong{font-size:1.5rem;color:var(--st-ink);}
     .tg-story__note{margin:16px 0 0;font-size:.875rem;line-height:1.65;color:var(--st-note);}
     .tg-story__close{margin-top:30px;padding-top:28px;border-top:1px solid var(--st-line);}
-    .tg-story__decl{text-align:center;font-size:1.14rem;font-weight:700;line-height:1.75;
+    .tg-story__decl{text-align:center;font-size:1.125rem;font-weight:700;line-height:1.75;
       color:var(--color-text);margin:20px 0 0;}
     .tg-story__decl b{color:var(--st-ink);font-weight:800;}
     /* 숫자 섹션 → 스토리 진입 버튼 */
@@ -679,10 +684,51 @@
        한정 문구는 small 이나 aria-label 이 아니라 항상 렌더되는 span 에 둔다(8/10 교훈). */
     .tg-story p.tg-story__by{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
       gap:9px 12px;max-width:760px;margin:16px auto 0;}
-    .tg-story__byname{font-size:1.04rem;font-weight:800;letter-spacing:-.01em;color:var(--color-text);}
-    .tg-story__bymove{font-size:.95rem;font-weight:800;color:var(--st-ink);background:var(--st-qbg);
+    .tg-story__byname{font-size:1rem;font-weight:800;letter-spacing:-.01em;color:var(--color-text);}
+    .tg-story__bymove{font-size:0.875rem;font-weight:800;color:var(--st-ink);background:var(--st-qbg);
       border:1px solid var(--st-qbr);border-radius:999px;padding:5px 14px;}
     .tg-story__bytag{font-size:.875rem;font-weight:600;line-height:1.55;color:var(--st-note);}
+    /* ===================================================================
+       2026-08-11 디자인 처방 (PRESCRIPTION.md §1) — 문안 변경 0 · 신규 자산 0
+       원장 지시: "학생·학부모가 보고 세련되고 다니고 싶도록"
+       ★ 라이트만 고치면 반대 테마가 깨진다(8/08) → 색은 전부 토큰으로만 쓴다.
+       =================================================================== */
+
+    /* [P-04] 스토리 편집 리듬 — 단계 라벨 복원 금지(원장 지시) 조건에서의 시각 이정표.
+       라벨이 사라져 랜드마크가 인용카드 1개뿐이 됐다(검토자 2명 「재진입성 하락」 지적).
+       텍스트가 아니라 명도 아크로 3막을 만든다: 진하게 열고 → 회색 서사 → 틴트 정점 → 진한 맺음. */
+    .tg-story__act--solo > p:first-of-type{color:var(--color-text);}
+    .tg-story__quote{margin-top:28px;box-shadow:var(--shadow-sm);}
+    .tg-story__close{border-top:0;position:relative;padding-top:36px;}
+    .tg-story__close::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+      width:48px;height:3px;border-radius:4px;
+      background:linear-gradient(90deg,var(--color-accent),var(--color-accent-light));}
+
+    /* [P-05] 후기 벽 판독성 — 후기를 접거나 가릴 수 없으므로(원장 지시) 읽는 실마리를 만든다.
+       각 인용의 첫 줄에만 본문 잉크를 줘서 카드마다 낚싯바늘을 두고, 스크롤하는 시선이
+       9개의 진한 첫 줄을 계단으로 딛게 한다. 마크업·문안 변경 0(순수 ::first-line).
+       ②어절 보존 개행 — 현재 인용이 어절 중간에서 꺾인다("안 해 오/고"). */
+    .tg-pcard__q::first-line{color:var(--color-text);}
+    main p,main li,main dd,main blockquote{word-break:keep-all;overflow-wrap:break-word;}
+
+    /* [P-07] 상태 문법 통일 — 호버 이동 6단(−2/−3/−4/−5/−6/−8)·줌 3종이 혼재했다.
+       카드마다 다른 부양 높이는 "여러 사람이 따로 만든" 흔적으로 읽히고, −8px 는
+       커서 이탈→호버 해제 플리커도 만든다. 카드 −4 / 버튼·셀 −2 / 줌 1.04 / 240ms.
+       (공유 CSS components·premium 의 산포는 23페이지 회귀가 필요해 이번 범위 밖·기록만) */
+    .tg-why__card,.tg-gcard,.tg-diag__card,.tg-pcard,.tg-btn,.tg-more-btn,
+    .tg-trust__grid a{transition-duration:240ms;}
+    .tg-why__card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+    .tg-gcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+    .tg-diag__card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);
+      border-color:var(--color-accent);}
+    .tg-btn--primary:hover,.tg-btn--ghost:hover,.tg-trust__grid a:hover,
+    .tg-more-btn:hover{transform:translateY(-2px);}
+    .tg-row__media:hover img,.tg-gal a:hover img,.tg-camp:hover img{transform:scale(1.04);}
+    .tg-btn:active{transform:translateY(0) scale(.98);transition-duration:80ms;}
+
+    /* [P-12b] 신뢰지표 숫자 자리맞춤 — core.css 가 pcard·mira 에 깐 tabular-nums 누락분 */
+    .tg-trust__v{font-variant-numeric:tabular-nums;}
+
     /* 다크 짝규칙 — 라이트 전환은 반드시 다크와 함께 간다(8/08 교훈) */
     html.dark .tg-story{--st-ink:#FFB877;--st-rail:#3E3E63;--st-node:#2B2B4A;--st-qbg:#2A2038;
       --st-qbr:rgba(255,184,119,.34);--st-note:#B9C2CE;--st-line:#33334F;}
@@ -696,7 +742,7 @@
       .tg-story__wrap{margin-top:24px;}
       .tg-story p.tg-story__by{gap:8px 10px;margin-top:14px;}
       .tg-story__byname{font-size:1.0rem;}
-      .tg-story__bymove{font-size:.92rem;padding:5px 12px;}
+      .tg-story__bymove{font-size:0.875rem;padding:5px 12px;}
       .tg-story__act{padding-left:0;margin-bottom:28px;}
       .tg-story__act::before{display:none;}
       .tg-story__no{position:static;display:inline-flex;width:auto;height:auto;padding:3px 11px;
@@ -704,11 +750,11 @@
       .tg-story__label{font-size:1.02rem;margin-bottom:10px;}
       .tg-story p{font-size:1.0625rem;line-height:1.72;margin-bottom:14px;}
       .tg-story__quote{padding:20px 18px 18px;border-radius:16px;}
-      .tg-story__quote blockquote p{font-size:1.16rem;line-height:1.6;}
-      .tg-story__quote blockquote strong{font-size:1.4rem;}
+      .tg-story__quote blockquote p{font-size:1.125rem;line-height:1.6;}
+      .tg-story__quote blockquote strong{font-size:1.5rem;}
       .tg-story__note{font-size:.875rem;}
       .tg-story__close{margin-top:26px;padding-top:24px;}
-      .tg-story__decl{font-size:1.08rem;margin-top:18px;}
+      .tg-story__decl{font-size:1.0625rem;margin-top:18px;}
       .tg-mira__btn{width:100%;}
     }
   </style>
@@ -1369,25 +1415,25 @@
         <p class="tg-sub">네이버 영수증 인증을 거친 실제 수강 가정의 리뷰입니다. 개인 경험이며 학습 결과를 보장하지 않습니다.</p>
         <div class="tg-revs">
           <div class="tg-rev">
-            <div class="tg-rev__q">&ldquo;</div>
+            <div class="tg-rev__q" aria-hidden="true">&ldquo;</div>
             <div class="tg-rev__stars"><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg></div>
             <p>선생님이 정말 열정적이세요.</p>
             <div class="tg-rev__who"><div class="tg-rev__av" style="background:var(--color-primary-solid)"><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg></div><div><div class="tg-rev__n">수강 학부모님</div><div class="tg-rev__m">네이버 영수증 인증 리뷰</div></div></div>
           </div>
           <div class="tg-rev">
-            <div class="tg-rev__q">&ldquo;</div>
+            <div class="tg-rev__q" aria-hidden="true">&ldquo;</div>
             <div class="tg-rev__stars"><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg></div>
             <p>친절하고 좋아요. 선생님이 열정적이세요.</p>
             <div class="tg-rev__who"><div class="tg-rev__av" style="background:#10B981"><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg></div><div><div class="tg-rev__n">수강 학부모님</div><div class="tg-rev__m">네이버 영수증 인증 리뷰</div></div></div>
           </div>
           <div class="tg-rev">
-            <div class="tg-rev__q">&ldquo;</div>
+            <div class="tg-rev__q" aria-hidden="true">&ldquo;</div>
             <div class="tg-rev__stars"><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg></div>
             <p>굿! 선생님이 열정적이세요.</p>
             <div class="tg-rev__who"><div class="tg-rev__av" style="background:#1B3A5C"><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg></div><div><div class="tg-rev__n">수강 학부모님</div><div class="tg-rev__m">네이버 영수증 인증 리뷰</div></div></div>
           </div>
           <div class="tg-rev">
-            <div class="tg-rev__q">&ldquo;</div>
+            <div class="tg-rev__q" aria-hidden="true">&ldquo;</div>
             <div class="tg-rev__stars"><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg><svg class="ico" aria-hidden="true" focusable="false" style="opacity:.28"><use href="#ic-star"/></svg></div>
             <p>꼼꼼히 잘 가르쳐 주십니다.</p>
             <div class="tg-rev__who"><div class="tg-rev__av" style="background:var(--color-accent)"><svg class="ico ico--star" aria-hidden="true" focusable="false"><use href="#ic-star"/></svg></div><div><div class="tg-rev__n">수강 학부모님</div><div class="tg-rev__m">네이버 영수증 인증 리뷰</div></div></div>
@@ -1492,9 +1538,9 @@
           background:rgba(255,255,255,.09);font-size:1rem;
         }
         .tgf-hub b{color:rgba(255,255,255,.92);font-weight:700;}
-        .tgf-hub small{display:block;font-size:0.8125rem;color:rgba(255,255,255,.5);margin-top:1px;}
+        .tgf-hub small{display:block;font-size:0.8125rem;color:rgba(255,255,255,.7);margin-top:1px;}
         .tgf-hub a:hover small{color:rgba(255,255,255,.7);}
-        .tgf-note{margin-top:10px;font-size:0.8125rem;color:rgba(255,255,255,.45);line-height:1.6;}
+        .tgf-note{margin-top:10px;font-size:0.8125rem;color:rgba(255,255,255,.72);line-height:1.6;}
       </style>
       <!-- [BLOCK-1] 공통 푸터 허브 그리드 -->
       <div class="site-footer__grid">

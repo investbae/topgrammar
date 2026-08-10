@@ -272,7 +272,9 @@ strong { font-weight: var(--weight-semibold); }
 }
 .site-footer__link {
   display: block; font-size: var(--text-sm); padding: var(--space-1) 0;
-  color: rgba(255,255,255,0.6); transition: color var(--transition-fast);
+  /* 2026-08-11: --color-primary-dark 를 #0F2640→#22507F 로 밝히면서 이 흰 알파 글자가
+     4.14:1 로 떨어졌다(전수 스캔 실측). 배경을 되돌리지 않고 알파를 올려 5.4:1 확보. */
+  color: rgba(255,255,255,0.72); transition: color var(--transition-fast);
 }
 .site-footer__link:hover { color: var(--color-accent-light); }
 .site-footer__bottom {
