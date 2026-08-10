@@ -14,8 +14,8 @@
   <meta property="og:url" content="https://topgrammar.co.kr/register.html">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/core.css?v=19">
-  <link rel="stylesheet" href="css/components.css?v=9">
+  <link rel="stylesheet" href="css/core.css?v=20">
+  <link rel="stylesheet" href="css/components.css?v=10">
   <link rel="stylesheet" href="css/premium.css?v=1">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
@@ -25,10 +25,10 @@
   <meta name="theme-color" content="#1B3A5C">
   <style>
     body{opacity:1!important}.slide-up{opacity:1!important;transform:none!important}
-    .reg-form{max-width:620px;margin:2.4rem auto 0;text-align:left;background:#fff;border:1px solid #e5e9f2;border-radius:16px;padding:2rem 1.8rem;box-shadow:0 6px 24px rgba(26,61,143,.07)}
-    .reg-consent{margin-top:1.2rem;font-size:.8rem;color:#667085;background:#f6f8fc;border:1px solid #e5e9f2;border-radius:9px;padding:.9rem 1.05rem;line-height:1.65}
+    .reg-form{max-width:620px;margin:2.4rem auto 0;text-align:left;background:#fff;border:1px solid #e5e9f2;border-radius:16px;padding:2rem 1.8rem;box-shadow:var(--shadow-lg)}
+    .reg-consent{margin-top:1.2rem;font-size:0.8125rem;color:#667085;background:#f6f8fc;border:1px solid #e5e9f2;border-radius:8px;padding:.9rem 1.05rem;line-height:1.65}
     .reg-consent strong{color:#1a3d8f}
-    .reg-note{font-size:.8rem;color:#9aa3b2;text-align:center;margin:.8rem 0 0}
+    .reg-note{font-size:0.8125rem;color:#9aa3b2;text-align:center;margin:.8rem 0 0}
   
     /* ===== 아이콘 시스템 (2026-08-06) =====
        이모지 77개를 인라인 SVG 로 교체했다. 이모지는 OS 마다 다른 글리프로 렌더되어
@@ -45,25 +45,25 @@
     html.dark .ico--star{color:#FFC06B;}
     @media(prefers-color-scheme:dark){html:not(.light) .ico--star{color:#FFC06B;}}
   </style>
-  <link rel="stylesheet" href="css/mobile.css?v=4">
+  <link rel="stylesheet" href="css/mobile.css?v=5">
 <style>
 /* 개인정보 수집·이용 고지 컴포넌트 (self-contained·라이트/다크 대응) */
 .tg-pn{margin-top:1.2rem;text-align:left;border:1px solid rgba(27,58,92,.16);border-radius:12px;
-  background:rgba(246,248,252,.92);padding:1rem 1.1rem;font-size:.83rem;line-height:1.72;color:#2b3648}
-.tg-pn__h{font-weight:800;color:#1B3A5C;margin-bottom:.55rem;font-size:.92rem}
-.tg-pn__h span{font-weight:600;color:#5b6472;font-size:.75rem;margin-left:.35rem}
+  background:rgba(246,248,252,.92);padding:1rem 1.1rem;font-size:0.8125rem;line-height:1.72;color:#2b3648}
+.tg-pn__h{font-weight:800;color:#1B3A5C;margin-bottom:.55rem;font-size:0.875rem}
+.tg-pn__h span{font-weight:600;color:#5b6472;font-size:0.875rem;margin-left:.35rem}
 .tg-pn__list{margin:0}
 .tg-pn__list>div{display:flex;gap:.7rem;padding:.34rem 0;border-top:1px solid rgba(27,58,92,.09)}
 .tg-pn__list>div:first-child{border-top:0}
 .tg-pn dt{flex:0 0 7.4em;font-weight:700;color:#1B3A5C}
 .tg-pn dd{margin:0;flex:1 1 auto}
-.tg-pn__child{margin-top:.9rem;padding:.8rem .9rem;border-radius:10px;
+.tg-pn__child{margin-top:.9rem;padding:.8rem .9rem;border-radius:12px;
   background:rgba(232,122,58,.09);border:1px solid rgba(232,122,58,.3)}
 .tg-pn__child>b{color:#8a3d10}
 .tg-pn__child ul{margin:.45rem 0 0;padding-left:1.3rem;list-style:disc outside}
 .tg-pn__child li::marker{color:#8a3d10}
 .tg-pn__child li{margin:.22rem 0}
-.tg-pn__law{display:block;margin-top:.55rem;font-size:.75rem;color:#5b6472}
+.tg-pn__law{display:block;margin-top:.55rem;font-size:0.875rem;color:#5b6472}
 .tg-pn a{color:#1a3d8f;text-decoration:underline}
 @media (max-width:560px){.tg-pn__list>div{flex-direction:column;gap:.05rem}.tg-pn dt{flex:none}}
 html.dark .tg-pn{background:#1B2333;border-color:rgba(255,255,255,.2);color:#E3E8F0}
@@ -76,7 +76,7 @@ html.dark .tg-pn__child>b{color:#FFC08A}
 html.dark .tg-pn__child li::marker{color:#FFC08A}
 </style>
 <style>
-.tg-guard{flex:0 0 100%;width:100%;box-sizing:border-box;margin:.7rem 0 0;font-size:.83rem;line-height:1.6;text-align:center;color:#8a3d10;
+.tg-guard{flex:0 0 100%;width:100%;box-sizing:border-box;margin:.7rem 0 0;font-size:0.8125rem;line-height:1.6;text-align:center;color:#8a3d10;
   background:rgba(232,122,58,.1);border:1px solid rgba(232,122,58,.32);border-radius:8px;padding:.55rem .7rem}
 html.dark .tg-guard{color:#FFC08A;background:#3A2418;border-color:rgba(232,122,58,.55)}
 </style>
@@ -130,7 +130,7 @@ html.dark .tg-guard{color:#FFC08A;background:#3A2418;border-color:rgba(232,122,5
   <main id="main" class="page-enter">
     <section class="hero hero--compact" style="min-height:300px;">
       <div class="container slide-up" style="text-align:center;">
-        <h1 style="font-size:2rem;font-weight:800;margin-bottom:.6rem;color:#fff;">수강 등록 신청</h1>
+        <h1 style="font-size:1.875rem;font-weight:800;margin-bottom:.6rem;color:#fff;">수강 등록 신청</h1>
         <p style="opacity:.92;line-height:1.7;">탑그래머 수강을 원하시면 아래 정보를 남겨주세요.<br>원장님이 확인 후 직접 연락드려 레벨테스트·반 배정을 안내합니다.</p>
       </div>
     </section>
@@ -143,10 +143,10 @@ html.dark .tg-guard{color:#FFC08A;background:#3A2418;border-color:rgba(232,122,5
             온라인 등록·상담 신청은 <strong>국내(네이버폼)</strong>로 접수합니다.<br>
             남겨주시면 원장님이 확인 후 직접 연락드려 레벨테스트·반 배정을 안내합니다. 온라인 신청 정보는 네이버폼(국내)에서 접수·보관되며, 웹사이트 정적 호스팅·접속기록 처리에 관한 사항은 개인정보처리방침을 따릅니다.</p>
           <div style="display:flex;flex-direction:column;gap:.7rem;max-width:420px;margin:0 auto;">
-            <a href="https://naver.me/5suF2KvL" target="_blank" rel="noopener" style="display:block;padding:.95rem 0;background:#03C75A;color:#fff;border-radius:10px;text-decoration:none;font-size:1.06rem;font-weight:700;"><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-form"/></svg> 온라인 등록·상담 신청하기 (네이버폼)</a>
+            <a href="https://naver.me/5suF2KvL" target="_blank" rel="noopener" style="display:block;padding:.95rem 0;background:#03C75A;color:#0A2E18;border-radius:12px;text-decoration:none;font-size:1rem;font-weight:700;"><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-form"/></svg> 온라인 등록·상담 신청하기 (네이버폼)</a>
             <p class="tg-guard"><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-info"/></svg> <b>보호자(부모님)가 작성</b>하는 신청서입니다. 만 14세 미만 학생은 직접 작성하지 마시고 보호자께 부탁해 주세요.</p>
-            <a href="tel:031-938-8889" style="display:block;padding:.95rem 0;background:#1a3d8f;color:#fff;border-radius:10px;text-decoration:none;font-size:1.06rem;font-weight:700;"><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-phone"/></svg> 행신캠퍼스 · 031-938-8889</a>
-            <a href="tel:031-994-3090" style="display:block;padding:.95rem 0;background:#1a3d8f;color:#fff;border-radius:10px;text-decoration:none;font-size:1.06rem;font-weight:700;"><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-phone"/></svg> 화정캠퍼스 · 031-994-3090</a>
+            <a href="tel:031-938-8889" style="display:block;padding:.95rem 0;background:#1a3d8f;color:#fff;border-radius:12px;text-decoration:none;font-size:1rem;font-weight:700;"><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-phone"/></svg> 행신캠퍼스 · 031-938-8889</a>
+            <a href="tel:031-994-3090" style="display:block;padding:.95rem 0;background:#1a3d8f;color:#fff;border-radius:12px;text-decoration:none;font-size:1rem;font-weight:700;"><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-phone"/></svg> 화정캠퍼스 · 031-994-3090</a>
           </div>
           <div class="tg-pn">
             <div class="tg-pn__h">개인정보 수집·이용 안내<span>「개인정보 보호법」 제15조제2항</span></div>
@@ -193,14 +193,14 @@ html.dark .tg-guard{color:#FFC08A;background:#3A2418;border-color:rgba(232,122,5
         .tgf-hub a:hover{color:#FFB877;background:rgba(255,255,255,.06);}
         .tgf-hub a:focus-visible{outline:2px solid #FFB877;outline-offset:2px;color:#fff;}
         .tgf-hub .tgf-ic{
-          flex:0 0 auto;width:30px;height:30px;border-radius:9px;
+          flex:0 0 auto;width:30px;height:30px;border-radius:8px;
           display:flex;align-items:center;justify-content:center;
-          background:rgba(255,255,255,.09);font-size:.95rem;
+          background:rgba(255,255,255,.09);font-size:1rem;
         }
         .tgf-hub b{color:rgba(255,255,255,.92);font-weight:700;}
-        .tgf-hub small{display:block;font-size:.74rem;color:rgba(255,255,255,.5);margin-top:1px;}
+        .tgf-hub small{display:block;font-size:0.8125rem;color:rgba(255,255,255,.5);margin-top:1px;}
         .tgf-hub a:hover small{color:rgba(255,255,255,.7);}
-        .tgf-note{margin-top:10px;font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6;}
+        .tgf-note{margin-top:10px;font-size:0.8125rem;color:rgba(255,255,255,.45);line-height:1.6;}
       </style>
       <!-- [BLOCK-1] 공통 푸터 허브 그리드 -->
       <div class="site-footer__grid">

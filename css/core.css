@@ -29,20 +29,26 @@ table { border-collapse: collapse; border-spacing: 0; }
 :root {
   --color-primary: #1B3A5C;
   --color-primary-light: #2A5A8C;
-  --color-primary-dark: #0F2640;
+  --color-primary-dark: #22507F;   /* ★2026-08-08: 휘도 0.019→0.076. 페이지의 22%를 차지하던
+                                      거의 검정 남색 띠를 밝힌다. 흰 글자 대비 8.33:1 유지.
+                                      사용처 5곳 전부 배경이고 글자색 용도 0건이라 안전. */
   --color-accent: #E87A3A;
   --color-accent-light: #F59E5E;
   --color-accent-dark: #C96228;
+  --color-accent-ink: #AA4E18;      /* 글자 전용 주황 — 흰 배경 4.64:1 */
+  --color-primary-solid: #1B3A5C;   /* 배경 전용 네이비 — 테마 무관 고정 */
+  --color-link: #1B3A5C;            /* 본문 링크 — 흰 배경 10.9:1 */
   --color-bg: #FAFBFC;
-  --color-bg-alt: #F0F2F5;
+  --color-bg-alt: #F4F6F9;   /* ★2026-08-08: 0.886→0.911. 흰 카드와 0.089 차이 유지 */
+  --color-bg-sub: #F8F9FA;
   --color-card-bg: #FFFFFF;
   --color-text: #1A1A2E;
-  --color-text-sub: #6B7280;
-  --color-text-light: #9CA3AF;
+  --color-text-sub: #606874;
+  --color-text-light: #6E7684;
   --color-white: #FFFFFF;
   --color-border: #E5E7EB;
   --color-border-light: #F3F4F6;
-  --color-success: #10B981;
+  --color-success: #0B7A5B;
   --color-error: #EF4444;
   --color-warning: #F59E0B;
   --color-info: #3B82F6;
@@ -53,21 +59,21 @@ table { border-collapse: collapse; border-spacing: 0; }
   --font-primary: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-en: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
+  --text-xs: 0.8125rem;   /* 12 → 13px (하한) */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.3125rem;   /* 20 → 21px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.375rem;   /* 36 → 38px */
+  --text-5xl: 3rem;       /* 48px */
 
   --weight-regular: 400;
-  --weight-medium: 500;
+  --weight-medium: 400;   /* ★2026-08-08: 굵기 6종→4종 수렴 (500은 400과 시각차 미미) */
   --weight-semibold: 600;
   --weight-bold: 700;
-  --weight-black: 900;
+  --weight-black: 800;    /* ★800과 함께 '아주 굵게' 한 단계로 통합 */
 
   --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
   --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
@@ -117,6 +123,18 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.025em;
   word-break: keep-all;
 }
+
+/* ★2026-08-07: 어두운 배경 섹션이 color:#fff 를 선언해도 위 h1~h6 규칙이 이겨
+   제목이 어두운 글자로 남던 결함 교정(curriculum CTA 실측 1.47:1 → 육안으로도 거의 안 보였다).
+   부모가 흰 글자를 명시한 경우에만 상속시킨다 — 일반 섹션에는 영향 없다. */
+[style*="color:#fff"] h1, [style*="color:#fff"] h2, [style*="color:#fff"] h3,
+[style*="color:#fff"] h4, [style*="color:#fff"] h5, [style*="color:#fff"] h6,
+[style*="color:#fff"] p, [style*="color:#fff"] li, [style*="color:#fff"] strong,
+[style*="color: #fff"] h1, [style*="color: #fff"] h2, [style*="color: #fff"] h3,
+[style*="color: #fff"] h4, [style*="color: #fff"] h5, [style*="color: #fff"] h6,
+[style*="color: #fff"] p, [style*="color: #fff"] li, [style*="color: #fff"] strong {
+  color: inherit;
+}
 h1 { font-size: var(--text-5xl); letter-spacing: -0.03em; }
 h2 { font-size: var(--text-4xl); margin-bottom: var(--space-4); }
 h3 { font-size: var(--text-3xl); letter-spacing: -0.02em; }
@@ -130,13 +148,13 @@ strong { font-weight: var(--weight-semibold); }
 .section-header { text-align: center; margin-bottom: var(--space-12); }
 .section-header__label {
   display: inline-block; font-size: var(--text-xs); font-weight: var(--weight-semibold);
-  text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent);
+  text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent-ink);
   margin-bottom: var(--space-3);
 }
 .section-header__title { margin-bottom: var(--space-3); }
 .section-header__desc { max-width: 600px; margin: 0 auto; font-size: var(--text-base); color: var(--color-text-sub); }
 .section-header__line {
-  width: 48px; height: 3px; border-radius: 2px;
+  width: 48px; height: 3px; border-radius:4px;
   background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
   margin: var(--space-4) auto 0;
 }
@@ -147,7 +165,7 @@ strong { font-weight: var(--weight-semibold); }
 .section--tight { padding: 48px 0; }
 .section--spacious { padding: 100px 0; }
 .section--alt { background: var(--color-bg-alt); }
-.section--primary { background: var(--color-primary); color: var(--color-white); }
+.section--primary { background: var(--color-primary-solid); color: var(--color-white); }
 .section--primary h2, .section--primary h3 { color: var(--color-white); }
 .section--primary p { color: rgba(255,255,255,0.8); }
 
@@ -212,7 +230,7 @@ strong { font-weight: var(--weight-semibold); }
   color: var(--color-text-sub); transition: all var(--transition-fast);
 }
 .site-nav__link:hover { color: var(--color-primary); background: var(--color-bg-alt); }
-.site-nav__link--active { color: var(--color-accent); font-weight: var(--weight-semibold); }
+.site-nav__link--active { color: var(--color-accent-ink); font-weight: var(--weight-semibold); }
 .site-nav__cta {
   margin-left: var(--space-2); padding: var(--space-2) var(--space-5);
   background: var(--color-accent); color: #fff; border-radius: var(--radius-full);
@@ -229,7 +247,7 @@ strong { font-weight: var(--weight-semibold); }
 }
 .site-header__hamburger span {
   display: block; width: 22px; height: 2px; background: var(--color-text);
-  border-radius: 2px; transition: all var(--transition-fast);
+  border-radius:4px; transition: all var(--transition-fast);
 }
 .site-header__hamburger.is-active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
 .site-header__hamburger.is-active span:nth-child(2) { opacity: 0; }
@@ -339,7 +357,7 @@ strong { font-weight: var(--weight-semibold); }
   .grid--3 { grid-template-columns: repeat(2,1fr); }
   h1 { font-size: var(--text-4xl); }
   h2 { font-size: var(--text-3xl); }
-  .section { padding: 60px 0; }
+  .section { padding: 40px 0; }   /* ★2026-08-07: 모바일 스크롤 부담 완화 */
 }
 
 @media (max-width: 768px) {
@@ -361,14 +379,21 @@ strong { font-weight: var(--weight-semibold); }
   .site-nav__link { font-size: var(--text-lg); padding: var(--space-3) var(--space-4); width: 100%; }
   .site-nav__cta { width: 100%; text-align: center; margin-left: 0; margin-top: var(--space-4); padding: var(--space-3); }
 
-  .site-footer__grid { grid-template-columns: 1fr; gap: var(--space-6); }
+  /* ★2026-08-07: 모바일 푸터가 1열 세로 나열이라 전 페이지에서 1,471px(iPhone SE 약 2.2화면)를
+     먹었다. 링크 열만 2열로 묶어 높이를 줄인다. 항목 삭제 0·순서 변경 0·문안 변경 0.
+     되돌리기 = 이 블록을 grid-template-columns:1fr 로 되돌리면 끝. */
+  .site-footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5) var(--space-4); }
+  .site-footer__grid > *:first-child,
+  .site-footer__grid > *:last-child { grid-column: 1 / -1; }
+  /* 브랜드 열(로고·설명)과 고객센터 열(주소·전화)은 전폭 유지 —
+     좁히면 주소가 3줄로 깨진다(육안 확인). 링크 목록 열만 2열로 묶는다. */
   .site-footer__bottom { flex-direction: column; gap: var(--space-2); text-align: center; }
 }
 
 @media (max-width: 480px) {
   :root {
-    --text-5xl: 2rem; --text-4xl: 1.75rem;
-    --text-3xl: 1.5rem; --text-2xl: 1.25rem;
+    --text-5xl: 2rem; --text-4xl: 1.75rem;   /* 32/28px — 모바일 축소단 */
+    --text-3xl: 1.5rem; --text-2xl: 1.3125rem;  /* 24/21px */
   }
   .section { padding: 36px 0; }
   .container { padding: 0 var(--space-3); }
@@ -390,10 +415,16 @@ strong { font-weight: var(--weight-semibold); }
 .dark {
   --color-bg: #1a1a2e;
   --color-bg-alt: #16213e;
+  --color-bg-sub: #16213e;
+  --color-accent-ink: #FFB877;
+  --color-primary: #8FB4DC;
+  --color-link: #8FB4DC;
+  --color-success: #7FD9B8;
+  --color-primary-solid: #1B3A5C;
   --color-card-bg: #1e1e3a;
   --color-text: #e0e0e0;
   --color-text-sub: #a0a0a0;
-  --color-text-light: #787878;
+  --color-text-light: #9AA3B2;
   --color-white: #e0e0e0;
   --color-border: #2a2a4a;
   --color-border-light: #232346;
@@ -418,7 +449,7 @@ strong { font-weight: var(--weight-semibold); }
   z-index: 9999; width: 42px; height: 42px;
   border: 1px solid var(--color-border); border-radius: var(--radius-full);
   background: var(--color-card-bg); color: var(--color-text);
-  font-size: 1.15rem; cursor: pointer;
+  font-size:1.125rem; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   box-shadow: var(--shadow-md);
   transition: background var(--transition-fast), box-shadow var(--transition-fast);
@@ -430,6 +461,13 @@ strong { font-weight: var(--weight-semibold); }
 @media (max-width: 1023px) {
   body:has(.tg-sticky) .theme-toggle,
   body:has(.tg-sticky) .scroll-top { bottom: calc(58px + env(safe-area-inset-bottom) + 16px); }
+  /* ★2026-08-07: 본문 가림 최소화 — 크기 축소 + 반투명, 누르면 불투명 */
+  .theme-toggle {
+    width: 34px; height: 34px; font-size:0.875rem;
+    left: var(--space-3); opacity: 0.55;
+    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  }
+  .theme-toggle:hover, .theme-toggle:focus-visible, .theme-toggle:active { opacity: 1; }
 }
 
 @media (max-width: 768px) {
@@ -443,10 +481,16 @@ strong { font-weight: var(--weight-semibold); }
   html:not(.light) {
     --color-bg: #1a1a2e;
     --color-bg-alt: #16213e;
+    --color-bg-sub: #16213e;
+    --color-accent-ink: #FFB877;
+    --color-primary: #8FB4DC;
+    --color-link: #8FB4DC;
+    --color-success: #7FD9B8;
+    --color-primary-solid: #1B3A5C;
     --color-card-bg: #1e1e3a;
     --color-text: #e0e0e0;
     --color-text-sub: #a0a0a0;
-    --color-text-light: #787878;
+    --color-text-light: #9AA3B2;
     --color-white: #e0e0e0;
     --color-border: #2a2a4a;
     --color-border-light: #232346;
@@ -517,9 +561,9 @@ html { scrollbar-width: thin; scrollbar-color: var(--color-primary-light) var(--
 ::-webkit-scrollbar-track { background: var(--color-bg-alt); }
 ::-webkit-scrollbar-thumb {
   background: var(--color-primary-light);
-  border-radius: 4px;
+  border-radius:4px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary-solid); }
 
 /* 6. Better Focus Ring — deferred to components.css :focus-visible (outline-based) */
 
@@ -535,7 +579,7 @@ body.is-loaded {
 
 /* 8. Text Gradient */
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  background: linear-gradient(135deg, var(--color-primary-solid), var(--color-accent));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -19,24 +19,24 @@
 <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
 <link rel="apple-touch-icon" href="images/icon-192.png">
 <meta name="theme-color" content="#1B3A5C">
-<link rel="stylesheet" href="css/core.css?v=19">
-<link rel="stylesheet" href="css/components.css?v=9">
+<link rel="stylesheet" href="css/core.css?v=20">
+<link rel="stylesheet" href="css/components.css?v=10">
 <style>
 body{font-family:'Pretendard',sans-serif;margin:0;color:#222;background:#f6f8fc}
 .wrap{max-width:680px;margin:0 auto;padding:3rem 1.2rem 4rem;text-align:center}
-.title{font-size:1.9rem;font-weight:800;color:#1a3d8f;margin:.4rem 0}
+.title{font-size:1.875rem;font-weight:800;color:#1a3d8f;margin:.4rem 0}
 .lead{color:#555;line-height:1.7;margin-bottom:2rem}
 .cards{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
-.card{flex:1 1 260px;background:#fff;border:1px solid #e5e9f2;border-radius:14px;padding:1.6rem 1.3rem;box-shadow:0 4px 16px rgba(26,61,143,.06);text-align:left}
-.camp{font-size:1.15rem;font-weight:700;color:#1a3d8f;margin-bottom:.5rem}
-.addr{color:#666;font-size:.92rem;line-height:1.6;margin-bottom:1rem}
+.card{flex:1 1 260px;background:#fff;border:1px solid #e5e9f2;border-radius:16px;padding:1.6rem 1.3rem;box-shadow:var(--shadow-md);text-align:left}
+.camp{font-size:1.125rem;font-weight:700;color:#1a3d8f;margin-bottom:.5rem}
+.addr{color:#666;font-size:0.875rem;line-height:1.6;margin-bottom:1rem}
 .tel{display:block;font-size:1.5rem;font-weight:800;color:#222;text-decoration:none;margin-bottom:.8rem}
 .call{display:inline-block;width:100%;box-sizing:border-box;text-align:center;padding:.8rem 0;background:#1a3d8f;color:#fff;border-radius:8px;text-decoration:none;font-weight:700}
 .extra{margin-top:2.2rem;display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-block;padding:.8rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:600}
-.btn.primary{background:#f59e0b;color:#fff}
+.btn.primary{background:#A2530A;color:#fff}
 .btn.ghost{background:#fff;color:#1a3d8f;border:1.5px solid #1a3d8f}
-.note{margin-top:1.6rem;color:#888;font-size:.85rem}
+.note{margin-top:1.6rem;color:#888;font-size:0.875rem}
 
     /* ===== 아이콘 시스템 (2026-08-06) =====
        이모지 77개를 인라인 SVG 로 교체했다. 이모지는 OS 마다 다른 글리프로 렌더되어
@@ -54,25 +54,25 @@ body{font-family:'Pretendard',sans-serif;margin:0;color:#222;background:#f6f8fc}
     .ico--star{color:#D97706;}
     html.dark .ico--star{color:#FFC06B;}
     @media(prefers-color-scheme:dark){html:not(.light) .ico--star{color:#FFC06B;}}
-  </style>  <link rel="stylesheet" href="css/mobile.css?v=4">
+  </style>  <link rel="stylesheet" href="css/mobile.css?v=5">
 <style>
 /* 개인정보 수집·이용 고지 컴포넌트 (self-contained·라이트/다크 대응) */
 .tg-pn{margin-top:1.2rem;text-align:left;border:1px solid rgba(27,58,92,.16);border-radius:12px;
-  background:rgba(246,248,252,.92);padding:1rem 1.1rem;font-size:.83rem;line-height:1.72;color:#2b3648}
-.tg-pn__h{font-weight:800;color:#1B3A5C;margin-bottom:.55rem;font-size:.92rem}
-.tg-pn__h span{font-weight:600;color:#5b6472;font-size:.75rem;margin-left:.35rem}
+  background:rgba(246,248,252,.92);padding:1rem 1.1rem;font-size:0.8125rem;line-height:1.72;color:#2b3648}
+.tg-pn__h{font-weight:800;color:#1B3A5C;margin-bottom:.55rem;font-size:0.875rem}
+.tg-pn__h span{font-weight:600;color:#5b6472;font-size:0.875rem;margin-left:.35rem}
 .tg-pn__list{margin:0}
 .tg-pn__list>div{display:flex;gap:.7rem;padding:.34rem 0;border-top:1px solid rgba(27,58,92,.09)}
 .tg-pn__list>div:first-child{border-top:0}
 .tg-pn dt{flex:0 0 7.4em;font-weight:700;color:#1B3A5C}
 .tg-pn dd{margin:0;flex:1 1 auto}
-.tg-pn__child{margin-top:.9rem;padding:.8rem .9rem;border-radius:10px;
+.tg-pn__child{margin-top:.9rem;padding:.8rem .9rem;border-radius:12px;
   background:rgba(232,122,58,.09);border:1px solid rgba(232,122,58,.3)}
 .tg-pn__child>b{color:#8a3d10}
 .tg-pn__child ul{margin:.45rem 0 0;padding-left:1.3rem;list-style:disc outside}
 .tg-pn__child li::marker{color:#8a3d10}
 .tg-pn__child li{margin:.22rem 0}
-.tg-pn__law{display:block;margin-top:.55rem;font-size:.75rem;color:#5b6472}
+.tg-pn__law{display:block;margin-top:.55rem;font-size:0.875rem;color:#5b6472}
 .tg-pn a{color:#1a3d8f;text-decoration:underline}
 @media (max-width:560px){.tg-pn__list>div{flex-direction:column;gap:.05rem}.tg-pn dt{flex:none}}
 html.dark .tg-pn{background:#1B2333;border-color:rgba(255,255,255,.2);color:#E3E8F0}
@@ -85,7 +85,7 @@ html.dark .tg-pn__child>b{color:#FFC08A}
 html.dark .tg-pn__child li::marker{color:#FFC08A}
 </style>
 <style>
-.tg-guard{flex:0 0 100%;width:100%;box-sizing:border-box;margin:.7rem 0 0;font-size:.83rem;line-height:1.6;text-align:center;color:#8a3d10;
+.tg-guard{flex:0 0 100%;width:100%;box-sizing:border-box;margin:.7rem 0 0;font-size:0.8125rem;line-height:1.6;text-align:center;color:#8a3d10;
   background:rgba(232,122,58,.1);border:1px solid rgba(232,122,58,.32);border-radius:8px;padding:.55rem .7rem}
 html.dark .tg-guard{color:#FFC08A;background:#3A2418;border-color:rgba(232,122,58,.55)}
 </style>
@@ -136,7 +136,7 @@ html.dark .tg-guard{color:#FFC08A;background:#3A2418;border-color:rgba(232,122,5
   </header>
 <div class="wrap" id="main">
 <div class="title">상담 신청</div>
-<p class="lead">전화 또는 문자로 편하게 상담하세요.<br>현재 실력이 궁금하시면 <strong>레벨테스트</strong>로 정확히 진단해 드립니다. <span style="font-size:0.9em;color:var(--color-text-sub);">(온라인 신청 무료 · 방문 응시료 10,000원)</span></p>
+<p class="lead">전화 또는 문자로 편하게 상담하세요.<br>현재 실력이 궁금하시면 <strong>레벨테스트</strong>로 정확히 진단해 드립니다. <span style="font-size:0.875rem;color:var(--color-text-sub);">(온라인 신청 무료 · 방문 응시료 10,000원)</span></p>
 <div class="cards">
 <div class="card">
 <div class="camp">행신 캠퍼스</div>
@@ -151,12 +151,12 @@ html.dark .tg-guard{color:#FFC08A;background:#3A2418;border-color:rgba(232,122,5
 <a class="call" href="tel:031-994-3090">화정 캠퍼스 전화하기</a>
 </div>
 </div>
-<div style="max-width:560px;margin:2.4rem auto 0;text-align:center;background:#fff;border:1px solid #e5e9f2;border-radius:14px;padding:1.8rem 1.4rem;box-shadow:0 4px 16px rgba(26,61,143,.06)">
-<div style="font-size:1.2rem;font-weight:700;color:#1a3d8f;margin-bottom:.4rem">온라인 상담·레벨테스트 신청</div>
-<p style="font-size:.9rem;color:#555;text-align:center;line-height:1.8;margin:0 0 1.2rem">온라인 상담 신청 정보는 <strong>국내(네이버폼)</strong>에서 접수·보관됩니다.<br>웹사이트 정적 호스팅·접속기록 처리에 관한 사항은 개인정보처리방침을 따릅니다.</p>
-<a href="https://naver.me/5suF2KvL" target="_blank" rel="noopener" style="display:inline-block;width:100%;box-sizing:border-box;padding:.95rem 0;background:#03C75A;color:#fff;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.05rem"><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-form"/></svg> 온라인 상담 신청하기 (네이버폼)</a>
+<div style="max-width:560px;margin:2.4rem auto 0;text-align:center;background:#fff;border:1px solid #e5e9f2;border-radius:16px;padding:1.8rem 1.4rem;box-shadow:0 4px 16px rgba(26,61,143,.06)">
+<div style="font-size:1.125rem;font-weight:700;color:#1a3d8f;margin-bottom:.4rem">온라인 상담·레벨테스트 신청</div>
+<p style="font-size:0.875rem;color:#555;text-align:center;line-height:1.8;margin:0 0 1.2rem">온라인 상담 신청 정보는 <strong>국내(네이버폼)</strong>에서 접수·보관됩니다.<br>웹사이트 정적 호스팅·접속기록 처리에 관한 사항은 개인정보처리방침을 따릅니다.</p>
+<a href="https://naver.me/5suF2KvL" target="_blank" rel="noopener" style="display:inline-block;width:100%;box-sizing:border-box;padding:.95rem 0;background:#03C75A;color:#0A2E18;border-radius:8px;text-decoration:none;font-weight:700;font-size:1rem"><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-form"/></svg> 온라인 상담 신청하기 (네이버폼)</a>
             <p class="tg-guard"><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-pin"/></svg> <b>보호자(부모님)가 작성</b>하는 신청서입니다. 만 14세 미만 학생은 직접 작성하지 마시고 보호자께 부탁해 주세요.</p>
-<p style="font-size:.85rem;color:#667085;margin:.9rem 0 0;line-height:1.7">또는 위 <strong>전화</strong>로 바로 상담하실 수 있습니다. 온라인 신청 후 24시간 내 연락이 없으면 캠퍼스로 전화 주세요.</p>
+<p style="font-size:0.875rem;color:#667085;margin:.9rem 0 0;line-height:1.7">또는 위 <strong>전화</strong>로 바로 상담하실 수 있습니다. 온라인 신청 후 24시간 내 연락이 없으면 캠퍼스로 전화 주세요.</p>
 <div class="tg-pn">
             <div class="tg-pn__h">개인정보 수집·이용 안내<span>「개인정보 보호법」 제15조제2항</span></div>
             <dl class="tg-pn__list">
@@ -179,7 +179,7 @@ html.dark .tg-guard{color:#FFC08A;background:#3A2418;border-color:rgba(232,122,5
               <span class="tg-pn__law">「개인정보 보호법」 제22조의2 및 같은 법 시행령 제17조의2제1항제6호에 따른 법정대리인 동의·동의 확인 절차입니다.</span>
             </div>
           </div>
-<p style="font-size:.78rem;color:#999;margin:.7rem 0 0;text-align:center;line-height:1.6">온라인 상담 신청·접수는 네이버(국내) 폼·국내 접수 메일함에서 처리됩니다. 웹사이트 자체의 정적 호스팅 및 접속기록 처리에 관한 사항은 <a href="privacy.html" style="color:#667085;text-decoration:underline">개인정보처리방침</a>을 따릅니다.</p>
+<p style="font-size:0.8125rem;color:#999;margin:.7rem 0 0;text-align:center;line-height:1.6">온라인 상담 신청·접수는 네이버(국내) 폼·국내 접수 메일함에서 처리됩니다. 웹사이트 자체의 정적 호스팅 및 접속기록 처리에 관한 사항은 <a href="privacy.html" style="color:#667085;text-decoration:underline">개인정보처리방침</a>을 따릅니다.</p>
 </div>
 <div class="extra">
 <a class="btn primary" href="leveltest.html">레벨테스트 안내 보기 →</a>
@@ -204,14 +204,14 @@ html.dark .tg-guard{color:#FFC08A;background:#3A2418;border-color:rgba(232,122,5
         .tgf-hub a:hover{color:#FFB877;background:rgba(255,255,255,.06);}
         .tgf-hub a:focus-visible{outline:2px solid #FFB877;outline-offset:2px;color:#fff;}
         .tgf-hub .tgf-ic{
-          flex:0 0 auto;width:30px;height:30px;border-radius:9px;
+          flex:0 0 auto;width:30px;height:30px;border-radius:8px;
           display:flex;align-items:center;justify-content:center;
-          background:rgba(255,255,255,.09);font-size:.95rem;
+          background:rgba(255,255,255,.09);font-size:1rem;
         }
         .tgf-hub b{color:rgba(255,255,255,.92);font-weight:700;}
-        .tgf-hub small{display:block;font-size:.74rem;color:rgba(255,255,255,.5);margin-top:1px;}
+        .tgf-hub small{display:block;font-size:0.8125rem;color:rgba(255,255,255,.5);margin-top:1px;}
         .tgf-hub a:hover small{color:rgba(255,255,255,.7);}
-        .tgf-note{margin-top:10px;font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6;}
+        .tgf-note{margin-top:10px;font-size:0.8125rem;color:rgba(255,255,255,.45);line-height:1.6;}
       </style>
       <!-- [BLOCK-1] 공통 푸터 허브 그리드 -->
       <div class="site-footer__grid">

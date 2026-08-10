@@ -5,6 +5,15 @@
    설계: Fable mobile-first Architect · 구현: Opus · GPT 적대검수 R1 반영(M1 min-height화·M2 drop).
    ============================================================ */
 
+@media (max-width: 768px) {
+  /* ★2026-08-07: 모바일 최소 글씨 — 12px 미만 74건 대응.
+     --text-xs 는 배지·라벨 전용이라 데스크톱에서는 위계를 만들지만,
+     스마트폰에서는 40대 학부모가 읽는 하한을 넘는다. 모바일에서만 올린다.
+     위계는 크기 대신 letter-spacing·weight·색으로 유지된다. */
+  :root { --text-xs: 0.8125rem; }          /* 12px → 13px */
+  .title-badge { font-size:0.8125rem; }   /* 10.4px → 13px */
+}
+
 /* ---------- M0 · P0: 모바일 내비 붕괴 수정 + 앱형 메뉴 ----------
    원인: backdrop-filter(.site-header)가 fixed .site-nav의 containing block을 생성 →
    bottom:0이 헤더(68px) 기준으로 붕괴(패널 48px). 명시적 height로 복구.
@@ -25,7 +34,7 @@
     display: flex; align-items: center;
     min-height: 52px;
     padding: var(--space-2) var(--space-4);
-    font-size: 1.0625rem;
+    font-size:1.125rem;
     border-bottom: 1px solid var(--color-border-light);
     border-radius: 0;
   }
@@ -35,7 +44,7 @@
   }
   .site-nav__cta {
     display: flex; align-items: center; justify-content: center;
-    min-height: 52px; font-size: 1rem;
+    min-height: 52px; font-size:1rem;
   }
 }
 
@@ -58,6 +67,18 @@
 
   .legal-toc__list li { margin-bottom: 0; }
   .legal-toc__list a { display: flex; align-items: center; min-height: 44px; padding: 2px var(--space-2); }
+
+  /* ★2026-08-07: 가로모드(낮은 높이)에서 58px 고정 바가 화면을 과하게 먹는다 → 축소 */
+  /* ★R1 GPT: 높이만 조건으로 두면 납작한 데스크톱 창·분할 화면에도 발화한다.
+     포인터가 정밀하지 않은(터치) 기기로 한정한다. */
+  @media (orientation: landscape) and (max-height: 500px) and (any-pointer: coarse) {
+    .tg-sticky__btn { height: 46px; font-size:1rem; }
+    body { padding-bottom: calc(46px + env(safe-area-inset-bottom) + 8px); }
+    /* ★C-2 육안: 가로모드에서 테마 토글이 본문을 덮었다 → 더 작게·더 구석으로 */
+    body:has(.tg-sticky) .theme-toggle,
+    body:has(.tg-sticky) .scroll-top { bottom: calc(46px + env(safe-area-inset-bottom) + 6px); }
+    .theme-toggle { width: 30px; height: 30px; font-size:0.8125rem; left: 6px; opacity: 0.42; }
+  }
   .back-to-top { display: inline-flex; align-items: center; min-height: 44px; }
   .theme-toggle { width: 44px; height: 44px; }
   .skip-link { min-height: 44px; display: inline-flex; align-items: center; }
@@ -65,12 +86,12 @@
 
 /* ---------- M3 · index 섹션 리듬 압축 (세로 패딩만·가로 무변경으로 가장자리 밀착 방지) ---------- */
 @media (max-width: 640px) {
-  .tg-sec { padding-top: 56px; padding-bottom: 56px; }
-  .tg-works { padding-top: 44px; padding-bottom: 48px; }
+  .tg-sec { padding-top: 40px; padding-bottom: 40px; }
+  .tg-works { padding-top: 36px; padding-bottom: 38px; }
   .tg-row { margin-bottom: 44px; }
-  .tg-sub { font-size: 1rem; margin-bottom: 36px; }
+  .tg-sub { font-size:1rem; margin-bottom: 36px; }
   .tg-h2 { margin-bottom: 10px; }
-  .tg-final__in { padding-top: 64px; padding-bottom: 64px; }
+  .tg-final__in { padding-top: 48px; padding-bottom: 48px; }
   .tg-director { padding: 20px; }
   .tg-gal { gap: 10px; }
   /* `.tg-proof__cards{gap:16px}` 제거(2026-08-04): 이 구간은 항상 1단이라 열 간격이 그려지지 않는다.
@@ -79,7 +100,7 @@
 
 /* ---------- M4 · 히어로 타이포 미세 조정 (초소형 폰) ---------- */
 @media (max-width: 420px) {
-  .tg-hero h1 { font-size: clamp(2rem, 8.7vw, 2.2rem); }
+  .tg-hero h1 { font-size:clamp(1.875rem,8.7vw,2.375rem); }
 }
 
 /* ---------- M5 · sticky CTA 터치 피드백 ---------- */
@@ -98,12 +119,12 @@
    채택 = 글자 확대 + 3장 우선 노출 + 더보기. 실측(390px):
      현행 후기 3,850px·문서 25,193px → 적용 후 2,243px·23,587px (본문 13.44→16px) ---------- */
 @media (max-width: 729px) {
-  .tg-pcard .tg-pcard__q { font-size: 1rem; line-height: 1.62; }
-  .tg-proof__lead, .tg-proof__foot { font-size: .875rem; line-height: 1.65; }
-  .tg-pcard__rel { font-size: .82rem; line-height: 1.55; }
-  .tg-pcard__badge { font-size: .78rem; }
-  .tg-pcard__name { font-size: .95rem; }
-  .tg-pcard__from { font-size: 1rem; }
+  .tg-pcard .tg-pcard__q { font-size:1rem; line-height: 1.62; }
+  .tg-proof__lead, .tg-proof__foot { font-size:0.875rem; line-height: 1.65; }
+  .tg-pcard__rel { font-size:0.8125rem; line-height: 1.55; }
+  .tg-pcard__badge { font-size:0.8125rem; }
+  .tg-pcard__name { font-size:1rem; }
+  .tg-pcard__from { font-size:1rem; }
   .tg-pcard { padding: 16px 15px; }
 
   /* 접기는 JS가 .tg-proof__cards 에 is-foldable 을 붙였을 때만 동작한다.
@@ -113,9 +134,10 @@
   .tg-proof__cards.is-foldable + .tg-proof__more {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     width: 100%; min-height: 48px; margin-top: 4px; padding: 12px 18px;
+    /* rem 기반이라 iOS Dynamic Type 확대에 자동 대응된다(추가 작업 불필요) */
     background: #fff; color: var(--color-primary);
-    border: 1.5px solid var(--color-primary); border-radius: 12px;
-    font-size: .95rem; font-weight: 800; cursor: pointer;
+    border: 1.5px solid var(--color-primary); border-radius:12px;
+    font-size:1rem; font-weight: 800; cursor: pointer;
   }
   .tg-proof__more::after { content: "▾"; font-size: .85em; }
   .tg-proof__cards.is-open + .tg-proof__more::after { content: "▴"; }
@@ -144,13 +166,13 @@
 @media (max-width: 729px) {
   .tg-claim-note,
   .tg-hero__panel-foot,
-  .tg-pcard__rel { font-size: 14px; line-height: 1.6; }
+  .tg-pcard__rel { font-size:0.875rem; line-height: 1.6; }
 
   .tg-hero__eyebrow,
   .tg-hero__chip,
   .tg-eyebrow,
   .tg-pcard__badge,
-  .tg-assist__badge { font-size: 13px; }
+  .tg-assist__badge { font-size:0.8125rem; }
 
   /* 헤더 로고는 링크다 — 40px 이라 터치 규격 44px 에 미달했다. */
   .site-header__logo { min-height: 44px; display: inline-flex; align-items: center; }
@@ -170,13 +192,39 @@
   .tg-evbar__link,
   .tg-rev__m,
   .tg-tcard__role,
-  .small { font-size: 13px; line-height: 1.6; }
+  .small { font-size:0.8125rem; line-height: 1.6; }
 
-  /* 순수 장식 라벨(아이브로우·스크롤 안내)은 정보가 아니므로 12px 까지만 올린다. */
+  /* ★2026-08-08 개정1(페이블 R3): "장식은 12px 까지만" 조항을 폐기한다.
+     40대 학부모 기준 12px 는 읽기 부담이고, 장식/정보의 경계는 실제로 모호하다.
+     단일 하한 13px. 위계는 크기가 아니라 weight·letter-spacing·색이 담당한다. */
   .tg-hero__scroll,
   .tg-mira__eyebrow,
   .tg-evbar__label,
-  .site-header__logo-sub { font-size: 12px; }
+  .site-header__logo-sub { font-size:0.8125rem; }
+  /* ★2026-08-08 2차개정 A급1: 임계 12.5→13.0 으로 올리자 드러난 12.5~12.99px 구간.
+     rem 리터럴로 선언된 것들이라 토큰으로 안 잡혔다. 모바일에서만 13px 하한을 강제한다. */
+  .consent,
+  .notice__tag,
+  .reg-consent,
+  .reg-note,
+  .tg-assist__badge,
+  .tg-claim-note,
+  .tg-claim-note::before,
+  .tg-evbar__foot,
+  .tg-evbar__label,
+  .tg-eyebrow,
+  .tg-gcard__badge,
+  .tg-hero__chip,
+  .tg-hero__panel-foot,
+  .tg-hero__panel-list small,
+  .tg-hero__scroll,
+  .tg-mira__eyebrow,
+  .tg-pcard__badge,
+  .tg-pcard__rel,
+  .tg-rev__m,
+  .tg-tcard__role,
+  .tgf-hub small,
+  .tgf-note { font-size:0.8125rem; }
 }
 
 /* ---------- M8 · 히어로 시각 순서 재배열 (2026-08-06 · 페이블 설계)
@@ -222,7 +270,7 @@
    5건 중 1.5건만 보이던 것을 전부 노출한다. 스크롤해야 보이는 증거는 없는 증거다. ---------- */
 @media (max-width: 729px) {
   .tg-hero__panel {
-    margin-top: 10px; padding: 16px 16px 12px; border-radius: 16px;
+    margin-top: 10px; padding: 16px 16px 12px; border-radius:16px;
     background: rgba(15,38,64,.5); border: 1px solid rgba(255,255,255,.16);
   }
   .tg-hero__panel-head { display: block; margin-bottom: 6px; }
@@ -233,9 +281,9 @@
     border-bottom: 1px solid rgba(255,255,255,.12);
   }
   .tg-hero__panel-list li:last-child { border-bottom: 0; }
-  .tg-hero__panel-list b { white-space: normal; font-size: .95rem; color: #fff; }
+  .tg-hero__panel-list b { white-space: normal; font-size:1rem; color: #fff; }
   .tg-hero__panel-list small {
-    display: block; color: rgba(255,255,255,.82); font-size: 13px; margin-top: 2px; line-height: 1.5;
+    display: block; color: rgba(255,255,255,.82); font-size:0.8125rem; margin-top: 2px; line-height: 1.5;
   }
   .tg-hero__panel-list .ic { color: #FFB877; }
 }
