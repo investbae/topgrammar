@@ -97,7 +97,9 @@
     .tg-hero__chip{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:9999px;
       background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.26);backdrop-filter:blur(6px);
       font-size:0.875rem;color:rgba(255,255,255,.92);line-height:1.35;}
-    .tg-hero__chip b{color:#FFC894;font-weight:800;}
+        /* [Q-09-3] 14px 굵은 강조가 남색 위 3.93~4.47:1 로 AA 미달이었다. 흰 기준색(92%)과
+       구분되는 온기는 유지하고 한 단 밝은 피치로 올린다 → 최악 4.83:1. */
+    .tg-hero__chip b{color:#FFE4C4;font-weight:800;}
     /* 대기 안내 */
     .tg-hero__notice{display:flex;gap:11px;align-items:flex-start;max-width:680px;margin-top:30px;
       padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.09);
@@ -285,9 +287,11 @@
       .tg-hero__panel-list b{display:block;color:#fff;font-size:1rem;letter-spacing:-.01em;white-space:normal;}
       .tg-hero__panel-list small{display:block;color:rgba(255,255,255,.85);font-size:0.8125rem;margin-top:2px;line-height:1.45;}
       .tg-hero__panel-cta{display:flex;align-items:center;justify-content:center;width:100%;padding:14px 18px;border-radius:12px;
-        background:linear-gradient(135deg,#F59E5E,#E87A3A);color:#fff;font-weight:800;font-size:1rem;
+        /* [Q-09-2] 흰 글자 on 주황 채움 = 2.22:1. 「배경은 브랜드 주황, 글자는 어둡게」
+           (2026-08-08 에 세운 수법)을 이 버튼에도 적용한다 → 밝은 끝 7.75:1 · 어두운 끝 5.2:1. */
+        background:linear-gradient(135deg,#F59E5E,#E87A3A);color:#2E1405;font-weight:800;font-size:1rem;
         box-shadow:var(--shadow-lg);transition:transform .25s,box-shadow .25s;}
-      .tg-hero__panel-cta:hover{transform:translateY(-2px);box-shadow:var(--shadow-xl);color:#fff;}
+      .tg-hero__panel-cta:hover{transform:translateY(-2px);box-shadow:var(--shadow-xl);color:#2E1405;}
     }
     /* 성적 카드 — before 취소·after 그라데이션 강조 */
     .tg-gcard__from{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(232,122,58,.55);opacity:.62;}
@@ -658,8 +662,12 @@
       transition:background .25s,transform .25s;}
     .tg-mira__bridge a.tg-mira__btn:hover{background:rgba(255,255,255,.2);transform:translateY(-2px);
       text-decoration:none;}
-    .tg-mira__bridge a.tg-mira__btn:focus-visible{outline:3px solid #FFB877;outline-offset:3px;}
-    .tg-mira__qual{display:block;margin-top:9px;font-size:.8125rem;line-height:1.5;color:rgba(255,255,255,.86);}
+        /* [Q-09-4c] 이 섹션은 밝은 면이므로 피치 링은 1.49:1 이다 → 잉크 링(4.84:1). */
+    .tg-mira__bridge a.tg-mira__btn:focus-visible{outline:3px solid var(--color-accent-ink);outline-offset:3px;}
+        /* [Q-09-1] 이 문구는 법적 한정 문구다. 종전 흰 글자 86% 는 이 섹션이 30차에 밝은 면으로
+       전환된 뒤 **1.12:1** 이 되어 사실상 보이지 않았다(글자를 지운 2차 렌더로 배경을 재어 확인).
+       토큰으로 바꾸면 라이트 4.95:1, 다크는 --color-text-sub 재정의(#a0a0a0)로 자동 승계된다. */
+    .tg-mira__qual{display:block;margin-top:9px;font-size:.8125rem;line-height:1.5;color:var(--color-text-sub);}
     /* 스토리 진입행은 실적 항목이 아니다 — 목록에서 시각적으로 분리한다 */
     .tg-hero__panel-list li.is-story{border-style:dashed;}
     @media(min-width:1100px){.tg-hero__panel-list li.is-story{border-top:1px dashed rgba(255,255,255,.32);
@@ -701,6 +709,13 @@
        2026-08-11 디자인 처방 2차 (PRESCRIPTION_R2.md) — 문안 변경 0 · 신규 자산 0
        원장 재지시: "디자인을 다시 더 최고로"
        =================================================================== */
+
+    /* [Q-09-4b] 브랜드 주황으로 채운 CTA 는 링이 「주황 채움(휘도 0.424)」과 「배경(0.08)」 양쪽에
+       인접하므로 단색 링으로 3:1 을 동시 충족할 수 없다(두 조건의 해가 없다).
+       안쪽 어두운 링 + 바깥 흰 헤일로의 2색 링으로 어느 표면에서도 보이게 한다. */
+    .tg-hero .tg-btn--primary:focus-visible,
+    .tg-hero__panel-cta:focus-visible{outline:2px solid #1A1A2E;outline-offset:2px;
+      box-shadow:0 0 0 5px rgba(255,255,255,.95),var(--shadow-lg);}
 
     /* [Q-02] near-white 역할 문법 — 3값이 역할 선언 없이 공존하고 있었다.
        투명(base #FAFBFC)=중립 / #F4F6F9(alt)=시스템·기관 층 / #fff(paper)=사람 이야기 층.

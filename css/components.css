@@ -28,8 +28,12 @@
 .cta-premium .btn--outline:hover { background: #fff; color: var(--color-primary-solid); border-color: #fff; }
 .dark .btn--outline { color: #8FB4DC; border-color: #8FB4DC; }
 .dark .btn--outline:hover { background: #8FB4DC; color: #0F2640; }
-/* ★2026-08-07: 테마와 무관하게 항상 어두운 섹션 — 글자용 잉크를 밝은 쪽으로 되돌린다 */
-.site-footer, .cta-premium, .tg-hero, .tg-final, .tg-evbar, .tg-trust, .tg-mira,
+/* ★2026-08-07: 테마와 무관하게 항상 어두운 섹션 — 글자용 잉크를 밝은 쪽으로 되돌린다.
+   ★2026-08-11 정정: `.tg-mira` 를 이 목록에서 **뺐다**. 그 섹션은 2026-08-08 에 어두운 면에서
+   밝은 면으로 전환됐는데 이 목록이 그대로 남아, 섹션 안에서 --color-text-sub(#C2CBD8)·
+   --color-primary(#8FB4DC)·--color-accent-ink(#FFB877) 가 밝은 배경 위 밝은 글자를 만들고 있었다.
+   실측: 법적 한정 문구 `.tg-mira__qual` 이 1.12:1 로 사실상 보이지 않았다. */
+.site-footer, .cta-premium, .tg-hero, .tg-final, .tg-evbar, .tg-trust,
 .tg-camp__ov, .hero--dark, .section--dark, .section--primary,
 .stats-bar, .stats-card
   { --color-accent-ink: #FFB877; --color-primary: #8FB4DC;
@@ -2461,9 +2465,17 @@ details.premium-faq[open] { border-left-color: var(--color-accent); }
    =================================================================== */
 
 /* [Q-06] 어두운 표면 위 포커스 = 피치. on #22507F 4.91:1 · on #1A1A2E 10.05:1 */
-.tg-hero :focus-visible, .tg-mira :focus-visible, .tg-trust :focus-visible,
+/* ★.tg-mira 는 이 목록에서 뺐다 — 그 섹션은 2026-08-08 에 어두운 면에서 **밝은 면**으로
+   전환됐고, 피치 링은 밝은 배경에서 1.49:1 이 된다(2차에서 내가 만든 결함·실측으로 발견). */
+.tg-hero :focus-visible, .tg-trust :focus-visible,
 .tg-final :focus-visible, .site-footer :focus-visible,
 .hero :focus-visible, .cta-section :focus-visible { outline-color: #FFB877; }
+
+/* 표면을 특정할 수 없는 컨트롤은 **2색 링**으로 닫는다 — `.theme-toggle` 은 position:fixed 라
+   스크롤에 따라 뒤 배경이 바뀌므로 단색 링으로는 어떤 표면도 보장할 수 없다.
+   안쪽 어두운 링(밝은 면 대비) + 바깥 흰 헤일로(어두운 면 대비). */
+.theme-toggle:focus-visible{outline:2px solid #1A1A2E;outline-offset:2px;
+  box-shadow:0 0 0 5px rgba(255,255,255,.95);}
 
 /* [Q-05] 호버 전이 시간 1종(240ms) — 종전 0.2/0.3/0.4/0.6/0.8s 혼재.
    index 인라인은 1차에서 240ms 로 수렴했고, 그 문법을 공유 CSS 로 확장한다. */
