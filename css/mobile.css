@@ -241,9 +241,15 @@
   .tg-hero__inner > .tg-hero__sign { order: 4; margin-bottom: 18px; }
   .tg-hero__cta { order: 5; }
   .tg-hero__cta ~ .tg-hero__sign { order: 6; margin-top: 14px; }
-  .tg-hero__lead--sub { order: 7; }
-  .tg-hero__chips { order: 8; margin-top: 6px; }
-  .tg-hero__panel { order: 9; }
+  /* R2 Q-01 (2026-08-11): 증거(실적 패널)를 CTA 직후로 올린다.
+     종전 시각 순서는 리드→서명→CTA→서명2→리드-서브→칩→패널 이라, 독자가 행동 요청을
+     지난 뒤 다시 부속 설명을 만나고 가장 강한 증거(패널 697px)가 y1,002(두 번째 화면)에 있었다.
+     서사 = 약속 → 행동 → 증거 → 부속 → 고지. CTA 위치(y565~696)와 실증 고지·대기 안내
+     위치(y1,709/1,802)는 불변이며, 칩의 「1등급 연평균 3명」 주장과 실증 고지 간격이
+     841px → 23px 로 줄어 법무 인접성이 개선된다. DOM 무변경(탭 순서 불변). */
+  .tg-hero__lead--sub { order: 8; }
+  .tg-hero__chips { order: 9; margin-top: 6px; }
+  .tg-hero__panel { order: 7; }
   .tg-claim-note { order: 10; }
   .tg-hero__notice { order: 11; }
 }

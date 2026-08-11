@@ -92,7 +92,9 @@ table { border-collapse: collapse; border-spacing: 0; }
   --shadow-sm: 0 1px 2px rgba(15,38,64,0.05), 0 1px 3px rgba(15,38,64,0.07);
   --shadow-md: 0 2px 4px rgba(15,38,64,0.05), 0 6px 16px rgba(15,38,64,0.09);
   --shadow-lg: 0 4px 8px rgba(15,38,64,0.05), 0 14px 34px rgba(15,38,64,0.11);
-  --shadow-xl: 0 8px 16px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.12);
+  /* R2 Q-07: sm/md/lg 는 네이비 틴트인데 xl 만 흑색이라 row__media 3장에서 색온도가
+     이탈했다. 알파·크기 동일·색만 네이비(밝기 지표 무영향). 다크의 흑색 정의는 유지. */
+  --shadow-xl: 0 8px 16px rgba(15,38,64,0.06), 0 16px 48px rgba(15,38,64,0.12);
   --shadow-premium: 0 1px 1px rgba(0,0,0,0.02), 0 2px 4px rgba(0,0,0,0.03), 0 4px 8px rgba(0,0,0,0.04), 0 8px 16px rgba(0,0,0,0.05), 0 16px 32px rgba(0,0,0,0.06);
 
   --transition-fast: 150ms ease;

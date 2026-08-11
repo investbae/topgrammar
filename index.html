@@ -13,9 +13,9 @@
   <meta property="og:url" content="https://topgrammar.co.kr/">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/core.css?v=21">
-  <link rel="stylesheet" href="css/components.css?v=10">
-  <link rel="stylesheet" href="css/premium.css?v=1">
+  <link rel="stylesheet" href="css/core.css?v=22">
+  <link rel="stylesheet" href="css/components.css?v=11">
+  <link rel="stylesheet" href="css/premium.css?v=2">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
   <link rel="apple-touch-icon" href="images/icon-192.png">
@@ -77,7 +77,7 @@
       box-shadow:var(--shadow-lg);margin-bottom:22px;}
     .tg-hero__eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#fff;animation:tgpulse 1.6s infinite;}
     @keyframes tgpulse{0%,100%{opacity:1}50%{opacity:.35}}
-    .tg-hero h1{font-size:clamp(2.375rem,5.4vw,3.75rem);line-height:1.14;letter-spacing:-.025em;color:#fff;
+    .tg-hero h1{font-size:clamp(2.375rem,5.4vw,3.75rem);line-height:1.14;letter-spacing:-.03em;color:#fff;
       /* 2026-08-11: 한때 10px 로 내렸다가 되돌렸다. P-01 이후 h1→슬로건 렌더 간격은
          이미 선언값 그대로 14px 였고(설계 게이트 ≤18px 통과), 22px 는 eyebrow→h1 간격이었다.
          표를 밀려 읽은 오보에 맞춰 좁히면 설계 의도만 훼손된다. */
@@ -137,7 +137,7 @@
     .tg-sec--wide{max-width:none;padding-left:0;padding-right:0;}
     .tg-eyebrow{display:block;text-align:center;color:var(--color-accent-ink);font-weight:800;font-size:0.8125rem;
       letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px;}
-    .tg-h2{text-align:center;font-size:clamp(1.875rem,3.6vw,2.375rem);line-height:1.25;letter-spacing:-.02em;margin-bottom:14px;}
+    .tg-h2{text-align:center;font-size:clamp(1.875rem,3.6vw,2.375rem);line-height:1.25;letter-spacing:-.025em;margin-bottom:14px;}
     .tg-sub{text-align:center;color:var(--color-text-sub);max-width:640px;margin:0 auto 52px;font-size:1rem;line-height:1.7;}
 
     /* WHY — 강점 3카드(아이콘+사진 혼합) */
@@ -516,7 +516,7 @@
     .tg-mira__inner{position:relative;max-width:1000px;margin:0 auto;}
     .tg-mira__eyebrow{display:block;text-align:center;font-size:0.8125rem;font-weight:800;letter-spacing:.24em;
       text-transform:uppercase;color:#AA4E18;margin-bottom:12px;}
-    .tg-mira__h{text-align:center;font-size:clamp(1.875rem,4.2vw,3rem);line-height:1.2;letter-spacing:-.035em;
+    .tg-mira__h{text-align:center;font-size:clamp(1.875rem,4.2vw,3rem);line-height:1.2;letter-spacing:-.03em;
       margin:0 0 14px;color:#12293F;}
     .tg-mira__h b{color:#AA4E18;}
     .tg-mira__sub{text-align:center;font-size:1rem;line-height:1.75;color:#4A5464;
@@ -696,6 +696,54 @@
        원장 지시: "학생·학부모가 보고 세련되고 다니고 싶도록"
        ★ 라이트만 고치면 반대 테마가 깨진다(8/08) → 색은 전부 토큰으로만 쓴다.
        =================================================================== */
+
+    /* ===================================================================
+       2026-08-11 디자인 처방 2차 (PRESCRIPTION_R2.md) — 문안 변경 0 · 신규 자산 0
+       원장 재지시: "디자인을 다시 더 최고로"
+       =================================================================== */
+
+    /* [Q-02] near-white 역할 문법 — 3값이 역할 선언 없이 공존하고 있었다.
+       투명(base #FAFBFC)=중립 / #F4F6F9(alt)=시스템·기관 층 / #fff(paper)=사람 이야기 층.
+       teachers(#F4F6F9 1,260px) + 학부모 리뷰(#F4F6F9 1,471px)가 2,731px 한 덩어리 회색으로
+       뭉쳐 있었다 → 리뷰(사람 목소리)를 story 와 같은 paper 층으로 옮겨 인접 동일을 해소한다.
+       휘도 0.9198→1.0 = 밝아지는 방향(발주자 "너무 어둡다" 게이트 순방향). */
+    .tg-band--paper{background:#fff;}
+    html.dark .tg-band--paper{background:var(--color-bg-alt);}
+    /* [Q-08b] 스토리 배경을 인라인 style 에서 규칙으로 이관 — 다크 짝을 붙일 수 있게 된다. */
+    .tg-story{background:#fff;}
+    html.dark .tg-story{background:var(--color-card-bg);}
+
+    /* [Q-03] 모바일 증거 우물 — why-works 6,877px 중 후기가 4,440px 인데 배경 변화가 0이라
+       "어디까지가 증거인가"가 픽셀로 존재하지 않았다. 9장을 **동일하게** 담는 회색 면 하나로
+       증거 구간의 시작과 끝을 시각화한다(접기·가림·카드별 차등 없음 — 원장 지시 준수).
+       음수 마진 −16px + 패딩 16px 상쇄로 카드 콘텐츠 폭 342px 불변 = 재개행 0. */
+    @media(max-width:729px){
+      #tg-proof-cards{background:var(--color-bg-alt);border-radius:20px;
+        margin:0 -16px;padding:20px 16px;}
+    }
+
+    /* [Q-07] 깊이 문법 — 밝은 사진의 가장자리가 near-white 배경에 녹는다.
+       outline 은 자식 이미지 위에 그려져 box-shadow inset 과 달리 가려지지 않고 레이아웃도
+       바꾸지 않는다. 링크 미디어는 :not(:focus-visible) 로 포커스 링을 가리지 않게 한다. */
+    .tg-gal a:not(:focus-visible),.tg-camp:not(:focus-visible){outline:1px solid rgba(15,38,64,.08);outline-offset:-1px;}
+    .tg-row__media,.tg-director__ph{outline:1px solid rgba(15,38,64,.08);outline-offset:-1px;}
+    html.dark .tg-gal a:not(:focus-visible),html.dark .tg-camp:not(:focus-visible),
+    html.dark .tg-row__media,html.dark .tg-director__ph{outline-color:rgba(255,255,255,.10);}
+
+    /* [Q-06] 포커스 링 — 전역 #E87A3A 는 흰·near-white 위에서 2.67~2.89:1 로
+       WCAG 1.4.11(비텍스트 3:1) 미달이었다. 밝은 면은 잉크(#AA4E18 5.13~5.51:1),
+       어두운 면은 피치(#FFB877)로 문법을 둘로 닫는다. 폭 2px(컨트롤)/3px(대형 카드)는 크기 비례. */
+    a.tg-works__badge:focus-visible{outline:3px solid var(--color-accent-ink);outline-offset:3px;}
+    .tg-card-link:focus-visible{outline:3px solid var(--color-accent-ink);outline-offset:3px;border-radius:20px;}
+    .tg-more-btn:focus-visible{outline:3px solid var(--color-accent-ink);outline-offset:3px;}
+    .tg-row__cta:focus-visible{outline:2px solid var(--color-accent-ink);outline-offset:3px;border-radius:8px;}
+
+    @media(prefers-color-scheme:dark){
+      html:not(.light) .tg-band--paper{background:var(--color-bg-alt);}
+      html:not(.light) .tg-story{background:var(--color-card-bg);}
+      html:not(.light) .tg-gal a:not(:focus-visible),html:not(.light) .tg-camp:not(:focus-visible),
+      html:not(.light) .tg-row__media,html:not(.light) .tg-director__ph{outline-color:rgba(255,255,255,.10);}
+    }
 
     /* [P-04] 스토리 편집 리듬 — 단계 라벨 복원 금지(원장 지시) 조건에서의 시각 이정표.
        라벨이 사라져 랜드마크가 인용카드 1개뿐이 됐다(검토자 2명 「재진입성 하락」 지적).
@@ -907,7 +955,7 @@
   .tg-mira .tg-claim-note--dark::before{background:#AA4E18;color:#fff;}
   @media(max-width:640px){.tg-claim-note{padding:9px 12px 9px 32px;font-size:0.8125rem;}}
   </style>
-  <link rel="stylesheet" href="css/mobile.css?v=5">
+  <link rel="stylesheet" href="css/mobile.css?v=6">
 </head>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" focusable="false"><defs>
 <symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z"/></symbol>
@@ -1284,7 +1332,7 @@
     </section>
 
     <!-- ===== 기적을 만드는 탑그래머 스토리 ===== -->
-    <section class="tg-sec tg-story" id="miracle-story" aria-labelledby="story-h" style="background:#fff;">
+    <section class="tg-sec tg-story" id="miracle-story" aria-labelledby="story-h">
       <span class="tg-eyebrow">Topgrammar Story</span>
       <h2 class="tg-h2" id="story-h">기적을 만드는 탑그래머 스토리</h2>
       <p class="tg-story__by"><b class="tg-story__byname">서정고 3학년 김*윤</b>&#32;<b class="tg-story__bymove">내신 45점 상승</b>&#32;<span class="tg-story__bytag">학생 본인이 전한 개별 사례 · 평균적·보장된 결과가 아닙니다</span></p>
@@ -1425,7 +1473,7 @@
     </section>
 
     <!-- ===== 후기 ===== -->
-    <section class="tg-sec tg-band tg-sec--wide">
+    <section class="tg-sec tg-band tg-band--paper tg-sec--wide">
       <div style="max-width:var(--container-max);margin:0 auto;padding:0 var(--space-6);">
         <span class="tg-eyebrow">Testimonials</span>
         <h2 class="tg-h2">학부모님이 먼저 추천합니다</h2>

@@ -598,8 +598,11 @@ body[data-campus] .hero__subdesc--default { display: none; }
 /* ========================
    Focus Visible (Accessibility)
    ======================== */
+/* R2 Q-06 (2026-08-11): #E87A3A 링은 흰·near-white 위에서 2.67~2.89:1 로 WCAG 1.4.11
+   (비텍스트 3:1) 미달이었다. 밝은 면 = 잉크(#AA4E18 · on #fff 5.51:1),
+   어두운 면 = 피치(#FFB877 · 아래 예외 규칙). 다크에서는 토큰이 #FFB877 로 자동 승계된다. */
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-ink);
   outline-offset: 2px;
 }
 .btn:focus-visible { outline-offset: 2px; }
@@ -1457,7 +1460,7 @@ details p { line-height: 1.7; }
   background: rgba(27,58,92,0.06);
   border-color: var(--color-primary);
   color: var(--color-primary);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 .filter-bar--premium .filter-btn.is-active {
   background: var(--color-primary-solid);
@@ -1497,7 +1500,7 @@ details p { line-height: 1.7; }
   background: var(--color-card-bg);
 }
 .tier-guide__card:hover {
-  transform: translateY(-3px); box-shadow: var(--shadow-md);
+  transform: translateY(-4px); box-shadow: var(--shadow-md);
   border-color: var(--color-primary-light);
 }
 .tier-guide__icon {
@@ -1965,7 +1968,7 @@ details p { line-height: 1.7; }
   font-weight: var(--weight-semibold);
   transition: all var(--transition-fast);
 }
-.lt-nav-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.lt-nav-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .lt-nav-btn:disabled { opacity: 0.4; }
 
 /* Result card premium */
@@ -2138,7 +2141,7 @@ details p { line-height: 1.7; }
 .info-card-premium {
   border: none; box-shadow: var(--shadow-sm); transition: all var(--transition-base);
 }
-.info-card-premium:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); }
+.info-card-premium:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
 .info-card-icon {
   width: 64px; height: 64px; border-radius: var(--radius-lg);
   background: linear-gradient(135deg, rgba(27,58,92,0.08), rgba(232,122,58,0.08));
@@ -2450,3 +2453,24 @@ details.premium-faq[open] { border-left-color: var(--color-accent); }
 /* ★2026-08-07: 다크에서 success 배지 대비 보정 (연초록 배경이 어두워져 2.6 이었다) */
 .dark .badge--success { background: rgba(11,122,91,0.22); color: #7FD9B8; }
 .dark .badge--warning { background: rgba(245,158,11,0.20); color: #FFC978; }
+
+/* ===================================================================
+   R2 (2026-08-11) 공유 CSS 상태·포커스 문법 — 24페이지 공통 로드 파일이라
+   premium.css 를 싣지 않는 8페이지(admin·course-detail·evaluations·mypage·
+   parent·payment·player·teacher)까지 함께 덮는다.
+   =================================================================== */
+
+/* [Q-06] 어두운 표면 위 포커스 = 피치. on #22507F 4.91:1 · on #1A1A2E 10.05:1 */
+.tg-hero :focus-visible, .tg-mira :focus-visible, .tg-trust :focus-visible,
+.tg-final :focus-visible, .site-footer :focus-visible,
+.hero :focus-visible, .cta-section :focus-visible { outline-color: #FFB877; }
+
+/* [Q-05] 호버 전이 시간 1종(240ms) — 종전 0.2/0.3/0.4/0.6/0.8s 혼재.
+   index 인라인은 1차에서 240ms 로 수렴했고, 그 문법을 공유 CSS 로 확장한다. */
+.resource-card,.hero__btn--primary,.hero__btn--outline,.quick-btn,.course-card,
+.pricing-card,.campus-select-card,.card--premium,.curriculum-stepper__step,
+.system-feature,.filter-bar--premium .filter-btn,.tier-guide__card,.value-card,
+.lt-nav-btn,.cta-btn-white,.info-card-premium,.glass-card,.testimonial-card,
+.site-nav__cta,.dashboard-stat,.stats-bar__grid > div,.campus-gallery__img,
+.course-card__thumb > div:first-child,.quick-btn__icon,.value-card__icon,
+.feature-card__icon{ transition-duration: 240ms; }
