@@ -247,10 +247,13 @@
      서사 = 약속 → 행동 → 증거 → 부속 → 고지. CTA 위치(y565~696)와 실증 고지·대기 안내
      위치(y1,709/1,802)는 불변이며, 칩의 「1등급 연평균 3명」 주장과 실증 고지 간격이
      841px → 23px 로 줄어 법무 인접성이 개선된다. DOM 무변경(탭 순서 불변). */
-  .tg-hero__lead--sub { order: 8; }
-  .tg-hero__chips { order: 9; margin-top: 6px; }
+  /* R1 검수(GPT B-01) 반영: 패널과 실증 고지 사이에 리드-서브·칩이 끼어 간격이 10→234px 로
+     벌어졌다는 지적. 정량 주장(패널·칩)을 고지 바로 위에 모은다 —
+     패널 7 → 칩 8 → 실증고지 9 → 리드-서브 10 → 대기안내 11. */
+  .tg-hero__chips { order: 8; margin-top: 6px; }
+  .tg-claim-note { order: 9; }
+  .tg-hero__lead--sub { order: 10; }
   .tg-hero__panel { order: 7; }
-  .tg-claim-note { order: 10; }
   .tg-hero__notice { order: 11; }
 }
 

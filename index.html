@@ -740,10 +740,17 @@
     /* [Q-07] 깊이 문법 — 밝은 사진의 가장자리가 near-white 배경에 녹는다.
        outline 은 자식 이미지 위에 그려져 box-shadow inset 과 달리 가려지지 않고 레이아웃도
        바꾸지 않는다. 링크 미디어는 :not(:focus-visible) 로 포커스 링을 가리지 않게 한다. */
-    .tg-gal a:not(:focus-visible),.tg-camp:not(:focus-visible){outline:1px solid rgba(15,38,64,.08);outline-offset:-1px;}
-    .tg-row__media,.tg-director__ph{outline:1px solid rgba(15,38,64,.08);outline-offset:-1px;}
-    html.dark .tg-gal a:not(:focus-visible),html.dark .tg-camp:not(:focus-visible),
-    html.dark .tg-row__media,html.dark .tg-director__ph{outline-color:rgba(255,255,255,.10);}
+    /* ★R1 검수(Gemini A급) 반영: `outline` 은 Safari 16.4 미만에서 border-radius 를 따르지 않고
+       직각으로 그려진다 → 둥근 사진 모서리 밖으로 1px 선이 튄다. `::after` 오버레이로 바꾼다
+       (border-radius:inherit 로 곡률 추종 · 이미지 위에 그려짐 · pointer-events:none 로 클릭 무영향).
+       ※Gemini 가 제안한 inset box-shadow 는 이 구조에서 보이지 않는다 — 컨테이너의 inset 그림자는
+         자식 이미지 **아래**에 그려지기 때문이다. 포커스 링은 outline 그대로 유지한다. */
+    .tg-gal a,.tg-camp,.tg-row__media,.tg-director__ph{position:relative;}
+    .tg-gal a::after,.tg-camp::after,.tg-row__media::after,.tg-director__ph::after{
+      content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+      border:1px solid rgba(15,38,64,.08);}
+    html.dark .tg-gal a::after,html.dark .tg-camp::after,
+    html.dark .tg-row__media::after,html.dark .tg-director__ph::after{border-color:rgba(255,255,255,.10);}
 
     /* [Q-06] 포커스 링 — 전역 #E87A3A 는 흰·near-white 위에서 2.67~2.89:1 로
        WCAG 1.4.11(비텍스트 3:1) 미달이었다. 밝은 면은 잉크(#AA4E18 5.13~5.51:1),
@@ -756,8 +763,8 @@
     @media(prefers-color-scheme:dark){
       html:not(.light) .tg-band--paper{background:var(--color-bg-alt);}
       html:not(.light) .tg-story{background:var(--color-card-bg);}
-      html:not(.light) .tg-gal a:not(:focus-visible),html:not(.light) .tg-camp:not(:focus-visible),
-      html:not(.light) .tg-row__media,html:not(.light) .tg-director__ph{outline-color:rgba(255,255,255,.10);}
+      html:not(.light) .tg-gal a::after,html:not(.light) .tg-camp::after,
+      html:not(.light) .tg-row__media::after,html:not(.light) .tg-director__ph::after{border-color:rgba(255,255,255,.10);}
     }
 
     /* [P-04] 스토리 편집 리듬 — 단계 라벨 복원 금지(원장 지시) 조건에서의 시각 이정표.
