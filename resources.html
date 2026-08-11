@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://topgrammar.co.kr/resources.html">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/core.css?v=22">
+  <link rel="stylesheet" href="css/core.css?v=23">
   <link rel="stylesheet" href="css/components.css?v=11">
   <link rel="stylesheet" href="css/premium.css?v=2">
   <link rel="manifest" href="manifest.json">
@@ -32,7 +32,7 @@
     .notice{max-width:760px;margin:1.6rem auto 0;background:#fff;border:1px solid #e5e9f2;border-radius:16px;overflow:hidden}
     .notice__row{display:flex;gap:1rem;align-items:center;padding:1rem 1.3rem;border-top:1px solid #eef1f7}
     .notice__row:first-child{border-top:none}
-    .notice__date{flex:0 0 auto;font-size:0.8125rem;color:#9aa3b2}
+    .notice__date{flex:0 0 auto;font-size:0.8125rem;color:var(--color-text-sub)}  /* R2 게이트 조건②: #9aa3b2 는 기본 2.54:1 · 호버 2.39:1 로 **기본 상태부터** AA 미달이었다 */
     .notice__title{font-size:1rem;color:#222;font-weight:600}
     .notice__tag{flex:0 0 auto;font-size:0.8125rem;font-weight:700;color:#fff;background:#1a3d8f;border-radius:9999px;padding:.2rem .6rem}
     .notice__tag--event{background:#A2530A}
@@ -172,7 +172,7 @@
         }
         .tgf-hub b{color:rgba(255,255,255,.92);font-weight:700;}
         .tgf-hub small{display:block;font-size:0.8125rem;color:rgba(255,255,255,.7);margin-top:1px;}
-        .tgf-hub a:hover small{color:rgba(255,255,255,.7);}
+        .tgf-hub a:hover small{color:rgba(255,255,255,.82);}
         /* 두 열 페어(전화·오시는길 행신/화정)를 좁게 붙이는 보조 — 모바일 1열 자동 */
         .tgf-note{margin-top:10px;font-size:0.8125rem;color:rgba(255,255,255,.72);line-height:1.6;}
       </style>

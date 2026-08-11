@@ -278,7 +278,9 @@ strong { font-weight: var(--weight-semibold); }
      4.14:1 로 떨어졌다(전수 스캔 실측). 배경을 되돌리지 않고 알파를 올려 5.4:1 확보. */
   color: rgba(255,255,255,0.72); transition: color var(--transition-fast);
 }
-.site-footer__link:hover { color: var(--color-accent-light); }
+/* R2 게이트 조건② 스윕 결과: 호버 색 #F59E5E 는 밝힌 남색 푸터(#22507F) 위에서 3.94:1 로
+   AA 미달이었다(기본 상태 5.20 은 통과라 정적 스캔에 안 잡혔다). 피치로 올려 5.53:1. */
+.site-footer__link:hover { color: #FFC894; }
 .site-footer__bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: var(--space-6); display: flex;
