@@ -1,5 +1,60 @@
 /* Service Worker - TopGrammar PWA */
-var CACHE_NAME = 'tg-v51-mobile-20260919';
+var CACHE_NAME = 'tg-v52-mobile-20260919';
+var HOME_BUILD = '20260919-mobile52';
+
+self.addEventListener('message', function (event) {
+  if (event.data && event.data.type === 'TG_GET_BUILD' && event.ports[0]) {
+    event.ports[0].postMessage({ build: HOME_BUILD });
+  }
+});
+
+function documentBuild(client, timeout) {
+  return new Promise(function (resolve) {
+    var channel = new MessageChannel();
+    var timer = setTimeout(function () { finish(null); }, timeout);
+    function finish(build) {
+      clearTimeout(timer);
+      channel.port1.close();
+      resolve(build);
+    }
+    channel.port1.onmessage = function (event) {
+      finish(event.data && event.data.build);
+    };
+    try {
+      client.postMessage({ type: 'TG_GET_DOCUMENT_BUILD' }, [channel.port2]);
+    } catch (error) { finish(null); }
+  });
+}
+
+function refreshOldHomepages() {
+  return self.clients.matchAll({ type: 'window' }).then(function (clients) {
+    return Promise.all(clients.map(function (client) {
+      var url = new URL(client.url);
+      if (url.origin !== self.location.origin ||
+          (url.pathname !== '/' && url.pathname !== '/index.html')) return;
+      return documentBuild(client, 1000).then(function (build) {
+        if (build === HOME_BUILD) return;
+        // A legacy controllerchange handler may already have reloaded this tab.
+        return self.clients.get(client.id).then(function (current) {
+          if (!current) return;
+          return documentBuild(current, 200).then(function (latest) {
+            if (latest === HOME_BUILD) return;
+            return self.clients.get(current.id).then(function (target) {
+              if (!target) return;
+              var destination = new URL(target.url);
+              if (destination.origin === self.location.origin &&
+                  (destination.pathname === '/' || destination.pathname === '/index.html')) {
+                // Start navigation, but do not await its response during activate:
+                // that response can itself wait for this worker to finish activating.
+                target.navigate(target.url).catch(function () {});
+              }
+            });
+          });
+        });
+      }).catch(function () { /* A closed/navigating tab needs no intervention. */ });
+    }));
+  });
+}
 
 var STATIC_ASSETS = [
   '/',
@@ -63,6 +118,7 @@ self.addEventListener('activate', function (e) {
             .map(function (k) { return caches.delete(k); })
       );
     }).then(function () { return self.clients.claim(); })
+      .then(refreshOldHomepages)
   );
 });
 

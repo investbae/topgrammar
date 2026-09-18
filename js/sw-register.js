@@ -8,8 +8,7 @@
  *   - CSS·JS 는 배포마다 `?v=` 가 바뀌어 URL 자체가 달라진다 → 캐시 미스 → 새로 받는다.
  *   - sw.js 는 install 에서 skipWaiting(), activate 에서 clients.claim() 을 부른다
  *     → 새 워커가 대기 없이 즉시 제어권을 가져간다.
- * 따라서 남는 경우는 "이미 열어 둔 화면이 옛 자산으로 그려져 있는 순간" 하나뿐이고,
- * 그때 한 번만 조용히 새로고침하면 된다.
+ * 문서 버전도 확인한다. 워커가 최신이어도 복원된 문서는 이전 버전일 수 있다.
  */
 (function () {
   'use strict';
@@ -20,11 +19,42 @@
      최초 설치 때는 지금 화면이 곧 최신이므로 새로고침하지 않는다. */
   var hadController = !!navigator.serviceWorker.controller;
   var reloading = false;
+  var buildMeta = document.querySelector('meta[name="tg-home-build"]');
+  var documentBuild = buildMeta ? buildMeta.content : null;
+
+  navigator.serviceWorker.addEventListener('message', function (event) {
+    if (event.data && event.data.type === 'TG_GET_DOCUMENT_BUILD' && event.ports[0]) {
+      event.ports[0].postMessage({ build: documentBuild });
+    }
+  });
+
+  function checkDocumentBuild() {
+    var controller = navigator.serviceWorker.controller;
+    if (!documentBuild || !controller || reloading || !navigator.onLine) return;
+    var channel = new MessageChannel();
+    var timer = setTimeout(function () { channel.port1.close(); }, 1500);
+    channel.port1.onmessage = function (event) {
+      clearTimeout(timer);
+      channel.port1.close();
+      var build = event.data && event.data.build;
+      if (!build || build === documentBuild || reloading) return;
+      // Avoid a reload loop if a network intermediary still returns old HTML.
+      try {
+        if (sessionStorage.getItem('tg-home-reloaded-build') === build) return;
+        sessionStorage.setItem('tg-home-reloaded-build', build);
+      } catch (error) { /* Storage can be disabled; the current-document guard remains. */ }
+      reloading = true;
+      window.location.reload();
+    };
+    controller.postMessage({ type: 'TG_GET_BUILD' }, [channel.port2]);
+  }
 
   /* 새 워커가 제어권을 넘겨받는 순간 = 자산이 갱신된 순간.
      한 번만 새로고침한다(플래그로 반복 진입 차단). */
   navigator.serviceWorker.addEventListener('controllerchange', function () {
-    if (!hadController || reloading) return;
+    if (documentBuild) { checkDocumentBuild(); return; }
+    if (!hadController) { hadController = true; return; }
+    if (reloading) return;
     reloading = true;
     window.location.reload();
   });
@@ -35,6 +65,7 @@
       .then(function (reg) {
         function checkUpdate() {
           if (!navigator.onLine) return;
+          checkDocumentBuild();
           reg.update().catch(function () {});
         }
         checkUpdate();
