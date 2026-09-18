@@ -62,33 +62,42 @@ var MOON_SVG = '<svg class="ico" aria-hidden="true" focusable="false"><use href=
     var hamburger = document.querySelector('.site-header__hamburger');
     var nav = document.querySelector('.site-nav');
     if (!hamburger || !nav) return;
-
-    hamburger.addEventListener('click', function () {
-      var isOpen = nav.classList.contains('site-nav--open');
-      hamburger.classList.toggle('is-active');
-      nav.classList.toggle('site-nav--open');
-      hamburger.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
-      document.body.style.overflow = nav.classList.contains('site-nav--open') ? 'hidden' : '';
+    if (!nav.id) nav.id = 'site-navigation';
+    hamburger.setAttribute('aria-controls', nav.id);
+    hamburger.type = 'button';
+    function isOpen() { return nav.classList.contains('site-nav--open'); }
+    function setOpen(open) {
+      nav.classList.toggle('site-nav--open', open);
+      hamburger.classList.toggle('is-active', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+      hamburger.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+      nav.inert = window.innerWidth <= 768 && !open;
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    hamburger.addEventListener('click', function () { setOpen(!isOpen()); });
+    nav.addEventListener('click', function (event) {
+      if (event.target.closest('.site-nav__link')) setOpen(false);
     });
-
-    hamburger.setAttribute('aria-expanded', 'false');
-
-    nav.addEventListener('click', function (e) {
-      if (e.target.closest('.site-nav__link')) {
-        hamburger.classList.remove('is-active');
-        nav.classList.remove('site-nav--open');
-        document.body.style.overflow = '';
+    document.addEventListener('keydown', function (event) {
+      if (!isOpen()) return;
+      if (event.key === 'Escape') {
+        setOpen(false); hamburger.focus(); return;
+      }
+      if (event.key !== 'Tab') return;
+      var links = Array.from(nav.querySelectorAll('a[href], button')).filter(function (el) { return el.getClientRects().length; });
+      if (!links.length) return;
+      var first = links[0], last = links[links.length - 1];
+      if (document.activeElement === hamburger) {
+        event.preventDefault(); (event.shiftKey ? last : first).focus();
+      } else if ((!event.shiftKey && document.activeElement === last) || (event.shiftKey && document.activeElement === first)) {
+        event.preventDefault(); hamburger.focus();
       }
     });
-
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 768) {
-        hamburger.classList.remove('is-active');
-        nav.classList.remove('site-nav--open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
+      if (window.innerWidth > 768) setOpen(false);
+      else nav.inert = !isOpen();
     });
+    setOpen(false);
   }
 
   /* --- Active Nav Link --- */

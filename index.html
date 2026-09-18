@@ -981,6 +981,7 @@
   @media(max-width:640px){.tg-claim-note{padding:9px 12px 9px 32px;font-size:0.8125rem;}}
   </style>
   <link rel="stylesheet" href="css/mobile.css?v=6">
+  <link rel="stylesheet" href="css/home-20260919.css?v=3">
 </head>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" focusable="false"><defs>
 <symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z"/></symbol>
@@ -1002,7 +1003,7 @@
 <symbol id="ic-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2 2 0 0 1 6 3.5h13v14H6a2 2 0 0 0-2 2v-14Z"/><path d="M4 19.5a2 2 0 0 1 2-2h13v3H6a2 2 0 0 1-2-1Z"/></symbol>
 <symbol id="ic-star" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 3.6l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.8l5.9-.9L12 3.6Z"/></symbol>
 </defs></svg>
-<body>
+<body class="tg-home">
   <a href="#main" class="skip-link">본문 바로가기</a>
   <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -1223,7 +1224,7 @@
             </article>
           </div>
           <!-- 2026-08-11 원장 지시: 후기를 가리지 않는다. '더 보기' 버튼을 제거하면
-               js/core.js 의 접기 스크립트가 버튼을 못 찾아 종료하고(is-foldable 미부착),
+               js/core.js?v=13 의 접기 스크립트가 버튼을 못 찾아 종료하고(is-foldable 미부착),
                css/mobile.css 의 접기 규칙도 함께 불발되어 카드 전부가 항상 보인다.
                (공유 자산 css/js 는 건드리지 않는다 — 타 페이지 영향 0) -->
           <span class="tg-proof__foot">* 본인(미성년자는 보호자)의 동의를 받아 게재한 실제 수강생 후기 중 일부 사례이며, 모든 학생이 동일한 결과를 얻는 것은 아닙니다. 학생 보호를 위해 이름은 일부만 표기했고, 가독성을 위해 일부 표현을 정리했으며, 확인이 어려운 타 학교·타 학원 비교 표현은 덜어냈습니다. 학교 안에서의 석차·인원(전교 유일 등)은 학생 본인의 진술을 그대로 실은 것이며, 본원이 별도로 확인한 것은 아닙니다.<br>
@@ -1745,7 +1746,7 @@
     </div>
   </footer>
 
-  <script src="js/core.js?v=12"></script>
+  <script src="js/core.js?v=13"></script>
   <script src="js/sw-register.js?v=5"></script>
   <script>document.body.classList.add('is-loaded')</script>
   <script>

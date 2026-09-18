@@ -1,5 +1,5 @@
 /* Service Worker - TopGrammar PWA */
-var CACHE_NAME = 'tg-v49';
+var CACHE_NAME = 'tg-v23-design-20260919';
 
 var STATIC_ASSETS = [
   '/',
@@ -33,7 +33,7 @@ var STATIC_ASSETS = [
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll(STATIC_ASSETS);
+      return cache.addAll(STATIC_ASSETS.map(function (asset) { return new Request(asset, { cache: 'reload' }); }));
     })
   );
   self.skipWaiting();
