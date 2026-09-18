@@ -29,21 +29,25 @@
     window.location.reload();
   });
 
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+  /* Do not wait for third-party fonts/images to finish loading on mobile. */
+  (function registerWorker() {
+    navigator.serviceWorker.register('/sw.js', { scope: '/', updateViaCache: 'none' })
       .then(function (reg) {
-        reg.update();
+        function checkUpdate() {
+          if (!navigator.onLine) return;
+          reg.update().catch(function () {});
+        }
+        checkUpdate();
 
-        /* 오래 열어 둔 탭 대응 — 다시 화면으로 돌아올 때마다 갱신을 확인한다.
-           최소 간격을 둬서 탭 전환이 잦아도 요청이 몰리지 않게 한다. */
-        var last = Date.now();
+        /* Mobile browsers can restore a page without firing load again. */
+        window.addEventListener('pageshow', function (event) {
+          if (event.persisted) checkUpdate();
+        });
+        window.addEventListener('online', checkUpdate);
         document.addEventListener('visibilitychange', function () {
-          if (document.visibilityState !== 'visible') return;
-          if (Date.now() - last < 60000) return;
-          last = Date.now();
-          reg.update();
+          if (document.visibilityState === 'visible') checkUpdate();
         });
       })
       .catch(function () { /* 등록 실패해도 사이트는 정상 동작한다 */ });
-  });
+  })();
 })();

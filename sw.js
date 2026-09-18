@@ -1,5 +1,5 @@
 /* Service Worker - TopGrammar PWA */
-var CACHE_NAME = 'tg-v23-design-20260919';
+var CACHE_NAME = 'tg-v50-mobile-20260919';
 
 var STATIC_ASSETS = [
   '/',
@@ -18,6 +18,7 @@ var STATIC_ASSETS = [
   '/css/mobile.css',
   '/css/components.css',
   '/css/premium.css',
+  '/css/home-20260919.css?v=3',
   '/js/core.js',
   '/js/leveltest.js',
   '/js/payment.js',
@@ -34,9 +35,8 @@ self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       return cache.addAll(STATIC_ASSETS.map(function (asset) { return new Request(asset, { cache: 'reload' }); }));
-    })
+    }).then(function () { return self.skipWaiting(); })
   );
-  self.skipWaiting();
 });
 
 /* Activate: purge old caches */
@@ -44,12 +44,11 @@ self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
       return Promise.all(
-        keys.filter(function (k) { return k !== CACHE_NAME; })
+        keys.filter(function (k) { return k.indexOf('tg-') === 0 && k !== CACHE_NAME; })
             .map(function (k) { return caches.delete(k); })
       );
-    })
+    }).then(function () { return self.clients.claim(); })
   );
-  self.clients.claim();
 });
 
 /* Fetch: cache-first for static, network-first for API/navigation */
@@ -91,11 +90,12 @@ self.addEventListener('fetch', function (e) {
   }
 
   /* Static assets (CSS, JS, fonts, images): cache-first with network fallback */
-  /* ignoreSearch: HTML이 css/js를 ?v=N 버전쿼리로 부르므로 쿼리 무시해야 precache 적중 */
+  /* Versioned URLs are distinct assets. Never reuse an older ?v= response. */
   e.respondWith(
-    caches.match(e.request, { ignoreSearch: true }).then(function (cached) {
+    caches.open(CACHE_NAME).then(function (cache) { return cache.match(e.request); }).then(function (cached) {
       if (cached) return cached;
-      return fetch(e.request).then(function (res) {
+      var options = /\.(css|js)$/.test(url.pathname) ? { cache: 'no-cache' } : {};
+      return fetch(e.request, options).then(function (res) {
         if (res.ok) {
           var clone = res.clone();
           caches.open(CACHE_NAME).then(function (cache) {
