@@ -1,5 +1,5 @@
 /* Service Worker - TopGrammar PWA */
-var CACHE_NAME = 'tg-v50-mobile-20260919';
+var CACHE_NAME = 'tg-v51-mobile-20260919';
 
 var STATIC_ASSETS = [
   '/',
@@ -18,7 +18,6 @@ var STATIC_ASSETS = [
   '/css/mobile.css',
   '/css/components.css',
   '/css/premium.css',
-  '/css/home-20260919.css?v=3',
   '/js/core.js',
   '/js/leveltest.js',
   '/js/payment.js',
@@ -30,11 +29,27 @@ var STATIC_ASSETS = [
 /* 폰트(Pretendard CDN)는 precache에서 제외 — addAll은 원자적이라 CDN 일시 불통 시
    SW 설치 전체가 실패함. 폰트는 아래 fetch 핸들러의 런타임 cache-first로 처리한다. */
 
-/* Install: pre-cache all static assets */
+/* Only homepage documents are required for a homepage update. A temporary
+   failure of a secondary page must not leave returning visitors on old HTML. */
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll(STATIC_ASSETS.map(function (asset) { return new Request(asset, { cache: 'reload' }); }));
+      return cache.addAll(['/', '/index.html'].map(function (asset) {
+        return new Request(asset, { cache: 'reload' });
+      })).then(function () {
+        return Promise.all(STATIC_ASSETS.filter(function (asset) {
+          return asset !== '/' && asset !== '/index.html';
+        }).map(function (asset) {
+          var controller = new AbortController();
+          var timer = setTimeout(function () { controller.abort(); }, 5000);
+          return fetch(new Request(asset, { cache: 'reload', signal: controller.signal }))
+            .then(function (response) {
+              if (response.ok) return cache.put(asset, response);
+            }).catch(function () {
+              /* Runtime fetch retries missing optional assets when requested. */
+            }).then(function () { clearTimeout(timer); });
+        }));
+      });
     }).then(function () { return self.skipWaiting(); })
   );
 });
