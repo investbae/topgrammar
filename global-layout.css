@@ -67,3 +67,6 @@ body.institute.academy-preview .tg-pcard:nth-child(-n+2){background:#f2efe7;bord
  .institute.academy-preview .success-section{padding:48px 20px}.institute.academy-preview .success-section>.tg-col-h{font-size:27px}.institute.academy-preview .tg-why__card{padding:23px}
  body.institute.academy-preview .tg-pcard{padding:25px 22px}body.institute.academy-preview #tg-proof-cards{gap:18px}
 }
+
+/* Four featured student outcomes; preserve the stacked mobile layout. */
+@media(min-width:768px){.institute .academy-outcomes{grid-template-columns:repeat(4,minmax(0,1fr))}.institute .academy-outcome{padding:0 22px}.institute .academy-outcome:nth-child(3){border-right:1px solid #d4dee6}.institute .academy-outcome:nth-child(4){border-right:0}.institute .academy-outcome strong{font-size:21px}}
