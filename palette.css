@@ -37,3 +37,21 @@ body.institute a:focus-visible,body.institute button:focus-visible,body.institut
 @media(min-width:1024px){body.institute .site-nav__link:last-child{background:#192f43;color:#fff}}
 @media(max-width:1023px){body.institute .site-nav,body.institute .site-nav.preview-open,body.institute .site-nav.site-nav--open{background:#fcfbf8;border-color:#e0ddd5;scrollbar-color:#c7bda9 transparent}body.institute .site-nav__link:last-child{background:#ede6d9;color:#70532f}}
 @media(max-width:640px){.institute .academy-nav a:nth-child(n+4){border-color:#e0ddd5}.institute .academy-flow .tg-mech li,.institute .academy-flow .tg-mech li:last-child{border-color:#e0dbcf!important}}
+
+/* Light footer: override legacy white headings, hub labels and interaction states. */
+body.institute .site-footer__title,
+body.institute .site-footer .tgf-hub b{color:#192f43}
+body.institute .site-footer .tgf-hub small,
+body.institute .site-footer__info,
+body.institute .site-footer__bottom{color:#384c5c}
+body.institute .site-footer .tgf-hub .tgf-ic{background:#deded6;color:#192f43}
+body.institute .site-footer a:hover,
+body.institute .site-footer a:focus-visible,
+body.institute .site-footer .tgf-hub a:hover b,
+body.institute .site-footer .tgf-hub a:hover small,
+body.institute .site-footer .tgf-hub a:focus-visible b,
+body.institute .site-footer .tgf-hub a:focus-visible small{color:#192f43}
+body.institute .site-footer .tgf-hub a:hover,
+body.institute .site-footer .tgf-hub a:focus-visible{background:#deded6}
+body.institute .site-footer a:focus-visible{outline:2px solid #192f43;outline-offset:3px}
+body.institute .site-footer__bottom{border-top-color:#c5c9c8}
