@@ -55,3 +55,23 @@ body.institute .site-footer .tgf-hub a:hover,
 body.institute .site-footer .tgf-hub a:focus-visible{background:#deded6}
 body.institute .site-footer a:focus-visible{outline:2px solid #192f43;outline-offset:3px}
 body.institute .site-footer__bottom{border-top-color:#c5c9c8}
+
+/* Consistent contrast on porcelain surfaces, including secondary pages. */
+body.institute{--color-text-muted:#56616b}
+body.institute .academy-outcome__label,body.institute .academy-outcomes__note,
+body.institute .tg-pcard__from,body.institute .legal-meta__date,
+body.institute .back-to-top{color:#56616b}
+body.institute .tg-final__phones a{color:#775831}
+body.institute:not(.academy-preview) .hero h1 em{color:#775831;-webkit-text-fill-color:#775831;background:none}
+body.institute:not(.academy-preview) .hero__btn--outline{color:#192f43;background:#fffefb;border-color:#775831}
+body.institute:not(.academy-preview) .hero__btn--outline:hover,
+body.institute:not(.academy-preview) .hero__btn--outline:focus-visible{color:#192f43;background:#e5dac5;border-color:#192f43}
+body.institute .badge--warning{color:#77500a}
+body.institute .badge--error{color:#a52121}
+body.institute .badge--info,body.institute .badge--info span{color:#245bb2}
+
+body.institute{--color-text-light:#56616b;--color-info:#245bb2}
+body.institute:not(.academy-preview) .hero__btn--primary,
+body.institute .btn--primary{background:#192f43;color:#fff;border-color:#192f43}
+body.institute:not(.academy-preview) .hero__btn--primary:hover,
+body.institute .btn--primary:hover{background:#2b455b;color:#fff}
