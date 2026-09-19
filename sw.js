@@ -1,6 +1,6 @@
 /* Service Worker - TopGrammar PWA */
-var CACHE_NAME = 'tg-v53-light-20260919';
-var HOME_BUILD = '20260919-light53';
+var CACHE_NAME = 'tg-v54-stories-20260919';
+var HOME_BUILD = '20260919-stories54';
 
 self.addEventListener('message', function (event) {
   if (event.data && event.data.type === 'TG_GET_BUILD' && event.ports[0]) {
@@ -57,6 +57,10 @@ function refreshOldHomepages() {
 }
 
 var STATIC_ASSETS = [
+  '/full-design.css?v=54',
+  '/full-preview.js?v=54',
+  '/site-analytics.js?v=54',
+  '/js/sw-register.js?v=7',
   '/',
   '/index.html',
   '/about.html',
@@ -83,6 +87,8 @@ var STATIC_ASSETS = [
 ];
 /* 폰트(Pretendard CDN)는 precache에서 제외 — addAll은 원자적이라 CDN 일시 불통 시
    SW 설치 전체가 실패함. 폰트는 아래 fetch 핸들러의 런타임 cache-first로 처리한다. */
+
+STATIC_ASSETS = Array.from(new Set(STATIC_ASSETS.concat(["/css/components.css?v=11", "/css/core.css?v=23", "/css/mobile.css?v=6", "/css/premium.css?v=2", "/full-design.css?v=54", "/full-preview.js?v=54", "/images/campus/haengsin/KakaoTalk_20260307_104458231.jpg", "/images/campus/haengsin/KakaoTalk_20260307_104458231_02.jpg", "/images/campus/haengsin/KakaoTalk_20260307_104458231_04.jpg", "/images/campus/haengsin/KakaoTalk_20260307_104458231_05.jpg", "/images/campus/haengsin/KakaoTalk_20260307_104458231_06.jpg", "/images/campus/haengsin/KakaoTalk_20260307_104458231_09.jpg", "/images/campus/hwajeong/KakaoTalk_20260307_104454101.jpg", "/images/campus/hwajeong/KakaoTalk_20260307_104454101_01.jpg", "/images/campus/hwajeong/KakaoTalk_20260307_104454101_02.jpg", "/images/campus/hwajeong/KakaoTalk_20260307_104454101_03.jpg", "/images/campus/hwajeong/KakaoTalk_20260307_104454101_05.jpg", "/images/campus/hwajeong/KakaoTalk_20260307_104454101_07.jpg", "/images/campus/hwajeong/KakaoTalk_20260307_104454101_08.jpg", "/images/campus/hwajeong/KakaoTalk_20260307_104454101_09.jpg", "/images/campus/hwajeong/KakaoTalk_20260307_104454101_16.jpg", "/images/campus/hwajeong/KakaoTalk_20260307_104454101_20.jpg", "/images/icon-192.png", "/images/logo-icon.svg", "/images/\uae40\uc815\uc774 \uc6d0\uc7a5\ub2d8 \uc0ac\uc9c4.jpeg", "/js/sw-register.js?v=7", "/manifest.json", "/site-analytics.js?v=54"])));
 
 /* Only homepage documents are required for a homepage update. A temporary
    failure of a secondary page must not leave returning visitors on old HTML. */
@@ -125,6 +131,8 @@ self.addEventListener('activate', function (e) {
 /* Fetch: cache-first for static, network-first for API/navigation */
 self.addEventListener('fetch', function (e) {
   var url = new URL(e.request.url);
+  // Never cache mutations or third-party responses.
+  if (e.request.method !== 'GET' || url.origin !== self.location.origin) return;
 
   /* API calls: network-only, skip cache entirely */
   if (url.pathname.startsWith('/api/')) {
@@ -144,7 +152,7 @@ self.addEventListener('fetch', function (e) {
       (e.request.headers.get('accept') || '').indexOf('text/html') !== -1) {
     e.respondWith(
       fetch(e.request, { cache: 'no-cache' }).then(function (res) {
-        if (res.ok) {
+        if (res.ok && !/no-store|private/i.test(res.headers.get('Cache-Control') || '')) {
           var clone = res.clone();
           caches.open(CACHE_NAME).then(function (cache) {
             cache.put(e.request, clone);
@@ -167,7 +175,7 @@ self.addEventListener('fetch', function (e) {
       if (cached) return cached;
       var options = /\.(css|js)$/.test(url.pathname) ? { cache: 'no-cache' } : {};
       return fetch(e.request, options).then(function (res) {
-        if (res.ok) {
+        if (res.ok && !/no-store|private/i.test(res.headers.get('Cache-Control') || '')) {
           var clone = res.clone();
           caches.open(CACHE_NAME).then(function (cache) {
             cache.put(e.request, clone);
