@@ -437,12 +437,14 @@ var MOON_SVG = '<svg class="ico" aria-hidden="true" focusable="false"><use href=
 
   /* --- Dark Mode --- */
   function getThemePref() {
+    if (document.documentElement.getAttribute('data-site-theme') === 'light') return 'light';
     var stored = localStorage.getItem('tg_theme');
     if (stored) return stored;
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
   function applyTheme(theme) {
+    if (document.documentElement.getAttribute('data-site-theme') === 'light') theme = 'light';
     document.documentElement.classList.toggle('dark', theme === 'dark');
     var btn = document.querySelector('.theme-toggle');
     if (btn) btn.innerHTML = theme === 'dark' ? SUN_SVG : MOON_SVG;
@@ -456,6 +458,7 @@ var MOON_SVG = '<svg class="ico" aria-hidden="true" focusable="false"><use href=
 
   function initThemeToggle() {
     applyTheme(getThemePref());
+    if (document.documentElement.getAttribute('data-site-theme') === 'light') return;
     var btn = document.createElement('button');
     btn.className = 'theme-toggle';
     btn.setAttribute('aria-label', '다크모드 전환');
