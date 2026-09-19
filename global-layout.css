@@ -1,0 +1,69 @@
+/* Original composition using program-first navigation and generous visual hierarchy. */
+.institute.academy-preview .tg-hero{background:#f5f2eb}
+.institute.academy-preview .tg-hero__inner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:52px;align-items:center;max-width:1280px;padding:68px 48px 76px;min-height:0}
+.institute.academy-preview .tg-hero__inner:after{display:none}
+.institute.academy-preview .tg-hero__inner>*{max-width:100%;min-width:0;width:auto}
+.global-hero-copy{position:relative;z-index:2}
+.institute.academy-preview .tg-hero__inner>.global-hero-copy{grid-column:1;grid-row:1}
+.institute.academy-preview .tg-hero__inner>.global-hero-media{grid-column:2;grid-row:1}
+.institute.academy-preview .tg-hero h1{font-size:54px;line-height:1.24;letter-spacing:-.055em;max-width:10em;margin-bottom:24px}
+.institute.academy-preview .tg-hero h1 em{font-size:.51em;line-height:1.65;margin-top:18px;letter-spacing:-.035em;white-space:normal}
+.institute.academy-preview .tg-hero__eyebrow{font-size:11px;letter-spacing:.03em;margin-bottom:26px}
+.institute.academy-preview .tg-hero__slogan{font-size:16px;line-height:1.85;margin-bottom:23px;font-weight:500}
+.institute.academy-preview .tg-hero__chips{max-width:510px;gap:6px;margin-bottom:27px}
+.institute.academy-preview .tg-hero__cta{gap:8px}.institute.academy-preview .tg-hero .tg-btn,.institute.academy-preview .story-shortcut{font-size:12px;min-height:48px;padding:14px 15px;border-radius:4px}
+.global-hero-media{position:relative;align-self:stretch;margin:0;padding:0 0 42px;min-height:440px;isolation:isolate}
+.global-hero-media:before{content:'';position:absolute;inset:24px -16px 68px 24px;background:#e3dcca;z-index:-1;border-radius:4px}
+.global-hero-media>img:first-child{display:block;width:100%;height:100%;max-height:460px;min-height:350px;object-fit:cover;object-position:center;border-radius:5px 5px 80px 5px}
+.global-hero-media .global-hero-secondary{position:absolute;bottom:0;left:-28px;width:38%;height:166px;object-fit:cover;object-position:center;border:7px solid #f5f2eb;border-radius:6px}
+.institute .academy-nav{max-width:1184px;border:0;border-bottom:1px solid #e0ddd5}
+.institute .academy-nav a{min-height:94px;justify-content:space-between;padding:24px;font-size:14px;letter-spacing:-.025em}
+.institute .academy-nav a:after{content:'↗';font-size:16px;font-weight:400;color:#856640}.institute .academy-nav span{background:none;border-radius:0;width:auto;height:auto;font-family:Georgia,serif;font-size:13px;color:#856640}
+.institute.academy-preview .tg-trust{max-width:1184px;padding:40px 0 26px}.institute.academy-preview .tg-trust__v{font-size:40px;font-weight:750}
+.institute .academy-outcomes{max-width:1184px;border:0;background:#eeebe3;border-radius:4px;padding:28px 0 22px}.institute .academy-outcome strong{font-size:24px}.institute .academy-outcome{padding:0 30px}
+.institute .academy-flow{max-width:1280px;padding:82px 48px}
+.institute .academy-flow .tg-mech{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr);column-gap:64px;align-items:start}
+.institute .academy-flow .tg-col-h{font-size:35px;line-height:1.4;letter-spacing:-.055em;margin:0;padding:13px 0;border-top:2px solid #192f43}
+.institute .academy-flow .tg-mech ol{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.institute .academy-flow .tg-mech li,.institute .academy-flow .tg-mech li:last-child{border:0;border-top:1px solid #c9c1b2;border-radius:0;background:transparent;padding:22px 0 8px}
+.institute .academy-flow .tg-mech__n{background:#ebe4d8;color:#775831;border-radius:3px;margin-bottom:20px;width:32px;height:32px}
+.institute .academy-flow .tg-mech li b{font-size:18px}.institute .academy-flow .tg-mech li small{font-size:14px;line-height:1.9}
+.institute.academy-preview .restored-intro{max-width:1184px;border:0;border-radius:4px;padding:45px;background:#efede6}
+.institute.academy-preview .tg-sec{padding-top:76px;padding-bottom:76px}.institute.academy-preview .tg-h2{font-size:36px;line-height:1.4}
+.institute.academy-preview #how-we-teach>.tg-h2,.institute.academy-preview #how-we-teach>.tg-sub,.institute.academy-preview #how-we-teach>.tg-eyebrow{max-width:1144px;margin-left:auto;margin-right:auto;text-align:left;display:block}
+.institute.academy-preview #how-we-teach>.tg-sub{margin-top:18px;margin-bottom:32px}
+.institute.academy-preview .tg-why__card{border:0;border-top:2px solid #c3b393;border-radius:3px;padding:28px;background:#fffefb}
+.institute.academy-preview .success-section{max-width:1280px;padding:76px 48px}
+.institute.academy-preview .success-section>.tg-col-h{font-size:35px;line-height:1.4;max-width:780px}
+body.institute.academy-preview #tg-proof-cards{gap:24px}
+body.institute.academy-preview .tg-pcard{border:1px solid #e0ddd5;border-radius:4px;padding:30px;box-shadow:none}
+body.institute.academy-preview .tg-pcard:nth-child(-n+2){background:#f2efe7;border-top:3px solid #856640}
+.institute.academy-preview .tg-gallery img{border-radius:4px}
+@media(max-width:1023px){
+ .institute.academy-preview .tg-hero__inner{padding:46px 28px 54px;gap:30px;grid-template-columns:1.1fr 1fr}.institute.academy-preview .tg-hero h1{font-size:41px}.institute.academy-preview .tg-hero h1 em{font-size:.57em}
+ .global-hero-media{min-height:340px}.global-hero-media>img:first-child{min-height:290px;border-radius:4px 4px 55px 4px}.global-hero-media .global-hero-secondary{height:128px;width:43%;left:-16px}
+ .institute .academy-nav a{padding:20px 12px;font-size:12px;gap:9px;min-height:82px}.institute .academy-nav a:after{font-size:13px}
+ .institute .academy-flow{padding:58px 28px}.institute .academy-flow .tg-mech{grid-template-columns:.55fr 1.45fr;gap:30px}.institute .academy-flow .tg-col-h{font-size:28px}
+ .institute.academy-preview #how-we-teach>.tg-h2,.institute.academy-preview #how-we-teach>.tg-sub,.institute.academy-preview #how-we-teach>.tg-eyebrow{margin-left:24px;margin-right:24px}
+}
+@media(max-width:640px){
+ .institute.academy-preview .tg-hero__inner{display:flex;flex-direction:column;align-items:stretch;gap:28px;padding:30px 20px 29px}
+ .institute.academy-preview .tg-hero__inner>*{width:100%;max-width:100%}
+ .institute.academy-preview .tg-hero h1{font-size:36px;line-height:1.25;max-width:9em;margin-bottom:19px;letter-spacing:-.045em}
+ .institute.academy-preview .tg-hero h1 em{font-size:.58em;line-height:1.55;margin-top:14px;letter-spacing:-.04em}.institute.academy-preview .tg-hero__eyebrow{font-size:10px;margin-bottom:20px}
+ .institute.academy-preview .tg-hero__slogan{font-size:13px;margin-bottom:18px}.institute.academy-preview .tg-hero__chips{margin-bottom:22px}
+ .institute.academy-preview .tg-hero .tg-btn,.institute.academy-preview .story-shortcut{font-size:11px;min-height:44px;padding:11px 8px}
+ .global-hero-media{min-height:0;height:205px;padding:0 0 18px 28px}
+ .global-hero-media:before{inset:12px -5px 32px 42px}.global-hero-media>img:first-child{height:180px;min-height:0;max-height:none;border-radius:4px 4px 45px 4px;object-position:center 57%}
+ .global-hero-media .global-hero-secondary{height:106px;width:32%;left:0;bottom:0;border-width:5px}
+ .institute .academy-nav{margin-top:0;border:0;border-bottom:1px solid #e0ddd5;border-radius:0}
+ .institute .academy-nav a{flex-direction:row;gap:6px;font-size:11px;min-height:57px;padding:14px 7px;justify-content:center}.institute .academy-nav span{font-size:10px}.institute .academy-nav a:after{display:none}
+ .institute.academy-preview .tg-trust{padding:28px 0 20px}.institute.academy-preview .tg-trust__v{font-size:31px}
+ .institute .academy-outcomes{padding:0 18px 16px}.institute .academy-outcome{padding:17px 0}.institute .academy-outcome strong{font-size:20px}
+ .institute .academy-flow{padding:42px 20px}.institute .academy-flow .tg-mech{display:block}.institute .academy-flow .tg-col-h{font-size:27px;margin-bottom:15px;padding-top:17px}
+ .institute .academy-flow .tg-mech ol{grid-template-columns:1fr;gap:0}.institute .academy-flow .tg-mech li,.institute .academy-flow .tg-mech li:last-child{border:0!important;border-bottom:1px solid #ddd6c9!important;grid-template-columns:32px 1fr;gap:16px;padding:23px 0;border-radius:0}
+ .institute .academy-flow .tg-mech__n{margin:0}.institute .academy-flow .tg-mech li b{font-size:16px}.institute .academy-flow .tg-mech li small{font-size:13px}
+ .institute.academy-preview .restored-intro{padding:28px 20px}.institute.academy-preview .tg-sec{padding-top:48px;padding-bottom:48px}.institute.academy-preview .tg-h2{font-size:27px}
+ .institute.academy-preview .success-section{padding:48px 20px}.institute.academy-preview .success-section>.tg-col-h{font-size:27px}.institute.academy-preview .tg-why__card{padding:23px}
+ body.institute.academy-preview .tg-pcard{padding:25px 22px}body.institute.academy-preview #tg-proof-cards{gap:18px}
+}

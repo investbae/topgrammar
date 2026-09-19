@@ -1,0 +1,39 @@
+/* Warm architectural palette: ink, porcelain, restrained bronze. */
+body.institute,body.tg-home.full-preview.academy-preview.institute{--color-primary:#192f43;--color-accent:#856640;--color-accent-ink:#775831;--color-border:#e0ddd5;--color-bg:#fcfbf8;--color-bg-alt:#f3f1eb;--color-text:#192f43;--color-text-sub:#56616b;--di:#192f43;--dm:#56616b;--dw:#856640;background:#fcfbf8;color:#192f43}
+.institute-ribbon{background:#192f43;color:#f6f3ec}.institute-ribbon span:first-child{color:#d6c8b0}
+body.institute .site-header{background:#fcfbf8f5;border-bottom-color:#e2dfd7}
+body.institute .site-header__logo-title{color:#192f43}body.institute .site-header__logo-sub{color:#646e77}
+body.institute .site-nav__link{color:#384c5c}body.institute .site-nav__link:hover{background:#eeebe3;color:#192f43}
+.institute.academy-preview .tg-hero{background:linear-gradient(115deg,#f6f4ee,#edeae2);border-bottom-color:#e1ddd3}
+.institute.academy-preview .tg-hero__inner:after{box-shadow:0 15px 36px #192f4312}
+.institute.academy-preview .tg-hero__eyebrow{color:#775831}.institute.academy-preview .tg-hero__eyebrow .dot{background:#856640}
+.institute.academy-preview .tg-hero h1{color:#192f43}.institute.academy-preview .tg-hero h1 em{color:#775831;-webkit-text-fill-color:#775831}
+.institute.academy-preview .tg-hero__slogan{color:#455564}.institute.academy-preview .tg-hero__slogan em{color:#775831}
+.institute.academy-preview .tg-hero__chip{background:#fcfbf8;border-color:#ded8ca;color:#59636b}
+.institute.academy-preview .story-shortcut{background:#192f43;color:#fff}.institute.academy-preview .story-shortcut:hover{background:#2b455b}
+.institute.academy-preview .tg-hero .tg-btn--primary{background:#fffefb;border-color:#aa9475;color:#192f43}.institute.academy-preview .tg-hero .tg-btn--ghost{background:#fffefb;border-color:#d8d3c8;color:#384c5c}
+.institute .academy-nav{background:#fcfbf8;border-color:#e0ddd5}.institute .academy-nav a{color:#192f43;border-color:#e0ddd5}.institute .academy-nav span{background:#eeebe3;color:#775831}.institute .academy-nav a:hover{background:#f2efe7}
+.institute.academy-preview .tg-trust{background:#fcfbf8}.institute.academy-preview .tg-trust__grid>div{border-color:#e0ddd5}.institute.academy-preview .tg-trust__v{color:#192f43;-webkit-text-fill-color:#192f43}.institute.academy-preview .tg-trust__l{color:#56616b}.institute.academy-preview .tg-trust .tg-claim-note{color:#68717a}
+.institute .academy-outcomes{background:#f2f0e9;border-color:#e0dbcf}.institute .academy-outcome{border-color:#dcd5c8}.institute .academy-outcome strong{color:#192f43}.institute .academy-outcome__label{color:#626d75}.institute .academy-outcome__more{color:#775831}.institute .academy-outcomes__note{color:#68717a}
+.institute .academy-flow .tg-col-h{color:#192f43}.institute .academy-flow .tg-mech li,.institute .academy-flow .tg-mech li:last-child{background:#f6f4ef;border-color:#e0dbcf;border-top-color:#a18a65}.institute .academy-flow .tg-mech__n{background:#e9e2d5;color:#70532f}.institute .academy-flow .tg-mech li b{color:#192f43}.institute .academy-flow .tg-mech li small{color:#56616b}
+.institute.academy-preview .restored-intro{background:#f2f0e9;border-color:#e0dbcf}.institute.academy-preview .restored-intro .tg-hero__panel{background:#192f43;color:#fff}
+.institute.academy-preview .tg-band{background:#f3f1eb}.institute.academy-preview .tg-h2{color:#192f43}.institute.academy-preview .tg-eyebrow{color:#775831}.institute.academy-preview .tg-sub{color:#56616b}
+.institute.academy-preview .tg-diag__card,.institute.academy-preview .tg-why__card{background:#fffefb;border-color:#e0ddd5}.institute.academy-preview .tg-why__card h3{color:#192f43}.institute.academy-preview .tg-card-more{color:#775831}
+.institute.academy-preview .tg-assist{background:#eeebe2;border-color:#ded6c5}.institute.academy-preview .tg-assist__badge{background:#775831;color:#fff}
+.institute.academy-preview .success-section>.tg-col-h{color:#192f43}
+body.institute.academy-preview .tg-pcard{background:#fffefb;border-color:#e0ddd5;border-top-color:#a18a65}
+.institute.academy-preview .tg-pcard__badge{background:#eee9df;color:#6b573b}.institute.academy-preview .tg-pcard__arr{color:#856640}
+body.institute.academy-preview .tg-pcard__to,body.institute.academy-preview .tg-pcard__to--sm{color:#192f43!important;-webkit-text-fill-color:#192f43!important}
+.institute.academy-preview .tg-pcard__rel{background:#f0eee6;color:#625d4e}.institute.academy-preview .tg-proof__foot{background:#f1eee6;border-color:#dfd8ca;color:#59636b}
+.institute.academy-preview .tg-rev,.institute.academy-preview .tg-tcard,.institute.academy-preview .tg-camp{background:#fffefb;border-color:#e0ddd5}
+.institute.academy-preview .tg-final{background:#ebe7dc!important;border-top-color:#dcd4c4}
+body.institute .site-footer{background:#eceae3;color:#192f43}body.institute .site-footer a,body.institute .site-footer p,body.institute .site-footer span{color:#384c5c}
+body.institute .tg-sticky{background:#192f43}body.institute .tg-sticky a:last-child{background:#e5dac5;color:#192f43}
+body.institute:not(.academy-preview){background:#fcfbf8}body.institute:not(.academy-preview) .hero{background:#f0ede5;border-color:#e0dbcf;color:#192f43}
+body.institute:not(.academy-preview) .hero h1{color:#192f43}body.institute:not(.academy-preview) .hero p{color:#56616b}
+body.institute:not(.academy-preview) .hero .section-label{color:#775831!important}body.institute:not(.academy-preview) .section--mesh{background:#fcfbf8}
+body.institute:not(.academy-preview) .title-badge--accent{background:#775831;color:#fff}
+body.institute a:focus-visible,body.institute button:focus-visible,body.institute [role=button]:focus-visible{outline-color:#856640}
+@media(min-width:1024px){body.institute .site-nav__link:last-child{background:#192f43;color:#fff}}
+@media(max-width:1023px){body.institute .site-nav,body.institute .site-nav.preview-open,body.institute .site-nav.site-nav--open{background:#fcfbf8;border-color:#e0ddd5;scrollbar-color:#c7bda9 transparent}body.institute .site-nav__link:last-child{background:#ede6d9;color:#70532f}}
+@media(max-width:640px){.institute .academy-nav a:nth-child(n+4){border-color:#e0ddd5}.institute .academy-flow .tg-mech li,.institute .academy-flow .tg-mech li:last-child{border-color:#e0dbcf!important}}
