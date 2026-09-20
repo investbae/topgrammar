@@ -1,6 +1,6 @@
 /* Service Worker - TopGrammar PWA */
-var CACHE_NAME = 'tg-v58-contrast-20260919';
-var HOME_BUILD = '20260919-contrast58';
+var CACHE_NAME = 'tg-v59-note-20260920';
+var HOME_BUILD = '20260920-note59';
 
 self.addEventListener('message', function (event) {
   if (event.data && event.data.type === 'TG_GET_BUILD' && event.ports[0]) {
