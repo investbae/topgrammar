@@ -1,5 +1,5 @@
 /* Service Worker - TopGrammar PWA */
-var CACHE_NAME = 'tg-v63-results-agg-20261106';
+var CACHE_NAME = 'tg-v63-results-full-20261106';
 var HOME_BUILD = '20260920-note59';
 
 self.addEventListener('message', function (event) {
