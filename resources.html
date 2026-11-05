@@ -38,6 +38,10 @@
     .notice__tag{flex:0 0 auto;font-size:0.8125rem;font-weight:700;color:#fff;background:#1a3d8f;border-radius:9999px;padding:.2rem .6rem}
     .notice__tag--event{background:#A2530A}
     .notice__tag--result{background:#775831}
+    .notice__row--pin{background:linear-gradient(90deg,#fbf3e2 0%,#fff 72%);box-shadow:inset 4px 0 0 #c9a45c}
+    a.notice__row--pin:hover{background:linear-gradient(90deg,#f7ecd6 0%,#fbf8f2 72%)}
+    .notice__row--pin .notice__title{color:#192f43;font-weight:800}
+    .notice__new{flex:0 0 auto;font-size:.75rem;font-weight:800;letter-spacing:.06em;color:#ebcb8b;background:#192f43;border-radius:6px;padding:.18rem .45rem}
     a.notice__row{text-decoration:none;color:inherit;transition:background .15s}
     a.notice__row:hover{background:#f6f8fc}
     a.notice__row:focus-visible{outline:2px solid #1a3d8f;outline-offset:-2px}
@@ -123,7 +127,7 @@
 <h2 style="font-size:1.875rem;font-weight:800;margin:.8rem 0 .3rem;color:#16233a;">학원 소식</h2>
 </div>
 <div class="notice">
-<a aria-label="2026학년도 2학기 중간고사 결과 보기" class="notice__row notice__row--link" href="index.html#exam-results"><span class="notice__tag notice__tag--result">성적</span><span class="notice__date">2026.11</span><span class="notice__title">2026학년도 2학기 중간고사 결과 — 영어 100점 20명</span><span aria-hidden="true" class="notice__go">결과 보기 →</span></a>
+<a aria-label="2026학년도 2학기 중간고사 결과 보기" class="notice__row notice__row--link notice__row--pin" href="index.html#exam-results"><span class="notice__tag notice__tag--result">성적</span><span class="notice__new">NEW</span><span class="notice__date">2026.11</span><span class="notice__title">2026학년도 2학기 중간고사 결과 — 영어 100점 20명</span><span aria-hidden="true" class="notice__go">결과 보기 →</span></a>
 <a aria-label="여름방학 특강 상담 신청" class="notice__row notice__row--link" href="payment.html"><span class="notice__tag notice__tag--event">모집</span><span class="notice__date">2026.07</span><span class="notice__title">여름방학 집중 특강 — 중·고등 정규반 및 단과반 모집</span><span aria-hidden="true" class="notice__go">상담 신청 →</span></a>
 <div class="notice__row"><span class="notice__tag">안내</span><span class="notice__date">상시</span><span class="notice__title">신규 등록 전 레벨테스트로 정확한 시작점을 진단해 드립니다. (온라인 신청 무료 · 방문 응시료 10,000원)</span></div>
 <div class="notice__row"><span class="notice__tag">안내</span><span class="notice__date">상시</span><span class="notice__title">화정·행신 캠퍼스 반별 시간표는 전화 상담으로 문의해 주세요.</span></div>
@@ -281,5 +285,6 @@
     //   실사용자 통계만 남기려면 운영 도메인에서만 전송해야 한다.
     if (window.wcs && location.hostname === "topgrammar.co.kr") { wcs_do(); }
   </script>
-<script defer="True" src="visible-nav.js?v=55"></script></body>
+<script defer="True" src="visible-nav.js?v=55"></script><script>(function(){if(Date.now()<Date.parse('2026-12-06T00:00:00+09:00'))return;document.querySelectorAll('.notice__new').forEach(function(e){e.remove()});document.querySelectorAll('.notice__row--pin').forEach(function(e){e.classList.remove('notice__row--pin')})})();</script>
+</body>
 </html>
