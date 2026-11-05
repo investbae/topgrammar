@@ -1135,7 +1135,185 @@ html.dark .tg-home .tg-why__ic{background:#2b4153;color:#cedde8}
     }
   ]
 }
-</script><link href="academy.css?v=55" rel="stylesheet"/><link href="institute.css?v=55" rel="stylesheet"/><link href="palette.css?v=58" rel="stylesheet"/><link href="global-layout.css?v=56" rel="stylesheet"/></head>
+</script><link href="academy.css?v=55" rel="stylesheet"/><link href="institute.css?v=55" rel="stylesheet"/><link href="palette.css?v=58" rel="stylesheet"/><link href="global-layout.css?v=56" rel="stylesheet"/><style id="tgr-style">
+/* ===== 2026 2학기 중간고사 결과 (tgr-) · v2 2026-11-05 디자인 검수 반영 ===== */
+.tgr{--ink:#192f43;--sub:#4f5b66;--line:#e3ded3;--porc:#fcfbf8;
+  --b50:#fbf6ec;--b100:#f3e9d6;--b200:#e5d3ad;--b400:#c9a45c;--b600:#775831;--b800:#5d4524;--gold:#ebcb8b;
+  --n100:#e9eef2;--g700:#0a5c44;
+  position:relative;padding:96px 24px;scroll-margin-top:88px;color:var(--ink);word-break:keep-all;overflow-wrap:break-word;
+  background:radial-gradient(1100px 520px at 88% -8%,var(--b50) 0%,rgba(251,246,236,0) 64%),var(--porc);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tgr *{box-sizing:border-box}
+.tgr-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tgr__in{max-width:1180px;margin:0 auto}
+.tgr__head{text-align:center;max-width:820px;margin:0 auto 48px}
+.tgr__eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:15px;font-weight:800;letter-spacing:.04em;color:var(--b600);margin-bottom:16px}
+.tgr__eyebrow i,.tgr__eyebrow:after{content:"";display:inline-block;width:32px;height:1px;background:var(--b400)}
+.tgr__h{font-size:clamp(32px,4.4vw,48px);line-height:1.25;font-weight:800;letter-spacing:-.035em;color:var(--ink);margin:0 0 16px}
+.tgr__h b{color:var(--b600)}
+.tgr__lead{font-size:17px;line-height:1.75;color:var(--sub);margin:0}
+
+/* KPI — 숫자 3칸 */
+.tgr-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto 64px;padding:0}
+.tgr-kpi__i{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;text-align:center;box-shadow:0 12px 32px rgba(25,47,67,.06)}
+.tgr-kpi__i--key{border:1.5px solid var(--b400);box-shadow:0 14px 34px rgba(119,88,49,.12)}
+.tgr-kpi__i dt{font-size:15px;font-weight:600;color:var(--sub);line-height:1.45;margin:0}
+.tgr-kpi__i dt b{color:var(--ink);font-weight:800}
+.tgr-kpi__i dd{margin:12px 0 0;display:flex;align-items:baseline;justify-content:center;flex-wrap:wrap;gap:2px 4px}
+.tgr-kpi__n{font-size:64px;line-height:1;font-weight:800;letter-spacing:-.04em;color:var(--b600);font-variant-numeric:lining-nums tabular-nums}
+.tgr-kpi__u{font-size:20px;font-weight:800;color:var(--ink)}
+.tgr-kpi__s{flex-basis:100%;font-size:13px;font-weight:700;color:var(--b600);margin-top:6px;text-decoration:none}
+.tgr-kpi__s:hover{text-decoration:underline}
+.tgr-mock{scroll-margin-top:96px}
+
+/* 소제목 */
+.tgr-sub{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-.03em;color:var(--ink);margin:0 0 32px}
+.tgr-sub span{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-weight:400;font-size:17px;color:var(--b600)}
+
+/* 레전드 TOP 3 */
+.tgr-top{margin:0 0 64px}
+.tgr-legends{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px;list-style:none;margin:0;padding:0}
+.tgr-legend{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px 24px 24px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;box-shadow:0 12px 32px rgba(25,47,67,.06);scroll-margin-top:96px}
+.tgr-legend:after{content:"";position:absolute;left:24px;right:24px;top:0;height:3px;border-radius:0 0 3px 3px;background:var(--b400)}
+.tgr-medal{position:absolute;right:24px;top:24px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:22px;font-weight:800;font-variant-numeric:lining-nums;color:var(--ink);
+  background:radial-gradient(circle at 32% 28%,#f8ecd0 0%,#e4c98f 60%,var(--b400) 100%);box-shadow:0 6px 14px rgba(119,88,49,.25),inset 0 0 0 2px rgba(255,255,255,.55)}
+.tgr-legend__rank{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--b600)}
+.tgr-legend__who{font-size:15px;font-weight:600;color:var(--sub)}
+.tgr-legend__who b{font-size:20px;color:var(--ink);font-weight:800;margin-left:4px}
+.tgr-legend__big{font-size:40px;line-height:1.15;font-weight:800;letter-spacing:-.035em;color:var(--b600);font-variant-numeric:lining-nums;margin:8px 0 4px}
+.tgr-legend__body{font-size:15px;line-height:1.7;color:var(--sub);margin:4px 0 0}
+.tgr-legend--first{background:var(--ink);border-color:var(--ink);box-shadow:0 24px 48px rgba(25,47,67,.20)}
+.tgr-legend--first:after{background:var(--gold)}
+.tgr-legend--first .tgr-legend__rank{color:var(--gold)}
+.tgr-legend--first .tgr-legend__who{color:#cfd6dd}
+.tgr-legend--first .tgr-legend__who b{color:#fff}
+.tgr-legend--first .tgr-legend__big{color:#fff;font-size:34px}
+.tgr-legend--first .tgr-legend__body{color:#dfe4e9}
+.tgr-legend--first .tgr-medal{width:56px;height:56px;font-size:26px}
+.tgr-top__note{text-align:center;font-size:13px;color:var(--sub);margin:16px 0 0}
+
+/* 표지: 상승(▲·초록) / 순위·성취(청동) / 정확한 점수(회색) */
+.tgr-up{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:800;line-height:1.35;color:var(--g700);white-space:nowrap}
+.tgr-up:before{content:"▲";font-size:10px}
+.tgr-rank{display:inline-flex;align-items:center;font-size:13px;font-weight:800;line-height:1;color:var(--b600);background:var(--b100);border-radius:6px;padding:4px 6px;text-decoration:none;white-space:nowrap}
+a.tgr-rank:hover{background:var(--b200);color:var(--b800)}
+.tgr-x{font-size:13px;font-weight:600;color:var(--sub);white-space:nowrap}
+
+/* 10월 모의고사 */
+.tgr-mock{position:relative;overflow:hidden;border-radius:24px;padding:40px;margin:0 0 48px;background:linear-gradient(135deg,var(--b50) 0%,var(--b100) 100%);border:1px solid var(--b200);
+  display:grid;grid-template-columns:1fr 1.35fr;gap:32px;align-items:center}
+.tgr-mock:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background:radial-gradient(circle,var(--b400) 1.5px,transparent 2px) 0 0/48px 48px;
+  -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.4),transparent 50%);mask-image:linear-gradient(90deg,rgba(0,0,0,.4),transparent 50%)}
+.tgr-mock__head{position:relative}
+.tgr-mock__eyebrow{font-family:Georgia,serif;font-style:italic;font-size:17px;color:var(--b800)}
+.tgr-mock__head h3{font-size:clamp(24px,2.6vw,32px);line-height:1.3;font-weight:800;letter-spacing:-.03em;color:var(--ink);margin:8px 0}
+.tgr-mock__head h3 b{color:var(--b600)}
+.tgr-mock__head p{font-size:16px;color:var(--b800);margin:0;font-weight:600}
+.tgr-mock__list{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tgr-mock__list li{background:#fff;border:1px solid var(--b200);border-radius:16px;padding:20px 12px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;box-shadow:0 8px 20px rgba(119,88,49,.08)}
+.tgr-seal{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font-size:20px;font-weight:800;font-variant-numeric:lining-nums;color:var(--b800);
+  background:radial-gradient(circle at 35% 30%,#fffaf0,var(--b100) 72%);box-shadow:0 0 0 1.5px var(--b400),0 6px 14px rgba(119,88,49,.14)}
+.tgr-mock__who{display:flex;flex-direction:column;gap:2px}
+.tgr-mock__who small{font-size:13px;font-weight:700;color:var(--sub)}
+.tgr-mock__who b{font-size:18px;font-weight:800;color:var(--ink)}
+
+.tgr-mock__list--agg{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tgr-mock__list--agg .tgr-mock__who small{font-size:15px;color:var(--ink);font-weight:800}
+
+/* 명단 — 학년 열 × 학교 행 × 점수대 묶음 */
+.tgr-board{margin:0 0 64px}
+.tgr-board__key{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 18px;margin:-12px 0 32px;font-size:13px;font-weight:700;color:var(--sub)}
+.tgr-board__key>span{display:inline-flex;align-items:center;gap:6px}
+.tgr-board__key .tgr-tier{font-style:normal}
+.tgr-board__sort{color:var(--sub);font-weight:600}
+.tgr-board__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px;align-items:start}
+.tgr-grade{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 20px 8px;box-shadow:0 10px 28px rgba(25,47,67,.05)}
+.tgr-grade__h{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0;padding:0 0 12px;border-bottom:2px solid var(--ink);font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.tgr-grade__h span{font-size:13px;font-weight:800;color:var(--b600)}
+.tgr-sch{margin:0}
+.tgr-sch__row{padding:14px 0;border-bottom:1px solid #ece8de}
+.tgr-sch__row:last-child{border-bottom:0}
+.tgr-sch__row dt{display:flex;align-items:baseline;gap:6px;margin:0 0 8px;font-size:16px;font-weight:800;color:var(--ink)}
+.tgr-sch__row dt small{font-size:13px;font-weight:700;color:var(--sub)}
+.tgr-sch__row dd{display:flex;align-items:flex-start;gap:10px;margin:0 0 6px}
+.tgr-sch__row dd:last-child{margin-bottom:0}
+.tgr-tier{flex:0 0 44px;display:inline-flex;align-items:center;justify-content:center;height:24px;font-size:13px;font-weight:800;line-height:1;border-radius:999px;font-variant-numeric:lining-nums tabular-nums;font-style:normal}
+.tgr-board__key .tgr-tier{flex:0 0 auto;width:44px}
+.tgr-tier--100{background:var(--b600);color:#fff}
+.tgr-tier--95{background:var(--b100);color:var(--b800)}
+.tgr-tier--90{background:var(--n100);color:var(--ink)}
+.tgr-ns{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;min-height:24px}
+.tgr-n{display:inline-flex;flex-wrap:wrap;align-items:center;gap:2px 5px}
+.tgr-n b{font-size:16px;font-weight:800;color:var(--ink);letter-spacing:.02em}
+
+/* 고지·CTA */
+.tgr-pending{max-width:900px;margin:0 auto 16px;text-align:center;font-size:15px;font-weight:700;line-height:1.7;color:var(--b800);background:var(--b50);border:1px dashed var(--b200);border-radius:12px;padding:14px 18px}
+.tgr-note{max-width:900px;margin:0 auto 32px;font-size:13px;line-height:1.8;color:var(--sub);background:#f6f4ef;border:1px solid var(--line);box-shadow:inset 3px 0 0 var(--b400);border-radius:12px;padding:16px 20px}
+.tgr-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.tgr-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:12px;font-size:16px;font-weight:800;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+.tgr-btn--primary{background:var(--ink);color:#fff;box-shadow:0 12px 26px rgba(25,47,67,.20)}
+.tgr-btn--primary:hover{transform:translateY(-1px);color:#fff}
+.tgr-btn--ghost{background:#fff;color:var(--ink);border:1px solid #cfc8b8}
+.tgr-btn--ghost:hover{border-color:var(--ink);color:var(--ink)}
+.tgr-btn:focus-visible,.tgr a:focus-visible{outline:3px solid var(--b400);outline-offset:3px}
+
+/* 히어로 결과 알림 */
+.tgr-flag{display:inline-flex;align-items:center;gap:10px;justify-self:start;align-self:start;margin:0 0 20px;padding:6px 16px 6px 6px;border-radius:999px;background:#fff;border:1px solid #e0d3b8;box-shadow:0 6px 16px rgba(119,88,49,.08);font-size:14px;font-weight:700;color:#192f43;text-decoration:none;line-height:1.3;white-space:nowrap;max-width:100%}
+.tgr-flag b{display:inline-flex;align-items:center;background:#192f43;color:#ebcb8b;border-radius:999px;padding:5px 10px;font-size:13px;font-weight:800}
+.tgr-flag em{font-style:normal;color:#775831;font-weight:800}
+.tgr-flag:hover{border-color:#c9a45c;color:#192f43}
+
+@media (max-width:1079px){
+  .tgr-legends{grid-template-columns:1fr 1fr}
+  .tgr-legend--first{grid-column:1/-1}
+  .tgr-mock{grid-template-columns:1fr;text-align:center}
+  .tgr-board__grid{grid-template-columns:1fr 1fr;gap:24px}
+}
+@media (max-width:640px){
+  .tgr{padding:64px 16px 56px}
+  .tgr__head{margin-bottom:32px}
+  .tgr__eyebrow{font-size:13px;gap:8px}
+  .tgr__eyebrow i,.tgr__eyebrow:after{width:16px}
+  .tgr__lead{font-size:15px}
+  .tgr__lead br{display:none}
+  .tgr-kpi{gap:8px;margin-bottom:48px}
+  .tgr-kpi__i{padding:16px 6px 14px;border-radius:16px}
+  .tgr-kpi__i dt{font-size:13px;line-height:1.4}
+  .tgr-kpi__i dd{margin-top:8px}
+  .tgr-kpi__n{font-size:36px}
+  .tgr-kpi__u{font-size:14px}
+  .tgr-kpi__s{margin-top:4px}
+  .tgr-sub{margin-bottom:24px}
+  .tgr-top,.tgr-mock{margin-bottom:48px}
+  .tgr-legends{grid-template-columns:1fr;gap:12px}
+  .tgr-legend{padding:24px 18px 18px;gap:4px}
+  .tgr-legend:after{left:18px;right:18px}
+  .tgr-medal{right:16px;top:16px;width:40px;height:40px;font-size:18px}
+  .tgr-legend--first .tgr-medal{width:48px;height:48px;font-size:22px}
+  .tgr-legend__big{font-size:30px;margin:4px 0 2px}
+  .tgr-legend--first .tgr-legend__big{font-size:28px}
+  .tgr-mock{padding:28px 16px;border-radius:20px;gap:20px}
+  .tgr-mock__list{grid-template-columns:1fr 1fr;gap:8px}
+  .tgr-mock__list li{flex-direction:row;justify-content:flex-start;text-align:left;gap:10px;padding:12px}
+  .tgr-seal{width:44px;height:44px;font-size:15px;flex:0 0 44px}
+  .tgr-mock__list--agg{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tgr-mock__list--agg li{flex-direction:column;justify-content:center;text-align:center;padding:14px 6px}
+  .tgr-mock__who b{font-size:16px}
+  .tgr-board__key{margin-bottom:24px;gap:8px 12px}
+  .tgr-board__grid{grid-template-columns:1fr;gap:16px}
+  .tgr-grade{padding:16px 14px 4px;border-radius:16px}
+  .tgr-sch__row{display:grid;grid-template-columns:64px 1fr;column-gap:10px;row-gap:6px;padding:12px 0}
+  .tgr-sch__row dt{grid-row:1/span 3;flex-direction:column;gap:2px;margin:0;font-size:15px}
+  .tgr-sch__row dd{grid-column:2;margin:0}
+  .tgr-note{padding:14px;font-size:13px}
+  .tgr-btn{width:100%}
+  .tgr-flag{font-size:13px;margin-bottom:14px;gap:8px;padding:4px 12px 4px 4px}
+  .tgr-flag__more{display:none}
+}
+@media (prefers-reduced-motion:reduce){.tgr-btn{transition:none}}
+@media print{.tgr{background:#fff}.tgr-mock:before{display:none}}
+</style>
+</head>
 <svg aria-hidden="true" focusable="false" style="display:none" xmlns="http://www.w3.org/2000/svg"><defs>
 <symbol fill="none" id="ic-phone" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z"></path></symbol>
 <symbol fill="none" id="ic-pin" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z"></path><circle cx="12" cy="10" r="2.6"></circle></symbol>
@@ -1186,6 +1364,7 @@ html.dark .tg-home .tg-why__ic{background:#2b4153;color:#cedde8}
 <!-- ===== HERO ===== -->
 <section class="tg-hero">
 <div class="tg-hero__inner"><div class="global-hero-copy">
+<a aria-label="2026학년도 2학기 중간고사 결과 보기" class="tgr-flag" href="#exam-results"><b>2학기 중간고사 결과</b><span>영어 100점 <em>20명</em><span class="tgr-flag__more"> · 90점 이상 <em>47명</em></span></span><span aria-hidden="true">→</span></a>
 <span class="tg-hero__eyebrow"><span class="dot"></span>2026 신규 모집 · 대기 접수 중 · 화정 / 행신</span>
 <h1>지금 등급이, 끝이 아니니까.<br/><em>약점부터 다시 잡는 영어, 탑그래머.</em></h1>
 <p class="tg-hero__slogan">그래머<em>만</em> 잘하는 학원이 아니라,<br/>그래머 <em>공식</em>이 있는 학원입니다.</p><div class="tg-hero__chips">
@@ -1469,6 +1648,35 @@ html.dark .tg-home .tg-why__ic{background:#2b4153;color:#cedde8}
             * 성적 향상 결과는 개인별 학습 상황에 따라 다를 수 있습니다. 학교명은 재학 학교 표기일 뿐 해당 학교와의 제휴를 의미하지 않습니다.<br/>
             * 대학 진학·장학생 선발·성적 등은 학생 개인에게 귀속되는 결과이며, 본 후기는 동일한 결과를 보장하지 않습니다. 본원은 영어 과목 지도를 담당했습니다.</span>
 </div>
+<!-- ===== 2026학년도 2학기 중간고사 결과 (2026-11-05 · results_2026_2mid.json 렌더) ===== -->
+<section aria-labelledby="tgr-h" class="tgr" id="exam-results">
+<div class="tgr__in">
+<header class="tgr__head">
+<span class="tgr__eyebrow"><i aria-hidden="true"></i>2026학년도 2학기 중간고사 결과</span>
+<h2 class="tgr__h" id="tgr-h">영어 100점 <b>20명</b>이 나왔습니다</h2>
+<p class="tgr__lead">학생들이 알려 온 2026학년도 2학기 중간고사 학교 내신 영어 성적을 정리했습니다. <br/>고3도 대부분 90점 이상을 받았습니다.</p>
+</header>
+<dl class="tgr-kpi">
+<div class="tgr-kpi__i tgr-kpi__i--key"><dt>학교 내신 영어 <b>100점</b></dt><dd><span class="tgr-kpi__n">20</span><span class="tgr-kpi__u">명</span></dd></div>
+<div class="tgr-kpi__i"><dt>학교 내신 영어 <b>90점 이상</b></dt><dd><span class="tgr-kpi__n">47</span><span class="tgr-kpi__u">명</span></dd></div>
+<div class="tgr-kpi__i"><dt>10월 모의고사 영어 <b>100점</b></dt><dd><span class="tgr-kpi__n">4</span><span class="tgr-kpi__u">명</span><a class="tgr-kpi__s" href="#tgr-mock">고1·고2·고3 모든 학년 ↓</a></dd></div>
+</dl>
+<div class="tgr-board">
+<h3 class="tgr-sub"><span>Honor Roll</span>학교별 90점 이상 인원</h3>
+<p class="tgr-board__key"><span><i class="tgr-tier tgr-tier--100" aria-hidden="true">100</i>100점</span><span><i class="tgr-tier tgr-tier--95" aria-hidden="true">95+</i>95점 이상</span><span><i class="tgr-tier tgr-tier--90" aria-hidden="true">90+</i>90점 이상</span><span class="tgr-board__sort">학교는 가나다순</span></p>
+<div class="tgr-board__grid">
+<section aria-labelledby="tgr-g-m2" class="tgr-grade"><h4 class="tgr-grade__h" id="tgr-g-m2">중학교 2학년<span>13명</span></h4><dl class="tgr-sch"><div class="tgr-sch__row"><dt>능곡중</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div><div class="tgr-sch__row"><dt>무원중</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div><div class="tgr-sch__row"><dt>백양중</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div><div class="tgr-sch__row"><dt>서정중</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>2명</b></span></span></dd><dd><span class="tgr-tier tgr-tier--95" title="95점 이상"><span aria-hidden="true">95+</span><span class="tgr-sr">95점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>2명</b></span></span></dd></div><div class="tgr-sch__row"><dt>지도중</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd><dd><span class="tgr-tier tgr-tier--95" title="95점 이상"><span aria-hidden="true">95+</span><span class="tgr-sr">95점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div><div class="tgr-sch__row"><dt>행신중</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div><div class="tgr-sch__row"><dt>화정중</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>2명</b></span></span></dd><dd><span class="tgr-tier tgr-tier--95" title="95점 이상"><span aria-hidden="true">95+</span><span class="tgr-sr">95점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div></dl></section><section aria-labelledby="tgr-g-m3" class="tgr-grade"><h4 class="tgr-grade__h" id="tgr-g-m3">중학교 3학년<span>13명</span></h4><dl class="tgr-sch"><div class="tgr-sch__row"><dt>능곡중</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div><div class="tgr-sch__row"><dt>백양중</dt><dd><span class="tgr-tier tgr-tier--95" title="95점 이상"><span aria-hidden="true">95+</span><span class="tgr-sr">95점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div><div class="tgr-sch__row"><dt>서정중</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd><dd><span class="tgr-tier tgr-tier--90" title="90점 이상"><span aria-hidden="true">90+</span><span class="tgr-sr">90점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div><div class="tgr-sch__row"><dt>지도중</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>3명</b></span></span></dd><dd><span class="tgr-tier tgr-tier--90" title="90점 이상"><span aria-hidden="true">90+</span><span class="tgr-sr">90점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>4명</b></span></span></dd></div><div class="tgr-sch__row"><dt>화정중</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>2명</b></span></span></dd></div></dl></section><section aria-labelledby="tgr-g-h1" class="tgr-grade"><h4 class="tgr-grade__h" id="tgr-g-h1">고등학교 1학년<span>12명</span></h4><dl class="tgr-sch"><div class="tgr-sch__row"><dt>능곡고</dt><dd><span class="tgr-tier tgr-tier--95" title="95점 이상"><span aria-hidden="true">95+</span><span class="tgr-sr">95점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd><dd><span class="tgr-tier tgr-tier--90" title="90점 이상"><span aria-hidden="true">90+</span><span class="tgr-sr">90점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>3명</b></span></span></dd></div><div class="tgr-sch__row"><dt>백양고</dt><dd><span class="tgr-tier tgr-tier--95" title="95점 이상"><span aria-hidden="true">95+</span><span class="tgr-sr">95점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd><dd><span class="tgr-tier tgr-tier--90" title="90점 이상"><span aria-hidden="true">90+</span><span class="tgr-sr">90점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>5명</b></span></span></dd></div><div class="tgr-sch__row"><dt>행신고</dt><dd><span class="tgr-tier tgr-tier--90" title="90점 이상"><span aria-hidden="true">90+</span><span class="tgr-sr">90점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>2명</b></span></span></dd></div></dl></section><section aria-labelledby="tgr-g-h2" class="tgr-grade"><h4 class="tgr-grade__h" id="tgr-g-h2">고등학교 2학년<span>9명</span></h4><dl class="tgr-sch"><div class="tgr-sch__row"><dt>백양고</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd><dd><span class="tgr-tier tgr-tier--95" title="95점 이상"><span aria-hidden="true">95+</span><span class="tgr-sr">95점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div><div class="tgr-sch__row"><dt>서정고</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>2명</b></span></span></dd><dd><span class="tgr-tier tgr-tier--90" title="90점 이상"><span aria-hidden="true">90+</span><span class="tgr-sr">90점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div><div class="tgr-sch__row"><dt>행신고</dt><dd><span class="tgr-tier tgr-tier--100" title="100점"><span aria-hidden="true">100</span><span class="tgr-sr">100점</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd><dd><span class="tgr-tier tgr-tier--95" title="95점 이상"><span aria-hidden="true">95+</span><span class="tgr-sr">95점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>2명</b></span></span></dd></div><div class="tgr-sch__row"><dt>화정고</dt><dd><span class="tgr-tier tgr-tier--90" title="90점 이상"><span aria-hidden="true">90+</span><span class="tgr-sr">90점 이상</span></span><span class="tgr-ns"><span class="tgr-n"><b>1명</b></span></span></dd></div></dl></section>
+</div>
+</div>
+<div class="tgr-mock" id="tgr-mock">
+<div class="tgr-mock__head"><span class="tgr-mock__eyebrow">Congratulations</span><h3>10월 모의고사 <b>영어 100점</b> 축하합니다!</h3><p>고1·고2·고3, 모든 학년에서 100점이 나왔습니다.</p></div>
+<ul class="tgr-mock__list tgr-mock__list--agg" role="list"><li><span class="tgr-seal" aria-hidden="true">100</span><span class="tgr-mock__who"><small>고1</small><b>2명</b></span></li><li><span class="tgr-seal" aria-hidden="true">100</span><span class="tgr-mock__who"><small>고2</small><b>1명</b></span></li><li><span class="tgr-seal" aria-hidden="true">100</span><span class="tgr-mock__who"><small>고3</small><b>1명</b></span></li></ul>
+</div>
+<p class="tgr-pending">학생 이름이 들어간 학교별 명단과 «원장이 꼽은 레전드 TOP 3»는 학생·보호자의 게재 동의를 확인한 뒤 이어서 올립니다.</p>
+<p class="tgr-note">학교 내신 결과는 2026학년도 2학기 중간고사 영어 성적 가운데 학생·학부모가 알려 온 성적을 본원이 자체 집계한 것으로, 90점 이상 인원은 위 학교별 인원의 합계입니다. 성적을 알리지 않은 재원생은 집계에서 빠져 있습니다. 학교명은 재학 학교를 구분하기 위한 표기이며 해당 학교의 추천·제휴를 뜻하지 않습니다. 성적 결과는 학생별 학습 상황에 따라 다르며, 동일한 결과를 보장하지 않습니다.</p>
+<div class="tgr-cta"><a class="tgr-btn tgr-btn--primary" href="leveltest.html">내 약점 찾기 · 레벨테스트 →</a><a class="tgr-btn tgr-btn--ghost" href="payment.html">학부모 상담 신청</a></div>
+</div>
+</section>
 <!-- ===== 탑그래머의 기적 — 2026 1학기 내신 90점 이상 집계 (2026-07-24) ===== -->
 <section aria-labelledby="mira-h" class="tg-mira" id="miracle-numbers">
 <div class="tg-mira__inner">
