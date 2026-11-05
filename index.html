@@ -1318,6 +1318,88 @@ a.tgr-rank:hover{background:var(--b200);color:var(--b800)}
 @media print{.tgr{background:#fff}.tgr-mock:before{display:none}}
 .tgr-mk{font-size:max(13.5px,.84em);font-weight:600;letter-spacing:.08em;margin-left:1px;vertical-align:.06em}
 </style>
+<style id="tgm-style">
+/* 기적 구획 · 2026학년도 2학기 중간고사 정리 (2026-11-06 · 디자인 검토 v22 반영)
+   남색 대표 카드(3칸 격자 중 2칸) + 1학기 기록 열(1칸). 아래 «기적과 같은 이유» 3카드와 세로선·간격(14px)을 맞춘다.
+   형광은 대표 숫자 한 곳만(초점 테두리 제외). 세 수치를 선·화살표로 잇지 않는다 — 집계 기준이 달라 추세로 읽히면 안 된다. */
+.tgm-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0 auto;align-items:start;}
+.tgm-feat{grid-column:span 2;position:relative;overflow:hidden;border-radius:20px;padding:30px 32px 28px;color:#fff;
+  background:linear-gradient(150deg,#21405d 0%,#192f43 55%,#132637 100%);
+  box-shadow:0 14px 32px -18px rgba(18,41,63,.38),0 1px 3px rgba(18,41,63,.10);}
+.tgm-feat__top{display:flex;align-items:center;justify-content:space-between;gap:10px 12px;flex-wrap:wrap;
+  padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(255,255,255,.16);}
+.tgm-feat__term{margin:0;font-size:1.125rem;font-weight:800;letter-spacing:-.02em;color:#fff;}
+.tgm-pill{flex:none;font-size:.8125rem;font-weight:700;line-height:1;color:#fff;border:1px solid rgba(255,255,255,.42);border-radius:999px;padding:6px 11px;}
+.tgm-feat__nums{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:22px;}
+.tgm-big,.tgm-sub{margin:0;display:flex;flex-direction:column;gap:8px;}
+.tgm-big__k,.tgm-sub__k{font-size:.9375rem;font-weight:600;color:rgba(255,255,255,.86);}
+.tgm-big__v{font-size:clamp(4rem,9vw,5.75rem);font-weight:800;line-height:.95;letter-spacing:-.05em;color:#e4ff3a;}
+.tgm-big__v small,.tgm-sub__v small,.tgm-g__v small,.tgm-tile__v small{font-size:.4em;font-weight:800;margin-left:6px;letter-spacing:-.01em;}
+.tgm-big__v small,.tgm-sub__v small{color:#fff;}
+.tgm-sub{padding:0 0 2px 22px;border-left:1px solid rgba(255,255,255,.18);}
+.tgm-sub__v{font-size:clamp(2.25rem,4.6vw,3rem);font-weight:800;line-height:1;letter-spacing:-.04em;color:#fff;}
+.tgm-basis{display:inline-block;margin:14px 0 0;font-size:.8125rem;font-weight:600;line-height:1.4;color:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:5px 10px;}
+.tgm-g{margin-top:24px;}
+.tgm-g__cap{margin:0 0 10px;font-size:.8125rem;font-weight:600;letter-spacing:.02em;color:rgba(255,255,255,.8);}
+.tgm-g__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}
+.tgm-g__list li{display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 6px;border-radius:12px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);}
+.tgm-g__k{font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.84);}
+.tgm-g__v{font-size:1.5rem;font-weight:800;line-height:1.1;letter-spacing:-.03em;color:#fff;}
+.tgm-g__v small{font-size:.58em;margin-left:2px;}
+.tgm-go{display:inline-flex;align-items:center;gap:8px;margin-top:22px;min-height:44px;padding:10px 20px;border-radius:999px;
+  font-size:.9375rem;font-weight:800;color:#192f43;background:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.tgm-go:hover{color:#192f43;transform:translateY(-2px);box-shadow:0 10px 20px -10px rgba(0,0,0,.55);}
+.tgm-go:focus-visible{outline:3px solid #e4ff3a;outline-offset:3px;}
+.tgm-past{display:flex;flex-direction:column;gap:12px;}
+.tgm-past__h{display:flex;align-items:center;gap:10px;margin:0;font-size:.875rem;font-weight:800;line-height:1.45;color:#4A5464;}
+.tgm-past__h:after{content:"";flex:1 1 24px;min-width:24px;height:1px;background:#d9d8d2;}
+.tgm-past__list{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+.tgm-tile{display:flex;flex-direction:column;justify-content:flex-start;gap:8px;padding:20px 22px;border-radius:10px;background:#fff;border:1px solid #d9d8d2;}
+.tgm-tile__k{font-size:.875rem;font-weight:700;color:#4A5464;}
+.tgm-tile__v{font-size:clamp(1.75rem,3vw,2.25rem);font-weight:800;line-height:1;letter-spacing:-.04em;color:#AA4E18;}
+.tgm-tile__v small{color:#12293F;}
+.tgm-past__basis{margin:0;font-size:.8125rem;line-height:1.65;color:#4A5464;}
+@media(max-width:760px){
+  .tgm-board{grid-template-columns:1fr;gap:22px;}
+  .tgm-feat{grid-column:auto;padding:24px 20px 22px;border-radius:16px;}
+  .tgm-feat__nums{grid-template-columns:1fr;gap:16px;}
+  .tgm-sub{flex-direction:row;align-items:baseline;justify-content:space-between;padding:14px 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.16);}
+  .tgm-g__list{gap:6px;}
+  .tgm-g__list li{padding:10px 2px;}
+  .tgm-g__v{font-size:1.25rem;}
+  .tgm-g__v small{font-size:.65em;}
+  .tgm-go{display:flex;justify-content:center;}
+  .tgm-past__list{grid-template-columns:1fr 1fr;gap:10px;}
+  .tgm-tile{padding:18px 16px;}
+}
+@media(max-width:380px){.tgm-feat__top{flex-wrap:nowrap;align-items:flex-start;}.tgm-feat__term{min-width:0;}}
+@media(prefers-reduced-motion:reduce){.tgm-go{transition:none;}.tgm-go:hover{transform:none;}}
+@media print{.tgm-feat{background:#fff;color:#12293F;border:1px solid #12293F;box-shadow:none;}
+  .tgm-feat *{color:#12293F !important;}
+  .tgm-g__list li,.tgm-pill,.tgm-basis{border-color:rgba(18,41,63,.35);background:none;}}
+html.dark .tgm-feat{background:linear-gradient(150deg,#16304a 0%,#112539 60%,#0d1d2f 100%);box-shadow:0 0 0 1px rgba(255,255,255,.16),0 14px 32px -18px rgba(0,0,0,.6);}
+html.dark .tgm-feat__term,html.dark .tgm-sub__v,html.dark .tgm-g__v{color:#fff;}
+html.dark .tgm-big__v{color:#e4ff3a;}
+html.dark .tgm-past__h{color:rgba(255,255,255,.9);}
+html.dark .tgm-past__h:after{background:rgba(255,255,255,.22);}
+html.dark .tgm-tile{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);}
+html.dark .tgm-tile__k,html.dark .tgm-past__basis{color:rgba(255,255,255,.88);}
+html.dark .tgm-tile__v{color:#FFD9AE;}
+html.dark .tgm-tile__v small{color:#fff;}
+@media(prefers-color-scheme:dark){
+html:not(.light) .tgm-feat{background:linear-gradient(150deg,#16304a 0%,#112539 60%,#0d1d2f 100%);box-shadow:0 0 0 1px rgba(255,255,255,.16),0 14px 32px -18px rgba(0,0,0,.6);}
+html:not(.light) .tgm-feat__term,html:not(.light) .tgm-sub__v,html:not(.light) .tgm-g__v{color:#fff;}
+html:not(.light) .tgm-big__v{color:#e4ff3a;}
+html:not(.light) .tgm-past__h{color:rgba(255,255,255,.9);}
+html:not(.light) .tgm-past__h:after{background:rgba(255,255,255,.22);}
+html:not(.light) .tgm-tile{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);}
+html:not(.light) .tgm-tile__k,html:not(.light) .tgm-past__basis{color:rgba(255,255,255,.88);}
+html:not(.light) .tgm-tile__v{color:#FFD9AE;}
+html:not(.light) .tgm-tile__v small{color:#fff;}
+}
+</style>
 </head>
 <svg aria-hidden="true" focusable="false" style="display:none" xmlns="http://www.w3.org/2000/svg"><defs>
 <symbol fill="none" id="ic-phone" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z"></path></symbol>
@@ -1689,22 +1771,27 @@ a.tgr-rank:hover{background:var(--b200);color:var(--b800)}
 <div class="tgr-cta"><a class="tgr-btn tgr-btn--primary" href="leveltest.html">내 약점 찾기 · 레벨테스트 →</a><a class="tgr-btn tgr-btn--ghost" href="payment.html">학부모 상담 신청</a></div>
 </div>
 </section>
-<!-- ===== 탑그래머의 기적 — 2026 1학기 내신 90점 이상 집계 (2026-07-24) ===== -->
+<!-- ===== 탑그래머의 기적 — 2026학년도 내신 90점 이상 집계 (2026-07-24 신설 · 2026-11-06 2학기 중간고사 추가) ===== -->
 <section aria-labelledby="mira-h" class="tg-mira" id="miracle-numbers">
 <div class="tg-mira__inner">
 <span class="tg-mira__eyebrow">The Topgrammar Miracle</span>
 <h2 class="tg-mira__h" id="mira-h">탑그래머의 <b>기적!</b></h2>
-<p class="tg-mira__sub">2026학년도 1학기, 학교 내신 영어에서 <b>90점 이상</b>을 받았다고 알려 온 재원생 수입니다.</p>
-<dl class="tg-mira__scores">
-<div class="tg-mira__score">
-<dt class="tg-mira__label">2026학년도 1학기 중간고사</dt>
-<dd class="tg-mira__num">45<i>명</i></dd>
+<p class="tg-mira__sub">2026학년도 학교 내신 영어에서 <b>90점 이상</b>을 받았다고 알려 온 재원생 수를 시험마다 따로 집계했습니다.</p>
+<div class="tgm-board">
+<article aria-labelledby="tgm-feat-h" class="tgm-feat">
+<div class="tgm-feat__top"><h3 class="tgm-feat__term" id="tgm-feat-h">2026학년도 2학기 중간고사</h3><span class="tgm-pill">최신 결과</span></div>
+<div class="tgm-feat__nums">
+<p class="tgm-big"><span class="tgm-big__k">학교 내신 영어 90점 이상</span> <span class="tgm-big__v">47<small>명</small></span></p>
+<p class="tgm-sub"><span class="tgm-sub__k">그중 100점</span> <span class="tgm-sub__v">20<small>명</small></span></p>
 </div>
-<div class="tg-mira__score">
-<dt class="tg-mira__label">2026학년도 1학기 기말고사</dt>
-<dd class="tg-mira__num">49<i>명</i></dd>
+<p class="tgm-basis">위 학교별 명단에 실은 중2~고2 인원 · 고3 제외</p>
+<div class="tgm-g"><p class="tgm-g__cap" id="tgm-g-cap">학년별 90점 이상</p><ul aria-labelledby="tgm-g-cap" class="tgm-g__list" role="list"><li><span class="tgm-g__k">중2</span> <span class="tgm-g__v">13<small>명</small></span></li><li><span class="tgm-g__k">중3</span> <span class="tgm-g__v">13<small>명</small></span></li><li><span class="tgm-g__k">고1</span> <span class="tgm-g__v">12<small>명</small></span></li><li><span class="tgm-g__k">고2</span> <span class="tgm-g__v">9<small>명</small></span></li></ul></div>
+<a class="tgm-go" href="#exam-results">학교별 명단 · 레전드 TOP 3 보기<span aria-hidden="true">↑</span></a>
+</article>
+<div class="tgm-past"><h3 class="tgm-past__h" id="tgm-past-h">1학기 학교 내신 영어 90점 이상</h3>
+<ul aria-labelledby="tgm-past-h" class="tgm-past__list" role="list"><li class="tgm-tile"><span class="tgm-tile__k">2026학년도 1학기 중간고사</span> <span class="tgm-tile__v">45<small>명</small></span></li><li class="tgm-tile"><span class="tgm-tile__k">2026학년도 1학기 기말고사</span> <span class="tgm-tile__v">49<small>명</small></span></li></ul>
+<p class="tgm-past__basis">1학기는 학생이 알려 온 성적 기준입니다. 세 시험의 인원은 각각 따로 집계했고 집계 대상이 달라, 같은 학생 집단의 성적 변화를 뜻하지 않습니다.</p></div>
 </div>
-</dl>
 <p class="tg-mira__after">성적을 따로 알려 주지 않은 학생은 이 집계에서 <b>빠져</b> 있습니다. 그래서 실제로 90점 이상을 받은 재원생은 이 숫자보다 많을 수 있습니다.</p>
 <h3 class="tg-mira__whyh">이 숫자가 <b>기적과 같은</b> 이유</h3>
 <ul class="tg-mira__facts">
@@ -1713,10 +1800,10 @@ a.tgr-rank:hover{background:var(--b200);color:var(--b800)}
 <li><span class="tg-mira__fk">성적 선발 없음</span><span class="tg-mira__ft">성적순으로 학생을 골라 받지 않습니다. <b>현재 성적만으로 가능성을 제한하지 않습니다.</b></span></li>
 </ul>
 <div class="tg-mira__decl">
-<p>90점 이상을 받은 학생 가운데 <b>20~30%</b>는<br/>2년 이상 견디며 함께한 아이들입니다.</p>
+<p>2026학년도 1학기 90점 이상 학생 가운데 <b>20~30%</b>는<br/>2년 이상 견디며 함께한 아이들입니다.</p>
 <p class="tg-mira__decl-sub">학생마다 능력은 다릅니다. 그래서 우리는 각자의 출발점에서 그 학생이 낼 수 있는 <b>최선</b>까지 끌어올리는 것을 목표로 끝까지 함께합니다.</p>
 </div>
-<p class="tg-claim-note tg-claim-note--dark" style="max-width:800px;margin:26px auto 0;">위 인원은 학생이 자발적으로 알려 온 학교 내신 영어 성적 가운데 <b>90점을 포함한 그 이상</b>으로 확인된 재원생 수를 본원이 자체 집계한 것이며, 성적을 알리지 않은 재원생은 집계에서 제외했습니다. 중간고사와 기말고사는 각각 별도로 집계한 수치로, 동일 학생 집단의 성적 향상률을 의미하지 않습니다. 고등부·고3 구성 비중은 최근 운영 기간의 본원 자체 집계이고, 20~30%는 2026학년도 1학기에 90점 이상으로 확인된 학생 가운데 재원 기간이 <b>2년을 포함한 그 이상</b>인 학생의 비율(본원 자체 집계)입니다. 각 비율은 학기·시점에 따라 달라질 수 있습니다. 성적 결과는 학생별 학습 상황에 따라 다르며 동일한 결과를 보장하지 않습니다.</p>
+<p class="tg-claim-note tg-claim-note--dark" style="max-width:800px;margin:26px auto 0;">위 인원은 학교 내신 영어 성적 가운데 <b>90점을 포함한 그 이상</b>으로 확인된 재원생 수를 본원이 자체 집계한 것입니다. 1학기 중간·기말고사 인원은 학생이 자발적으로 알려 온 성적 기준이며, 2학기 중간고사 인원은 학생·학부모가 알려 온 성적 가운데 위 학교별 명단에 실은 학생 수로 고3을 포함하지 않았습니다. 성적을 알리지 않은 재원생은 집계에서 제외했습니다. 세 시험은 각각 별도로 집계한 수치로, 동일 학생 집단의 성적 변화나 향상률을 의미하지 않습니다. 고등부·고3 구성 비중은 최근 운영 기간의 본원 자체 집계이고, 20~30%는 2026학년도 1학기에 90점 이상으로 확인된 학생 가운데 재원 기간이 <b>2년을 포함한 그 이상</b>인 학생의 비율(본원 자체 집계)입니다. 각 비율은 학기·시점에 따라 달라질 수 있습니다. 성적 결과는 학생별 학습 상황에 따라 다르며 동일한 결과를 보장하지 않습니다.</p>
 <p class="tg-mira__bridge">이 숫자 뒤에는 한 명 한 명의 이야기가 있습니다.<br/>
 <a class="tg-mira__btn" href="#miracle-story">포기하지 않은 두 달, 한 학생의 이야기 읽기 ↓</a>
 <span class="tg-mira__qual">개별 수강생 사례 · 평균적·보장된 결과가 아닙니다</span></p>
@@ -2077,6 +2164,6 @@ a.tgr-rank:hover{background:var(--b200);color:var(--b800)}
 </footer>
 <!-- 네이버 애널리틱스 (2026-08-06 · 방문 통계) — 국내 처리.
        개인정보처리방침 수탁자에 네이버(주) 명시. -->
-<script defer="True" src="full-preview.js?v=54"></script><script defer="True" src="visible-nav.js?v=55"></script><script defer="True" src="js/sw-register.js?v=7"></script><script defer="True" src="site-analytics.js?v=54"></script><script defer src="results-popup.js?v=202611060205"></script>
+<script defer="True" src="full-preview.js?v=54"></script><script defer="True" src="visible-nav.js?v=55"></script><script defer="True" src="js/sw-register.js?v=7"></script><script defer="True" src="site-analytics.js?v=54"></script><script defer src="results-popup.js?v=202611060852"></script>
 </body>
 </html>
