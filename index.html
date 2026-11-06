@@ -1319,85 +1319,116 @@ a.tgr-rank:hover{background:var(--b200);color:var(--b800)}
 .tgr-mk{font-size:max(13.5px,.84em);font-weight:600;letter-spacing:.08em;margin-left:1px;vertical-align:.06em}
 </style>
 <style id="tgm-style">
-/* 기적 구획 · 2026학년도 2학기 중간고사 정리 (2026-11-06 · 디자인 검토 v22 반영)
-   남색 대표 카드(3칸 격자 중 2칸) + 1학기 기록 열(1칸). 아래 «기적과 같은 이유» 3카드와 세로선·간격(14px)을 맞춘다.
-   형광은 대표 숫자 한 곳만(초점 테두리 제외). 세 수치를 선·화살표로 잇지 않는다 — 집계 기준이 달라 추세로 읽히면 안 된다. */
-.tgm-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0 auto;align-items:start;}
-.tgm-feat{grid-column:span 2;position:relative;overflow:hidden;border-radius:20px;padding:30px 32px 28px;color:#fff;
+/* 기적 구획 · 2026학년도 시험별 기록 — 최신순 세로 시간줄 (2026-11-06 v3)
+   박사님: «시계열로 모두 볼 수 있게» + «최신을 맨 위로». 왼쪽 레일(점·선)은 시험 순서만 나타낸다 —
+   숫자 사이 화살표·증감·막대 높이 비교는 두지 않는다(시험마다 집계 대상이 다르다).
+   형광은 최신 숫자 한 곳만(초점 테두리 제외). 카드 문법은 아래 3카드(반경 10px·#d9d8d2)에 맞춘다. */
+.tgm-tl{margin:0 auto;}
+.tgm-tl__h{display:flex;align-items:center;gap:10px;margin:0 0 16px;font-size:.9375rem;font-weight:800;line-height:1.45;color:#12293F;}
+.tgm-tl__h:after{content:"";flex:1 1 24px;min-width:24px;height:1px;background:#d9d8d2;}
+.tgm-tl__ord{flex:none;font-size:.75rem;font-weight:700;color:#4A5464;border:1px solid #d9d8d2;border-radius:999px;padding:3px 9px;background:#fff;}
+.tgm-tl__list{list-style:none;margin:0;padding:0;display:grid;gap:14px;}
+.tgm-tl__item{position:relative;padding-left:40px;}
+.tgm-tl__item:before{content:"";position:absolute;left:9px;top:0;bottom:-14px;width:2px;background:#d9d8d2;}
+.tgm-tl__item:first-child:before{top:34px;}
+.tgm-tl__item:last-child:before{bottom:auto;height:34px;}
+.tgm-tl__item:only-child:before{display:none;}
+.tgm-tl__item:after{content:"";position:absolute;left:2px;top:26px;width:16px;height:16px;box-sizing:border-box;border-radius:50%;
+  background:#fff;border:3px solid #AA4E18;}
+.tgm-tl__item--latest:after{background:#192f43;border-color:#192f43;box-shadow:0 0 0 5px rgba(25,47,67,.14);}
+/* 지난 시험 행 */
+.tgm-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px 28px;padding:18px 24px;border-radius:10px;
+  background:#fff;border:1px solid #d9d8d2;}
+.tgm-row__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;min-width:0;}
+.tgm-row__yr{margin:0;font-size:.8125rem;font-weight:700;color:#4A5464;}
+.tgm-row__term{margin:0;font-size:1.0625rem;font-weight:800;letter-spacing:-.02em;color:#12293F;}
+.tgm-row__basis{margin:0;font-size:.8125rem;font-weight:600;color:#4A5464;}
+.tgm-row__num{margin:0;display:flex;align-items:baseline;gap:10px;}
+.tgm-row__k{font-size:.875rem;font-weight:600;color:#4A5464;}
+.tgm-row__v{font-size:clamp(2.25rem,4vw,2.875rem);font-weight:800;line-height:1;letter-spacing:-.04em;color:#AA4E18;}
+.tgm-row__v small,.tgm-big__v small,.tgm-sub__v small,.tgm-g__v small{font-size:.4em;font-weight:800;margin-left:5px;letter-spacing:-.01em;}
+.tgm-row__v small{color:#12293F;}
+/* 최신 시험 행(맨 위) */
+.tgm-row--latest{display:block;position:relative;padding:26px 30px 26px;border:0;color:#fff;border-radius:16px;
   background:linear-gradient(150deg,#21405d 0%,#192f43 55%,#132637 100%);
   box-shadow:0 14px 32px -18px rgba(18,41,63,.38),0 1px 3px rgba(18,41,63,.10);}
-.tgm-feat__top{display:flex;align-items:center;justify-content:space-between;gap:10px 12px;flex-wrap:wrap;
-  padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid rgba(255,255,255,.16);}
-.tgm-feat__term{margin:0;font-size:1.125rem;font-weight:800;letter-spacing:-.02em;color:#fff;}
-.tgm-pill{flex:none;font-size:.8125rem;font-weight:700;line-height:1;color:#fff;border:1px solid rgba(255,255,255,.42);border-radius:999px;padding:6px 11px;}
-.tgm-feat__nums{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:22px;}
+.tgm-row--latest .tgm-row__head{padding-bottom:14px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,.16);padding-right:96px;}
+.tgm-row--latest .tgm-row__yr{color:rgba(255,255,255,.8);}
+.tgm-row--latest .tgm-row__term{font-size:1.25rem;color:#fff;}
+.tgm-pill{position:absolute;top:24px;right:28px;font-size:.8125rem;font-weight:700;line-height:1;color:#fff;
+  border:1px solid rgba(255,255,255,.42);border-radius:999px;padding:6px 11px;}
+.tgm-row__body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;align-items:stretch;}
+.tgm-row__side{display:flex;flex-direction:column;justify-content:space-between;gap:18px;padding-left:30px;border-left:1px solid rgba(255,255,255,.16);}
+.tgm-nums{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:20px;}
 .tgm-big,.tgm-sub{margin:0;display:flex;flex-direction:column;gap:8px;}
 .tgm-big__k,.tgm-sub__k{font-size:.9375rem;font-weight:600;color:rgba(255,255,255,.86);}
-.tgm-big__v{font-size:clamp(4rem,9vw,5.75rem);font-weight:800;line-height:.95;letter-spacing:-.05em;color:#e4ff3a;}
-.tgm-big__v small,.tgm-sub__v small,.tgm-g__v small,.tgm-tile__v small{font-size:.4em;font-weight:800;margin-left:6px;letter-spacing:-.01em;}
+.tgm-big__v{font-size:clamp(3.5rem,7vw,4.5rem);font-weight:800;line-height:.95;letter-spacing:-.05em;color:#e4ff3a;}
 .tgm-big__v small,.tgm-sub__v small{color:#fff;}
-.tgm-sub{padding:0 0 2px 22px;border-left:1px solid rgba(255,255,255,.18);}
-.tgm-sub__v{font-size:clamp(2.25rem,4.6vw,3rem);font-weight:800;line-height:1;letter-spacing:-.04em;color:#fff;}
+.tgm-sub__v{font-size:clamp(2.25rem,4vw,2.75rem);font-weight:800;line-height:1;letter-spacing:-.04em;color:#fff;}
 .tgm-basis{display:inline-block;margin:14px 0 0;font-size:.8125rem;font-weight:600;line-height:1.4;color:rgba(255,255,255,.9);
   background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:5px 10px;}
-.tgm-g{margin-top:24px;}
 .tgm-g__cap{margin:0 0 10px;font-size:.8125rem;font-weight:600;letter-spacing:.02em;color:rgba(255,255,255,.8);}
 .tgm-g__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}
-.tgm-g__list li{display:flex;flex-direction:column;align-items:center;gap:3px;padding:12px 6px;border-radius:12px;
+.tgm-g__list li{display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 4px;border-radius:10px;
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);}
 .tgm-g__k{font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.84);}
-.tgm-g__v{font-size:1.5rem;font-weight:800;line-height:1.1;letter-spacing:-.03em;color:#fff;}
+.tgm-g__v{font-size:1.4375rem;font-weight:800;line-height:1.1;letter-spacing:-.03em;color:#fff;}
 .tgm-g__v small{font-size:.58em;margin-left:2px;}
-.tgm-go{display:inline-flex;align-items:center;gap:8px;margin-top:22px;min-height:44px;padding:10px 20px;border-radius:999px;
+.tgm-go{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;min-height:44px;padding:10px 20px;border-radius:999px;
   font-size:.9375rem;font-weight:800;color:#192f43;background:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s;}
 .tgm-go:hover{color:#192f43;transform:translateY(-2px);box-shadow:0 10px 20px -10px rgba(0,0,0,.55);}
 .tgm-go:focus-visible{outline:3px solid #e4ff3a;outline-offset:3px;}
-.tgm-past{display:flex;flex-direction:column;gap:12px;}
-.tgm-past__h{display:flex;align-items:center;gap:10px;margin:0;font-size:.875rem;font-weight:800;line-height:1.45;color:#4A5464;}
-.tgm-past__h:after{content:"";flex:1 1 24px;min-width:24px;height:1px;background:#d9d8d2;}
-.tgm-past__list{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
-.tgm-tile{display:flex;flex-direction:column;justify-content:flex-start;gap:8px;padding:20px 22px;border-radius:10px;background:#fff;border:1px solid #d9d8d2;}
-.tgm-tile__k{font-size:.875rem;font-weight:700;color:#4A5464;}
-.tgm-tile__v{font-size:clamp(1.75rem,3vw,2.25rem);font-weight:800;line-height:1;letter-spacing:-.04em;color:#AA4E18;}
-.tgm-tile__v small{color:#12293F;}
-.tgm-past__basis{margin:0;font-size:.8125rem;line-height:1.65;color:#4A5464;}
+.tgm-tl__note{margin:14px 0 0 40px;font-size:.8125rem;line-height:1.65;color:#4A5464;}
+@media(max-width:900px){
+  .tgm-row__body{grid-template-columns:1fr;gap:20px;}
+  .tgm-row__side{padding-left:0;border-left:0;padding-top:18px;border-top:1px solid rgba(255,255,255,.16);}
+}
 @media(max-width:760px){
-  .tgm-board{grid-template-columns:1fr;gap:22px;}
-  .tgm-feat{grid-column:auto;padding:24px 20px 22px;border-radius:16px;}
-  .tgm-feat__nums{grid-template-columns:1fr;gap:16px;}
-  .tgm-sub{flex-direction:row;align-items:baseline;justify-content:space-between;padding:14px 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.16);}
+  .tgm-tl__item{padding-left:28px;}
+  .tgm-tl__item:before{left:6px;}
+  .tgm-tl__item:after{left:0;top:22px;width:14px;height:14px;}
+  .tgm-tl__item:first-child:before{top:30px;}
+  .tgm-tl__item:last-child:before{height:30px;}
+  .tgm-tl__note{margin-left:28px;}
+  .tgm-row{grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;padding:16px 18px;}
+  .tgm-row__basis{grid-column:1;grid-row:2;}
+  .tgm-row__num{grid-column:2;grid-row:1 / span 2;flex-direction:column;align-items:flex-end;gap:4px;}
+  .tgm-row--latest{padding:22px 18px 20px;border-radius:14px;}
+  .tgm-row--latest .tgm-row__head{padding-right:84px;}
+  .tgm-pill{top:20px;right:16px;}
+  .tgm-nums{grid-template-columns:1fr;gap:14px;}
+  .tgm-sub{flex-direction:row;align-items:baseline;justify-content:space-between;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);}
   .tgm-g__list{gap:6px;}
-  .tgm-g__list li{padding:10px 2px;}
   .tgm-g__v{font-size:1.25rem;}
   .tgm-g__v small{font-size:.65em;}
-  .tgm-go{display:flex;justify-content:center;}
-  .tgm-past__list{grid-template-columns:1fr 1fr;gap:10px;}
-  .tgm-tile{padding:18px 16px;}
+  .tgm-go{display:flex;align-self:stretch;justify-content:center;}
 }
-@media(max-width:380px){.tgm-feat__top{flex-wrap:nowrap;align-items:flex-start;}.tgm-feat__term{min-width:0;}}
+@media(max-width:380px){.tgm-go{font-size:.875rem;padding:10px 12px;gap:6px;text-align:center;}}
 @media(prefers-reduced-motion:reduce){.tgm-go{transition:none;}.tgm-go:hover{transform:none;}}
-@media print{.tgm-feat{background:#fff;color:#12293F;border:1px solid #12293F;box-shadow:none;}
-  .tgm-feat *{color:#12293F !important;}
+@media print{.tgm-row--latest{background:#fff;color:#12293F;border:1px solid #12293F;box-shadow:none;}
+  .tgm-row--latest *{color:#12293F !important;}
   .tgm-g__list li,.tgm-pill,.tgm-basis{border-color:rgba(18,41,63,.35);background:none;}}
-html.dark .tgm-feat{background:linear-gradient(150deg,#16304a 0%,#112539 60%,#0d1d2f 100%);box-shadow:0 0 0 1px rgba(255,255,255,.16),0 14px 32px -18px rgba(0,0,0,.6);}
-html.dark .tgm-feat__term,html.dark .tgm-sub__v,html.dark .tgm-g__v{color:#fff;}
+html.dark .tgm-tl__h{color:#fff;}
+html.dark .tgm-tl__h:after,html.dark .tgm-tl__item:before{background:rgba(255,255,255,.22);}
+html.dark .tgm-tl__ord{color:rgba(255,255,255,.88);background:transparent;border-color:rgba(255,255,255,.3);}
+html.dark .tgm-tl__item:after{background:#1E4570;border-color:#FFD9AE;}
+html.dark .tgm-row{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);}
+html.dark .tgm-row__yr,html.dark .tgm-row__basis,html.dark .tgm-row__k,html.dark .tgm-tl__note{color:rgba(255,255,255,.88);}
+html.dark .tgm-row__term,html.dark .tgm-row__v small{color:#fff;}
+html.dark .tgm-row__v{color:#FFD9AE;}
+html.dark .tgm-row--latest{background:linear-gradient(150deg,#16304a 0%,#112539 60%,#0d1d2f 100%);box-shadow:0 0 0 1px rgba(255,255,255,.16),0 14px 32px -18px rgba(0,0,0,.6);}
 html.dark .tgm-big__v{color:#e4ff3a;}
-html.dark .tgm-past__h{color:rgba(255,255,255,.9);}
-html.dark .tgm-past__h:after{background:rgba(255,255,255,.22);}
-html.dark .tgm-tile{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);}
-html.dark .tgm-tile__k,html.dark .tgm-past__basis{color:rgba(255,255,255,.88);}
-html.dark .tgm-tile__v{color:#FFD9AE;}
-html.dark .tgm-tile__v small{color:#fff;}
 @media(prefers-color-scheme:dark){
-html:not(.light) .tgm-feat{background:linear-gradient(150deg,#16304a 0%,#112539 60%,#0d1d2f 100%);box-shadow:0 0 0 1px rgba(255,255,255,.16),0 14px 32px -18px rgba(0,0,0,.6);}
-html:not(.light) .tgm-feat__term,html:not(.light) .tgm-sub__v,html:not(.light) .tgm-g__v{color:#fff;}
+html:not(.light) .tgm-tl__h{color:#fff;}
+html:not(.light) .tgm-tl__h:after,html:not(.light) .tgm-tl__item:before{background:rgba(255,255,255,.22);}
+html:not(.light) .tgm-tl__ord{color:rgba(255,255,255,.88);background:transparent;border-color:rgba(255,255,255,.3);}
+html:not(.light) .tgm-tl__item:after{background:#1E4570;border-color:#FFD9AE;}
+html:not(.light) .tgm-row{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);}
+html:not(.light) .tgm-row__yr,html:not(.light) .tgm-row__basis,html:not(.light) .tgm-row__k,html:not(.light) .tgm-tl__note{color:rgba(255,255,255,.88);}
+html:not(.light) .tgm-row__term,html:not(.light) .tgm-row__v small{color:#fff;}
+html:not(.light) .tgm-row__v{color:#FFD9AE;}
+html:not(.light) .tgm-row--latest{background:linear-gradient(150deg,#16304a 0%,#112539 60%,#0d1d2f 100%);box-shadow:0 0 0 1px rgba(255,255,255,.16),0 14px 32px -18px rgba(0,0,0,.6);}
 html:not(.light) .tgm-big__v{color:#e4ff3a;}
-html:not(.light) .tgm-past__h{color:rgba(255,255,255,.9);}
-html:not(.light) .tgm-past__h:after{background:rgba(255,255,255,.22);}
-html:not(.light) .tgm-tile{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);}
-html:not(.light) .tgm-tile__k,html:not(.light) .tgm-past__basis{color:rgba(255,255,255,.88);}
-html:not(.light) .tgm-tile__v{color:#FFD9AE;}
-html:not(.light) .tgm-tile__v small{color:#fff;}
 }
 </style>
 </head>
@@ -1777,20 +1808,24 @@ html:not(.light) .tgm-tile__v small{color:#fff;}
 <span class="tg-mira__eyebrow">The Topgrammar Miracle</span>
 <h2 class="tg-mira__h" id="mira-h">탑그래머의 <b>기적!</b></h2>
 <p class="tg-mira__sub">2026학년도 학교 내신 영어에서 <b>90점 이상</b>을 받았다고 알려 온 재원생 수를 시험마다 따로 집계했습니다.</p>
-<div class="tgm-board">
-<article aria-labelledby="tgm-feat-h" class="tgm-feat">
-<div class="tgm-feat__top"><h3 class="tgm-feat__term" id="tgm-feat-h">2026학년도 2학기 중간고사</h3><span class="tgm-pill">최신 결과</span></div>
-<div class="tgm-feat__nums">
-<p class="tgm-big"><span class="tgm-big__k">학교 내신 영어 90점 이상</span> <span class="tgm-big__v">47<small>명</small></span></p>
-<p class="tgm-sub"><span class="tgm-sub__k">그중 100점</span> <span class="tgm-sub__v">20<small>명</small></span></p>
-</div>
+<div class="tgm-tl">
+<h3 class="tgm-tl__h" id="tgm-tl-h">2026학년도 시험별 기록 <span class="tgm-tl__ord">최신순</span></h3>
+<ol aria-labelledby="tgm-tl-h" class="tgm-tl__list" role="list">
+<li class="tgm-tl__item tgm-tl__item--latest"><article aria-labelledby="tgm-x3" class="tgm-row tgm-row--latest">
+<div class="tgm-row__head"><p class="tgm-row__yr">2026학년도</p><h4 class="tgm-row__term" id="tgm-x3">2학기 중간고사</h4><span class="tgm-pill">최신 결과</span></div>
+<div class="tgm-row__body">
+<div class="tgm-row__main">
+<div class="tgm-nums"><p class="tgm-big"><span class="tgm-big__k">학교 내신 영어 90점 이상</span> <span class="tgm-big__v">47<small>명</small></span></p><p class="tgm-sub"><span class="tgm-sub__k">그중 100점</span> <span class="tgm-sub__v">20<small>명</small></span></p></div>
 <p class="tgm-basis">위 학교별 명단에 실은 중2~고2 인원 · 고3 제외</p>
-<div class="tgm-g"><p class="tgm-g__cap" id="tgm-g-cap">학년별 90점 이상</p><ul aria-labelledby="tgm-g-cap" class="tgm-g__list" role="list"><li><span class="tgm-g__k">중2</span> <span class="tgm-g__v">13<small>명</small></span></li><li><span class="tgm-g__k">중3</span> <span class="tgm-g__v">13<small>명</small></span></li><li><span class="tgm-g__k">고1</span> <span class="tgm-g__v">12<small>명</small></span></li><li><span class="tgm-g__k">고2</span> <span class="tgm-g__v">9<small>명</small></span></li></ul></div>
-<a class="tgm-go" href="#exam-results">학교별 명단 · 레전드 TOP 3 보기<span aria-hidden="true">↑</span></a>
-</article>
-<div class="tgm-past"><h3 class="tgm-past__h" id="tgm-past-h">1학기 학교 내신 영어 90점 이상</h3>
-<ul aria-labelledby="tgm-past-h" class="tgm-past__list" role="list"><li class="tgm-tile"><span class="tgm-tile__k">2026학년도 1학기 중간고사</span> <span class="tgm-tile__v">45<small>명</small></span></li><li class="tgm-tile"><span class="tgm-tile__k">2026학년도 1학기 기말고사</span> <span class="tgm-tile__v">49<small>명</small></span></li></ul>
-<p class="tgm-past__basis">1학기는 학생이 알려 온 성적 기준입니다. 세 시험의 인원은 각각 따로 집계했고 집계 대상이 달라, 같은 학생 집단의 성적 변화를 뜻하지 않습니다.</p></div>
+</div>
+<div class="tgm-row__side"><div class="tgm-g"><p class="tgm-g__cap" id="tgm-g-cap">학년별 90점 이상</p><ul aria-labelledby="tgm-g-cap" class="tgm-g__list" role="list"><li><span class="tgm-g__k">중2</span> <span class="tgm-g__v">13<small>명</small></span></li><li><span class="tgm-g__k">중3</span> <span class="tgm-g__v">13<small>명</small></span></li><li><span class="tgm-g__k">고1</span> <span class="tgm-g__v">12<small>명</small></span></li><li><span class="tgm-g__k">고2</span> <span class="tgm-g__v">9<small>명</small></span></li></ul></div>
+<a class="tgm-go" href="#exam-results">학교별 명단 · 레전드 TOP 3 보기<span aria-hidden="true">↑</span></a></div>
+</div>
+</article></li>
+<li class="tgm-tl__item"><article aria-labelledby="tgm-x2" class="tgm-row"><div class="tgm-row__head"><p class="tgm-row__yr">2026학년도</p><h4 class="tgm-row__term" id="tgm-x2">1학기 기말고사</h4></div> <p class="tgm-row__basis">학생이 알려 온 성적 기준</p> <p class="tgm-row__num"><span class="tgm-row__k">90점 이상</span> <span class="tgm-row__v">49<small>명</small></span></p></article></li>
+<li class="tgm-tl__item"><article aria-labelledby="tgm-x1" class="tgm-row"><div class="tgm-row__head"><p class="tgm-row__yr">2026학년도</p><h4 class="tgm-row__term" id="tgm-x1">1학기 중간고사</h4></div> <p class="tgm-row__basis">학생이 알려 온 성적 기준</p> <p class="tgm-row__num"><span class="tgm-row__k">90점 이상</span> <span class="tgm-row__v">45<small>명</small></span></p></article></li>
+</ol>
+<p class="tgm-tl__note">시험마다 따로 집계했고 집계 대상이 달라, 같은 학생 집단의 성적 변화를 뜻하지 않습니다.</p>
 </div>
 <p class="tg-mira__after">성적을 따로 알려 주지 않은 학생은 이 집계에서 <b>빠져</b> 있습니다. 그래서 실제로 90점 이상을 받은 재원생은 이 숫자보다 많을 수 있습니다.</p>
 <h3 class="tg-mira__whyh">이 숫자가 <b>기적과 같은</b> 이유</h3>
@@ -2164,6 +2199,6 @@ html:not(.light) .tgm-tile__v small{color:#fff;}
 </footer>
 <!-- 네이버 애널리틱스 (2026-08-06 · 방문 통계) — 국내 처리.
        개인정보처리방침 수탁자에 네이버(주) 명시. -->
-<script defer="True" src="full-preview.js?v=54"></script><script defer="True" src="visible-nav.js?v=55"></script><script defer="True" src="js/sw-register.js?v=7"></script><script defer="True" src="site-analytics.js?v=54"></script><script defer src="results-popup.js?v=202611060852"></script>
+<script defer="True" src="full-preview.js?v=54"></script><script defer="True" src="visible-nav.js?v=55"></script><script defer="True" src="js/sw-register.js?v=7"></script><script defer="True" src="site-analytics.js?v=54"></script><script defer src="results-popup.js?v=202611060907"></script>
 </body>
 </html>
