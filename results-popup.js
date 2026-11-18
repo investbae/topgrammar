@@ -110,7 +110,7 @@
           '<div class="tgp__stat"><span>10월 모의고사 영어 100점</span><b>' + MOCK100 + '<small>명</small></b><em>' + MOCKBY + '</em></div>' +
         '</div>' +
         '<div class="tgp__body">' +
-          '<p class="tgp__lead" id="tgp-lead">학교별 명단과 원장이 꼽은<br>레전드 TOP 3를 확인해 보세요.</p>' +
+          '<p class="tgp__lead" id="tgp-lead">학교별 명단과 원장이 꼽은<br>레전드 TOP 5를 확인해 보세요.</p>' +
           '<a class="tgp__cta" href="' + href + '" data-go><span>학교별 결과 보기</span> <i aria-hidden="true">→</i></a>' +
           '<p class="tgp__fine">학생·학부모가 알려 온 성적을 본원이 자체 집계한 결과입니다.</p>' +
         '</div>' +
