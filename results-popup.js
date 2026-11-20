@@ -14,7 +14,9 @@
   function set(store, k, v) { try { window[store].setItem(k, v); } catch (e) {} }
   if (+(get('localStorage', KEY + '_hide') || 0) > now) return;
   if (get('sessionStorage', KEY + '_seen')) return;
-  set('sessionStorage', KEY + '_t', '1');                       // 저장이 안 되는 브라우저면 쪽마다 다시 뜨므로 자동 노출을 끈다
+  var _own = get('sessionStorage', 'tg_pop_owner');            // 한 방문에 팝업 하나 — 수능 팝업(suneung-popup.js)이 먼저 떴으면 열지 않는다(2026-11-20)
+  if (window.__tgPopOwner || (_own && _own !== 'results')) return;
+  set('sessionStorage', KEY + '_t', '1');                      // 저장이 안 되는 브라우저면 쪽마다 다시 뜨므로 자동 노출을 끈다
   if (get('sessionStorage', KEY + '_t') !== '1') return;
   try { sessionStorage.removeItem(KEY + '_t'); } catch (e) {}
 
@@ -81,7 +83,7 @@
     var off = (sticky && getComputedStyle(sticky).display !== 'none') ? sticky.offsetHeight : 0;
     bar.style.bottom = 'calc(' + (off + 18) + 'px + ' + (off ? '0px' : 'env(safe-area-inset-bottom)') + ')';
     document.body.appendChild(bar);
-    set('sessionStorage', KEY + '_seen', '1');
+    set('sessionStorage', KEY + '_seen', '1'); set('sessionStorage', 'tg_pop_owner', 'results');
     requestAnimationFrame(function () { requestAnimationFrame(function () { bar.classList.add('is-on'); }); });
     function rm() { bar.classList.remove('is-on'); setTimeout(function () { if (bar.parentNode) bar.parentNode.removeChild(bar); }, reduce ? 0 : 300); }
     bar.querySelector('.tgm__x').addEventListener('click', rm);
@@ -170,7 +172,7 @@
     root = build(); card = root.querySelector('.tgp__card');
     if (!canKeep()) { var wk = root.querySelector('[data-week]'); if (wk) wk.parentNode.removeChild(wk); }
     document.body.appendChild(root);
-    set('sessionStorage', KEY + '_seen', '1');
+    set('sessionStorage', KEY + '_seen', '1'); set('sessionStorage', 'tg_pop_owner', 'results');
     lock(true);
     inerted = [];
     Array.prototype.forEach.call(document.body.children, function (el) {
@@ -187,6 +189,6 @@
     if (mobile) swipe();
     requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add('is-on'); card.focus({ preventScroll: true }); }); });
   }
-  function start() { setTimeout(function () { if (Date.now() >= UNTIL || location.hash === '#exam-results') return; (MINI ? openMini : openPopup)(); }, 700); }
+  function start() { setTimeout(function () { if (Date.now() >= UNTIL || location.hash === '#exam-results' || window.__tgPopOwner === 'suneung') return; (MINI ? openMini : openPopup)(); }, 700); }
   if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
 })();
