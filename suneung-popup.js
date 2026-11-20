@@ -7,7 +7,7 @@
   var START = new Date('2026-11-20T00:00:00+09:00').getTime();
   var UNTIL = new Date('2026-12-11T00:00:00+09:00').getTime();
   var KEY = 'tg_pop_2027_suneung';
-  var S = [{"score": 100}, {"score": 97}, {"score": 94}];                            // [{school, grade, surname, score}] — 첫 줄이 만점(가운데 형광 메달)
+  var S = [{"school": "백양고", "grade": 3, "surname": "문", "score": 100}, {"school": "서정고", "grade": 3, "surname": "권", "score": 97}, {"school": "서정고", "grade": 3, "surname": "윤", "score": 94}];                            // [{school, grade, surname, score}] — 첫 줄이 만점(가운데 형광 메달)
   var now = Date.now();
   if (now < START || now >= UNTIL) return;
   if (location.hash === '#exam-results') return;
