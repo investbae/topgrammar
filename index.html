@@ -1432,6 +1432,127 @@ html:not(.light) .tgm-row--latest{background:linear-gradient(150deg,#16304a 0%,#
 html:not(.light) .tgm-big__v{color:#e4ff3a;}
 }
 </style>
+<style id="tgsn-style">
+/* ===== 2027학년도 수능 영어(가채점) 구획 (tgsn-) · 2026-11-20 — 수능 팝업과 같은 체계(형광 노랑 #e4ff3a × 남색 · 상장 테 · 월계관 · 시상대)
+   남색 면 위 반투명 형광 금지(탁한 올리브화 · 팝업 디자인 검토 교훈) · 97·94는 같은 은빛(같은 학교 두 학생 사이 서열을 색으로 만들지 않는다) */
+.tgsn{--neon:#e4ff3a;--ink:#192f43;--silver:#cfdae3;position:relative;overflow:hidden;padding:96px 24px 88px;scroll-margin-top:88px;color:#fff;word-break:keep-all;overflow-wrap:break-word;text-align:center;
+  background:radial-gradient(760px 420px at 50% 58%,rgba(130,170,205,.20),rgba(130,170,205,0) 70%),linear-gradient(170deg,#1d3a54 0%,#132637 55%,#0b1824 100%)}
+.tgsn:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1.5px);background-size:24px 24px;
+  -webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%)}
+.tgsn:after{content:"";position:absolute;left:0;right:0;bottom:3px;height:4px;background:var(--neon)}
+#suneung-results+.tgr{border-top:0}
+.tgsn *{box-sizing:border-box}
+.tgsn-sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.tgsn__in{position:relative;max-width:860px;margin:0 auto;padding:56px 48px 44px}
+.tgsn__frame{position:absolute;inset:0;border:1px solid rgba(255,255,255,.13);border-radius:28px;pointer-events:none}
+.tgsn__frame:before,.tgsn__frame:after{content:"";position:absolute;width:40px;height:40px;border:3px solid var(--neon)}
+.tgsn__frame:before{top:-2px;left:-2px;border-right:0;border-bottom:0;border-radius:28px 0 0 0}
+.tgsn__frame:after{bottom:-2px;right:-2px;border-left:0;border-top:0;border-radius:0 0 28px 0}
+.tgsn__kicker{font:italic 400 24px/1.3 Georgia,"Times New Roman",serif;color:var(--neon);letter-spacing:.01em;margin:0 0 14px}
+.tgsn__eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:17px;font-weight:600;color:#e3e9ee;letter-spacing:.03em;margin:0 0 16px}
+.tgsn__eyebrow:before,.tgsn__eyebrow:after{content:"";width:32px;height:2px;border-radius:2px;background:var(--neon)}
+.tgsn__eyebrow i{font-style:normal;font-size:14.5px;font-weight:700;color:var(--ink);background:#e3e9ee;border-radius:6px;padding:3px 8px;letter-spacing:0}
+.tgsn__h{margin:0;font-size:clamp(34px,4.6vw,54px);line-height:1.18;font-weight:800;letter-spacing:-.035em;color:#fff}
+.tgsn__h em{font-style:normal;color:var(--neon)}
+
+/* 시상대 — 화면 배치 97 | 100 | 94 (읽는 순서는 100 → 97 → 94) */
+.tgsn__podium{list-style:none;margin:44px auto 0;padding:0;max-width:700px;display:grid;grid-template-columns:1fr 1.3fr 1fr;column-gap:14px;align-items:end;border-bottom:4px solid var(--neon)}
+.tgsn__p{display:flex;flex-direction:column;align-items:center;min-width:0}
+.tgsn__p--1{order:2}.tgsn__p--2{order:1}.tgsn__p--3{order:3}
+.tgsn__medal{width:100%;max-width:150px;margin-bottom:14px;filter:drop-shadow(0 10px 16px rgba(0,0,0,.38))}
+.tgsn__p--1 .tgsn__medal{max-width:206px;filter:drop-shadow(0 14px 22px rgba(0,0,0,.42))}
+.tgsn__medal svg{display:block;width:100%;height:auto;overflow:visible}
+.tgsn__step{width:100%;height:104px;padding:18px 8px 0;border-radius:16px 16px 0 0;background:linear-gradient(180deg,#2a4864 0%,#1b3349 100%);border-top:3px solid var(--silver);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.tgsn__p--1 .tgsn__step{height:140px;padding-top:22px;background:linear-gradient(180deg,#30526f 0%,#1d3a54 100%);border-top-color:var(--neon)}
+.tgsn__who{margin:0;line-height:1.3;white-space:nowrap}
+.tgsn__who small{display:block;font-size:15px;font-weight:500;color:#dfe7ee;letter-spacing:.01em}
+.tgsn__who b{display:block;font-size:21px;font-weight:800;color:#fff;letter-spacing:.02em;margin-top:3px}
+.tgsn__p--1 .tgsn__who small{font-size:16px;color:#eef3f6}
+.tgsn__p--1 .tgsn__who b{font-size:26px;color:var(--neon)}
+.tgsn__mk{font-size:max(14px,.8em);font-weight:600;letter-spacing:.08em;margin-left:1px;vertical-align:.06em}
+.tgsn--agg .tgsn__step{height:64px}.tgsn--agg .tgsn__p--1 .tgsn__step{height:92px}
+
+/* 3년 이상 띠 + 레벨테스트 */
+.tgsn__band{display:flex;align-items:center;gap:22px;max-width:700px;margin:0 auto;padding:22px 24px 22px 30px;background:#fff;border-radius:0 0 20px 20px;text-align:left;
+  box-shadow:0 24px 50px rgba(0,0,0,.28)}
+.tgsn__yr{margin:0;flex:0 0 auto}
+.tgsn__yr b{display:inline-block;font-size:34px;line-height:1.05;font-weight:900;color:var(--ink);letter-spacing:-.03em;padding:0 6px;
+  background:linear-gradient(180deg,transparent 64%,var(--neon) 64%,var(--neon) 90%,transparent 90%)}
+.tgsn__yr small{font-size:17px;font-weight:800;margin-left:3px;letter-spacing:-.01em}
+.tgsn__txt{flex:1 1 auto;margin:0;font-size:17px;line-height:1.5;font-weight:600;color:#24323f}
+.tgsn__txt strong{font-weight:800;color:var(--ink)}
+.tgsn__cta{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:0 24px;border-radius:14px;text-decoration:none;
+  background:linear-gradient(180deg,#efff78 0%,#d8f71e 100%);color:var(--ink);font-size:17px;font-weight:800;letter-spacing:-.01em;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 0 0 1px rgba(25,47,67,.14),0 10px 18px -8px rgba(110,140,0,.55);transition:transform .15s}
+.tgsn__cta:hover{transform:translateY(-1px);color:var(--ink)}
+.tgsn__cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.tgsn__cta i{font-style:normal}
+.tgsn__fine{margin:20px auto 0;max-width:700px;font-size:14px;line-height:1.6;color:#c9d4dd}
+
+/* 첫 화면 히어로 배지(수능) — 기존 2학기 배지 위 · 남색 바탕 */
+.tgr-flag--sn{background:#192f43;border-color:#192f43;color:#fff;margin-bottom:16px}
+.tgr-flag--sn+.tgr-flag b{text-shadow:none}
+.tgr-flag--sn+.tgr-flag b:before{animation:none}
+.tgr-flag b{white-space:nowrap;flex:0 0 auto}
+@media (max-width:1199px){.tgr-flag__more{display:none}}
+.tgr-flag--sn b{background:#e4ff3a;color:#192f43;text-shadow:none}
+.tgr-flag--sn b:before{background:#192f43;animation:none}
+.tgr-flag--sn em{color:#e4ff3a;background:none;padding:0 1px}
+.tgr-flag--sn:hover{color:#fff}
+.tgr-flag__tag{font-style:normal;font-size:13px;font-weight:800;color:#192f43;background:#e3e9ee;border-radius:6px;padding:2px 6px;letter-spacing:0}
+
+@media (max-width:860px){
+  .tgsn{padding:80px 20px 72px}
+  .tgsn__in{padding:48px 28px 36px}
+  .tgsn__podium{max-width:560px}
+  .tgsn__medal{max-width:124px}.tgsn__p--1 .tgsn__medal{max-width:168px}
+  .tgsn__band{flex-wrap:wrap;justify-content:center;text-align:center;max-width:560px;padding:22px 22px 24px}
+  .tgsn__txt{flex-basis:100%}
+  .tgsn__cta{flex-basis:100%}
+}
+@media (max-width:640px){
+  .tgsn{padding:64px 14px 60px}
+  .tgsn__in{padding:40px 12px 28px}
+  .tgsn__frame{border-radius:22px}
+  .tgsn__frame:before{border-radius:22px 0 0 0}.tgsn__frame:after{border-radius:0 0 22px 0}
+  .tgsn__frame:before,.tgsn__frame:after{width:30px;height:30px}
+  .tgsn__kicker{font-size:19px;margin-bottom:10px}
+  .tgsn__eyebrow{font-size:15px;gap:10px}
+  .tgsn__eyebrow:before,.tgsn__eyebrow:after{width:22px}
+  .tgsn__h{font-size:30px}
+  .tgsn__podium{margin-top:32px;column-gap:8px;grid-template-columns:1fr 1.25fr 1fr}
+  .tgsn__medal{max-width:96px;margin-bottom:10px}.tgsn__p--1 .tgsn__medal{max-width:124px}
+  .tgsn__step{height:86px;padding:14px 2px 0;border-radius:12px 12px 0 0}
+  .tgsn__p--1 .tgsn__step{height:112px;padding-top:18px}
+  .tgsn__who small{font-size:13px}
+  .tgsn__who b{font-size:17px}
+  .tgsn__p--1 .tgsn__who small{font-size:13.5px}
+  .tgsn__p--1 .tgsn__who b{font-size:21px}
+  .tgsn--agg .tgsn__step{height:46px}.tgsn--agg .tgsn__p--1 .tgsn__step{height:68px}
+  .tgsn__band{gap:12px;padding:20px 16px 22px;border-radius:0 0 16px 16px}
+  .tgsn__yr b{font-size:30px}
+  .tgsn__txt{font-size:16px}
+  .tgsn__cta{min-height:54px;font-size:17px}
+  .tgsn__fine{font-size:13.5px;margin-top:16px}
+  .tgr-flag__tag{font-size:13px;padding:2px 5px}
+  .tgr-flag--sn,.tgr-flag--sn+.tgr-flag{min-width:min(100%,320px)}
+  .tgr-flag--sn>span[aria-hidden="true"]:last-child,.tgr-flag--sn+.tgr-flag>span[aria-hidden="true"]:last-child{margin-left:auto}
+}
+@media (max-width:374px){
+  .tgsn{padding-left:10px;padding-right:10px}
+  .tgsn__in{padding-left:12px;padding-right:12px}
+  .tgsn__h{font-size:27px}
+  .tgsn__podium{column-gap:6px}
+  .tgsn__who small{font-size:13px;letter-spacing:-.02em}
+  .tgsn__br{display:none}
+}
+@media (min-width:641px){.tgr-flag--sn,.tgr-flag--sn+.tgr-flag{min-width:min(100%,380px)}.tgr-flag--sn b,.tgr-flag--sn+.tgr-flag b{box-sizing:border-box;min-width:11em;justify-content:center}.tgr-flag--sn>span[aria-hidden="true"]:last-child,.tgr-flag--sn+.tgr-flag>span[aria-hidden="true"]:last-child{margin-left:auto}}
+@media (min-width:1200px){.tgr-flag--sn,.tgr-flag--sn+.tgr-flag{min-width:min(100%,480px)}}
+.tgsn__fine{text-wrap:balance}
+.tgsn__step{background:linear-gradient(180deg,#38607f 0,#2a4864 20px,#203b54 62%,#1a3147 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 1px 0 0 rgba(255,255,255,.07),inset -1px 0 0 rgba(0,0,0,.28),inset 0 -26px 28px -22px rgba(0,0,0,.35)}
+.tgsn__p--1 .tgsn__step{background:linear-gradient(180deg,#416a8f 0,#30526f 22px,#26475f 62%,#1d3a54 100%)}
+</style>
 </head>
 <svg aria-hidden="true" focusable="false" style="display:none" xmlns="http://www.w3.org/2000/svg"><defs>
 <symbol fill="none" id="ic-phone" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z"></path></symbol>
@@ -1483,6 +1604,7 @@ html:not(.light) .tgm-big__v{color:#e4ff3a;}
 <!-- ===== HERO ===== -->
 <section class="tg-hero">
 <div class="tg-hero__inner"><div class="global-hero-copy">
+<a aria-label="2027학년도 수능 영어 결과 보기(가채점)" class="tgr-flag tgr-flag--sn" href="#suneung-results"><b>2027 수능 영어</b><span>만점 <em>100점</em><span class="tgr-flag__more"> · 97점 · 94점</span></span><i class="tgr-flag__tag">가채점</i><span aria-hidden="true">→</span></a>
 <a aria-label="2026학년도 2학기 중간고사 결과 보기" class="tgr-flag" href="#exam-results"><b>2학기 중간고사 결과</b><span>영어 100점 <em>20명</em><span class="tgr-flag__more"> · 90점 이상 <em>47명</em></span></span><span aria-hidden="true">→</span></a>
 <span class="tg-hero__eyebrow"><span class="dot"></span>2026 신규 모집 · 대기 접수 중 · 화정 / 행신</span>
 <h1>지금 등급이, 끝이 아니니까.<br/><em>약점부터 다시 잡는 영어, 탑그래머.</em></h1>
@@ -1767,6 +1889,18 @@ html:not(.light) .tgm-big__v{color:#e4ff3a;}
             * 성적 향상 결과는 개인별 학습 상황에 따라 다를 수 있습니다. 학교명은 재학 학교 표기일 뿐 해당 학교와의 제휴를 의미하지 않습니다.<br/>
             * 대학 진학·장학생 선발·성적 등은 학생 개인에게 귀속되는 결과이며, 본 후기는 동일한 결과를 보장하지 않습니다. 본원은 영어 과목 지도를 담당했습니다.</span>
 </div>
+<!-- ===== 2027학년도 수능 영어(가채점) (2026-11-20 · suneung_2027.json 렌더 · render_suneung_section.py) ===== -->
+<section aria-labelledby="tgsn-h" class="tgsn" id="suneung-results">
+<div class="tgsn__in">
+<span aria-hidden="true" class="tgsn__frame"></span>
+<p aria-hidden="true" class="tgsn__kicker">Congratulations</p>
+<p class="tgsn__eyebrow">2027학년도 수능 영어 <i>가채점</i></p>
+<h2 class="tgsn__h" id="tgsn-h">수능 영어 <em>만점</em>이 나왔습니다</h2>
+<ol aria-label="학생별 수능 영어 점수(가채점)" class="tgsn__podium"><li class="tgsn__p tgsn__p--1"><div aria-hidden="true" class="tgsn__medal"><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><radialGradient id="tgsnCoin0" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#f2ff9a"/><stop offset=".6" stop-color="#e4ff3a"/><stop offset="1" stop-color="#d3f222"/></radialGradient></defs><path d="M40.6 101.7A46 46 0 0 1 33.6 22.3M79.4 101.7A46 46 0 0 0 86.4 22.3" fill="none" stroke="#e4ff3a" stroke-width="1.8" stroke-linecap="round"/><g fill="#e4ff3a"><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(34.5 104.2) scale(1.00) rotate(152)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(34.2 91.9) scale(1.00) rotate(99)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(85.5 104.2) scale(1.00) rotate(28)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(85.8 91.9) scale(1.00) rotate(81)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(19.8 91.4) scale(0.93) rotate(174)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(24.1 79.9) scale(0.93) rotate(121)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(100.2 91.4) scale(0.93) rotate(6)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(95.9 79.9) scale(0.93) rotate(59)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(11.0 74.1) scale(0.86) rotate(196)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(19.3 65.0) scale(0.86) rotate(143)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(109.0 74.1) scale(0.86) rotate(-16)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(100.7 65.0) scale(0.86) rotate(37)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(9.3 54.7) scale(0.79) rotate(218)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(20.4 49.4) scale(0.79) rotate(165)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(110.7 54.7) scale(0.79) rotate(-38)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(99.6 49.4) scale(0.79) rotate(15)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(15.0 36.1) scale(0.72) rotate(240)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(27.3 35.3) scale(0.72) rotate(187)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(105.0 36.1) scale(0.72) rotate(-60)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(92.7 35.3) scale(0.72) rotate(-7)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(27.2 20.9) scale(0.65) rotate(262)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(38.9 24.9) scale(0.65) rotate(209)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(92.8 20.9) scale(0.65) rotate(-82)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(81.1 24.9) scale(0.65) rotate(-29)"/></g><circle cx="60" cy="60" r="31" fill="url(#tgsnCoin0)"/><circle cx="60" cy="60" r="26.5" fill="none" stroke="#192f43" stroke-opacity=".28" stroke-width="1.2"/><text x="60" y="61.5" text-anchor="middle" dominant-baseline="central" font-family="Pretendard,inherit,sans-serif" font-size="25" font-weight="900" letter-spacing="-.5" fill="#192f43">100</text></svg></div><div class="tgsn__step"><p class="tgsn__who"><small>백양고 3학년</small><b>문<span aria-hidden="true" class="tgsn__mk">○○</span><span class="tgsn-sr">(이름 일부 비공개)</span></b><span class="tgsn-sr"> 영어 100점</span></p></div></li><li class="tgsn__p tgsn__p--2"><div aria-hidden="true" class="tgsn__medal"><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><linearGradient id="tgsnCoin1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b4d6b"/><stop offset="1" stop-color="#162c40"/></linearGradient></defs><path d="M40.6 101.7A46 46 0 0 1 33.6 22.3M79.4 101.7A46 46 0 0 0 86.4 22.3" fill="none" stroke="#cfdae3" stroke-width="1.8" stroke-linecap="round"/><g fill="#cfdae3"><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(34.5 104.2) scale(1.00) rotate(152)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(34.2 91.9) scale(1.00) rotate(99)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(85.5 104.2) scale(1.00) rotate(28)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(85.8 91.9) scale(1.00) rotate(81)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(19.8 91.4) scale(0.93) rotate(174)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(24.1 79.9) scale(0.93) rotate(121)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(100.2 91.4) scale(0.93) rotate(6)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(95.9 79.9) scale(0.93) rotate(59)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(11.0 74.1) scale(0.86) rotate(196)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(19.3 65.0) scale(0.86) rotate(143)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(109.0 74.1) scale(0.86) rotate(-16)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(100.7 65.0) scale(0.86) rotate(37)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(9.3 54.7) scale(0.79) rotate(218)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(20.4 49.4) scale(0.79) rotate(165)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(110.7 54.7) scale(0.79) rotate(-38)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(99.6 49.4) scale(0.79) rotate(15)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(15.0 36.1) scale(0.72) rotate(240)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(27.3 35.3) scale(0.72) rotate(187)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(105.0 36.1) scale(0.72) rotate(-60)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(92.7 35.3) scale(0.72) rotate(-7)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(27.2 20.9) scale(0.65) rotate(262)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(38.9 24.9) scale(0.65) rotate(209)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(92.8 20.9) scale(0.65) rotate(-82)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(81.1 24.9) scale(0.65) rotate(-29)"/></g><circle cx="60" cy="60" r="31" fill="url(#tgsnCoin1)"/><circle cx="60" cy="60" r="31" fill="none" stroke="#cfdae3" stroke-width="2"/><circle cx="60" cy="60" r="26" fill="none" stroke="#cfdae3" stroke-opacity=".45" stroke-width="1"/><text x="60" y="61.5" text-anchor="middle" dominant-baseline="central" font-family="Pretendard,inherit,sans-serif" font-size="29" font-weight="900" letter-spacing="-.5" fill="#ffffff">97</text></svg></div><div class="tgsn__step"><p class="tgsn__who"><small>서정고 3학년</small><b>권<span aria-hidden="true" class="tgsn__mk">○○</span><span class="tgsn-sr">(이름 일부 비공개)</span></b><span class="tgsn-sr"> 영어 97점</span></p></div></li><li class="tgsn__p tgsn__p--3"><div aria-hidden="true" class="tgsn__medal"><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><linearGradient id="tgsnCoin2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b4d6b"/><stop offset="1" stop-color="#162c40"/></linearGradient></defs><path d="M40.6 101.7A46 46 0 0 1 33.6 22.3M79.4 101.7A46 46 0 0 0 86.4 22.3" fill="none" stroke="#cfdae3" stroke-width="1.8" stroke-linecap="round"/><g fill="#cfdae3"><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(34.5 104.2) scale(1.00) rotate(152)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(34.2 91.9) scale(1.00) rotate(99)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(85.5 104.2) scale(1.00) rotate(28)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(85.8 91.9) scale(1.00) rotate(81)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(19.8 91.4) scale(0.93) rotate(174)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(24.1 79.9) scale(0.93) rotate(121)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(100.2 91.4) scale(0.93) rotate(6)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(95.9 79.9) scale(0.93) rotate(59)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(11.0 74.1) scale(0.86) rotate(196)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(19.3 65.0) scale(0.86) rotate(143)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(109.0 74.1) scale(0.86) rotate(-16)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(100.7 65.0) scale(0.86) rotate(37)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(9.3 54.7) scale(0.79) rotate(218)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(20.4 49.4) scale(0.79) rotate(165)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(110.7 54.7) scale(0.79) rotate(-38)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(99.6 49.4) scale(0.79) rotate(15)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(15.0 36.1) scale(0.72) rotate(240)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(27.3 35.3) scale(0.72) rotate(187)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(105.0 36.1) scale(0.72) rotate(-60)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(92.7 35.3) scale(0.72) rotate(-7)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(27.2 20.9) scale(0.65) rotate(262)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(38.9 24.9) scale(0.65) rotate(209)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(92.8 20.9) scale(0.65) rotate(-82)"/><path d="M0 -11C4.6 -5.5 4.6 5.5 0 11C-4.6 5.5 -4.6 -5.5 0 -11Z" transform="translate(81.1 24.9) scale(0.65) rotate(-29)"/></g><circle cx="60" cy="60" r="31" fill="url(#tgsnCoin2)"/><circle cx="60" cy="60" r="31" fill="none" stroke="#cfdae3" stroke-width="2"/><circle cx="60" cy="60" r="26" fill="none" stroke="#cfdae3" stroke-opacity=".45" stroke-width="1"/><text x="60" y="61.5" text-anchor="middle" dominant-baseline="central" font-family="Pretendard,inherit,sans-serif" font-size="29" font-weight="900" letter-spacing="-.5" fill="#ffffff">94</text></svg></div><div class="tgsn__step"><p class="tgsn__who"><small>서정고 3학년</small><b>윤<span aria-hidden="true" class="tgsn__mk">○○</span><span class="tgsn-sr">(이름 일부 비공개)</span></b><span class="tgsn-sr"> 영어 94점</span></p></div></li></ol>
+<div class="tgsn__band"><p class="tgsn__yr"><b>3<small>년 이상</small></b></p><p class="tgsn__txt">세 학생 모두 <strong>탑그래머</strong>에서 <br class="tgsn__br">3년 이상 공부했습니다.</p><a class="tgsn__cta" href="leveltest.html">레벨테스트 신청하기 <i aria-hidden="true">→</i></a></div>
+<p class="tgsn__fine">2026. 11. 21. 게시 · 공식 성적 통지 전에 집계한 가채점 점수입니다. 게재 내용의 수정·삭제를 원하시면 학원으로 연락 주십시오.</p>
+</div>
+</section>
 <!-- ===== 2026학년도 2학기 중간고사 결과 (2026-11-05 · results_2026_2mid.json 렌더) ===== -->
 <section aria-labelledby="tgr-h" class="tgr" id="exam-results">
 <div class="tgr__in">
@@ -2200,7 +2334,7 @@ html:not(.light) .tgm-big__v{color:#e4ff3a;}
 </footer>
 <!-- 네이버 애널리틱스 (2026-08-06 · 방문 통계) — 국내 처리.
        개인정보처리방침 수탁자에 네이버(주) 명시. -->
-<script defer="True" src="full-preview.js?v=54"></script><script defer="True" src="visible-nav.js?v=55"></script><script defer="True" src="js/sw-register.js?v=7"></script><script defer="True" src="site-analytics.js?v=54"></script><script defer src="suneung-popup.js?v=202611202139"></script>
-<script defer src="results-popup.js?v=202611202139"></script>
+<script defer="True" src="full-preview.js?v=54"></script><script defer="True" src="visible-nav.js?v=55"></script><script defer="True" src="js/sw-register.js?v=7"></script><script defer="True" src="site-analytics.js?v=54"></script><script defer src="suneung-popup.js?v=202611210422"></script>
+<script defer src="results-popup.js?v=202611210422"></script>
 </body>
 </html>

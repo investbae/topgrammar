@@ -1,6 +1,153 @@
+/* 탑그래머 자동 팝업 공용 관리자(2026-11-20 · 박사님 «팝업창은 2개 모두 띄어주세요»).
+   apply.py 가 같은 코드를 suneung-popup.js·results-popup.js 맨 앞에 넣고, 먼저 실행된 쪽이 정의한다.
+   넓은 PC(폭 1240px·높이 600px 이상): 두 카드를 한 겹 위에 나란히 · 그 밖: × ·닫기·7일로 닫으면 다음 카드(차례) · 작은 띠도 차례로.
+   Esc·바깥 어두운 곳·아래로 끌기 = «팝업 그만»: 나란히면 둘 다 닫고, 차례면 남은 소식을 작은 띠로 돌린다(R1 GPT 4 · 어디서나 같은 뜻).
+   어둡게 덮기·뒤 화면 잠금(inert·스크롤)·키보드(Tab 순환·Esc)·초점 복귀는 여기 한 곳에서만 한다. */
+(function () {
+  'use strict';
+  if (window.__tgPopMgr) return;
+  var mq = function (q) { return !!(window.matchMedia && matchMedia(q).matches); };
+  var reduce = mq('(prefers-reduced-motion: reduce)');
+  var Q = [], open = [], layer = null, held = false, inerted = [], prevOv = '', prevPr = '', back = null, started = false;
+  var CSS = '.tgpair{position:fixed;inset:0;z-index:10000;display:grid;grid-auto-flow:column;grid-auto-columns:auto;justify-content:center;align-content:center;align-items:stretch;gap:24px;padding:24px;overflow:auto;font-family:inherit}' +
+    '.tgpair__dim{position:fixed;inset:0;background:rgba(7,15,23,.74);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;transition:opacity .3s ease}' +
+    '.tgpair.is-on .tgpair__dim{opacity:1}' +
+    '.tgpair>.is-paired{position:relative;inset:auto;z-index:1;display:flex;align-items:stretch;justify-content:stretch;padding:0;min-width:0}' +
+    '.tgpair .tgs__dim,.tgpair .tgp__dim{display:none}' +
+    '.tgpair>.tgs.is-paired{width:600px}.tgpair>.tgp.is-paired{width:520px}.tgpair .tgs__card,.tgpair .tgp__card{width:100%;display:flex;flex-direction:column}' +
+    '.tgpair .tgs__card>*,.tgpair .tgp__card>*{flex-shrink:0}.tgpair .tgs__body,.tgpair .tgp__body{flex-grow:1}' +
+    /* 나란히 연 뒤 창을 줄이면(폭 1240·높이 600 미만) 두 카드를 세로로 쌓고 층 전체를 세로 스크롤(R3 GPT 3 — 화면 밖으로 넘치지 않게) */
+    '@media (max-width:1239px),(max-height:599px){.tgpair{grid-auto-flow:row;justify-content:center;align-content:start;align-items:start;gap:16px;padding:16px;overflow-x:hidden;overflow-y:auto}' +
+    '.tgpair>.tgs.is-paired,.tgpair>.tgp.is-paired{width:min(600px,calc(100vw - 32px))}.tgpair .tgs__card,.tgpair .tgp__card{max-height:none;overflow:hidden;border-radius:24px}.tgpair .tgs__foot,.tgpair .tgp__foot{position:static}}' +
+    '@media (min-width:1240px) and (max-height:860px){.tgpair .tgp__title{font-size:40px}.tgpair .tgp__cta{min-height:58px}.tgpair .tgp__foot button{min-height:50px}}' +
+    '@media (min-width:1240px) and (max-height:720px){.tgpair .tgp__title{font-size:32px}.tgpair .tgp__cta{min-height:52px;font-size:18px}}' +
+    '@media (min-width:1240px) and (max-height:660px){.tgpair .tgp__hero{padding-top:22px}}' +
+    '@media (min-width:1240px) and (max-height:600px){.tgpair .tgp__hero{padding-top:20px}.tgpair .tgp__title{font-size:28px}.tgpair .tgp__cta{min-height:50px}.tgpair .tgp__foot button{min-height:46px}}' +
+    '.tgpair .tgp__cta{animation:none}.tgpair .tgp__cta:before{animation:tgpSweep 3s 4.2s ease-in-out 1}.tgpair .tgp__medal:after{animation-delay:1.8s;animation-iteration-count:1}' +
+    '@media (prefers-reduced-motion:reduce){.tgpair__dim{transition:none}.tgpair .tgp__cta:before,.tgpair .tgp__medal:after{animation:none!important}}';
+  function addCss() { if (document.getElementById('tgpair-css')) return; var st = document.createElement('style'); st.id = 'tgpair-css'; st.textContent = CSS; document.head.appendChild(st); }
+  function raf2(fn) { requestAnimationFrame(function () { requestAnimationFrame(fn); }); }
+  function wide() { return mq('(min-width: 1240px) and (min-height: 600px)'); }
+  function focusEl(el) { try { el.focus({ preventScroll: true }); } catch (e) {} }
+  function hold() {                                  // 첫 카드가 열릴 때 한 번 — 차례로 다음 카드가 이어지는 동안은 풀지 않는다
+    if (held) return;
+    held = true; back = document.activeElement;
+    var de = document.documentElement; prevOv = de.style.overflow; prevPr = de.style.paddingRight;
+    var sbw = window.innerWidth - de.clientWidth; de.style.overflow = 'hidden'; if (sbw > 0) de.style.paddingRight = sbw + 'px';
+    inerted = [];
+    Array.prototype.forEach.call(document.body.children, function (el) {
+      if (!el.hasAttribute('data-tgpop') && !el.hasAttribute('inert') && el.tagName !== 'SCRIPT') { el.setAttribute('inert', ''); inerted.push(el); }
+    });
+    document.addEventListener('keydown', onKey, true);
+  }
+  function unhold(mode) {                            // 마지막 카드가 닫힐 때 한 번 — 원래 값으로 되돌린다
+    if (!held) return;
+    held = false;
+    inerted.forEach(function (el) { el.removeAttribute('inert'); }); inerted = [];
+    var de = document.documentElement; de.style.overflow = prevOv; de.style.paddingRight = prevPr;
+    document.removeEventListener('keydown', onKey, true);
+    if (mode === 'go') return;
+    var main = document.querySelector('main');
+    var to = (back && back.focus && document.contains(back) && back !== document.body) ? back : (main || document.body);
+    if (to === main && !main.hasAttribute('tabindex')) main.setAttribute('tabindex', '-1');
+    focusEl(to);
+  }
+  function onKey(e) {
+    if (e.key === 'Escape') { e.preventDefault(); closeAll('esc'); return; }
+    if (e.key !== 'Tab' || !open.length) return;
+    var f = [];
+    open.forEach(function (o) { Array.prototype.push.apply(f, o.card.querySelectorAll('a[href],button')); });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1], a = document.activeElement;
+    var inside = f.indexOf(a) >= 0 || open.some(function (o) { return o.card === a; });
+    if (e.shiftKey && (a === first || a === open[0].card || !inside)) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && (a === last || !inside)) { e.preventDefault(); first.focus(); }
+  }
+  function show(p, paired) {
+    var root = p.make(), card = root.querySelector(p.card);
+    root.setAttribute('data-tgpop', p.id);
+    if (paired) { root.classList.add('is-paired'); card.setAttribute('role', 'group'); card.removeAttribute('aria-modal'); layer.appendChild(root); }
+    else document.body.appendChild(root);
+    var o = { p: p, root: root, card: card };
+    open.push(o);
+    if (p.opened) p.opened(root, card, paired);
+    raf2(function () { if (open.indexOf(o) >= 0) root.classList.add('is-on'); });
+    return o;
+  }
+  function openOne(p) {
+    hold();
+    var o = show(p, false);
+    raf2(function () { if (open.indexOf(o) >= 0) focusEl(o.card); });
+  }
+  function openPair(list) {
+    addCss();
+    var L = layer = document.createElement('div');
+    L.className = 'tgpair'; L.setAttribute('data-tgpop', 'pair'); L.tabIndex = -1;
+    L.setAttribute('role', 'dialog'); L.setAttribute('aria-modal', 'true'); L.setAttribute('aria-label', '탑그래머 성적 소식');   // 하나를 닫아도 맞도록 개수를 넣지 않는다(R1 GPT 3)
+    L.innerHTML = '<div class="tgpair__dim"></div>';
+    L.firstChild.addEventListener('click', function () { closeAll('esc'); });
+    hold();
+    document.body.appendChild(L);
+    list.forEach(function (p) { show(p, true); });
+    raf2(function () { if (layer === L) { L.classList.add('is-on'); if (open[0]) focusEl(open[0].card); } });
+  }
+  function take() { while (Q.length) { var p = Q.shift(); if (p.ok()) return p; } return null; }
+  function next() { var n = take(); if (!n) return; if (n.mini) n.openMini(next); else openOne(n); }
+  function close(id, mode) {
+    var o = null;
+    open.forEach(function (x) { if (x.p.id === id) o = x; });
+    if (!o) return;
+    open.splice(open.indexOf(o), 1);
+    o.root.setAttribute('inert', '');               // 사라지는 320ms 동안 Tab·클릭이 닿지 않게(R1 GPT 2)
+    if (o.p.closed) o.p.closed(mode);
+    o.card.style.transition = ''; o.card.style.transform = '';
+    o.root.classList.remove('is-on');
+    var r = o.root;
+    setTimeout(function () { if (r.parentNode) r.parentNode.removeChild(r); }, reduce ? 0 : 320);
+    if (open.length) {                               // 나란히: 남은 카드에 초점(잠금은 유지)
+      var a = document.activeElement;
+      if (!open.some(function (x) { return x.card.contains(a); })) focusEl(open[0].card);
+      return;
+    }
+    if (layer) { var L = layer; layer = null; L.classList.remove('is-on'); setTimeout(function () { if (L.parentNode) L.parentNode.removeChild(L); }, reduce ? 0 : 320); }
+    if (mode === 'go') { Q.forEach(function (p) { if (p.seen) p.seen(); }); Q = []; unhold('go'); return; }
+    var n = take();
+    if (n && !n.mini && mode !== 'esc') { openOne(n); return; }   // 차례: 잠금을 쥔 채 다음 카드를 띄운다
+    unhold(mode);
+    if (n) setTimeout(function () { if (n.ok()) n.openMini(next); else next(); }, reduce ? 0 : 360);   // 기다리는 동안 기간이 끝났으면 건너뛴다(R2 GPT 5)   // 작은 띠 차례이거나 Esc 로 끝냈으면 남은 소식은 작은 띠로
+  }
+  function closeAll(mode) {
+    if (layer) open.slice().forEach(function (o) { close(o.p.id, mode); });
+    else if (open[0]) close(open[0].p.id, mode);
+  }
+  function run() {
+    Q.sort(function (a, b) { return a.order - b.order; });
+    Q = Q.filter(function (p) { return p.ok(); });
+    if (!Q.length) return;
+    if (Q.length > 1 && !Q[0].mini && !Q[1].mini && wide()) { var l = Q; Q = []; openPair(l); return; }
+    next();
+  }
+  window.__tgPopMgr = {
+    add: function (p) {
+      Q.push(p);
+      if (started) return;
+      started = true;
+      var go = function () { setTimeout(run, 700); };
+      if (document.readyState === 'complete') go(); else window.addEventListener('load', go);
+    },
+    refocus: function () {                         // 작은 띠를 키보드로 닫았을 때 — 다음 띠의 버튼, 없으면 본문(R1 GPT 6)
+      var to = document.querySelector('.tgsm__go,.tgm__go'), main = document.querySelector('main');
+      if (!to) { to = main || document.body; if (to === main && !main.hasAttribute('tabindex')) main.setAttribute('tabindex', '-1'); }
+      focusEl(to);
+    },
+    openOne: function (p) { if (p.ok() && !open.some(function (o) { return o.p === p; })) openOne(p); },
+    close: close, closeAll: closeAll, next: next
+  };
+})();
 /* 탑그래머 2학기 중간고사 결과 팝업 v3(형광 노랑 × 남색 · 월계관 메달 · PC 560px) — apply.py 가 수치·기간을 채워 results-popup.js 로 낸다(v2.4: 토론 3회 + Opus 판정 반영).
    기간: 2026-11-06 00:00 ~ 2026-12-06 00:00 KST(달력 1달 = 11/6~12/5) · 한 방문(세션)에 한 번 · «7일간 보지 않기»=7일째 자정까지
-   구글 검색에서 휴대폰으로 들어온 첫 화면은 본문을 가리지 않는 작은 띠(방해형 전면 광고 신호 회피) */
+   구글 검색에서 휴대폰으로 들어온 첫 화면은 본문을 가리지 않는 작은 띠(방해형 전면 광고 신호 회피)
+   2026-11-20 박사님 «팝업창은 2개 모두 띄어주세요» → 수능 팝업과 함께 뜬다(넓은 PC 나란히 · 그 밖 차례 · 수능이 먼저). 잠금·키보드·초점은 공용 관리자(popup_mgr.js)가 맡는다. */
 (function () {
   'use strict';
   var START = new Date('2026-11-06T00:00:00+09:00').getTime();
@@ -9,16 +156,17 @@
   var P100 = '20', OVER90 = '47', MOCK100 = '4', MOCKBY = '고1 2·고2 1·고3 1명';
   var now = Date.now();
   if (now < START || now >= UNTIL) return;
-  if (location.hash === '#exam-results') return;
+  var HASH = /^#(exam-results|suneung-results)$/;
+  if (HASH.test(location.hash)) return;
   function get(store, k) { try { return window[store].getItem(k); } catch (e) { return null; } }
   function set(store, k, v) { try { window[store].setItem(k, v); } catch (e) {} }
   if (+(get('localStorage', KEY + '_hide') || 0) > now) return;
   if (get('sessionStorage', KEY + '_seen')) return;
-  var _own = get('sessionStorage', 'tg_pop_owner');            // 한 방문에 팝업 하나 — 수능 팝업(suneung-popup.js)이 먼저 떴으면 열지 않는다(2026-11-20)
-  if (window.__tgPopOwner || (_own && _own !== 'results')) return;
   set('sessionStorage', KEY + '_t', '1');                      // 저장이 안 되는 브라우저면 쪽마다 다시 뜨므로 자동 노출을 끈다
   if (get('sessionStorage', KEY + '_t') !== '1') return;
   try { sessionStorage.removeItem(KEY + '_t'); } catch (e) {}
+  var M = window.__tgPopMgr;
+  if (!M) return;
 
   var onHome = !!document.getElementById('exam-results');
   var href = onHome ? '#exam-results' : 'index.html#exam-results';
@@ -31,7 +179,7 @@
   // 리퍼러가 빈 사람(카카오톡·직접 입력 등)과 다른 곳에서 온 사람은 운영자 지시대로 시트 — 빈 리퍼러로 들어온 구글 검색 사용자는 가려내지 못한다(R3 GPT: 정책 선택이지 해결이 아님).
   var MINI = mobile && (fromGoogle || isBot);
 
-  var css = ".tgp{--neon:#e4ff3a;--neon2:#c9ee12;--ink:#192f43;position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:24px;font-family:inherit;-webkit-font-smoothing:antialiased}.tgp__dim{position:absolute;inset:0;background:rgba(7,15,23,.72);opacity:0;transition:opacity .2s ease}.tgp__card{position:relative;width:min(560px,100%);max-height:calc(100vh - 48px);overflow:auto;overscroll-behavior:contain;background:#fff;border-radius:28px;box-shadow:0 0 0 1.5px rgba(228,255,58,.85),0 2px 8px rgba(0,0,0,.25),0 40px 100px rgba(0,0,0,.55);opacity:0;transform:translateY(24px) scale(.96);transition:opacity .22s cubic-bezier(.4,0,1,1),transform .22s cubic-bezier(.4,0,1,1);outline:none}.tgp.is-on .tgp__dim{opacity:1;transition:opacity .3s ease}.tgp.is-on .tgp__card{opacity:1;transform:none;transition:opacity .38s cubic-bezier(.2,.8,.2,1),transform .38s cubic-bezier(.2,.8,.2,1)}.tgp__hero{position:relative;overflow:hidden;padding:40px 44px 36px;text-align:center;color:#fff;background:radial-gradient(90% 70% at 50% 0%,rgba(130,170,205,.22),rgba(130,170,205,0) 60%),linear-gradient(170deg,#1d3a54 0%,#132637 52%,#0a1622 100%)}.tgp__hero:before{content:\"\";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1.5px);background-size:24px 24px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%)}.tgp__frame{position:absolute!important;inset:14px;border:1px solid rgba(255,255,255,.13);border-radius:18px;pointer-events:none}.tgp__frame:before,.tgp__frame:after{content:\"\";position:absolute;width:22px;height:22px;border:2px solid var(--neon);border-radius:4px}.tgp__frame:before{top:-2px;left:-2px;border-right:0;border-bottom:0;border-radius:18px 0 0 0}.tgp__frame:after{bottom:-2px;right:-2px;border-left:0;border-top:0;border-radius:0 0 18px 0}.tgp__hero:after{content:\"\";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,transparent,var(--neon) 20%,var(--neon) 80%,transparent)}.tgp__hero>*{position:relative}.tgp__x{position:absolute!important;z-index:3;top:18px;right:18px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:#eef3f6;font-family:inherit;font-size:30px;line-height:44px;font-weight:300;cursor:pointer;transition:background .2s,color .2s}.tgp__x:hover,.tgp__x:focus-visible{background:rgba(255,255,255,.12);color:var(--neon);outline:none}.tgp__medal{position:relative;width:124px;height:124px;margin:0 auto 6px;filter:drop-shadow(0 0 5px rgba(228,255,58,.5)) drop-shadow(0 10px 18px rgba(0,0,0,.35))}.tgp__medal svg{display:block;width:100%;height:100%;overflow:visible}.tgp__medal:after{content:\"\";position:absolute;left:50%;top:50%;width:52%;height:52%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.85) 50%,transparent 62%) no-repeat;background-size:260% 100%;background-position:130% 0;animation:tgpShine 1.5s .55s cubic-bezier(.3,.6,.3,1) 2}@keyframes tgpShine{to{background-position:-40% 0}}.tgp__kicker{font:italic 400 18px/1.3 Georgia,\"Times New Roman\",serif;color:var(--neon);letter-spacing:.01em;margin:0 0 16px}.tgp__eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:15px;font-weight:600;color:#e3e9ee;letter-spacing:.03em;margin:0 0 12px}.tgp__eyebrow:before,.tgp__eyebrow:after{content:\"\";width:24px;height:2px;border-radius:2px;background:var(--neon)}.tgp__title{margin:0;font-size:46px;line-height:1.16;font-weight:800;letter-spacing:-.03em;color:#fff;word-break:keep-all}.tgp__title em{font-style:normal;color:var(--neon);text-shadow:0 0 10px rgba(228,255,58,.4)}.tgp__stats{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;background:#fff;border-bottom:1px solid #edf0f3}.tgp__stat{display:grid;grid-row:span 3;grid-template-rows:subgrid;align-content:start;padding:22px 14px 18px;text-align:center}.tgp__stat+.tgp__stat{border-left:1px solid #e6eaee}.tgp__stat span{display:block;align-self:end;font-size:15px;font-weight:600;color:#3f4d5a;margin-bottom:6px;word-break:keep-all}.tgp__stat b{display:inline-block;justify-self:center;align-self:start;font-size:42px;line-height:1.05;font-weight:900;color:var(--ink);letter-spacing:-.03em;padding:0 6px;background:linear-gradient(180deg,transparent 64%,var(--neon) 64%,var(--neon) 90%,transparent 90%)}.tgp__stat b small{font-size:18px;margin-left:2px;font-weight:800}.tgp__stat em{display:block;font-style:normal;font-size:14px;font-weight:500;color:#55626e;margin-top:6px}.tgp__body{padding:22px 34px 20px;text-align:center;background:linear-gradient(180deg,#fff,#f7f9fa)}.tgp__lead{margin:0 0 18px;font-size:17px;line-height:1.55;color:#24323f;font-weight:500;word-break:keep-all}.tgp__cta{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:64px;border:0;border-radius:16px;cursor:pointer;background:linear-gradient(180deg,#efff78 0%,#d8f71e 100%);color:var(--ink);font:inherit;font-size:19px;font-weight:800;text-decoration:none;letter-spacing:-.01em;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 0 0 1px rgba(25,47,67,.12),0 1px 2px rgba(25,47,67,.18),0 10px 18px -8px rgba(110,140,0,.55);transition:transform .15s,box-shadow .15s;animation:tgpPulse 2.4s 1.1s ease-in-out 3}.tgp__cta:before{content:\"\";position:absolute;top:0;bottom:0;left:-60%;width:40%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.75),transparent);animation:tgpSweep 3s 1.3s ease-in-out 2}@keyframes tgpSweep{0%{left:-60%}35%,100%{left:130%}}@keyframes tgpPulse{0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 0 0 1px rgba(25,47,67,.12),0 1px 2px rgba(25,47,67,.18),0 10px 18px -8px rgba(110,140,0,.55)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 0 0 1px rgba(25,47,67,.12),0 1px 2px rgba(25,47,67,.18),0 10px 18px -8px rgba(110,140,0,.55),0 0 0 6px rgba(228,255,58,.38)}}.tgp__cta:hover{transform:translateY(-1px)}.tgp__cta:active{transform:none}.tgp__cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}.tgp__cta i{font-style:normal;position:relative}.tgp__cta span{position:relative}.tgp__fine{margin:13px 0 0;font-size:14px;line-height:1.5;color:#55626e;word-break:keep-all}.tgp__foot{position:sticky;bottom:0;display:flex;border-top:1px solid #e3e7eb;background:#fbfcfc}.tgp__foot button{flex:1;min-height:56px;border:0;background:transparent;font:inherit;font-size:15px;font-weight:500;color:#45525e;cursor:pointer}.tgp__foot button+button{border-left:1px solid #dfe3e8;color:var(--ink);font-weight:700}.tgp__foot button:hover{background:#f1f4f6}.tgp__foot button:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}#exam-results:focus{outline:none}@media (min-width:641px){.tgp__grab{display:none}.tgp__dim{-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}}@media (max-width:640px){.tgp{align-items:flex-end;padding:0}.tgp__card{width:100%;max-height:88vh;max-height:min(88dvh,720px);border-radius:26px 26px 0 0;opacity:1;transform:translateY(100%);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 0 0 1.5px rgba(228,255,58,.85),0 -12px 36px rgba(0,0,0,.35);transition:transform .26s cubic-bezier(.4,0,1,1)}.tgp.is-on .tgp__card{transition:transform .4s cubic-bezier(.22,1,.36,1)}.tgp__grab{position:absolute;z-index:3;top:0;left:50%;width:120px;height:26px;margin-left:-60px;display:flex;justify-content:center;padding-top:9px;touch-action:none}.tgp__grab:before{content:\"\";width:44px;height:4px;border-radius:4px;background:rgba(228,255,58,.9)}.tgp__hero{padding:32px 24px 26px}.tgp__frame{inset:10px}.tgp__x{top:12px;right:12px}.tgp__medal{width:92px;height:92px;margin-bottom:4px}.tgp__kicker{font-size:16px;margin-bottom:12px}.tgp__eyebrow{font-size:14px;margin-bottom:10px;gap:10px}.tgp__title{font-size:33px}.tgp__stat{padding:16px 10px 14px}.tgp__stat span{font-size:14px}.tgp__stat b{font-size:34px}.tgp__stat b small{font-size:16px}.tgp__body{padding:20px 20px 16px}.tgp__lead{font-size:16px;margin-bottom:14px}.tgp__cta{min-height:58px;font-size:18px}.tgp__foot button{min-height:52px;font-size:15px}}@media (max-width:400px){.tgp__eyebrow:before,.tgp__eyebrow:after{display:none}}@media (max-height:820px){.tgp__hero{padding:30px 40px 26px}.tgp__medal{width:96px;height:96px;margin-bottom:6px}.tgp__kicker{display:none}.tgp__title{font-size:40px}.tgp__stat{padding:16px 12px 14px}.tgp__stat b{font-size:36px}.tgp__body{padding:16px 30px 14px}.tgp__lead{margin-bottom:12px;font-size:16px}.tgp__cta{min-height:58px}.tgp__fine{margin-top:10px}.tgp__foot button{min-height:50px}}@media (max-height:660px){.tgp__medal{display:none}.tgp__hero{padding:30px 36px 22px}.tgp__title{font-size:34px}.tgp__stat b{font-size:30px}.tgp__stat em{margin-top:3px}}@media (max-width:640px) and (max-height:820px){.tgp__hero{padding:30px 20px 20px}.tgp__medal{width:76px;height:76px}.tgp__title{font-size:29px}.tgp__stat b{font-size:30px}.tgp__cta{min-height:54px;font-size:17px}}@media (max-width:640px) and (max-height:640px){.tgp__card{max-height:96vh;max-height:96dvh}.tgp__medal{display:none}.tgp__hero{padding-top:52px}.tgp__title{font-size:26px}.tgp__eyebrow{margin-bottom:8px}.tgp__stat{padding:12px 8px 10px}.tgp__stat b{font-size:27px}.tgp__stat em{font-size:13px}.tgp__lead{font-size:15px;margin-bottom:10px}.tgp__fine{font-size:13px}}.tgm{position:fixed;left:12px;right:12px;z-index:9000;display:flex;align-items:center;gap:12px;padding:12px 2px 12px 16px;border-radius:18px;border:1.5px solid rgba(228,255,58,.75);background:linear-gradient(170deg,#1d3a54,#132637 55%,#0a1622);color:#fff;box-shadow:0 0 22px rgba(228,255,58,.28),0 16px 36px rgba(0,0,0,.4);font-family:inherit;opacity:0;transform:translateY(16px);transition:opacity .3s,transform .3s cubic-bezier(.2,.8,.2,1)}.tgm.is-on{opacity:1;transform:none}.tgm__seal{flex:0 0 auto;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#e4ff3a;background:#0c1b28;box-shadow:inset 0 0 0 1.5px #e4ff3a}.tgm__txt{flex:1;min-width:0;line-height:1.3}.tgm__txt small{display:block;font-size:13px;font-weight:500;color:#e3e9ee}.tgm__txt b{font-size:17px;font-weight:800}.tgm__txt b em{font-style:normal;color:#fff;font-weight:900}.tgm__go{flex:0 0 auto;min-height:44px;display:flex;align-items:center;padding:0 15px;border-radius:12px;font-size:15px;font-weight:800;color:#192f43;text-decoration:none;background:linear-gradient(180deg,#efff78,#d8f71e);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 6px 14px -6px rgba(110,140,0,.6)}.tgm__x{flex:0 0 auto;width:40px;height:44px;border:0;background:transparent;color:#eef3f6;font-family:inherit;font-size:26px;line-height:44px;font-weight:300;cursor:pointer}@media (prefers-reduced-motion:reduce){.tgp__dim,.tgp__card,.tgm{transition:none!important}.tgp__medal:after,.tgp__cta,.tgp__cta:before{animation:none!important}}";                              // popup_v3.css 를 apply.py 가 넣는다
+  var css = ".tgp{--neon:#e4ff3a;--neon2:#c9ee12;--ink:#192f43;position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:24px;font-family:inherit;-webkit-font-smoothing:antialiased}.tgp__dim{position:absolute;inset:0;background:rgba(7,15,23,.72);opacity:0;transition:opacity .2s ease}.tgp__card{position:relative;width:min(560px,100%);max-height:calc(100vh - 48px);overflow:auto;overscroll-behavior:contain;background:#fff;border-radius:28px;box-shadow:0 0 0 1.5px rgba(228,255,58,.85),0 2px 8px rgba(0,0,0,.25),0 40px 100px rgba(0,0,0,.55);opacity:0;transform:translateY(24px) scale(.96);transition:opacity .22s cubic-bezier(.4,0,1,1),transform .22s cubic-bezier(.4,0,1,1);outline:none}.tgp.is-on .tgp__dim{opacity:1;transition:opacity .3s ease}.tgp.is-on .tgp__card{opacity:1;transform:none;transition:opacity .38s cubic-bezier(.2,.8,.2,1),transform .38s cubic-bezier(.2,.8,.2,1)}.tgp__hero{position:relative;overflow:hidden;padding:40px 44px 36px;text-align:center;color:#fff;background:radial-gradient(90% 70% at 50% 0%,rgba(130,170,205,.22),rgba(130,170,205,0) 60%),linear-gradient(170deg,#1d3a54 0%,#132637 52%,#0a1622 100%)}.tgp__hero:before{content:\"\";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1.5px);background-size:24px 24px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%)}.tgp__frame{position:absolute!important;inset:14px;border:1px solid rgba(255,255,255,.13);border-radius:18px;pointer-events:none}.tgp__frame:before,.tgp__frame:after{content:\"\";position:absolute;width:22px;height:22px;border:2px solid var(--neon);border-radius:4px}.tgp__frame:before{top:-2px;left:-2px;border-right:0;border-bottom:0;border-radius:18px 0 0 0}.tgp__frame:after{bottom:-2px;right:-2px;border-left:0;border-top:0;border-radius:0 0 18px 0}.tgp__hero:after{content:\"\";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,transparent,var(--neon) 20%,var(--neon) 80%,transparent)}.tgp__hero>*{position:relative}.tgp__x{position:absolute!important;z-index:3;top:18px;right:18px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:#eef3f6;font-family:inherit;font-size:30px;line-height:44px;font-weight:300;cursor:pointer;transition:background .2s,color .2s}.tgp__x:hover,.tgp__x:focus-visible{background:rgba(255,255,255,.12);color:var(--neon);outline:none}.tgp__medal{position:relative;width:124px;height:124px;margin:0 auto 6px;filter:drop-shadow(0 0 5px rgba(228,255,58,.5)) drop-shadow(0 10px 18px rgba(0,0,0,.35))}.tgp__medal svg{display:block;width:100%;height:100%;overflow:visible}.tgp__medal:after{content:\"\";position:absolute;left:50%;top:50%;width:52%;height:52%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.85) 50%,transparent 62%) no-repeat;background-size:260% 100%;background-position:130% 0;animation:tgpShine 1.5s .55s cubic-bezier(.3,.6,.3,1) 2}@keyframes tgpShine{to{background-position:-40% 0}}.tgp__kicker{font:italic 400 18px/1.3 Georgia,\"Times New Roman\",serif;color:var(--neon);letter-spacing:.01em;margin:0 0 16px}.tgp__eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:15px;font-weight:600;color:#e3e9ee;letter-spacing:.03em;margin:0 0 12px}.tgp__eyebrow:before,.tgp__eyebrow:after{content:\"\";width:24px;height:2px;border-radius:2px;background:var(--neon)}.tgp__title{margin:0;font-size:46px;line-height:1.16;font-weight:800;letter-spacing:-.03em;color:#fff;word-break:keep-all}.tgp__title em{font-style:normal;color:var(--neon);text-shadow:0 0 10px rgba(228,255,58,.4)}.tgp__stats{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;background:#fff;border-bottom:1px solid #edf0f3}.tgp__stat{display:grid;grid-row:span 3;grid-template-rows:subgrid;align-content:start;padding:22px 14px 18px;text-align:center}.tgp__stat+.tgp__stat{border-left:1px solid #e6eaee}.tgp__stat span{display:block;align-self:end;font-size:15px;font-weight:600;color:#3f4d5a;margin-bottom:6px;word-break:keep-all}.tgp__stat b{display:inline-block;justify-self:center;align-self:start;font-size:42px;line-height:1.05;font-weight:900;color:var(--ink);letter-spacing:-.03em;padding:0 6px;background:linear-gradient(180deg,transparent 64%,var(--neon) 64%,var(--neon) 90%,transparent 90%)}.tgp__stat b small{font-size:18px;margin-left:2px;font-weight:800}.tgp__stat em{display:block;font-style:normal;font-size:14px;font-weight:500;color:#55626e;margin-top:6px}.tgp__body{padding:22px 34px 20px;text-align:center;background:linear-gradient(180deg,#fff,#f7f9fa)}.tgp__lead{margin:0 0 18px;font-size:17px;line-height:1.55;color:#24323f;font-weight:500;word-break:keep-all}.tgp__cta{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:64px;border:0;border-radius:16px;cursor:pointer;background:linear-gradient(180deg,#efff78 0%,#d8f71e 100%);color:var(--ink);font:inherit;font-size:19px;font-weight:800;text-decoration:none;letter-spacing:-.01em;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 0 0 1px rgba(25,47,67,.12),0 1px 2px rgba(25,47,67,.18),0 10px 18px -8px rgba(110,140,0,.55);transition:transform .15s,box-shadow .15s;animation:tgpPulse 2.4s 1.1s ease-in-out 3}.tgp__cta:before{content:\"\";position:absolute;top:0;bottom:0;left:-60%;width:40%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.75),transparent);animation:tgpSweep 3s 1.3s ease-in-out 2}@keyframes tgpSweep{0%{left:-60%}35%,100%{left:130%}}@keyframes tgpPulse{0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 0 0 1px rgba(25,47,67,.12),0 1px 2px rgba(25,47,67,.18),0 10px 18px -8px rgba(110,140,0,.55)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 0 0 1px rgba(25,47,67,.12),0 1px 2px rgba(25,47,67,.18),0 10px 18px -8px rgba(110,140,0,.55),0 0 0 6px rgba(228,255,58,.38)}}.tgp__cta:hover{transform:translateY(-1px)}.tgp__cta:active{transform:none}.tgp__cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}.tgp__cta i{font-style:normal;position:relative}.tgp__cta span{position:relative}.tgp__fine{margin:13px 0 0;font-size:14px;line-height:1.5;color:#55626e;word-break:keep-all}.tgp__foot{position:sticky;bottom:0;display:flex;border-top:1px solid #e3e7eb;background:#fbfcfc}.tgp__foot button{flex:1;min-height:56px;border:0;background:transparent;font:inherit;font-size:15px;font-weight:500;color:#45525e;cursor:pointer}.tgp__foot button+button{border-left:1px solid #dfe3e8;color:var(--ink);font-weight:700}.tgp__foot button:hover{background:#f1f4f6}.tgp__foot button:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}#exam-results:focus{outline:none}@media (min-width:641px){.tgp__grab{display:none}.tgp__dim{-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}}@media (max-width:640px){.tgp{align-items:flex-end;padding:0}.tgp__card{width:100%;max-height:88vh;max-height:min(88dvh,720px);border-radius:26px 26px 0 0;opacity:1;transform:translateY(100%);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 0 0 1.5px rgba(228,255,58,.85),0 -12px 36px rgba(0,0,0,.35);transition:transform .26s cubic-bezier(.4,0,1,1)}.tgp.is-on .tgp__card{transition:transform .4s cubic-bezier(.22,1,.36,1)}.tgp__grab{position:absolute;z-index:3;top:0;left:50%;width:120px;height:26px;margin-left:-60px;display:flex;justify-content:center;padding-top:9px;touch-action:none}.tgp__grab:before{content:\"\";width:44px;height:4px;border-radius:4px;background:rgba(228,255,58,.9)}.tgp__hero{padding:32px 24px 26px}.tgp__frame{inset:10px}.tgp__x{top:12px;right:12px}.tgp__medal{width:92px;height:92px;margin-bottom:4px}.tgp__kicker{font-size:16px;margin-bottom:12px}.tgp__eyebrow{font-size:14px;margin-bottom:10px;gap:10px}.tgp__title{font-size:33px}.tgp__stat{padding:16px 10px 14px}.tgp__stat span{font-size:14px}.tgp__stat b{font-size:34px}.tgp__stat b small{font-size:16px}.tgp__body{padding:20px 20px 16px}.tgp__lead{font-size:16px;margin-bottom:14px}.tgp__cta{min-height:58px;font-size:18px}.tgp__foot button{min-height:52px;font-size:15px}}@media (max-width:380px){.tgp__eyebrow:before,.tgp__eyebrow:after{display:none}}@media (max-height:820px){.tgp__hero{padding:30px 40px 26px}.tgp__medal{width:96px;height:96px;margin-bottom:6px}.tgp__kicker{display:none}.tgp__title{font-size:40px}.tgp__stat{padding:16px 12px 14px}.tgp__stat b{font-size:36px}.tgp__body{padding:16px 30px 14px}.tgp__lead{margin-bottom:12px;font-size:16px}.tgp__cta{min-height:58px}.tgp__fine{margin-top:10px}.tgp__foot button{min-height:50px}}@media (max-height:660px){.tgp__medal{display:none}.tgp__hero{padding:30px 36px 22px}.tgp__title{font-size:34px}.tgp__stat b{font-size:30px}.tgp__stat em{margin-top:3px}}@media (max-width:640px) and (max-height:820px){.tgp__hero{padding:30px 20px 20px}.tgp__medal{width:76px;height:76px}.tgp__title{font-size:29px}.tgp__stat b{font-size:30px}.tgp__cta{min-height:54px;font-size:17px}}@media (max-width:640px) and (max-height:640px){.tgp__card{max-height:96vh;max-height:96dvh}.tgp__medal{display:none}.tgp__hero{padding-top:52px}.tgp__title{font-size:26px}.tgp__eyebrow{margin-bottom:8px}.tgp__stat{padding:12px 8px 10px}.tgp__stat b{font-size:27px}.tgp__stat em{font-size:13px}.tgp__lead{font-size:15px;margin-bottom:10px}.tgp__fine{font-size:13px}}.tgm{position:fixed;left:12px;right:12px;z-index:9000;display:flex;align-items:center;gap:12px;padding:12px 2px 12px 16px;border-radius:18px;border:1.5px solid rgba(228,255,58,.75);background:linear-gradient(170deg,#1d3a54,#132637 55%,#0a1622);color:#fff;box-shadow:0 0 22px rgba(228,255,58,.28),0 16px 36px rgba(0,0,0,.4);font-family:inherit;opacity:0;transform:translateY(16px);transition:opacity .3s,transform .3s cubic-bezier(.2,.8,.2,1)}.tgm.is-on{opacity:1;transform:none}.tgm__seal{flex:0 0 auto;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#e4ff3a;background:#0c1b28;box-shadow:inset 0 0 0 1.5px #e4ff3a}.tgm__txt{flex:1;min-width:0;line-height:1.3}.tgm__txt small{display:block;font-size:13px;font-weight:500;color:#e3e9ee}.tgm__txt b{font-size:17px;font-weight:800}.tgm__txt b em{font-style:normal;color:#fff;font-weight:900}.tgm__go{flex:0 0 auto;min-height:44px;display:flex;align-items:center;padding:0 15px;border-radius:12px;font-size:15px;font-weight:800;color:#192f43;text-decoration:none;background:linear-gradient(180deg,#efff78,#d8f71e);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 6px 14px -6px rgba(110,140,0,.6)}.tgm__x{flex:0 0 auto;width:40px;height:44px;border:0;background:transparent;color:#eef3f6;font-family:inherit;font-size:26px;line-height:44px;font-weight:300;cursor:pointer}@media (min-width:641px){.tgm{left:auto;right:24px;bottom:24px;width:min(460px,calc(100% - 48px))}}@media (max-width:640px) and (max-height:700px) and (min-height:641px){.tgp__medal{width:60px;height:60px}}@media (prefers-reduced-motion:reduce){.tgp__dim,.tgp__card,.tgm{transition:none!important}.tgp__medal:after,.tgp__cta,.tgp__cta:before{animation:none!important}}.tgm{border-color:#e4ff3a}.tgm,.tgsm{box-shadow:0 16px 36px rgba(0,0,0,.4)}@media (hover:none){.tgp__foot button:hover{background:transparent}}@media (max-width:400px){.tgm__seal{display:none}.tgm{padding-left:16px}}.tgp__hero:after{background:var(--neon)}.tgp__title em{text-shadow:none}.tgp__medal{filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))}.tgp__grab:before{background:var(--neon)}.tgp__card{box-shadow:0 0 0 1.5px #e4ff3a,0 2px 8px rgba(0,0,0,.25),0 40px 100px rgba(0,0,0,.55)}@media (max-width:640px){.tgp__card{box-shadow:0 0 0 1.5px #e4ff3a,0 -12px 36px rgba(0,0,0,.35)}}@media (max-width:640px){.tgp__frame{inset:20px 10px 10px}.tgp__x{top:24px;right:14px}}@media (max-width:640px) and (min-height:641px){.tgp__hero{padding-top:36px}}.tgp__fine{text-wrap:balance}@media (max-width:640px) and (min-height:641px) and (max-height:700px){.tgp__hero{padding-top:30px}}";                              // popup_v3.css 를 apply.py 가 넣는다
 
   function medalSvg() {                           // 월계관 메달(형광 노랑) — 잎은 원호를 따라 엇갈려 놓는다
     var cx = 60, cy = 60, g = '';
@@ -54,7 +202,13 @@
       '<text x="60" y="61.5" text-anchor="middle" dominant-baseline="central" font-family="Pretendard,inherit,sans-serif" font-size="23" font-weight="900" letter-spacing="-.5" fill="#192f43">100</text></svg>';
   }
 
-  function addCss() { var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st); }
+  function addCss() { if (document.getElementById('tgp-css')) return; var st = document.createElement('style'); st.id = 'tgp-css'; st.textContent = css; document.head.appendChild(st); }
+  function seen() { set('sessionStorage', KEY + '_seen', '1'); }
+  function expire(fn) {                              // 열린 채로 종료 시각(12/6 0시)을 넘기면 스스로 닫는다(R1 GPT 5)
+    var left = UNTIL - Date.now();
+    if (left <= 0) { fn(); return; }
+    if (left < 2147483647) setTimeout(fn, left);
+  }
 
   function goResults(e) {
     if (!onHome) return;                         // 다른 쪽: 링크 그대로 index.html#exam-results 로 이동
@@ -69,7 +223,7 @@
   }
 
   /* ---------- 작은 띠 ---------- */
-  function openMini() {
+  function openMini(done) {
     addCss();
     var bar = document.createElement('div');
     bar.className = 'tgm';
@@ -83,15 +237,17 @@
     var off = (sticky && getComputedStyle(sticky).display !== 'none') ? sticky.offsetHeight : 0;
     bar.style.bottom = 'calc(' + (off + 18) + 'px + ' + (off ? '0px' : 'env(safe-area-inset-bottom)') + ')';
     document.body.appendChild(bar);
-    set('sessionStorage', KEY + '_seen', '1'); set('sessionStorage', 'tg_pop_owner', 'results');
+    seen();
     requestAnimationFrame(function () { requestAnimationFrame(function () { bar.classList.add('is-on'); }); });
-    function rm() { bar.classList.remove('is-on'); setTimeout(function () { if (bar.parentNode) bar.parentNode.removeChild(bar); }, reduce ? 0 : 300); }
-    bar.querySelector('.tgm__x').addEventListener('click', rm);
-    bar.querySelector('.tgm__go').addEventListener('click', function (e) { goResults(e); if (onHome) rm(); });
+    var gone = false;
+    function rm(keep) { if (gone) return; gone = true; var had = !keep && bar.contains(document.activeElement); bar.classList.remove('is-on');   // keep = 결과 구획으로 옮긴 초점을 지킨다(R2 GPT 2)
+      setTimeout(function () { if (bar.parentNode) bar.parentNode.removeChild(bar); done(); if (had) M.refocus(); }, reduce ? 0 : 300); }
+    bar.querySelector('.tgm__x').addEventListener('click', function () { rm(); });
+    bar.querySelector('.tgm__go').addEventListener('click', function (e) { goResults(e); if (onHome) rm(true); });
+    expire(function () { rm(); });
   }
 
   /* ---------- 팝업 ---------- */
-  var root, card, lastFocus, inerted = [];
   function build() {
     var r = document.createElement('div');
     r.className = 'tgp';
@@ -121,35 +277,17 @@
           '<button type="button" data-close>닫기</button>' +
         '</div>' +
       '</div>';
+    r.addEventListener('click', function (e) {
+      var el = e.target.closest ? e.target.closest('[data-close],[data-week],[data-go]') : null;
+      if (!el) return;
+      if (el.hasAttribute('data-go')) { if (onHome) { goResults(e); M.closeAll('go'); } }
+      else if (el.classList.contains('tgp__dim')) M.closeAll('esc');   // 바깥 어두운 곳 = Esc 와 같은 뜻
+      else M.close('results', el.hasAttribute('data-week') ? 'week' : 'x');
+    });
     return r;
   }
   function canKeep() { set('localStorage', KEY + '_t', '1'); var ok = get('localStorage', KEY + '_t') === '1'; try { localStorage.removeItem(KEY + '_t'); } catch (e) {} return ok; }
-  function lock(on) {
-    var de = document.documentElement;
-    if (on) { var sbw = window.innerWidth - de.clientWidth; de.style.overflow = 'hidden'; if (sbw > 0) de.style.paddingRight = sbw + 'px'; }
-    else { de.style.overflow = ''; de.style.paddingRight = ''; }
-  }
-  function close(mode) {
-    if (!root) return;
-    if (mode === 'week') { var t = new Date(); t.setHours(24, 0, 0, 0); set('localStorage', KEY + '_hide', String(t.getTime() + 6 * 864e5)); }
-    root.classList.remove('is-on');
-    card.style.transition = ''; card.style.transform = '';
-    document.removeEventListener('keydown', onKey, true);
-    inerted.forEach(function (el) { el.removeAttribute('inert'); }); inerted = [];
-    var r = root; root = null;
-    lock(false);
-    setTimeout(function () { if (r.parentNode) r.parentNode.removeChild(r); }, reduce ? 0 : 320);
-    if (mode !== 'go' && lastFocus && lastFocus.focus) { try { lastFocus.focus({ preventScroll: true }); } catch (e) {} }
-  }
-  function onKey(e) {
-    if (e.key === 'Escape') { e.preventDefault(); close('x'); return; }
-    if (e.key !== 'Tab') return;
-    var f = card.querySelectorAll('a[href],button');
-    var first = f[0], last = f[f.length - 1];
-    if (e.shiftKey && (document.activeElement === first || document.activeElement === card)) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  }
-  function swipe() {                              // 휴대폰: 손잡이·머리를 아래로 끌어 닫기
+  function swipe(card) {                              // 휴대폰: 손잡이·머리를 아래로 끌어 닫기
     var y0 = null, dy = 0, h = 0;
     card.addEventListener('touchstart', function (e) {
       if (card.scrollTop > 0 || !e.target.closest('.tgp__grab,.tgp__hero')) { y0 = null; return; }
@@ -163,32 +301,19 @@
     card.addEventListener('touchend', function () {
       if (y0 === null) return;
       y0 = null; card.style.transition = '';
-      if (dy > Math.min(120, h * 0.22)) close('x'); else card.style.transform = '';
+      if (dy > Math.min(120, h * 0.22)) M.closeAll('esc'); else card.style.transform = '';
     });
   }
-  function openPopup() {
-    addCss();
-    lastFocus = document.activeElement;
-    root = build(); card = root.querySelector('.tgp__card');
-    if (!canKeep()) { var wk = root.querySelector('[data-week]'); if (wk) wk.parentNode.removeChild(wk); }
-    document.body.appendChild(root);
-    set('sessionStorage', KEY + '_seen', '1'); set('sessionStorage', 'tg_pop_owner', 'results');
-    lock(true);
-    inerted = [];
-    Array.prototype.forEach.call(document.body.children, function (el) {
-      if (el !== root && !el.hasAttribute('inert') && el.tagName !== 'SCRIPT') { el.setAttribute('inert', ''); inerted.push(el); }
-    });
-    root.addEventListener('click', function (e) {
-      var el = e.target.closest ? e.target.closest('[data-close],[data-week],[data-go]') : null;
-      if (!el) return;
-      if (el.hasAttribute('data-week')) close('week');
-      else if (el.hasAttribute('data-go')) { if (onHome) { goResults(e); close('go'); } }
-      else close('x');
-    });
-    document.addEventListener('keydown', onKey, true);
-    if (mobile) swipe();
-    requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add('is-on'); card.focus({ preventScroll: true }); }); });
-  }
-  function start() { setTimeout(function () { if (Date.now() >= UNTIL || location.hash === '#exam-results' || window.__tgPopOwner === 'suneung') return; (MINI ? openMini : openPopup)(); }, 700); }
-  if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
+  var P = {
+    id: 'results', order: 2, mini: MINI, card: '.tgp__card',
+    ok: function () { return Date.now() < UNTIL && !HASH.test(location.hash); },
+    make: function () { addCss(); var r = build(); if (!canKeep()) { var wk = r.querySelector('[data-week]'); if (wk) wk.parentNode.removeChild(wk); } return r; },
+    opened: function (root, card, paired) { seen(); expire(function () { M.close('results', 'x'); }); if (mobile && !paired) swipe(card); },
+    closed: function (mode) {
+      if (mode !== 'week') return;
+      var t = new Date(); t.setHours(24, 0, 0, 0); set('localStorage', KEY + '_hide', String(t.getTime() + 6 * 864e5));
+    },
+    openMini: openMini, seen: seen
+  };
+  M.add(P);
 })();
