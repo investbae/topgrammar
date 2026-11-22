@@ -272,8 +272,8 @@
           '<ol class="tgs__podium" aria-label="학생별 영어 점수">' + podium() + '</ol>' +
         '</div>' +
         '<div class="tgs__band" id="tgs-desc">' +
-          '<b>3<small>년 이상</small></b>' +
-          '<p>세 학생 모두 <strong>탑그래머</strong>에서<br>3년 이상 공부했습니다.</p>' +
+          '<b>5<small>년 이상</small></b>' +
+          '<p>세 학생 모두 <strong>탑그래머</strong>에서<br>5년 이상 공부했습니다.</p>' +
         '</div>' +
         '<div class="tgs__body">' +
           '<a class="tgs__cta" href="leveltest.html"><span>레벨테스트 신청하기</span> <i aria-hidden="true">→</i></a>' +
