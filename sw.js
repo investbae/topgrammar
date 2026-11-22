@@ -1,5 +1,5 @@
 /* Service Worker - TopGrammar PWA */
-var CACHE_NAME = 'tg-v64-suneung-tenure5-202611222010';
+var CACHE_NAME = 'tg-v65-suneung-tenure45-202611222045';
 var HOME_BUILD = '20260920-note59';
 
 self.addEventListener('message', function (event) {
